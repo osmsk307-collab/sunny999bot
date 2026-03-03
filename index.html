@@ -3,97 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNNY 999 BOT - Guild Glory System</title>
+    <title>SUNNY 999 BOT - Official Guild Glory</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg: #050a1a; --card: #0b1426; --neon: #00f2ff; --purple: #7000ff; --green: #00ff88; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; }
+        :root { --bg: #050a1a; --card: #0b1426; --neon: #00f2ff; --purple: #7000ff; --green: #00ff88; --yt: #ff0000; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; overflow-x: hidden; }
         .app-container { width: 100%; max-width: 400px; }
         
-        /* Header Section */
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 5px; }
-        .yt-icon { color: #ff0000; font-size: 26px; }
-        .brand { font-weight: bold; font-size: 20px; letter-spacing: 1px; }
+        /* Header & YT Button */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+        .brand { font-weight: bold; font-size: 18px; letter-spacing: 1px; }
+        .yt-sub-btn { background: var(--yt); color: white; border: none; padding: 8px 12px; border-radius: 20px; font-weight: bold; font-size: 11px; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+
+        /* Fake Buy Pop-up */
+        #buy-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 20, 38, 0.95);
+            border: 1px solid var(--neon);
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+            transition: bottom 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 9999;
+            width: 85%;
+        }
+        .pop-text { font-size: 12px; font-weight: bold; }
 
         /* Status Bar */
-        .status-bar { background: var(--card); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 25px; border: 1px solid #1a2a44; }
-        .status-online { color: var(--green); font-weight: bold; }
+        .status-bar { background: var(--card); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 20px; border: 1px solid #1a2a44; }
 
-        .main-title { text-align: center; font-size: 24px; font-weight: 900; background: linear-gradient(to right, var(--neon), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; text-transform: uppercase; }
+        /* Titles & Boxes */
+        .main-title { text-align: center; font-size: 24px; font-weight: 900; background: linear-gradient(to right, var(--neon), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; margin-bottom: 15px; }
+        .feature-box { background: rgba(0, 242, 255, 0.05); border: 1px dashed var(--neon); padding: 10px; border-radius: 10px; font-size: 13px; text-align: center; margin-bottom: 20px; color: var(--green); font-weight: bold; }
 
-        input, select { width: 100%; padding: 14px; margin: 12px 0; background: #0d1b35; border: 1px solid #1e3a5f; color: white; border-radius: 8px; box-sizing: border-box; font-size: 15px; }
-        .btn { width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: black; background: var(--neon); font-size: 16px; margin-top: 10px; box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
-        .btn-blue { background: linear-gradient(to right, #008cff, #0051ff); color: white; box-shadow: 0 0 20px rgba(0, 140, 255, 0.4); }
+        input, select { width: 100%; padding: 14px; margin: 10px 0; background: #0d1b35; border: 1px solid #1e3a5f; color: white; border-radius: 8px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: black; background: var(--neon); font-size: 16px; margin-top: 10px; }
+        .btn-blue { background: linear-gradient(to right, #008cff, #0051ff); color: white; }
 
-        .plan { background: var(--card); border: 2px solid var(--neon); border-radius: 15px; padding: 18px; margin-bottom: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
-        .price { font-size: 26px; color: var(--neon); font-weight: bold; margin: 5px 0; }
-        .glory { color: #ffd700; font-weight: bold; font-size: 14px; }
-
-        /* QR Image Section */
-        .qr-section { background: var(--card); padding: 20px; border-radius: 20px; border: 2px solid var(--neon); text-align: center; }
-        .qr-display { width: 230px; height: 230px; background: white; margin: 15px auto; padding: 10px; border-radius: 12px; border: 3px solid var(--neon); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        /* QR Display (Vivid) */
+        .qr-card { background: var(--card); padding: 20px; border-radius: 20px; border: 2px solid var(--neon); text-align: center; }
+        .qr-display { width: 240px; height: 240px; background: white; margin: 15px auto; padding: 8px; border-radius: 12px; border: 4px solid var(--neon); display: flex; align-items: center; justify-content: center; }
         .qr-display img { width: 100%; height: 100%; object-fit: contain; }
 
         .hidden { display: none; }
-        .page { animation: fadeIn 0.4s ease-in-out; }
+        .page { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
+<div id="buy-notification">
+    <i class="fas fa-check-circle" style="color: var(--green);"></i>
+    <div class="pop-text" id="pop-content">SniperX purchased Ultra Boost!</div>
+</div>
+
 <div class="app-container">
     <div class="header">
-        <i class="fab fa-youtube yt-icon"></i>
         <div class="brand">SUNNY 999 BOT</div>
+        <a href="https://youtube.com/@SUNNY999BOT" target="_blank" class="yt-sub-btn"><i class="fab fa-youtube"></i> SUBSCRIBE</a>
     </div>
 
     <div class="status-bar">
-        <span>Server: <span class="status-online">ONLINE</span></span>
-        <span>Players: 1185</span>
+        <span>Server: <span style="color: var(--green);">ONLINE</span></span>
+        <span>Players: 1,185</span>
     </div>
 
     <div id="p1" class="page">
         <div class="main-title">GUILD GLORY SYSTEM</div>
-        <p style="text-align: center; color: var(--neon); font-size: 13px;">Preparing Guild Sync...</p>
-        <label>Guild UID</label>
-        <input type="number" id="uidInput" placeholder="Enter UID (Numbers Only)">
-        <label>Select Country</label>
+        <div class="feature-box">⚡ 1 MINUTE BOT ACTIVATION ACTIVE</div>
+        <label style="font-size: 13px;">Guild UID</label>
+        <input type="number" id="uidInput" placeholder="Enter Guild UID">
+        <label style="font-size: 13px;">Select Country</label>
         <select id="countrySelect">
             <option value="🇮🇳 India">India</option>
             <option value="🇧🇩 Bangladesh">Bangladesh</option>
             <option value="🇳🇵 Nepal">Nepal</option>
         </select>
-        <button class="btn btn-blue" onclick="nav('p1','p2')">🔴 CONNECT GUILD</button>
+        <button class="btn btn-blue" onclick="nav('p1','p2')">🚀 ACTIVATE BOT NOW</button>
     </div>
 
     <div id="p2" class="page hidden">
-        <div class="main-title">SELECT BOOST PLAN</div>
-        <div class="plan" onclick="setPlan('Starter Boost', '₹99', '60K')">
-            <div style="font-weight: bold;">Starter Boost</div>
-            <div class="price">₹99</div>
-            <div class="glory">+60K GLORY</div>
-        </div>
-        <div class="plan" onclick="setPlan('Pro Boost', '₹149', '150K')" style="border-color: var(--purple);">
-            <div style="font-weight: bold;">Pro Boost</div>
-            <div class="price">₹149</div>
-            <div class="glory">+150K GLORY</div>
-        </div>
-        <div class="plan" onclick="setPlan('Ultra Boost', '₹299', '450K')" style="border-color: var(--green);">
-            <div style="font-weight: bold;">Ultra Boost</div>
-            <div class="price">₹299</div>
-            <div class="glory">+450K GLORY</div>
-        </div>
+        <div class="main-title">SELECT PLAN</div>
+        <div class="btn" style="background:var(--card); color:white; border:1px solid var(--neon); margin-bottom:10px;" onclick="setPlan('Starter', '₹99', '60K')">Starter Boost | ₹99</div>
+        <div class="btn" style="background:var(--card); color:white; border:1px solid var(--purple); margin-bottom:10px;" onclick="setPlan('Pro', '₹149', '150K')">Pro Boost | ₹149</div>
+        <div class="btn" style="background:var(--card); color:white; border:1px solid var(--green);" onclick="setPlan('Ultra', '₹299', '450K')">Ultra Boost | ₹299</div>
     </div>
 
     <div id="p3" class="page hidden">
-        <div class="main-title" style="font-size: 18px;">Scan & Complete Payment</div>
-        <div class="qr-section">
-            <p id="amtDisplay" style="color: var(--neon); font-weight: bold;"></p>
+        <div class="main-title" style="font-size: 16px;">SCAN & COMPLETE PAYMENT</div>
+        <div class="qr-card">
+            <p id="amtDisplay" style="color:var(--neon); font-weight:bold; font-size: 18px; margin-top: 0;"></p>
             <div class="qr-display">
-                <img src="IMG_20260303_143709.jpg" alt="Payment QR Code">
+                <img src="IMG_20260303_143709.jpg" alt="Payment QR">
             </div>
-            <input type="number" id="utrVal" placeholder="Enter 12 Digit UTR">
-            <button class="btn" onclick="sendWhatsApp()">Verify UTR ✅</button>
+            <p style="font-size: 13px; margin: 10px 0;">Enter 12 Digit Transaction UTR</p>
+            <input type="number" id="utrVal" placeholder="Enter UTR Number">
+            <button class="btn" onclick="sendToWhatsApp()">VERIFY & SUBMIT ✅</button>
         </div>
     </div>
 </div>
@@ -102,43 +113,41 @@
     let pName = "", pPrice = "", pGlory = "";
 
     function nav(oldID, newID) {
-        if(oldID === 'p1' && document.getElementById('uidInput').value.length < 5) {
-            alert("Sahi Guild UID daalein!"); return;
-        }
+        if(oldID === 'p1' && document.getElementById('uidInput').value.length < 5) { alert("Valid UID Daalein!"); return; }
         document.getElementById(oldID).classList.add('hidden');
         document.getElementById(newID).classList.remove('hidden');
     }
 
-    function setPlan(name, price, glory) {
-        pName = name; pPrice = price; pGlory = glory;
-        document.getElementById('amtDisplay').innerText = "Selected Plan: " + price;
-        nav('p2', 'p3');
+    function setPlan(n, p, g) { 
+        pName = n; pPrice = p; pGlory = g; 
+        document.getElementById('amtDisplay').innerText = "Amount: " + p; 
+        nav('p2', 'p3'); 
     }
 
-    function sendWhatsApp() {
+    function sendToWhatsApp() {
         let uid = document.getElementById('uidInput').value;
         let country = document.getElementById('countrySelect').value;
         let utr = document.getElementById('utrVal').value;
-        
-        // Aapka sahi number yahan hai
         let myNumber = "918597741762"; 
 
-        if(utr.length !== 12) { 
-            alert("Kripya 12 digit ka valid UTR number daalein!"); 
-            return; 
-        }
+        if(utr.length !== 12) { alert("12 Digit UTR Number daalein!"); return; }
 
-        let msg = `🔥 *GUILD GLORY PAYMENT*%0A%0A` +
-                  `👤 *UID:* ${uid}%0A` +
-                  `🌍 *Country:* ${country}%0A%0A` +
-                  `💎 *Plan:* ${pName}%0A` +
-                  `💰 *Amount:* ${pPrice}%0A` +
-                  `⚡ *Glory:* ${pGlory} Glory%0A%0A` +
-                  `🧾 *UTR:* ${utr}%0A%0A` +
-                  `✅ *Auto Submitted via Guild Glory System*`;
-
+        let msg = `🔥 *GUILD GLORY PAYMENT*%0A%0A👤 *UID:* ${uid}%0A🌍 *Country:* ${country}%0A%0A💎 *Plan:* ${pName} Boost%0A💰 *Amount:* ${pPrice}%0A⚡ *Glory:* ${pGlory} Glory%0A%0A🧾 *UTR:* ${utr}%0A%0A✅ *Auto Submitted via SUNNY 999 BOT*`;
         window.open(`https://api.whatsapp.com/send?phone=${myNumber}&text=${msg}`, '_blank');
     }
+
+    // Fake Pop-up Names Logic
+    const users = ["RaiStar", "Badge99", "Sk Sabir", "SniperX", "Killer_Boy", "Legend", "Abhishek", "Deepak"];
+    const planNames = ["Starter Boost", "Pro Boost", "Ultra Boost"];
+
+    setInterval(() => {
+        const u = users[Math.floor(Math.random() * users.length)];
+        const p = planNames[Math.floor(Math.random() * planNames.length)];
+        document.getElementById('pop-content').innerText = `${u} purchased ${p}!`;
+        const pop = document.getElementById('buy-notification');
+        pop.style.bottom = "30px";
+        setTimeout(() => { pop.style.bottom = "-100px"; }, 4000);
+    }, 8000);
 </script>
 
 </body>
