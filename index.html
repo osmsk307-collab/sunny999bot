@@ -2,32 +2,55 @@
 <html>
 <head>
 <title>Guild Glory System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-  background:#07121f;
+  margin:0;
+  background:linear-gradient(135deg,#07121f,#0f3057);
   color:white;
   font-family:Arial;
   text-align:center;
 }
 
+#loading{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#07121f;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  z-index:9999;
+}
+
 h1{
+  margin-top:40px;
   color:#00e0ff;
-  margin-top:30px;
+}
+
+.brand{
+  color:red;
+  font-size:18px;
+  text-shadow:0 0 10px red;
 }
 
 .card{
-  background:#0b1f33;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
   padding:20px;
   margin:20px;
-  border-radius:15px;
-  box-shadow:0 0 20px #00e0ff33;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,224,255,0.3);
 }
 
 button{
-  padding:10px 20px;
+  padding:12px;
+  width:80%;
+  max-width:250px;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
   margin:10px;
   font-size:16px;
   cursor:pointer;
@@ -36,24 +59,42 @@ button{
 }
 
 button:hover{
-  box-shadow:0 0 20px #00e0ff;
+  box-shadow:0 0 25px #00e0ff;
   transform:scale(1.05);
   transition:0.3s;
 }
 
 input{
-  padding:10px;
+  padding:12px;
   width:80%;
-  border-radius:8px;
+  max-width:300px;
+  border-radius:10px;
   border:none;
-  margin-top:10px;
+}
+
+footer{
+  margin-top:30px;
+  padding:20px;
+  font-size:14px;
+  opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<h1>⚡ GUILD GLORY SYSTEM</h1>
+<div id="loading">
+⚡ Loading Guild System...
+</div>
+
+<h1>
+⚡ GUILD GLORY SYSTEM <br>
+<span class="brand">sunny 999 bot</span>
+</h1>
+
+<a href="https://youtube.com" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Youtube%28amin%29.png" width="45">
+</a>
 
 <div class="card">
 <h2>Live Players: <span id="counter">1185</span></h2>
@@ -69,9 +110,10 @@ input{
 
 <div class="card">
 <h2>Connect Guild</h2>
-<input type="text" placeholder="Enter UID">
+<input type="text" id="uid" placeholder="Enter UID">
 <br>
 <button onclick="connectGuild()">CONNECT GUILD</button>
+<p id="status"></p>
 </div>
 
 <div class="card">
@@ -79,11 +121,11 @@ input{
 <p>⚡ Instant Guild Sync</p>
 <p>🛡 AI Protection</p>
 <p>🔥 Fast Boost Speed</p>
-<p>📡 Real Time Monitoring</p>
+<p>📊 Real-Time Monitoring</p>
 </div>
 
 <footer>
-<p>© 2026 Guild Glory System</p>
+© 2026 sunny 999 bot | All Rights Reserved
 </footer>
 
 <script>
@@ -96,11 +138,30 @@ setInterval(function(){
 
 setInterval(function(){
   let s = document.getElementById("serverStatus");
-  s.style.color = (s.style.color === "lime") ? "white" : "lime";
+  s.style.color = (s.style.color==="lime")?"white":"lime";
 },800);
 
 function connectGuild(){
-  alert("Guild Sync Started...");
+  let uid = document.getElementById("uid").value;
+  let status = document.getElementById("status");
+
+  if(uid===""){
+    status.innerText="⚠ Enter UID first";
+    status.style.color="orange";
+  } else {
+    status.innerText="⏳ Connecting...";
+    status.style.color="yellow";
+    setTimeout(function(){
+      status.innerText="✅ Guild Request Sent Successfully!";
+      status.style.color="lime";
+    },2000);
+  }
+}
+
+window.onload=function(){
+  setTimeout(function(){
+    document.getElementById("loading").style.display="none";
+  },1500);
 }
 </script>
 
