@@ -1,81 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Guild Glory System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guild Glory System</title>
 
 <style>
 body{
   margin:0;
-  background:linear-gradient(135deg,#07121f,#0f3057);
+  font-family:Arial, sans-serif;
+  background:#031524;
   color:white;
-  font-family:Arial;
   text-align:center;
 }
 
-#loading{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#07121f;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:20px;
-  z-index:9999;
-}
-
+/* Title */
 h1{
   margin-top:40px;
-  color:#00e0ff;
+  font-size:30px;
+  color:#00e6ff;
 }
 
-.brand{
-  color:red;
-  font-size:18px;
-  text-shadow:0 0 10px red;
-}
-
-.card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  padding:20px;
-  margin:20px;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(0,224,255,0.3);
-}
-
-button{
-  padding:12px;
-  width:80%;
-  max-width:250px;
-  border:none;
-  border-radius:10px;
-  margin:10px;
+.subtitle{
+  color:#00c3ff;
+  margin-bottom:30px;
   font-size:16px;
-  cursor:pointer;
-  background:linear-gradient(to right,#00e0ff,#0077ff);
-  color:white;
 }
 
-button:hover{
-  box-shadow:0 0 25px #00e0ff;
-  transform:scale(1.05);
+/* Boost Cards */
+.boost-card{
+  margin:20px;
+  padding:30px 20px;
+  border-radius:25px;
+  background:#071f33;
+  box-shadow:0 0 25px rgba(0,255,255,0.6);
   transition:0.3s;
 }
 
-input{
-  padding:12px;
-  width:80%;
-  max-width:300px;
-  border-radius:10px;
+.boost-card:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 40px rgba(0,255,255,0.9);
+}
+
+.price{
+  font-size:34px;
+  color:#00f2ff;
+  margin:10px 0;
+  font-weight:bold;
+}
+
+.glory{
+  color:gold;
+  font-size:18px;
+}
+
+/* Payment Button */
+.pay-btn{
+  margin:30px 20px;
+  padding:18px;
+  border-radius:40px;
   border:none;
+  width:85%;
+  max-width:400px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(90deg,#00f2ff,#0077ff);
+  color:white;
+  box-shadow:0 0 30px rgba(0,255,255,0.8);
+}
+
+/* Rating Box */
+.rating-box{
+  margin:20px;
+  padding:20px;
+  border-radius:20px;
+  background:#071f33;
+  box-shadow:0 0 25px rgba(0,255,255,0.4);
+  text-align:left;
+}
+
+.rating-box h3{
+  color:#00e6ff;
+  text-align:center;
 }
 
 footer{
-  margin-top:30px;
-  padding:20px;
-  font-size:14px;
+  margin:30px 0;
+  font-size:13px;
   opacity:0.7;
 }
 </style>
@@ -83,87 +94,39 @@ footer{
 
 <body>
 
-<div id="loading">
-⚡ Loading Guild System...
+<h1>⚡ GUILD GLORY SYSTEM</h1>
+<p class="subtitle">Select Your Glory Boost Plan</p>
+
+<div class="boost-card">
+  <h2>🥇 Starter Boost</h2>
+  <div class="price">₹99</div>
+  <div class="glory">+60K GLORY</div>
 </div>
 
-<h1>
-⚡ GUILD GLORY SYSTEM <br>
-<span class="brand">sunny 999 bot</span>
-</h1>
-
-<a href="https://youtube.com" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Youtube%28amin%29.png" width="45">
-</a>
-
-<div class="card">
-<h2>Live Players: <span id="counter">1185</span></h2>
-<h3>Server: <span id="serverStatus" style="color:lime;">ONLINE</span></h3>
+<div class="boost-card">
+  <h2>🥈 Pro Boost</h2>
+  <div class="price">₹149</div>
+  <div class="glory">+150K GLORY</div>
 </div>
 
-<div class="card">
-<h2>Select Plan</h2>
-<button>₹99 Starter</button>
-<button>₹149 Pro</button>
-<button>₹299 Ultra</button>
+<div class="boost-card">
+  <h2>🥉 Ultra Boost</h2>
+  <div class="price">₹299</div>
+  <div class="glory">+450K GLORY</div>
 </div>
 
-<div class="card">
-<h2>Connect Guild</h2>
-<input type="text" id="uid" placeholder="Enter UID">
-<br>
-<button onclick="connectGuild()">CONNECT GUILD</button>
-<p id="status"></p>
-</div>
+<button class="pay-btn">💳 Proceed To Payment</button>
 
-<div class="card">
-<h2>Why Choose Us?</h2>
-<p>⚡ Instant Guild Sync</p>
-<p>🛡 AI Protection</p>
-<p>🔥 Fast Boost Speed</p>
-<p>📊 Real-Time Monitoring</p>
+<div class="rating-box">
+  <h3>⭐ Player Ratings</h3>
+  <p>🔥 System Performance — ⭐⭐⭐⭐⭐</p>
+  <p>⚡ Boost Speed — ⭐⭐⭐⭐⭐</p>
+  <p>🛡 Security — ⭐⭐⭐⭐⭐</p>
 </div>
 
 <footer>
-© 2026 sunny 999 bot | All Rights Reserved
+© 2026 sunny 999 bot
 </footer>
-
-<script>
-let count = 1185;
-
-setInterval(function(){
-  count += Math.floor(Math.random()*3);
-  document.getElementById("counter").innerText = count;
-},3000);
-
-setInterval(function(){
-  let s = document.getElementById("serverStatus");
-  s.style.color = (s.style.color==="lime")?"white":"lime";
-},800);
-
-function connectGuild(){
-  let uid = document.getElementById("uid").value;
-  let status = document.getElementById("status");
-
-  if(uid===""){
-    status.innerText="⚠ Enter UID first";
-    status.style.color="orange";
-  } else {
-    status.innerText="⏳ Connecting...";
-    status.style.color="yellow";
-    setTimeout(function(){
-      status.innerText="✅ Guild Request Sent Successfully!";
-      status.style.color="lime";
-    },2000);
-  }
-}
-
-window.onload=function(){
-  setTimeout(function(){
-    document.getElementById("loading").style.display="none";
-  },1500);
-}
-</script>
 
 </body>
 </html>
