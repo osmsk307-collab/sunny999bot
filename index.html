@@ -3,151 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild Glory - Payment System</title>
+    <title>SUNNY 999 BOT - Guild Glory System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg: #050a1a;
-            --card: #0b1426;
-            --neon: #00f2ff;
-            --btn: #008cff;
+            --bg-color: #050a1a;
+            --card-bg: #0b1426;
+            --primary-accent: #00f2ff;
+            --secondary-accent: #7000ff;
+            --text-color: #ffffff;
+            --success-color: #00ff88;
         }
 
         body {
-            background-color: var(--bg);
-            color: white;
-            font-family: sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 375px; /* Mobile-first width */
+            background-color: var(--bg-color);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
             padding: 20px;
+            box-sizing: border-box;
         }
 
-        .container { width: 100%; max-width: 400px; text-align: center; }
-
-        /* Notification Ticker */
-        .ticker {
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--neon);
-            padding: 8px;
-            font-size: 12px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        /* QR Box */
-        .qr-card {
-            background: var(--card);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #1e3a5f;
-            margin-top: 20px;
-        }
-
-        .qr-image {
-            width: 200px;
-            height: 200px;
-            background: white;
-            margin: 15px auto;
+        /* ----- HEADER ----- */
+        .custom-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            border-radius: 10px;
+            margin-bottom: 25px;
         }
 
-        .qr-image img { width: 90%; }
+        .yt-logo {
+            font-size: 24px;
+            color: #ff0000;
+        }
 
-        /* Input Styles */
-        input {
-            width: 90%;
-            padding: 12px;
-            margin: 15px 0;
-            background: #0d1b35;
-            border: 1px solid #1e3a5f;
-            color: white;
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        /* Common Page Element */
+        .system-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title-main {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-text {
+            color: var(--primary-accent);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* ----- GLOBAL STATUS BAR ----- */
+        .server-status-bar {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .status-online { color: var(--success-color); font-weight: bold; }
+        .live-players-count { color: var(--text-color); }
+
+        /* General Card/Input Styling */
+        .input-group label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .guild-input, .country-select, .utr-input {
+            width: 100%;
+            background-color: #0d1b35;
+            border: 1px solid #1e3a5f;
+            border-radius: 5px;
+            padding: 12px;
+            color: var(--text-color);
+            font-size: 14px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .action-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 140, 255, 0.4);
+            color: var(--text-color);
+        }
+
+        /* Connect Button */
+        .btn-connect {
+            background: linear-gradient(to right, #008cff, #0051ff);
+        }
+
+        /* Player Stats Card */
+        .stats-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.03);
+            margin-top: 25px;
+            font-size: 12px;
+        }
+
+        .stats-item { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--primary-accent); }
+
+        /* Page Management */
+        .page { display: none; }
+        .active { display: block; }
+
+        /* ----- PAGE 2: PLAN SELECTION ----- */
+        .boost-plan {
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary-accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
             text-align: center;
         }
 
-        .btn-verify {
-            background: #00f2ff;
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
+        .plan-name { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
+        .plan-price { font-size: 24px; color: var(--primary-accent); font-weight: bold; }
+        .plan-benefit { color: #ffd700; font-weight: bold; margin-top: 5px; }
+
+        /* Highlight Ultra Plan */
+        #ultraPlan { border-color: var(--secondary-accent); }
+        #ultraPlan .plan-price { color: var(--secondary-accent); }
+
+        /* ----- PAGE 3: PAYMENT ----- */
+        .plan-pills-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .hidden { display: none; }
-        
-        .success-msg { color: #00ff88; font-weight: bold; margin-top: 10px; }
+        .plan-pill {
+            background-color: #0d1b35;
+            border: 1px solid #1e3a5f;
+            border-radius: 15px;
+            padding: 8px 20px;
+            color: var(--primary-accent);
+            font-size: 14px;
+        }
+
+        .qr-display-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .qr-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid var(--primary-accent);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .utr-title { text-align: center; color: var(--text-color); margin-bottom: 10px; }
+
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2 style="color: var(--neon);">⚡ GUILD GLORY SYSTEM</h2>
-    
-    <div class="ticker" id="ticker">
-        DragonYT purchased ₹299 Plan • Legend purchased ₹149 Plan
-    </div>
-
-    <div id="step1">
-        <p>Select Your Plan</p>
-        <button class="btn-verify" onclick="showPayment(99)">₹99</button>
-        <button class="btn-verify" onclick="showPayment(149)" style="margin-top:10px;">₹149</button>
-        <button class="btn-verify" onclick="showPayment(299)" style="margin-top:10px;">₹299</button>
-    </div>
-
-    <div id="step2" class="qr-card hidden">
-        <h3>Scan & Complete Payment</h3>
-        <p id="selected-plan">Amount: ₹0</p>
+    <div class="phone-container">
         
-        <div class="qr-image">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=YOURUPI@okicici&am=99" alt="QR Code">
+        <header class="custom-header">
+            <i class="fab fa-youtube yt-logo"></i>
+            <span class="brand-name">SUNNY 999 BOT</span>
+        </header>
+
+        <div class="server-status-bar">
+            <span>Server: <span class="status-online">ONLINE</span></span>
+            <span>Players: <span class="live-players-count">1185</span></span>
         </div>
 
-        <p style="font-size: 12px; color: #aaa;">Enter 12 Digit UTR / Transaction ID after payment</p>
-        
-        <input type="number" id="utr-input" placeholder="Enter Payment UTR">
-        
-        <button class="btn-verify" onclick="verifyUTR()">Verify UTR ✅</button>
-        
-        <div id="msg"></div>
+        <div id="page1" class="page active">
+            <div class="system-title">
+                <div class="title-main">GUILD GLORY SYSTEM</div>
+                <div class="status-text">Preparing Guild Sync...</div>
+            </div>
+
+            <div class="input-group">
+                <label>Guild UID</label>
+                <input type="number" class="guild-input" placeholder="Enter UID (Numbers Only)">
+                
+                <label>Select Country</label>
+                <select class="country-select">
+                    <option>Select Country</option>
+                    <option>India</option>
+                    <option>Bangladesh</option>
+                    <option>Nepal</option>
+                </select>
+            </div>
+
+            <button class="action-button btn-connect" onclick="goToPlans()">
+                <span style="color:red; font-size:16px;">●</span> CONNECT GUILD
+            </button>
+
+            <div class="stats-card">
+                <div style="color: var(--text-color); margin-bottom: 10px;">🏆 Guild Gallery Board</div>
+                <div class="stats-item">
+                    <span>Live Players:</span>
+                    <span style="color: var(--primary-accent);">1185</span>
+                </div>
+                <div class="stats-item">
+                    <span>Bots Connected:</span>
+                    <span style="color: var(--primary-accent);">325</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="page2" class="page">
+            <div class="system-title">
+                <div class="title-main">GUILD GLORY SYSTEM</div>
+                <div class="status-text">Select Your Glory Boost Plan</div>
+            </div>
+
+            <div class="boost-plan" onclick="goToPayment('99')">
+                <div class="plan-name">🏅 Starter Boost</div>
+                <div class="plan-price">₹99</div>
+                <div class="plan-benefit">+60K GLORY</div>
+            </div>
+
+            <div class="boost-plan" onclick="goToPayment('149')">
+                <div class="plan-name">🥈 Pro Boost</div>
+                <div class="plan-price">₹149</div>
+                <div class="plan-benefit">+150K GLORY</div>
+            </div>
+
+            <div class="boost-plan" id="ultraPlan" onclick="goToPayment('299')">
+                <div class="plan-name">🥇 Ultra Boost</div>
+                <div class="plan-price">₹299</div>
+                <div class="plan-benefit">+450K GLORY</div>
+            </div>
+        </div>
+
+        <div id="page3" class="page">
+            <div class="system-title">
+                <div class="title-main">GUILD GLORY SYSTEM</div>
+                <div class="status-text">Live Players: 1291</div>
+            </div>
+
+            <div class="plan-pills-row">
+                <div class="plan-pill">Select Plan</div>
+                <div class="plan-pill selected-amt" id="selectedPlanPill">₹99</div>
+            </div>
+
+            <div class="system-title" style="margin-bottom: 15px;">
+                <div class="title-main" style="font-size: 16px;">Scan & Complete Payment</div>
+            </div>
+
+            <div class="qr-display-area">
+                <div class="qr-card">
+                    <img src="your_qr_code.png" alt="Scan QR to Pay">
+                </div>
+            </div>
+
+            <h4 class="utr-title">Enter UTR</h4>
+            <input type="number" class="utr-input" placeholder="Enter Payment UTR">
+
+            <button class="action-button" style="background-color: var(--primary-accent); color: #000;" onclick="showSuccess()">
+                Verify UTR ✅
+            </button>
+        </div>
+
     </div>
-</div>
 
-<script>
-    // Live Ticker Logic
-    const names = ["SniperX", "Killer_Boy", "RaiStar", "Badge99", "TotalGaming"];
-    setInterval(() => {
-        let name = names[Math.floor(Math.random() * names.length)];
-        let amt = [99, 149, 299][Math.floor(Math.random() * 3)];
-        document.getElementById('ticker').innerText = `${name} purchased Glory Boost ₹${amt} • Processing...`;
-    }, 4000);
-
-    function showPayment(amount) {
-        document.getElementById('step1').classList.add('hidden');
-        document.getElementById('step2').classList.remove('hidden');
-        document.getElementById('selected-plan').innerText = "Amount to Pay: ₹" + amount;
-    }
-
-    function verifyUTR() {
-        let utr = document.getElementById('utr-input').value;
-        let msg = document.getElementById('msg');
-        
-        if(utr.length === 12) {
-            msg.innerHTML = "<p class='success-msg'>Verifying Transaction...</p>";
-            setTimeout(() => {
-                msg.innerHTML = "<p class='success-msg'>✅ Payment Success! Your Glory Boost will start in 10 minutes.</p>";
-            }, 3000);
-        } else {
-            alert("Please enter a valid 12-digit UTR Number!");
+    <script>
+        // Go to Page 2
+        function goToPlans() {
+            // Add basic UID check here if desired
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.add('active');
         }
-    }
-</script>
+
+        // Go to Page 3 and update selected plan
+        function goToPayment(amount) {
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page3').classList.add('active');
+            // Update the amount indicator pill
+            document.getElementById('selectedPlanPill').innerText = '₹' + amount;
+        }
+
+        // Handle the UTR verification button click
+        function showSuccess() {
+            alert("Verification initiated. Check status later.");
+        }
+    </script>
 
 </body>
 </html>
