@@ -25,12 +25,12 @@
         .btn { width: 100%; padding: 16px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: white; font-size: 16px; transition: 0.3s; }
         .btn-blue { background: linear-gradient(to right, #008cff, #0051ff); box-shadow: 0 0 20px rgba(0, 140, 255, 0.4); }
 
-        /* Plan Cards Design */
+        /* Plan Cards */
         .plan { background: var(--card); border: 2px solid var(--neon); border-radius: 15px; padding: 18px; margin-bottom: 15px; text-align: center; cursor: pointer; }
         .price { font-size: 26px; color: var(--neon); font-weight: bold; margin: 5px 0; }
         .glory { color: #ffd700; font-weight: bold; font-size: 14px; }
 
-        /* Payment Section */
+        /* Payment Section (QR Fixed) */
         .qr-section { background: var(--card); padding: 20px; border-radius: 20px; border: 2px solid var(--neon); text-align: center; }
         .qr-display { width: 230px; height: 230px; background: white; margin: 15px auto; padding: 10px; border-radius: 12px; border: 3px solid var(--neon); display: flex; align-items: center; justify-content: center; }
         .qr-display img { width: 100%; height: 100%; object-fit: contain; }
@@ -56,9 +56,9 @@
     <div id="p1" class="page">
         <div class="main-title">GUILD GLORY SYSTEM</div>
         <p style="text-align: center; color: var(--neon); font-size: 13px; margin-top: -5px;">Live Players: 1291</p>
-        <label style="font-size: 14px; opacity: 0.8;">Guild UID</label>
+        <label>Guild UID</label>
         <input type="number" id="uidInput" placeholder="Enter UID (Numbers Only)">
-        <label style="font-size: 14px; opacity: 0.8;">Select Country</label>
+        <label>Select Country</label>
         <select>
             <option>India</option>
             <option>Bangladesh</option>
@@ -70,17 +70,17 @@
     <div id="p2" class="page hidden">
         <div class="main-title">SELECT BOOST PLAN</div>
         <div class="plan" onclick="pay(99)">
-            <div style="font-weight: bold;">Starter Boost</div>
+            <div>Starter Boost</div>
             <div class="price">₹99</div>
             <div class="glory">+60K GLORY</div>
         </div>
         <div class="plan" onclick="pay(149)" style="border-color: var(--purple);">
-            <div style="font-weight: bold;">Pro Boost</div>
+            <div>Pro Boost</div>
             <div class="price">₹149</div>
             <div class="glory">+150K GLORY</div>
         </div>
         <div class="plan" onclick="pay(299)" style="border-color: var(--green);">
-            <div style="font-weight: bold;">Ultra Boost</div>
+            <div>Ultra Boost</div>
             <div class="price">₹299</div>
             <div class="glory">+450K GLORY</div>
         </div>
@@ -105,3 +105,23 @@
         if(oldID === 'p1' && document.getElementById('uidInput').value.length < 5) {
             alert("Kripya sahi Guild UID daalein!"); return;
         }
+        document.getElementById(oldID).classList.add('hidden');
+        document.getElementById(newID).classList.remove('hidden');
+    }
+    function pay(amount) {
+        document.getElementById('amtDisplay').innerText = "Selected Plan: ₹" + amount;
+        nav('p2', 'p3');
+    }
+    function finish() {
+        let utr = document.getElementById('utrVal').value;
+        if(utr.length === 12) {
+            alert("Verification Started! 30-60 mins mein boost ho jayega.");
+            location.reload();
+        } else {
+            alert("12 digit ka valid UTR number daalein!");
+        }
+    }
+</script>
+
+</body>
+</html>
