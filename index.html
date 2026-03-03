@@ -1,188 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guild Glory System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Glory - Payment System</title>
+    <style>
+        :root {
+            --bg: #050a1a;
+            --card: #0b1426;
+            --neon: #00f2ff;
+            --btn: #008cff;
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#031524;
-  color:white;
-  text-align:center;
-}
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-h1{
-  margin-top:40px;
-  font-size:30px;
-  color:#00e6ff;
-}
+        .container { width: 100%; max-width: 400px; text-align: center; }
 
-.subtitle{
-  color:#00c3ff;
-  margin-bottom:30px;
-  font-size:16px;
-}
+        /* Notification Ticker */
+        .ticker {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon);
+            padding: 8px;
+            font-size: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
 
-.boost-card{
-  margin:20px;
-  padding:30px 20px;
-  border-radius:25px;
-  background:#071f33;
-  box-shadow:0 0 25px rgba(0,255,255,0.6);
-  transition:0.3s;
-}
+        /* QR Box */
+        .qr-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #1e3a5f;
+            margin-top: 20px;
+        }
 
-.boost-card:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 40px rgba(0,255,255,0.9);
-}
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            background: white;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
 
-.price{
-  font-size:34px;
-  color:#00f2ff;
-  margin:10px 0;
-  font-weight:bold;
-}
+        .qr-image img { width: 90%; }
 
-.glory{
-  color:gold;
-  font-size:18px;
-}
+        /* Input Styles */
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            background: #0d1b35;
+            border: 1px solid #1e3a5f;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-.pay-section{
-  margin:20px;
-  padding:25px;
-  border-radius:20px;
-  background:#071f33;
-  box-shadow:0 0 25px rgba(0,255,255,0.4);
-}
+        .btn-verify {
+            background: #00f2ff;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
 
-input, select{
-  padding:10px;
-  margin:8px;
-  border-radius:10px;
-  border:none;
-  width:80%;
-  max-width:320px;
-}
-
-button{
-  padding:12px 20px;
-  border-radius:25px;
-  border:none;
-  margin-top:10px;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(90deg,#00f2ff,#0077ff);
-  color:white;
-}
-
-.output-box{
-  margin:20px;
-  padding:20px;
-  border-radius:15px;
-  background:#02101a;
-  text-align:left;
-  white-space:pre-wrap;
-  box-shadow:0 0 20px rgba(0,255,255,0.4);
-}
-
-footer{
-  margin:30px 0;
-  font-size:13px;
-  opacity:0.7;
-}
-</style>
+        .hidden { display: none; }
+        
+        .success-msg { color: #00ff88; font-weight: bold; margin-top: 10px; }
+    </style>
 </head>
-
 <body>
 
-<h1>⚡ GUILD GLORY SYSTEM</h1>
-<p class="subtitle">Select Your Glory Boost Plan</p>
+<div class="container">
+    <h2 style="color: var(--neon);">⚡ GUILD GLORY SYSTEM</h2>
+    
+    <div class="ticker" id="ticker">
+        DragonYT purchased ₹299 Plan • Legend purchased ₹149 Plan
+    </div>
 
-<div class="boost-card">
-  <h2>🥇 Starter Boost</h2>
-  <div class="price">₹99</div>
-  <div class="glory">+60K GLORY</div>
+    <div id="step1">
+        <p>Select Your Plan</p>
+        <button class="btn-verify" onclick="showPayment(99)">₹99</button>
+        <button class="btn-verify" onclick="showPayment(149)" style="margin-top:10px;">₹149</button>
+        <button class="btn-verify" onclick="showPayment(299)" style="margin-top:10px;">₹299</button>
+    </div>
+
+    <div id="step2" class="qr-card hidden">
+        <h3>Scan & Complete Payment</h3>
+        <p id="selected-plan">Amount: ₹0</p>
+        
+        <div class="qr-image">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=YOURUPI@okicici&am=99" alt="QR Code">
+        </div>
+
+        <p style="font-size: 12px; color: #aaa;">Enter 12 Digit UTR / Transaction ID after payment</p>
+        
+        <input type="number" id="utr-input" placeholder="Enter Payment UTR">
+        
+        <button class="btn-verify" onclick="verifyUTR()">Verify UTR ✅</button>
+        
+        <div id="msg"></div>
+    </div>
 </div>
-
-<div class="boost-card">
-  <h2>🥈 Pro Boost</h2>
-  <div class="price">₹149</div>
-  <div class="glory">+150K GLORY</div>
-</div>
-
-<div class="boost-card">
-  <h2>🥉 Ultra Boost</h2>
-  <div class="price">₹299</div>
-  <div class="glory">+450K GLORY</div>
-</div>
-
-<div class="pay-section">
-<h2>🔥 Submit Payment Details</h2>
-
-<input type="text" id="uid" placeholder="Enter UID"><br>
-
-<select id="country">
-  <option value="🇮🇳 India">🇮🇳 India</option>
-  <option value="🇧🇩 Bangladesh">🇧🇩 Bangladesh</option>
-  <option value="🇵🇰 Pakistan">🇵🇰 Pakistan</option>
-</select><br>
-
-<select id="plan">
-  <option value="Ultra Boost|299|450K Glory">Ultra Boost - ₹299</option>
-  <option value="Pro Boost|149|150K Glory">Pro Boost - ₹149</option>
-  <option value="Starter Boost|99|60K Glory">Starter Boost - ₹99</option>
-</select><br>
-
-<input type="text" id="utr" placeholder="Enter UTR"><br>
-
-<button onclick="generatePayment()">Submit Payment</button>
-
-</div>
-
-<div id="result" class="output-box" style="display:none;"></div>
-
-<footer>
-© 2026 sunny 999 bot
-</footer>
 
 <script>
-function generatePayment(){
+    // Live Ticker Logic
+    const names = ["SniperX", "Killer_Boy", "RaiStar", "Badge99", "TotalGaming"];
+    setInterval(() => {
+        let name = names[Math.floor(Math.random() * names.length)];
+        let amt = [99, 149, 299][Math.floor(Math.random() * 3)];
+        document.getElementById('ticker').innerText = `${name} purchased Glory Boost ₹${amt} • Processing...`;
+    }, 4000);
 
-let uid = document.getElementById("uid").value;
-let country = document.getElementById("country").value;
-let planData = document.getElementById("plan").value.split("|");
-let planName = planData[0];
-let amount = planData[1];
-let glory = planData[2];
-let utr = document.getElementById("utr").value;
+    function showPayment(amount) {
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+        document.getElementById('selected-plan').innerText = "Amount to Pay: ₹" + amount;
+    }
 
-if(uid=="" || utr==""){
-alert("Please fill all details");
-return;
-}
-
-let message =
-`🔥 GUILD GLORY PAYMENT
-
-👤 UID: ${uid}
-🌍 Country: ${country}
-
-💎 Plan: ${planName}
-💰 Amount: ₹${amount}
-⚡ Glory: ${glory}
-
-🧾 UTR: ${utr}
-
-📌 Payment Submitted. Verification Pending.`;
-
-document.getElementById("result").style.display="block";
-document.getElementById("result").innerText=message;
-
-}
+    function verifyUTR() {
+        let utr = document.getElementById('utr-input').value;
+        let msg = document.getElementById('msg');
+        
+        if(utr.length === 12) {
+            msg.innerHTML = "<p class='success-msg'>Verifying Transaction...</p>";
+            setTimeout(() => {
+                msg.innerHTML = "<p class='success-msg'>✅ Payment Success! Your Glory Boost will start in 10 minutes.</p>";
+            }, 3000);
+        } else {
+            alert("Please enter a valid 12-digit UTR Number!");
+        }
+    }
 </script>
 
 </body>
