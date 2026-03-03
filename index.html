@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Guild Glory System</title>
+
 <style>
 body{
   background:#07121f;
@@ -20,7 +21,7 @@ h1{
   padding:20px;
   margin:20px;
   border-radius:15px;
-  box-shadow:0 0 20px #00e0ff;
+  box-shadow:0 0 20px #00e0ff33;
 }
 
 button{
@@ -32,6 +33,12 @@ button{
   cursor:pointer;
   background:linear-gradient(to right,#00e0ff,#0077ff);
   color:white;
+}
+
+button:hover{
+  box-shadow:0 0 20px #00e0ff;
+  transform:scale(1.05);
+  transition:0.3s;
 }
 
 input{
@@ -49,40 +56,52 @@ input{
 <h1>⚡ GUILD GLORY SYSTEM</h1>
 
 <div class="card">
-  <h2>Live Players: <span id="counter">1185</span></h2>
+<h2>Live Players: <span id="counter">1185</span></h2>
+<h3>Server: <span id="serverStatus" style="color:lime;">ONLINE</span></h3>
 </div>
 
 <div class="card">
-  <h2>Select Plan</h2>
-  <button>₹99 Starter</button>
-  <button>₹149 Pro</button>
-  <button>₹299 Ultra</button>
+<h2>Select Plan</h2>
+<button>₹99 Starter</button>
+<button>₹149 Pro</button>
+<button>₹299 Ultra</button>
 </div>
 
 <div class="card">
-  <h2>Connect Guild</h2>
-  <input type="text" placeholder="Enter UID"><br>
-  <button>CONNECT GUILD</button>
+<h2>Connect Guild</h2>
+<input type="text" placeholder="Enter UID">
+<br>
+<button onclick="connectGuild()">CONNECT GUILD</button>
 </div>
 
 <div class="card">
-  <h2>Why Choose Us?</h2>
-  <p>⚡ Instant Guild Sync</p>
-  <p>🛡 AI Protection</p>
-  <p>🚀 Fast Boost Speed</p>
-  <p>📊 Real Time Monitoring</p>
+<h2>Why Choose Us?</h2>
+<p>⚡ Instant Guild Sync</p>
+<p>🛡 AI Protection</p>
+<p>🔥 Fast Boost Speed</p>
+<p>📡 Real Time Monitoring</p>
 </div>
 
 <footer>
-  <p>© 2026 Guild Glory System</p>
+<p>© 2026 Guild Glory System</p>
 </footer>
 
 <script>
 let count = 1185;
+
 setInterval(function(){
   count += Math.floor(Math.random()*3);
   document.getElementById("counter").innerText = count;
 },3000);
+
+setInterval(function(){
+  let s = document.getElementById("serverStatus");
+  s.style.color = (s.style.color === "lime") ? "white" : "lime";
+},800);
+
+function connectGuild(){
+  alert("Guild Sync Started...");
+}
 </script>
 
 </body>
