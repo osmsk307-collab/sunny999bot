@@ -1,81 +1,89 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sunny 999 Bot</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guild Glory System</title>
 <style>
 body{
-margin:0;
-padding:0;
-background:black;
-color:white;
-font-family:Arial;
-text-align:center;
-overflow:hidden;
+  background:#07121f;
+  color:white;
+  font-family:Arial;
+  text-align:center;
 }
 
 h1{
-color:#00ff00;
-font-size:40px;
-margin-top:120px;
-animation: glow 1.5s infinite alternate;
+  color:#00e0ff;
+  margin-top:30px;
 }
 
-@keyframes glow{
-from{ text-shadow:0 0 10px #00ff00;}
-to{ text-shadow:0 0 25px #00ff00;}
-}
-
-p{
-color:#00ff99;
-font-size:18px;
+.card{
+  background:#0b1f33;
+  padding:20px;
+  margin:20px;
+  border-radius:15px;
+  box-shadow:0 0 20px #00e0ff;
 }
 
 button{
-margin-top:20px;
-padding:12px 30px;
-font-size:18px;
-background:#00ff00;
-border:none;
-border-radius:30px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  margin:10px;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(to right,#00e0ff,#0077ff);
+  color:white;
 }
 
-button:hover{
-background:white;
-color:black;
-transform:scale(1.1);
-}
-
-.bg-animation{
-position:absolute;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#003300,black);
-z-index:-1;
-animation: move 6s infinite alternate;
-}
-
-@keyframes move{
-from{filter:blur(0px);}
-to{filter:blur(8px);}
+input{
+  padding:10px;
+  width:80%;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg-animation"></div>
+<h1>⚡ GUILD GLORY SYSTEM</h1>
 
-<h1>SUNNY 999 BOT 👑</h1>
-<p>Official Website Live 🚀</p>
+<div class="card">
+  <h2>Live Players: <span id="counter">1185</span></h2>
+</div>
 
-<button onclick="alert('Welcome Champion 🔥')">
-Join Now
-</button>
+<div class="card">
+  <h2>Select Plan</h2>
+  <button>₹99 Starter</button>
+  <button>₹149 Pro</button>
+  <button>₹299 Ultra</button>
+</div>
+
+<div class="card">
+  <h2>Connect Guild</h2>
+  <input type="text" placeholder="Enter UID"><br>
+  <button>CONNECT GUILD</button>
+</div>
+
+<div class="card">
+  <h2>Why Choose Us?</h2>
+  <p>⚡ Instant Guild Sync</p>
+  <p>🛡 AI Protection</p>
+  <p>🚀 Fast Boost Speed</p>
+  <p>📊 Real Time Monitoring</p>
+</div>
+
+<footer>
+  <p>© 2026 Guild Glory System</p>
+</footer>
+
+<script>
+let count = 1185;
+setInterval(function(){
+  count += Math.floor(Math.random()*3);
+  document.getElementById("counter").innerText = count;
+},3000);
+</script>
 
 </body>
 </html>
