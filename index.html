@@ -11,7 +11,6 @@
         :root { --accent: #ffcc00; --neon-blue: #00f2ff; --neon-red: #ff0000; --bg: #050505; }
         body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
         
-        /* Fake Pop-up Notification */
         #notification {
             position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.95);
             border-left: 5px solid var(--accent); padding: 12px 20px; border-radius: 8px;
@@ -21,21 +20,18 @@
 
         .header { padding: 40px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .text-logo { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); margin-bottom: 5px; font-weight: 900; letter-spacing: 2px; }
-        .logo-text { font-family: 'Orbitron'; font-size: 2.8rem; color: #fff; text-shadow: 0 0 15px var(--accent); letter-spacing: 5px; margin: 0; }
+        .logo-text { font-family: 'Orbitron'; font-size: 2.5rem; color: #fff; text-shadow: 0 0 15px var(--accent); letter-spacing: 5px; margin: 0; }
         
-        /* TRUST TAGS */
         .trust-tags { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .tag { background: rgba(0,255,0,0.1); border: 1px solid #00ff00; color: #00ff00; padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; font-family: 'Orbitron'; text-transform: uppercase; }
         .tag-years { border-color: var(--accent); color: var(--accent); background: rgba(255,204,0,0.1); }
 
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px 15px; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 340px; padding: 25px; text-align: center; transition: 0.4s; position: relative; }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 320px; padding: 25px; text-align: center; transition: 0.4s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
         
-        .card h3 { font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.2rem; }
         input { width: 90%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.6); border: 1px solid var(--accent); border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron'; outline: none; }
-        
-        .btn { background: linear-gradient(45deg, var(--accent), #ff9900); color: black; border: none; padding: 15px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-family: 'Orbitron'; margin-bottom: 10px; transition: 0.3s; }
+        .btn { background: linear-gradient(45deg, var(--accent), #ff9900); color: black; border: none; padding: 15px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-family: 'Orbitron'; margin-bottom: 10px; }
         .btn-dm { background: linear-gradient(45deg, var(--neon-blue), #0099ff); color: white; }
         .btn-chip { background: linear-gradient(45deg, var(--neon-red), #990000); color: white; }
 
@@ -43,12 +39,12 @@
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* PAYMENT UI */
-        .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin: 15px 0; border: 3px solid var(--accent); box-shadow: 0 0 20px rgba(255,204,0,0.3); }
-        #qrImg { width: 230px; display: block; border-radius: 5px; }
-        .step-text { font-size: 14px; color: #fff; margin: 15px 0; font-weight: bold; line-height: 1.5; text-shadow: 0 0 5px #000; }
+        /* QR UI FIX */
+        .qr-box { background: white; padding: 12px; border-radius: 15px; display: inline-block; margin: 15px 0; border: 4px solid var(--accent); }
+        #qrImg { width: 220px; height: auto; display: block; border-radius: 5px; }
+        .step-text { font-size: 13px; color: #fff; margin: 10px 0; font-weight: bold; line-height: 1.4; }
         
-        footer { text-align: center; padding: 40px; font-size: 10px; opacity: 0.4; font-family: 'Orbitron'; letter-spacing: 2px; }
+        footer { text-align: center; padding: 40px; font-size: 10px; opacity: 0.4; font-family: 'Orbitron'; }
     </style>
 </head>
 <body>
@@ -61,15 +57,15 @@
     <div class="text-logo">VVIP FF SERVICE</div>
     <h1 class="logo-text">SUNNY 999 BOT</h1>
     <div class="trust-tags">
-        <span class="tag tag-years"><i class="fas fa-shield-alt"></i> TRUSTED FOR 5 YEARS</span>
-        <span class="tag"><i class="fas fa-bolt"></i> 1 MIN DONE ✅</span>
+        <span class="tag tag-years">TRUSTED FOR 5 YEARS</span>
+        <span class="tag">1 MIN DONE ✅</span>
     </div>
 </header>
 
 <div id="home" class="section active">
     <div class="container">
         <div class="card" style="border-top: 4px solid var(--accent);">
-            <h3 style="color: var(--accent);"><i class="fas fa-credit-card"></i> CARDING LIMIT</h3>
+            <h3 style="color: var(--accent);">💳 CARDING LIMIT</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
             <button class="btn" onclick="pay(500, '5K Limit')">₹5,000 LIMIT - ₹500</button>
             <button class="btn" onclick="pay(1000, '10K Limit')">₹10,000 LIMIT - ₹1,000</button>
@@ -77,15 +73,14 @@
         </div>
 
         <div class="card" style="border-top: 4px solid var(--neon-blue);">
-            <h3 style="color: var(--neon-blue);"><i class="fas fa-gem"></i> DIAMONDS</h3>
+            <h3 style="color: var(--neon-blue);">💎 DIAMONDS</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
             <button class="btn btn-dm" onclick="pay(499, '5,000 Diamonds')">5,000 DM - ₹499</button>
             <button class="btn btn-dm" onclick="pay(899, '10,000 Diamonds')">10,000 DM - ₹899</button>
-            <button class="btn btn-dm" onclick="pay(1999, 'Unlimited DM')">UNLIMITED - ₹1,999</button>
         </div>
 
         <div class="card" style="border-top: 4px solid var(--neon-red);">
-            <h3 style="color: var(--neon-red);"><i class="fas fa-microchip"></i> 8PRIME CHIP</h3>
+            <h3 style="color: var(--neon-red);">🚀 8PRIME CHIP</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
             <button class="btn btn-chip" onclick="pay(1200, '8Prime v1')">v1 CHIP - ₹1,200</button>
             <button class="btn btn-chip" onclick="pay(2500, '8Prime PRO')">PRO CHIP - ₹2,500</button>
@@ -95,24 +90,24 @@
 
 <div id="payment" class="section">
     <div class="container">
-        <div class="card" style="border: 2px solid #00ff00; background: rgba(0,0,0,0.98); width: 100%; max-width: 420px;">
+        <div class="card" style="border: 2px solid #00ff00; background: rgba(0,0,0,0.98); width: 100%; max-width: 400px;">
             <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron'; margin: 0; font-size: 2rem;">₹500</h2>
             
-            <p class="step-text">📸 <span style="color:var(--accent)">Step 1:</span> QR Code ka Screenshot le kar payment karein</p>
+            <p class="step-text">📸 Step 1: QR Code ka Screenshot le kar payment karein</p>
             
             <div class="qr-box">
-                <img id="qrImg" src="1000046393.jpg" alt="Scan to Pay">
+                <img id="qrImg" src="1000046409.jpg" alt="Scan to Pay">
             </div>
             
-            <div style="color: var(--accent); font-weight: bold; margin-bottom: 20px; font-family: 'Orbitron'; letter-spacing: 1px;">UPI ID: sunny999bot@slc</div>
+            <div style="color: var(--accent); font-weight: bold; margin-bottom: 20px; font-family: 'Orbitron';">UPI ID: sunny999bot@slc</div>
             
-            <p class="step-text">📲 <span style="color:var(--accent)">Step 2:</span> Niche diye gaye button se Instagram par proof bheje</p>
+            <p class="step-text">📲 Step 2: Niche diye gaye button se Instagram par proof bheje</p>
             
             <button class="btn" style="background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white;" onclick="sendToInsta()">
                 <i class="fab fa-instagram"></i> SEND PROOF (1 MIN DONE)
             </button>
             
-            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 15px; letter-spacing: 1px;">← CANCEL TRANSACTION</p>
+            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 15px;">← CANCEL TRANSACTION</p>
         </div>
     </div>
 </div>
@@ -136,18 +131,13 @@
         alert("Instagram par Screenshot bhej do, 1 minute me done ho jayega!");
     }
 
-    const names = ["Aman_FF", "Sk_Sabir", "Boss_User", "Legend_Bot", "Rohan_YT", "Abhi_Gaming", "Rahul_99"];
-    const items = ["5,000 Diamonds", "₹10,000 Carding Limit", "8Prime Ultra Chip", "Unlimited DM", "₹50,000 Carding Limit"];
-
+    const names = ["Aman_FF", "Sk_Sabir", "Boss_User", "Legend_Bot", "Rohan_YT", "Abhi_Gaming"];
     function showPopup() {
         const name = names[Math.floor(Math.random()*names.length)];
-        const item = items[Math.floor(Math.random()*items.length)];
-        document.getElementById('notifyText').innerHTML = `<span style="color:var(--accent)">${name}</span> just bought <span style="color:#00ff00">${item}</span> ✅`;
-        const box = document.getElementById('notification');
-        box.style.display = 'block';
-        setTimeout(() => { box.style.display = 'none'; }, 4000);
+        document.getElementById('notifyText').innerHTML = `<span style="color:var(--accent)">${name}</span> just bought <span style="color:#00ff00">Diamonds</span> ✅`;
+        document.getElementById('notification').style.display = 'block';
+        setTimeout(() => { document.getElementById('notification').style.display = 'none'; }, 4000);
     }
-    
     setInterval(showPopup, 8000);
 </script>
 
