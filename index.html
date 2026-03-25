@@ -3,63 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNNY 999 BOT | Official Gaming Store</title>
+    <title>SUNNY 999 BOT | TRUSTED STORE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root { --accent: #ffcc00; --neon-blue: #00f2ff; --neon-red: #ff0000; --bg: #050505; }
         body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
-        #bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -2; filter: brightness(0.2); object-fit: cover; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.9)); z-index: -1; }
         
-        /* LOGO FIX */
-        .header { padding: 30px 20px; text-align: center; }
-        .ff-logo { width: 140px; filter: drop-shadow(0 0 15px var(--neon-red)); margin-bottom: 10px; animation: bounce 2s infinite ease-in-out; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* Fake Pop-up Styling */
+        #notification {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.9);
+            border-left: 5px solid var(--accent); padding: 12px 20px; border-radius: 8px;
+            display: none; z-index: 9999; animation: slideIn 0.5s ease; box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 
-        .logo-text { font-family: 'Orbitron'; font-size: 2.5rem; font-weight: 900; color: #fff; text-shadow: 0 0 15px var(--accent); letter-spacing: 5px; margin: 0; text-transform: uppercase; }
-        .main-title { color: var(--neon-blue); font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 2px; margin-top: 10px; }
+        .header { padding: 50px 20px; text-align: center; background: linear-gradient(to bottom, rgba(255,204,0,0.05), transparent); }
+        
+        /* FF LOGO REPLACED WITH TEXT LOGO */
+        .text-logo { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); margin-bottom: 5px; font-weight: 900; letter-spacing: 2px; }
+        
+        .logo-text { font-family: 'Orbitron'; font-size: 2.8rem; color: #fff; text-shadow: 0 0 15px var(--accent); letter-spacing: 5px; margin: 0; }
+        
+        /* TRUST TAGS */
+        .trust-tags { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--accent); color: var(--accent); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: bold; font-family: 'Orbitron'; text-transform: uppercase; }
 
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 340px; padding: 25px; text-align: center; transition: 0.4s; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px 15px; max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 340px; padding: 25px; text-align: center; transition: 0.4s; position: relative; }
         .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .card h3 { font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.3rem; }
-
-        input { width: 90%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.6); border: 1px solid var(--accent); border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron'; }
+        
+        .card h3 { font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.2rem; }
+        input { width: 90%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.6); border: 1px solid var(--accent); border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron'; outline: none; }
+        
         .btn { background: linear-gradient(45deg, var(--accent), #ff9900); color: black; border: none; padding: 15px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-family: 'Orbitron'; margin-bottom: 10px; }
-        .btn-dm { background: linear-gradient(45deg, var(--neon-blue), #0099ff); }
+        .btn-dm { background: linear-gradient(45deg, var(--neon-blue), #0099ff); color: white; }
         .btn-chip { background: linear-gradient(45deg, var(--neon-red), #990000); color: white; }
 
-        /* PAYMENT */
         .section { display: none; animation: fadeIn 0.5s ease; }
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        #qrImg { width: 220px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,255,0,0.2); }
+
+        .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin: 15px 0; }
+        #qrImg { width: 220px; display: block; }
+        
+        footer { text-align: center; padding: 40px; font-size: 10px; opacity: 0.4; font-family: 'Orbitron'; }
     </style>
 </head>
 <body>
 
-<video autoplay muted loop playsinline id="bg-video">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-blue-mesh-23164-large.mp4" type="video/mp4">
-</video>
-<div class="overlay"></div>
+<div id="notification">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <i class="fas fa-shopping-cart" style="color: var(--accent);"></i>
+        <div id="notifyText" style="font-size: 12px; font-weight: bold;"></div>
+    </div>
+</div>
 
 <header class="header">
-    <img src="https://logodownload.org/wp-content/uploads/2019/08/free-fire-logo-1.png" class="ff-logo" alt="FF Logo">
+    <div class="text-logo">FREE FIRE VVIP</div>
     <h1 class="logo-text">SUNNY 999 BOT</h1>
-    <div class="main-title">OFFICIAL CARDING & DIAMOND HUB</div>
+    <div class="trust-tags">
+        <span class="tag"><i class="fas fa-check-circle"></i> TRUSTED FOR 5 YEARS</span>
+        <span class="tag" style="border-color: #00ff00; color: #00ff00;"><i class="fas fa-bolt"></i> 1 MIN DONE</span>
+    </div>
 </header>
 
 <div id="home" class="section active">
     <div class="container">
-        
         <div class="card" style="border-top: 4px solid var(--accent);">
             <h3 style="color: var(--accent);">💳 CARDING LIMIT</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
-            <button class="btn" onclick="pay(500, '5K Limit')">₹5,000 LIMIT - ₹500</button>
-            <button class="btn" onclick="pay(1000, '10K Limit')">₹10,000 LIMIT - ₹1,000</button>
-            <button class="btn" onclick="pay(5000, '50K Limit')">₹50,000 LIMIT - ₹5,000</button>
+            <button class="btn" onclick="pay(500, '5K Limit')">5,000 LIMIT - ₹500</button>
+            <button class="btn" onclick="pay(1000, '10K Limit')">10,000 LIMIT - ₹1,000</button>
+            <button class="btn" onclick="pay(5000, '50K Limit')">50,000 LIMIT - ₹5,000</button>
         </div>
 
         <div class="card" style="border-top: 4px solid var(--neon-blue);">
@@ -77,56 +94,61 @@
             <button class="btn btn-chip" onclick="pay(2500, '8Prime PRO')">PRO CHIP - ₹2,500</button>
             <button class="btn btn-chip" onclick="pay(4500, '8Prime ULTRA')">ULTRA CHIP - ₹4,500</button>
         </div>
-
     </div>
 </div>
 
 <div id="payment" class="section">
     <div class="container">
-        <div class="card" style="border: 2px solid #00ff00; background: rgba(0,0,0,0.9);">
-            <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron';">PAYMENT</h2>
-            <p id="itemDet" style="font-size: 12px; color: #888;"></p>
-            <div style="background: white; padding: 10px; border-radius: 12px; display: inline-block; margin: 15px 0;">
-                <img id="qrImg" src="1000046377.jpg" alt="Scan QR">
+        <div class="card" style="border: 2px solid #00ff00; background: rgba(0,0,0,0.95); width: 100%; max-width: 400px;">
+            <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron';">₹500</h2>
+            <p id="itemDet" style="font-size: 11px; color: #888;"></p>
+            <div class="qr-box">
+                <img id="qrImg" src="1000046377.jpg">
             </div>
-            <div style="color: var(--accent); font-weight: bold; margin-bottom: 15px;">UPI ID: sunny999@upi</div>
-            <button class="btn" style="background: #5f259f; color: white;" onclick="openPhonePe()">OPEN PHONEPE</button>
-            <button class="btn" onclick="verify()">SUBMIT PAYMENT</button>
-            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 15px;">CANCEL</p>
+            <div style="color: var(--accent); font-weight: bold; margin-bottom: 20px; font-family: 'Orbitron'; font-size: 14px;">UPI ID: sunny999@upi</div>
+            <button class="btn" style="background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white;" onclick="sendToInsta()">
+                <i class="fab fa-instagram"></i> I HAVE PAID (SEND PROOF)
+            </button>
+            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 15px;">← CANCEL</p>
         </div>
     </div>
 </div>
 
-<div id="success" class="section">
-    <div class="container"><div class="card">
-        <h2 style="color: var(--accent); font-family: 'Orbitron';">VERIFYING...</h2>
-        <div style="width:100%; background:#111; height:8px; border-radius:10px; margin:20px 0;"><div id="bar" style="width:0%; height:100%; background:var(--accent); transition:0.1s;"></div></div>
-        <p id="st" style="font-size: 12px; color: #0f0;">Connecting...</p>
-        <a href="https://instagram.com/sunny999bot" class="btn" style="text-decoration:none; display:block;">SEND SCREENSHOT</a>
-    </div></div>
-</div>
+<footer>© 2026 SUNNY 999 BOT | SECURE & FAST</footer>
 
 <script>
-    let pNow = 0;
+    let pNow = 0, uNow = "", iNow = "";
+
     function pay(p, i) {
         let u = event.target.parentElement.querySelector('.u-uid').value;
         if(u.length < 5) { alert("UID Enter Karo!"); return; }
-        pNow = p;
+        pNow = p; uNow = u; iNow = i;
         document.getElementById('home').classList.remove('active');
         document.getElementById('payment').classList.add('active');
         document.getElementById('payAmt').innerText = "PAY ₹" + p;
         document.getElementById('itemDet').innerText = i + " | UID: " + u;
     }
-    function openPhonePe() { window.location.href = `upi://pay?pa=sunny999@upi&pn=SUNNY%20999%20BOT&am=${pNow}&cu=INR`; }
-    function verify() {
-        if (/Mobi|Android/i.test(navigator.userAgent)) { openPhonePe(); }
-        document.getElementById('payment').classList.remove('active');
-        document.getElementById('success').classList.add('active');
-        let w = 0; let b = document.getElementById('bar'); let s = document.getElementById('st');
-        let itv = setInterval(() => { w++; b.style.width = w + "%"; 
-        if(w==50) s.innerText = "Injecting Data..."; if(w>=100){ clearInterval(itv); alert("Done! Screenshot bhej do."); }
-        }, 100);
+
+    function sendToInsta() {
+        window.open(`https://www.instagram.com/sunny999bot/`, '_blank');
+        alert("Instagram par Screenshot bhej do!");
     }
+
+    // FAKE BUY POP UP LOGIC
+    const names = ["Aman_FF", "Sk_Sabir", "Killer_Boy", "Raju_Gaming", "Boss_YT", "Legend_88", "Rahul_FF"];
+    const items = ["5K Diamonds", "10K Limit", "8Prime Ultra", "Unlimited DM", "50K Limit"];
+
+    function showPopup() {
+        const name = names[Math.floor(Math.random()*names.length)];
+        const item = items[Math.floor(Math.random()*items.length)];
+        document.getElementById('notifyText').innerHTML = `<span style="color:var(--accent)">${name}</span> just bought <span style="color:#00ff00">${item}</span> ✅`;
+        const box = document.getElementById('notification');
+        box.style.display = 'block';
+        setTimeout(() => { box.style.display = 'none'; }, 4000);
+    }
+    // Start popups after 5 seconds
+    setInterval(showPopup, 8000);
 </script>
+
 </body>
 </html>
