@@ -5,104 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUNNY 999 BOT | Official Gaming Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --accent: #ffcc00; 
-            --neon-blue: #00f2ff;
-            --neon-red: #ff0000;
-            --bg: #050505;
-            --diamond: #b9f2ff;
-        }
-
-        body, html {
-            margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
-            background: var(--bg); color: white; overflow-x: hidden;
-        }
-
-        #bg-video {
-            position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
-            z-index: -2; filter: brightness(0.15); object-fit: cover;
-        }
-
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.9));
-            z-index: -1;
-        }
-
-        .header { padding: 40px 20px; text-align: center; }
+        :root { --accent: #ffcc00; --neon-blue: #00f2ff; --neon-red: #ff0000; --bg: #050505; }
+        body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
+        #bg-video { position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; z-index: -2; filter: brightness(0.2); object-fit: cover; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.9)); z-index: -1; }
         
-        /* FF LOGO */
-        .ff-logo {
-            width: 120px; filter: drop-shadow(0 0 10px var(--neon-red));
-            margin-bottom: 15px; animation: bounce 2s infinite ease-in-out;
-        }
+        /* LOGO FIX */
+        .header { padding: 30px 20px; text-align: center; }
+        .ff-logo { width: 140px; filter: drop-shadow(0 0 15px var(--neon-red)); margin-bottom: 10px; animation: bounce 2s infinite ease-in-out; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .logo-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 900; color: #fff;
-            text-shadow: 0 0 15px var(--accent), 0 0 30px var(--neon-red);
-            letter-spacing: 5px; margin: 0; text-transform: uppercase;
-        }
+        .logo-text { font-family: 'Orbitron'; font-size: 2.5rem; font-weight: 900; color: #fff; text-shadow: 0 0 15px var(--accent); letter-spacing: 5px; margin: 0; text-transform: uppercase; }
+        .main-title { color: var(--neon-blue); font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 2px; margin-top: 10px; }
 
-        .main-title {
-            color: var(--neon-blue); text-transform: uppercase;
-            letter-spacing: 2px; font-size: 1.1rem; font-weight: bold;
-            text-shadow: 0 0 10px var(--neon-blue); margin-top: 10px;
-            font-family: 'Orbitron';
-        }
-
-        .insta-btn {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white !important; text-decoration: none; display: inline-block;
-            padding: 10px 25px; border-radius: 50px; font-weight: bold; margin-top: 20px;
-            box-shadow: 0 0 15px rgba(220, 39, 67, 0.4); transition: 0.3s; font-size: 14px;
-        }
-
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1300px; margin: 0 auto; }
-        
-        /* Glass Cards */
-        .card {
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-            width: 340px; padding: 25px; text-align: center; transition: 0.4s;
-            position: relative; overflow: hidden;
-        }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 340px; padding: 25px; text-align: center; transition: 0.4s; }
         .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card h3 { font-family: 'Orbitron'; margin-bottom: 20px; font-size: 1.3rem; }
 
-        .card h3 { font-family: 'Orbitron'; margin-bottom: 15px; font-size: 1.2rem; }
-
-        input {
-            width: 90%; padding: 12px; margin: 10px 0;
-            background: rgba(0,0,0,0.6); border: 1px solid var(--accent);
-            border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron';
-        }
-
-        .btn {
-            background: linear-gradient(45deg, var(--accent), #ff9900);
-            color: black; border: none; padding: 12px; border-radius: 10px;
-            font-weight: 900; cursor: pointer; text-transform: uppercase; 
-            margin-top: 10px; width: 100%; transition: 0.3s; font-family: 'Orbitron';
-        }
+        input { width: 90%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.6); border: 1px solid var(--accent); border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron'; }
+        .btn { background: linear-gradient(45deg, var(--accent), #ff9900); color: black; border: none; padding: 15px; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; width: 100%; font-family: 'Orbitron'; margin-bottom: 10px; }
         .btn-dm { background: linear-gradient(45deg, var(--neon-blue), #0099ff); }
         .btn-chip { background: linear-gradient(45deg, var(--neon-red), #990000); color: white; }
 
-        #qrImg { width: 220px; border-radius: 8px; }
-
-        #notification {
-            position: fixed; top: 20px; right: 20px;
-            background: rgba(10,10,10,0.9); border-left: 5px solid var(--accent);
-            padding: 15px 25px; border-radius: 5px; display: none; z-index: 1000;
-        }
-
-        .section { display: none; animation: fadeIn 0.6s ease; }
+        /* PAYMENT */
+        .section { display: none; animation: fadeIn 0.5s ease; }
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        footer { text-align: center; padding: 40px; font-size: 10px; opacity: 0.4; letter-spacing: 2px; }
+        #qrImg { width: 220px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,255,0,0.2); }
     </style>
 </head>
 <body>
@@ -112,21 +45,24 @@
 </video>
 <div class="overlay"></div>
 
-<div id="notification"><div id="notifyText"></div></div>
-
 <header class="header">
-    <img src="https://logodownload.org/wp-content/uploads/2019/08/free-fire-logo-1.png" class="ff-logo">
+    <img src="https://logodownload.org/wp-content/uploads/2019/08/free-fire-logo-1.png" class="ff-logo" alt="FF Logo">
     <h1 class="logo-text">SUNNY 999 BOT</h1>
-    <div class="main-title">💎 UNLIMITED DIAMONDS & 8PRIME CHIPSET 🚀</div>
-    <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn">
-        <i class="fab fa-instagram"></i> Follow @sunny999bot
-    </a>
+    <div class="main-title">OFFICIAL CARDING & DIAMOND HUB</div>
 </header>
 
 <div id="home" class="section active">
     <div class="container">
         
-        <div class="card" style="border-top: 3px solid var(--neon-blue);">
+        <div class="card" style="border-top: 4px solid var(--accent);">
+            <h3 style="color: var(--accent);">💳 CARDING LIMIT</h3>
+            <input type="number" class="u-uid" placeholder="PLAYER UID">
+            <button class="btn" onclick="pay(500, '5K Limit')">₹5,000 LIMIT - ₹500</button>
+            <button class="btn" onclick="pay(1000, '10K Limit')">₹10,000 LIMIT - ₹1,000</button>
+            <button class="btn" onclick="pay(5000, '50K Limit')">₹50,000 LIMIT - ₹5,000</button>
+        </div>
+
+        <div class="card" style="border-top: 4px solid var(--neon-blue);">
             <h3 style="color: var(--neon-blue);">💎 DIAMONDS</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
             <button class="btn btn-dm" onclick="pay(499, '5,000 Diamonds')">5,000 DM - ₹499</button>
@@ -134,19 +70,12 @@
             <button class="btn btn-dm" onclick="pay(1999, 'Unlimited DM')">UNLIMITED - ₹1,999</button>
         </div>
 
-        <div class="card" style="border-top: 3px solid var(--neon-red);">
+        <div class="card" style="border-top: 4px solid var(--neon-red);">
             <h3 style="color: var(--neon-red);">🚀 8PRIME CHIP</h3>
             <input type="number" class="u-uid" placeholder="PLAYER UID">
-            <button class="btn btn-chip" onclick="pay(1200, '8Prime v1')">8PRIME v1 - ₹1,200</button>
-            <button class="btn btn-chip" onclick="pay(2500, '8Prime PRO')">8PRIME PRO - ₹2,500</button>
-            <button class="btn btn-chip" onclick="pay(4500, '8Prime ULTRA')">8PRIME ULTRA - ₹4,500</button>
-        </div>
-
-        <div class="card" style="border-top: 3px solid var(--accent);">
-            <h3 style="color: var(--accent);">💳 CARDING LIMIT</h3>
-            <input type="number" class="u-uid" placeholder="PLAYER UID">
-            <button class="btn" onclick="pay(500, '5K Limit')">5,000 Limit - ₹500</button>
-            <button class="btn" onclick="pay(1000, '10K Limit')">10,000 Limit - ₹1,000</button>
+            <button class="btn btn-chip" onclick="pay(1200, '8Prime v1')">v1 CHIP - ₹1,200</button>
+            <button class="btn btn-chip" onclick="pay(2500, '8Prime PRO')">PRO CHIP - ₹2,500</button>
+            <button class="btn btn-chip" onclick="pay(4500, '8Prime ULTRA')">ULTRA CHIP - ₹4,500</button>
         </div>
 
     </div>
@@ -154,71 +83,50 @@
 
 <div id="payment" class="section">
     <div class="container">
-        <div class="card" style="border: 2px solid #00ff00;">
-            <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron';">PAY ₹500</h2>
+        <div class="card" style="border: 2px solid #00ff00; background: rgba(0,0,0,0.9);">
+            <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron';">PAYMENT</h2>
             <p id="itemDet" style="font-size: 12px; color: #888;"></p>
-            <div style="background: white; padding: 10px; border-radius: 10px; display: inline-block; margin: 15px 0;">
-                <img id="qrImg" src="my-qr.png" onerror="this.src='https://via.placeholder.com/200x200?text=SCAN+QR'">
+            <div style="background: white; padding: 10px; border-radius: 12px; display: inline-block; margin: 15px 0;">
+                <img id="qrImg" src="1000046377.jpg" alt="Scan QR">
             </div>
-            <div style="color: var(--accent); font-weight: bold; margin-bottom: 15px;">UPI: sunny999@upi</div>
+            <div style="color: var(--accent); font-weight: bold; margin-bottom: 15px;">UPI ID: sunny999@upi</div>
+            <button class="btn" style="background: #5f259f; color: white;" onclick="openPhonePe()">OPEN PHONEPE</button>
             <button class="btn" onclick="verify()">SUBMIT PAYMENT</button>
-            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 10px; margin-top: 15px;">CANCEL</p>
+            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 15px;">CANCEL</p>
         </div>
     </div>
 </div>
 
 <div id="success" class="section">
-    <div class="container">
-        <div class="card" style="border: 2px solid var(--accent);">
-            <h2 style="color: var(--accent); font-family: 'Orbitron';">VERIFYING...</h2>
-            <div style="width:100%; background:#111; height:8px; border-radius:10px; margin:20px 0;">
-                <div id="bar" style="width:0%; height:100%; background:var(--accent); border-radius:10px; transition:0.2s;"></div>
-            </div>
-            <p id="status" style="font-size: 12px; color: #0f0;">Connecting to Server...</p>
-            <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn" style="width:80%;">SEND SCREENSHOT</a>
-        </div>
-    </div>
+    <div class="container"><div class="card">
+        <h2 style="color: var(--accent); font-family: 'Orbitron';">VERIFYING...</h2>
+        <div style="width:100%; background:#111; height:8px; border-radius:10px; margin:20px 0;"><div id="bar" style="width:0%; height:100%; background:var(--accent); transition:0.1s;"></div></div>
+        <p id="st" style="font-size: 12px; color: #0f0;">Connecting...</p>
+        <a href="https://instagram.com/sunny999bot" class="btn" style="text-decoration:none; display:block;">SEND SCREENSHOT</a>
+    </div></div>
 </div>
 
-<footer>© 2026 SUNNY 999 BOT | SECURE GAMING PANEL</footer>
-
 <script>
-    let priceNow = 0;
-    function pay(price, item) {
-        let uid = event.target.parentElement.querySelector('.u-uid').value;
-        if(uid.length < 5) { alert("Enter UID!"); return; }
-        priceNow = price;
+    let pNow = 0;
+    function pay(p, i) {
+        let u = event.target.parentElement.querySelector('.u-uid').value;
+        if(u.length < 5) { alert("UID Enter Karo!"); return; }
+        pNow = p;
         document.getElementById('home').classList.remove('active');
         document.getElementById('payment').classList.add('active');
-        document.getElementById('payAmt').innerText = "PAY ₹" + price;
-        document.getElementById('itemDet').innerText = item + " | UID: " + uid;
+        document.getElementById('payAmt').innerText = "PAY ₹" + p;
+        document.getElementById('itemDet').innerText = i + " | UID: " + u;
     }
-
+    function openPhonePe() { window.location.href = `upi://pay?pa=sunny999@upi&pn=SUNNY%20999%20BOT&am=${pNow}&cu=INR`; }
     function verify() {
-        if (/Mobi|Android/i.test(navigator.userAgent)) {
-            window.location.href = `phonepe://pay?pa=sunny999@upi&pn=Sunny999Bot&am=${priceNow}`;
-        }
+        if (/Mobi|Android/i.test(navigator.userAgent)) { openPhonePe(); }
         document.getElementById('payment').classList.remove('active');
         document.getElementById('success').classList.add('active');
-        let w = 0;
-        let b = document.getElementById('bar');
-        let s = document.getElementById('status');
-        let itv = setInterval(() => {
-            w++; b.style.width = w + "%";
-            if(w==40) s.innerText = "Bypassing Anticheat...";
-            if(w==80) s.innerText = "Updating UID Data...";
-            if(w>=100) { clearInterval(itv); alert("Done! Send Screenshot to Instagram."); }
-        }, 120);
+        let w = 0; let b = document.getElementById('bar'); let s = document.getElementById('st');
+        let itv = setInterval(() => { w++; b.style.width = w + "%"; 
+        if(w==50) s.innerText = "Injecting Data..."; if(w>=100){ clearInterval(itv); alert("Done! Screenshot bhej do."); }
+        }, 100);
     }
-
-    // Fake Popups
-    setInterval(() => {
-        const n = ["Rohan", "Abhi", "Killer", "Sk_Sabir", "Sunny_Fan"];
-        const i = ["10K Diamonds", "8Prime Ultra", "5K Limit"];
-        document.getElementById('notifyText').innerHTML = `<b>${n[Math.floor(Math.random()*n.length)]}</b> bought ${i[Math.floor(Math.random()*i.length)]} ✅`;
-        document.getElementById('notification').style.display = 'block';
-        setTimeout(()=> document.getElementById('notification').style.display='none', 4000);
-    }, 8000);
 </script>
 </body>
 </html>
