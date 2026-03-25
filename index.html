@@ -1,176 +1,133 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNNY 999 BOT - Official Guild Glory</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SUNNY 999 BOT</title>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
-        
-        :root { --bg: #030816; --card: #0a1128; --neon: #00f2ff; --purple: #7000ff; --green: #00ff88; --yt: #ff0000; }
-        
-        body { background: var(--bg); color: white; font-family: 'Rajdhani', sans-serif; margin: 0; padding: 15px; display: flex; justify-content: center; overflow-x: hidden; }
-        .app-container { width: 100%; max-width: 420px; }
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: black;
+            color: white;
+            text-align: center;
+        }
 
-        /* Header Styling */
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        .yt-brand { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 18px; color: white; text-decoration: none; }
-        .yt-icon { color: var(--yt); font-size: 24px; }
+        .logo {
+            margin-top: 20px;
+            font-size: 28px;
+            color: gold;
+            font-weight: bold;
+        }
 
-        /* Status & Live Count */
-        .status-panel { background: var(--card); padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 20px; border: 1px solid rgba(0, 242, 255, 0.2); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
-        .live-dot { height: 8px; width: 8px; background: var(--green); border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .section {
+            display: none;
+            padding: 20px;
+        }
 
-        /* Titles */
-        .main-title { text-align: center; font-size: 28px; font-weight: 800; background: linear-gradient(to right, var(--neon), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; margin: 10px 0; letter-spacing: 1px; }
-        
-        /* Pro Input & Select */
-        .input-group { margin-bottom: 15px; }
-        label { font-size: 14px; margin-bottom: 5px; display: block; opacity: 0.8; }
-        input, select { width: 100%; padding: 15px; background: #0d1b35; border: 1px solid #1e3a5f; color: white; border-radius: 10px; font-family: inherit; font-size: 16px; outline: none; }
-        input:focus { border-color: var(--neon); box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
+        .active {
+            display: block;
+        }
 
-        /* Pro Buttons */
-        .btn { width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; text-transform: uppercase; transition: 0.3s; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-connect { background: linear-gradient(to right, #008cff, #0051ff); color: white; box-shadow: 0 4px 15px rgba(0, 81, 255, 0.4); }
-        .btn-verify { background: var(--neon); color: #000; box-shadow: 0 4px 15px rgba(0, 242, 255, 0.4); }
+        .card {
+            display: inline-block;
+            width: 250px;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid gold;
+            border-radius: 10px;
+            background: #111;
+            cursor: pointer;
+        }
 
-        /* Plan Cards (Glowing) */
-        .plan-card { background: var(--card); border: 2px solid var(--neon); border-radius: 18px; padding: 20px; margin-bottom: 15px; text-align: center; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
-        .plan-card:hover { transform: translateY(-5px); box-shadow: 0 0 25px rgba(0, 242, 255, 0.2); }
-        .price { font-size: 30px; color: var(--neon); font-weight: 700; margin: 10px 0; }
-        .glory-tag { color: #ffd700; font-size: 14px; font-weight: bold; }
+        .card:hover {
+            background: gold;
+            color: black;
+        }
 
-        /* QR Section */
-        .qr-box { background: var(--card); padding: 25px; border-radius: 25px; border: 2px solid var(--neon); text-align: center; margin-top: 10px; }
-        .qr-frame { width: 240px; height: 240px; background: white; margin: 15px auto; padding: 12px; border-radius: 15px; border: 5px solid var(--neon); box-shadow: 0 0 20px rgba(0, 242, 255, 0.3); }
-        .qr-frame img { width: 100%; height: 100%; object-fit: contain; }
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: gold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-        /* Fake Notification Pop-up */
-        #buy-pop { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: rgba(10, 17, 40, 0.95); border: 1px solid var(--neon); padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 12px; box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); transition: 0.5s; z-index: 9999; width: 80%; border-left: 5px solid var(--green); }
-        
-        .hidden { display: none; }
-        .page { animation: slideUp 0.4s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .upi {
+            margin-top: 15px;
+            background: #111;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        img {
+            margin-top: 15px;
+            width: 200px;
+        }
     </style>
 </head>
+
 <body>
 
-<div id="buy-pop">
-    <i class="fas fa-check-circle" style="color: var(--green); font-size: 20px;"></i>
-    <div style="font-size: 13px;" id="pop-msg">Badge99 purchased Ultra Boost!</div>
+<div class="logo">🔥 SUNNY 999 BOT 🔥</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <h2>Select Card Limit</h2>
+
+    <div class="card" onclick="selectPlan(5000,500)">₹5000 Limit<br>₹500</div>
+    <div class="card" onclick="selectPlan(10000,1000)">₹10000 Limit<br>₹1000</div>
+    <div class="card" onclick="selectPlan(50000,5000)">₹50000 Limit<br>₹5000</div>
 </div>
 
-<div class="app-container">
-    <header class="header">
-        <a href="https://youtube.com/@SUNNY999BOT" class="yt-brand">
-            <i class="fab fa-youtube yt-icon"></i> SUNNY 999 BOT
-        </a>
-        <div style="font-size: 12px; color: var(--green); font-weight: bold;">OFFICIAL PORTAL</div>
-    </header>
+<!-- PAYMENT -->
+<div id="payment" class="section">
+    <h2>Payment Page</h2>
 
-    <div class="status-panel">
-        <span><span class="live-dot"></span> Server: <b style="color:var(--green)">ONLINE</b></span>
-        <span><i class="fas fa-users"></i> Players: 1,291</span>
-    </div>
+    <div id="payText"></div>
 
-    <div id="p1" class="page">
-        <div class="main-title">GUILD GLORY SYSTEM</div>
-        <div style="text-align:center; font-size:12px; color:var(--neon); margin-bottom:20px;">⚡ Trusted by 5000+ Guild Masters</div>
-        
-        <div class="input-group">
-            <label>Guild UID</label>
-            <input type="number" id="uid" placeholder="Enter UID (Ex: 3048908730)">
-        </div>
-        
-        <div class="input-group">
-            <label>Select Region</label>
-            <select id="region">
-                <option value="🇮🇳 India">India</option>
-                <option value="🇧🇩 Bangladesh">Bangladesh</option>
-                <option value="🇳🇵 Nepal">Nepal</option>
-            </select>
-        </div>
+    <div class="upi">UPI: sunny999@upi</div>
 
-        <button class="btn btn-connect" onclick="next('p1','p2')">
-            <i class="fas fa-bolt"></i> CONNECT GUILD BOT
-        </button>
-        
-        <div style="text-align:center; margin-top:20px; font-size:11px; opacity:0.6;">
-            <i class="fas fa-shield-alt"></i> Anti-Ban & Secure Sync Active
-        </div>
-    </div>
+    <br>
+    <img src="https://via.placeholder.com/200">
 
-    <div id="p2" class="page hidden">
-        <div class="main-title">SELECT BOOST PLAN</div>
-        <div class="plan-card" onclick="pay('Starter', '₹99', '60K')">
-            <div style="font-weight: bold; letter-spacing: 1px;">STARTER BOOST</div>
-            <div class="price">₹99</div>
-            <div class="glory-tag">+60,000 GLORY</div>
-        </div>
-        <div class="plan-card" style="border-color: var(--purple);" onclick="pay('Pro', '₹149', '150K')">
-            <div style="font-weight: bold; letter-spacing: 1px;">PRO BOOST</div>
-            <div class="price">₹149</div>
-            <div class="glory-tag">+150,000 GLORY</div>
-        </div>
-        <div class="plan-card" style="border-color: var(--green);" onclick="pay('Ultra', '₹299', '450K')">
-            <div style="font-weight: bold; letter-spacing: 1px;">ULTRA BOOST</div>
-            <div class="price">₹299</div>
-            <div class="glory-tag">+450,000 GLORY</div>
-        </div>
-    </div>
+    <br>
+    <button class="btn" onclick="goSuccess()">I HAVE PAID</button>
+</div>
 
-    <div id="p3" class="page hidden">
-        <div class="main-title" style="font-size: 20px;">SCAN & PAY NOW</div>
-        <div class="qr-box">
-            <div id="selected-info" style="color:var(--neon); font-weight:bold; margin-bottom:10px;"></div>
-            <div class="qr-frame">
-                <img src="IMG_20260303_143709.jpg" alt="Payment QR">
-            </div>
-            <div class="input-group" style="text-align: left;">
-                <label>Enter 12 Digit Transaction UTR</label>
-                <input type="number" id="utr" placeholder="Enter UTR Number">
-            </div>
-            <button class="btn btn-verify" onclick="submit()">
-                VERIFY & ACTIVATE ✅
-            </button>
-        </div>
-    </div>
+<!-- SUCCESS -->
+<div id="success" class="section">
+    <h2>✔ Payment Submitted</h2>
+    <p>Verification in progress...</p>
+
+    <button class="btn" onclick="goWhatsApp()">Contact on WhatsApp</button>
 </div>
 
 <script>
-    let n, p, g;
-    function next(o, n) {
-        if(o==='p1' && document.getElementById('uid').value.length < 5) { alert("Please enter valid UID!"); return; }
-        document.getElementById(o).classList.add('hidden');
-        document.getElementById(n).classList.remove('hidden');
-    }
-    function pay(name, price, glory) {
-        n=name; p=price; g=glory;
-        document.getElementById('selected-info').innerText = name + " Boost - " + price;
-        next('p2', 'p3');
-    }
-    function submit() {
-        let u = document.getElementById('uid').value;
-        let c = document.getElementById('region').value;
-        let utr = document.getElementById('utr').value;
-        if(utr.length !== 12) { alert("Enter 12 Digit UTR!"); return; }
-        
-        let msg = `🔥 *GUILD GLORY PAYMENT*%0A%0A👤 *UID:* ${u}%0A🌍 *Country:* ${c}%0A%0A💎 *Plan:* ${n}%0A💰 *Amount:* ${p}%0A⚡ *Glory:* ${g}%0A%0A🧾 *UTR:* ${utr}%0A%0A✅ *Auto Submitted via SUNNY 999 BOT*`;
-        window.open(`https://api.whatsapp.com/send?phone=918597741762&text=${msg}`, '_blank');
+    let selectedLimit = 0;
+    let selectedPrice = 0;
+
+    function selectPlan(limit, price) {
+        selectedLimit = limit;
+        selectedPrice = price;
+
+        document.getElementById("home").classList.remove("active");
+        document.getElementById("payment").classList.add("active");
+
+        document.getElementById("payText").innerHTML =
+        "Pay ₹" + price + " for ₹" + limit + " limit";
     }
 
-    // Pro Fake Notification
-    const users = ["RaiStar", "Badge99", "Sk Sabir", "TotalGaming", "SniperX", "Killer_Boy", "Legend", "Abhishek"];
-    setInterval(() => {
-        const u = users[Math.floor(Math.random()*users.length)];
-        document.getElementById('pop-msg').innerText = u + " purchased " + (Math.random() > 0.5 ? "Ultra" : "Pro") + " Boost!";
-        const pop = document.getElementById('buy-pop');
-        pop.style.bottom = "30px";
-        setTimeout(() => pop.style.bottom = "-100px", 4000);
-    }, 8000);
+    function goSuccess() {
+        document.getElementById("payment").classList.remove("active");
+        document.getElementById("success").classList.add("active");
+    }
+
+    function goWhatsApp() {
+        window.open("https://wa.me/91XXXXXXXXXX");
+    }
 </script>
 
 </body>
