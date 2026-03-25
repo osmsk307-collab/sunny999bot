@@ -3,255 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNNY 999 BOT | LUXURY GAMING STORE</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <title>SUNNY 999 BOT | Official Gaming Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --gold: #ffcc00;
-            --gold-glow: rgba(255, 204, 0, 0.4);
-            --bg-dark: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --accent: #ffcc00; 
+            --neon-blue: #00f2ff;
+            --neon-red: #ff0000;
+            --bg: #050505;
+            --diamond: #b9f2ff;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; }
-
-        body {
-            margin: 0; padding: 0; background-color: var(--bg-dark);
-            color: #ffffff; font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+        body, html {
+            margin: 0; padding: 0; font-family: 'Poppins', sans-serif;
+            background: var(--bg); color: white; overflow-x: hidden;
         }
 
-        /* --- LUXURY ANIMATED BG --- */
-        .luxury-bg {
+        #bg-video {
+            position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
+            z-index: -2; filter: brightness(0.15); object-fit: cover;
+        }
+
+        .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
-            z-index: -2;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.9));
+            z-index: -1;
         }
 
-        .glow-sphere {
-            position: fixed; width: 400px; height: 400px;
-            background: var(--gold-glow); filter: blur(150px);
-            border-radius: 50%; top: -100px; right: -100px; z-index: -1;
-            animation: float 10s infinite alternate;
+        .header { padding: 40px 20px; text-align: center; }
+        
+        /* FF LOGO */
+        .ff-logo {
+            width: 120px; filter: drop-shadow(0 0 10px var(--neon-red));
+            margin-bottom: 15px; animation: bounce 2s infinite ease-in-out;
         }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        @keyframes float { from { transform: translate(0,0); } to { transform: translate(-50px, 50px); } }
-
-        /* --- HEADER & LOGO --- */
-        header {
-            text-align: center; padding: 60px 20px 40px;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-box img {
-            width: 130px; filter: drop-shadow(0 0 15px #ff0000);
-            margin-bottom: 15px;
-        }
-
-        .brand-name {
+        .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 900;
-            letter-spacing: 10px; color: #fff; text-transform: uppercase;
-            text-shadow: 0 0 20px var(--gold-glow); margin: 0;
+            font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 900; color: #fff;
+            text-shadow: 0 0 15px var(--accent), 0 0 30px var(--neon-red);
+            letter-spacing: 5px; margin: 0; text-transform: uppercase;
         }
 
-        .sub-tag {
-            font-family: 'Orbitron', sans-serif; color: var(--gold);
-            font-size: 0.8rem; letter-spacing: 5px; margin-top: 10px; opacity: 0.8;
+        .main-title {
+            color: var(--neon-blue); text-transform: uppercase;
+            letter-spacing: 2px; font-size: 1.1rem; font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-blue); margin-top: 10px;
+            font-family: 'Orbitron';
         }
 
-        /* --- GRID LAYOUT --- */
-        .main-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px; padding: 50px 20px; max-width: 1200px; margin: 0 auto;
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white !important; text-decoration: none; display: inline-block;
+            padding: 10px 25px; border-radius: 50px; font-weight: bold; margin-top: 20px;
+            box-shadow: 0 0 15px rgba(220, 39, 67, 0.4); transition: 0.3s; font-size: 14px;
         }
 
-        /* --- VVIP GLASS CARD --- */
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 24px; padding: 40px 30px;
-            backdrop-filter: blur(15px); text-align: center;
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1300px; margin: 0 auto; }
+        
+        /* Glass Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            width: 340px; padding: 25px; text-align: center; transition: 0.4s;
             position: relative; overflow: hidden;
         }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-        .glass-card::after {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
+        .card h3 { font-family: 'Orbitron'; margin-bottom: 15px; font-size: 1.2rem; }
+
+        input {
+            width: 90%; padding: 12px; margin: 10px 0;
+            background: rgba(0,0,0,0.6); border: 1px solid var(--accent);
+            border-radius: 10px; color: white; text-align: center; font-family: 'Orbitron';
         }
 
-        .glass-card:hover::after { left: 100%; }
-        .glass-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .btn {
+            background: linear-gradient(45deg, var(--accent), #ff9900);
+            color: black; border: none; padding: 12px; border-radius: 10px;
+            font-weight: 900; cursor: pointer; text-transform: uppercase; 
+            margin-top: 10px; width: 100%; transition: 0.3s; font-family: 'Orbitron';
+        }
+        .btn-dm { background: linear-gradient(45deg, var(--neon-blue), #0099ff); }
+        .btn-chip { background: linear-gradient(45deg, var(--neon-red), #990000); color: white; }
 
-        .card-icon { font-size: 40px; color: var(--gold); margin-bottom: 20px; opacity: 0.9; }
-        .card-title { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px; }
+        #qrImg { width: 220px; border-radius: 8px; }
 
-        /* --- INPUTS & BUTTONS --- */
-        .luxury-input {
-            width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-            border-radius: 12px; padding: 15px; color: #fff; text-align: center;
-            font-family: 'Orbitron', sans-serif; margin-bottom: 20px; outline: none;
+        #notification {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(10,10,10,0.9); border-left: 5px solid var(--accent);
+            padding: 15px 25px; border-radius: 5px; display: none; z-index: 1000;
         }
 
-        .luxury-input:focus { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); }
+        .section { display: none; animation: fadeIn 0.6s ease; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .buy-btn {
-            width: 100%; padding: 15px; margin-bottom: 12px; border: none;
-            border-radius: 12px; font-family: 'Orbitron', sans-serif; font-weight: 900;
-            cursor: pointer; text-transform: uppercase; font-size: 0.8rem;
-            letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .btn-prime { background: #fff; color: #000; }
-        .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
-        .btn-outline:hover { background: var(--gold); color: #000; }
-
-        /* --- PAYMENT SCREEN --- */
-        .overlay-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 100; display: none;
-            flex-direction: column; align-items: center; justify-content: center;
-            padding: 20px; text-align: center;
-        }
-
-        .qr-container {
-            background: #fff; padding: 15px; border-radius: 20px; margin: 30px 0;
-            box-shadow: 0 0 30px var(--gold-glow);
-        }
-
-        .qr-container img { width: 220px; display: block; }
-
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 600px) {
-            .brand-name { font-size: 2.2rem; letter-spacing: 5px; }
-            .main-grid { padding: 30px 15px; }
-        }
-
-        .active-flex { display: flex !important; }
-        .hidden { display: none !important; }
+        footer { text-align: center; padding: 40px; font-size: 10px; opacity: 0.4; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-<div class="luxury-bg"></div>
-<div class="glow-sphere"></div>
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-blue-mesh-23164-large.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-<header>
-    <div class="logo-box">
-        <img src="https://logodownload.org/wp-content/uploads/2019/08/free-fire-logo-1.png" alt="Free Fire Logo">
-    </div>
-    <h1 class="brand-name">SUNNY 999 BOT</h1>
-    <p class="sub-tag">ULTRA VVIP PANEL V4.0</p>
-    
-    <div style="margin-top: 25px;">
-        <a href="https://instagram.com/sunny999bot" target="_blank" style="text-decoration:none; color:#fff; font-size: 13px; border: 1px solid var(--border); padding: 10px 20px; border-radius: 50px;">
-            <i class="fab fa-instagram" style="color:var(--gold);"></i> INSTAGRAM
-        </a>
-    </div>
+<div id="notification"><div id="notifyText"></div></div>
+
+<header class="header">
+    <img src="https://logodownload.org/wp-content/uploads/2019/08/free-fire-logo-1.png" class="ff-logo">
+    <h1 class="logo-text">SUNNY 999 BOT</h1>
+    <div class="main-title">💎 UNLIMITED DIAMONDS & 8PRIME CHIPSET 🚀</div>
+    <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn">
+        <i class="fab fa-instagram"></i> Follow @sunny999bot
+    </a>
 </header>
 
-<div class="main-grid" id="main-ui">
-    
-    <div class="glass-card">
-        <div class="card-icon"><i class="fas fa-gem"></i></div>
-        <div class="card-title">DIAMOND INJECTOR</div>
-        <input type="number" class="luxury-input" placeholder="PLAYER UID">
-        <button class="buy-btn btn-prime" onclick="initiate('5K Diamonds', 499)"><span>5,000 DM</span> <span>₹499</span></button>
-        <button class="buy-btn btn-outline" onclick="initiate('10K Diamonds', 899)"><span>10,000 DM</span> <span>₹899</span></button>
-        <button class="buy-btn btn-outline" onclick="initiate('Unlimited', 1999)"><span>UNLIMITED</span> <span>₹1,999</span></button>
-    </div>
+<div id="home" class="section active">
+    <div class="container">
+        
+        <div class="card" style="border-top: 3px solid var(--neon-blue);">
+            <h3 style="color: var(--neon-blue);">💎 DIAMONDS</h3>
+            <input type="number" class="u-uid" placeholder="PLAYER UID">
+            <button class="btn btn-dm" onclick="pay(499, '5,000 Diamonds')">5,000 DM - ₹499</button>
+            <button class="btn btn-dm" onclick="pay(899, '10,000 Diamonds')">10,000 DM - ₹899</button>
+            <button class="btn btn-dm" onclick="pay(1999, 'Unlimited DM')">UNLIMITED - ₹1,999</button>
+        </div>
 
-    <div class="glass-card">
-        <div class="card-icon"><i class="fas fa-microchip"></i></div>
-        <div class="card-title">8PRIME CHIPSET</div>
-        <input type="number" class="luxury-input" placeholder="PLAYER UID">
-        <button class="buy-btn btn-prime" onclick="initiate('8Prime v1', 1200)"><span>v1 CHIPSET</span> <span>₹1,200</span></button>
-        <button class="buy-btn btn-outline" onclick="initiate('PRO CHIP', 2500)"><span>PRO CHIPSET</span> <span>₹2,500</span></button>
-        <button class="buy-btn btn-outline" onclick="initiate('ULTRA CHIP', 4500)"><span>ULTRA CHIPSET</span> <span>₹4,500</span></button>
-    </div>
+        <div class="card" style="border-top: 3px solid var(--neon-red);">
+            <h3 style="color: var(--neon-red);">🚀 8PRIME CHIP</h3>
+            <input type="number" class="u-uid" placeholder="PLAYER UID">
+            <button class="btn btn-chip" onclick="pay(1200, '8Prime v1')">8PRIME v1 - ₹1,200</button>
+            <button class="btn btn-chip" onclick="pay(2500, '8Prime PRO')">8PRIME PRO - ₹2,500</button>
+            <button class="btn btn-chip" onclick="pay(4500, '8Prime ULTRA')">8PRIME ULTRA - ₹4,500</button>
+        </div>
 
-    <div class="glass-card">
-        <div class="card-icon"><i class="fas fa-credit-card"></i></div>
-        <div class="card-title">CARDING LIMIT</div>
-        <input type="number" class="luxury-input" placeholder="PLAYER UID">
-        <button class="buy-btn btn-prime" onclick="initiate('5K Limit', 500)"><span>5K LIMIT</span> <span>₹500</span></button>
-        <button class="buy-btn btn-outline" onclick="initiate('10K Limit', 1000)"><span>10K LIMIT</span> <span>₹1,000</span></button>
-    </div>
+        <div class="card" style="border-top: 3px solid var(--accent);">
+            <h3 style="color: var(--accent);">💳 CARDING LIMIT</h3>
+            <input type="number" class="u-uid" placeholder="PLAYER UID">
+            <button class="btn" onclick="pay(500, '5K Limit')">5,000 Limit - ₹500</button>
+            <button class="btn" onclick="pay(1000, '10K Limit')">10,000 Limit - ₹1,000</button>
+        </div>
 
+    </div>
 </div>
 
-<div id="payment-overlay" class="overlay-screen">
-    <div class="card-title" id="pay-item" style="color:var(--gold);">5,000 DIAMONDS</div>
-    <div style="font-family:'Orbitron'; font-size: 2.5rem; margin: 10px 0;" id="pay-price">₹499</div>
-    
-    <div class="qr-container">
-        <img src="my-qr.png" onerror="this.src='https://via.placeholder.com/200?text=SCAN+TO+PAY'" alt="QR Code">
+<div id="payment" class="section">
+    <div class="container">
+        <div class="card" style="border: 2px solid #00ff00;">
+            <h2 id="payAmt" style="color: #00ff00; font-family: 'Orbitron';">PAY ₹500</h2>
+            <p id="itemDet" style="font-size: 12px; color: #888;"></p>
+            <div style="background: white; padding: 10px; border-radius: 10px; display: inline-block; margin: 15px 0;">
+                <img id="qrImg" src="my-qr.png" onerror="this.src='https://via.placeholder.com/200x200?text=SCAN+QR'">
+            </div>
+            <div style="color: var(--accent); font-weight: bold; margin-bottom: 15px;">UPI: sunny999@upi</div>
+            <button class="btn" onclick="verify()">SUBMIT PAYMENT</button>
+            <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 10px; margin-top: 15px;">CANCEL</p>
+        </div>
     </div>
-
-    <p style="font-size: 14px; opacity: 0.6; letter-spacing: 2px;">UPI ID: sunny999@upi</p>
-    
-    <button class="buy-btn btn-prime" style="width:300px; margin-top:20px;" onclick="verify()">SUBMIT VERIFICATION</button>
-    <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 11px; margin-top: 20px; letter-spacing: 2px;">CANCEL TRANSACTION</p>
 </div>
 
-<div id="success-overlay" class="overlay-screen">
-    <div class="card-icon" style="font-size: 60px;"><i class="fas fa-shield-check fa-pulse" style="color:var(--gold);"></i></div>
-    <div class="card-title">SECURE VERIFICATION</div>
-    <div style="width:300px; height:2px; background:var(--border); margin: 30px 0;">
-        <div id="bar" style="width:0%; height:100%; background:var(--gold); box-shadow: 0 0 10px var(--gold);"></div>
+<div id="success" class="section">
+    <div class="container">
+        <div class="card" style="border: 2px solid var(--accent);">
+            <h2 style="color: var(--accent); font-family: 'Orbitron';">VERIFYING...</h2>
+            <div style="width:100%; background:#111; height:8px; border-radius:10px; margin:20px 0;">
+                <div id="bar" style="width:0%; height:100%; background:var(--accent); border-radius:10px; transition:0.2s;"></div>
+            </div>
+            <p id="status" style="font-size: 12px; color: #0f0;">Connecting to Server...</p>
+            <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn" style="width:80%;">SEND SCREENSHOT</a>
+        </div>
     </div>
-    <p id="status-msg" style="font-size: 12px; color: #0f0; font-family: 'Orbitron';">Bypassing Servers...</p>
-    <br><br>
-    <a href="https://instagram.com/sunny999bot" class="buy-btn btn-prime" style="width:300px; text-decoration:none; justify-content:center;">SEND SCREENSHOT</a>
 </div>
 
-<footer style="text-align: center; padding: 40px; font-size: 10px; opacity: 0.3; letter-spacing: 3px; font-family: 'Orbitron';">
-    © 2026 SUNNY 999 BOT | ENCRYPTED VVIP SESSION
-</footer>
+<footer>© 2026 SUNNY 999 BOT | SECURE GAMING PANEL</footer>
 
 <script>
-    let currentP = 0;
-
-    function initiate(item, price) {
-        let uid = event.target.parentElement.querySelector('input').value;
-        if(uid.length < 5) { alert("ERROR: INVALID PLAYER UID"); return; }
-        
-        currentP = price;
-        document.getElementById('main-ui').classList.add('hidden');
-        document.getElementById('payment-overlay').classList.add('active-flex');
-        document.getElementById('pay-item').innerText = item;
-        document.getElementById('pay-price').innerText = "₹" + price;
+    let priceNow = 0;
+    function pay(price, item) {
+        let uid = event.target.parentElement.querySelector('.u-uid').value;
+        if(uid.length < 5) { alert("Enter UID!"); return; }
+        priceNow = price;
+        document.getElementById('home').classList.remove('active');
+        document.getElementById('payment').classList.add('active');
+        document.getElementById('payAmt').innerText = "PAY ₹" + price;
+        document.getElementById('itemDet').innerText = item + " | UID: " + uid;
     }
 
     function verify() {
         if (/Mobi|Android/i.test(navigator.userAgent)) {
-            window.location.href = `phonepe://pay?pa=sunny999@upi&pn=Sunny999Bot&am=${currentP}`;
+            window.location.href = `phonepe://pay?pa=sunny999@upi&pn=Sunny999Bot&am=${priceNow}`;
         }
-        document.getElementById('payment-overlay').classList.remove('active-flex');
-        document.getElementById('success-overlay').classList.add('active-flex');
-        
+        document.getElementById('payment').classList.remove('active');
+        document.getElementById('success').classList.add('active');
         let w = 0;
         let b = document.getElementById('bar');
-        let msg = document.getElementById('status-msg');
-        
+        let s = document.getElementById('status');
         let itv = setInterval(() => {
             w++; b.style.width = w + "%";
-            if(w == 30) msg.innerText = "ACCESSING MAIN FRAME...";
-            if(w == 60) msg.innerText = "INJECTING PACKETS...";
-            if(w == 90) msg.innerText = "FINALIZING ACTIVATION...";
-            if(w >= 100) { 
-                clearInterval(itv); 
-                alert("SYSTEM BUSY: Send payment screenshot to Instagram for manual activation.");
-            }
+            if(w==40) s.innerText = "Bypassing Anticheat...";
+            if(w==80) s.innerText = "Updating UID Data...";
+            if(w>=100) { clearInterval(itv); alert("Done! Send Screenshot to Instagram."); }
         }, 120);
     }
-</script>
 
+    // Fake Popups
+    setInterval(() => {
+        const n = ["Rohan", "Abhi", "Killer", "Sk_Sabir", "Sunny_Fan"];
+        const i = ["10K Diamonds", "8Prime Ultra", "5K Limit"];
+        document.getElementById('notifyText').innerHTML = `<b>${n[Math.floor(Math.random()*n.length)]}</b> bought ${i[Math.floor(Math.random()*i.length)]} ✅`;
+        document.getElementById('notification').style.display = 'block';
+        setTimeout(()=> document.getElementById('notification').style.display='none', 4000);
+    }, 8000);
+</script>
 </body>
 </html>
