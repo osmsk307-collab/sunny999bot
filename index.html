@@ -8,7 +8,7 @@
     
     <style>
         :root {
-            --accent: #ffcc00; /* Gold */
+            --accent: #ffcc00; 
             --neon-blue: #00f2ff;
             --neon-red: #ff0000;
             --bg: #050505;
@@ -19,7 +19,6 @@
             background: var(--bg); color: white; overflow-x: hidden;
         }
 
-        /* --- VIDEO BACKGROUND --- */
         #bg-video {
             position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;
             z-index: -2; filter: brightness(0.2); object-fit: cover;
@@ -31,38 +30,42 @@
             z-index: -1;
         }
 
-        /* --- HEADER --- */
-        .header { padding: 50px 20px; text-align: center; }
+        .header { padding: 40px 20px; text-align: center; }
         
         .logo-text {
-            font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; color: #fff;
+            font-size: clamp(2.2rem, 8vw, 3.8rem); font-weight: 900; color: #fff;
             text-shadow: 0 0 15px var(--accent), 0 0 30px var(--neon-red);
             letter-spacing: 5px; margin: 0; text-transform: uppercase;
         }
 
         .main-title {
             color: var(--neon-blue); text-transform: uppercase;
-            letter-spacing: 2px; font-size: 1.4rem; font-weight: bold;
-            text-shadow: 0 0 10px var(--neon-blue); margin-top: 15px;
+            letter-spacing: 2px; font-size: 1.2rem; font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-blue); margin-top: 10px;
         }
 
         .online-count {
             background: rgba(0, 255, 0, 0.1); color: #00ff00;
-            padding: 6px 18px; border-radius: 20px; border: 1px solid #00ff00;
-            display: inline-block; margin-top: 15px; font-weight: bold; font-size: 0.9rem;
+            padding: 5px 15px; border-radius: 20px; border: 1px solid #00ff00;
+            display: inline-block; margin-top: 15px; font-weight: bold; font-size: 0.8rem;
         }
 
-        /* --- CARDS & FORMS --- */
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        /* Instagram Button */
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white !important; text-decoration: none; display: inline-block;
+            padding: 12px 30px; border-radius: 50px; font-weight: bold; margin-top: 20px;
+            box-shadow: 0 0 15px rgba(220, 39, 67, 0.4); transition: 0.3s;
+        }
+        .insta-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(220, 39, 67, 0.6); }
+
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
         
         .card {
             background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 25px;
-            width: 350px; padding: 35px; text-align: center; transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            width: 340px; padding: 30px; text-align: center; transition: 0.4s;
         }
-
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 0 20px rgba(255, 204, 0, 0.2); }
 
         input, select {
             width: 90%; padding: 12px; margin: 10px 0;
@@ -77,14 +80,14 @@
             margin-top: 15px; width: 100%; transition: 0.3s;
         }
 
-        .btn:hover { letter-spacing: 1px; box-shadow: 0 0 15px var(--accent); }
+        /* QR Image Styling */
+        #qrImg { width: 220px; display: block; border-radius: 8px; }
 
-        /* --- NOTIFICATION POPUP --- */
         #notification {
             position: fixed; bottom: 20px; left: 20px;
             background: rgba(0,0,0,0.9); border-left: 5px solid var(--accent);
             padding: 15px 25px; border-radius: 10px; display: none; z-index: 1000;
-            animation: slideUp 0.5s ease-out; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            animation: slideUp 0.5s ease-out;
         }
 
         @keyframes slideUp { from { transform: translateY(100px); } to { transform: translateY(0); } }
@@ -94,7 +97,8 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+        .progress-container { width: 100%; background-color: #222; border-radius: 10px; margin-top: 20px; }
+        .progress-bar { width: 0%; height: 8px; background-color: var(--accent); border-radius: 10px; transition: width 0.1s; }
     </style>
 </head>
 <body>
@@ -106,8 +110,8 @@
 
 <div id="notification">
     <div style="display: flex; align-items: center; gap: 12px;">
-        <i class="fas fa-check-circle" style="color: #00ff00; font-size: 20px;"></i>
-        <div id="notifyText" style="font-size: 14px;"></div>
+        <i class="fas fa-check-circle" style="color: #00ff00; font-size: 18px;"></i>
+        <div id="notifyText" style="font-size: 13px;"></div>
     </div>
 </div>
 
@@ -115,27 +119,25 @@
     <h1 class="logo-text">SUNNY 999 BOT</h1>
     <div class="main-title">🔥 FREE FIRE CARD BUY & UNLIMITED TOP UP 🔥</div>
     <div class="online-count">● <span id="userCount">142</span> Gamers Online</div>
+    <br>
+    <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn">
+        <i class="fab fa-instagram"></i> Contact on Instagram
+    </a>
 </header>
 
 <div id="home" class="section active">
     <div class="container">
         <div class="card" style="border: 1px solid var(--accent);">
-            <h2 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-gamepad"></i> PLAYER DETAILS</h2>
-            
-            <input type="number" id="playerUID" placeholder="Enter Player UID (e.g. 12345678)">
-            
+            <h2 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-id-card"></i> PURCHASE LIMIT</h2>
+            <input type="number" id="playerUID" placeholder="Enter Player UID">
             <select id="server">
                 <option value="India">India Server</option>
                 <option value="Bangladesh">Bangladesh Server</option>
                 <option value="Pakistan">Pakistan Server</option>
-                <option value="Others">Others</option>
             </select>
-
-            <p style="color: #888; font-size: 12px; margin-top: 10px;">Select your limit package below:</p>
-
             <button class="btn" onclick="goToPayment(5000, 500)">₹5,000 Limit (Pay ₹500)</button>
             <button class="btn" onclick="goToPayment(10000, 1000)">₹10,000 Limit (Pay ₹1,000)</button>
-            <button class="btn" onclick="goToPayment(50000, 5000)" style="border: 1px solid white;">₹50,000 LIMIT (PAY ₹5,000)</button>
+            <button class="btn" onclick="goToPayment(50000, 5000)">₹50,000 LIMIT (PAY ₹5,000)</button>
         </div>
     </div>
 </div>
@@ -144,15 +146,17 @@
     <div class="container">
         <div class="card" style="border: 2px solid #00ff00;">
             <h2 id="payAmount" style="color: #00ff00;">PAY ₹500</h2>
-            <p id="displayDetails" style="font-size: 13px; color: #ccc;"></p>
+            <p style="font-size: 12px; color: #888;">Scan QR Code to Pay Instantly</p>
             
-            <div style="background: #000; padding: 12px; border-radius: 10px; border: 1px dashed var(--accent); margin: 15px 0; color: var(--accent); font-weight: bold;">
-                UPI ID: sunny999@upi
+            <div style="background: white; padding: 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px;">
+                <img id="qrImg" src="my-qr.png" onerror="this.src='https://via.placeholder.com/200x200?text=Scan+to+Pay'" alt="Payment QR">
             </div>
 
-            <img id="qrImg" src="" style="width: 220px; border: 5px solid white; border-radius: 10px; margin-bottom: 15px;">
+            <div style="background: #111; padding: 10px; border-radius: 10px; border: 1px dashed var(--accent); margin: 10px 0; color: var(--accent); font-weight: bold; font-size: 14px;">
+                UPI ID: sunny999@upi
+            </div>
             
-            <button class="btn" onclick="processPayment()">I HAVE PAID - VERIFY</button>
+            <button class="btn" onclick="processPayment()">SUBMIT PAYMENT</button>
             <p onclick="location.reload()" style="cursor:pointer; color: #ff4444; font-size: 12px; margin-top: 15px;">← Cancel Transaction</p>
         </div>
     </div>
@@ -161,28 +165,35 @@
 <div id="success" class="section">
     <div class="container">
         <div class="card" style="border: 2px solid var(--accent);">
-            <i class="fas fa-spinner fa-spin" style="font-size: 50px; color: var(--accent); margin-bottom: 20px;"></i>
-            <h2 style="color: var(--accent);">PROCESSING...</h2>
-            <p>Aapka UID verification queue mein hai. Activation ke liye niche click karein.</p>
+            <i class="fas fa-shield-alt fa-pulse" style="font-size: 50px; color: var(--accent); margin-bottom: 20px;"></i>
+            <h2 style="color: var(--accent);">VERIFYING...</h2>
+            <p style="font-size: 13px;">Processing for UID: <span id="finalUID" style="color:var(--accent)"></span></p>
             
-            <button class="btn" onclick="openWhatsApp()" style="background: #25D366; color: white;">
-                <i class="fab fa-whatsapp"></i> CONTACT ON WHATSAPP
-            </button>
+            <div class="progress-container">
+                <div class="progress-bar" id="myBar"></div>
+            </div>
+            
+            <p id="statusUpdate" style="font-size: 12px; color: #888; margin-top: 15px;">Initializing Secure Link...</p>
+            
+            <p style="margin-top: 20px; font-size: 14px;">If process fails, contact here:</p>
+            <a href="https://instagram.com/sunny999bot" target="_blank" class="insta-btn" style="padding: 10px 20px; font-size: 14px;">
+                <i class="fab fa-instagram"></i> Message Me
+            </a>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>© 2026 SUNNY 999 BOT | OFFICIAL GAMING STORE</p>
+    <p>© 2026 SUNNY 999 BOT | SECURE STORE</p>
 </footer>
 
 <script>
-    // 1. Fake Users Live Count
+    // 1. Live Gamers Online Count
     setInterval(() => {
         document.getElementById('userCount').innerText = Math.floor(Math.random() * (200 - 130) + 130);
     }, 4000);
 
-    // 2. Fake Sales Notifications
+    // 2. Random Sales Popups
     const names = ["Aman_FF", "Sk_Sabir", "Killer_Gaming", "Raju_99", "Boss_User", "Legend_Bot", "Rohan_YT"];
     const items = ["₹5000 Limit", "₹10000 Limit", "₹50000 Elite Limit"];
 
@@ -190,42 +201,44 @@
         let n = names[Math.floor(Math.random()*names.length)];
         let i = items[Math.floor(Math.random()*items.length)];
         document.getElementById('notifyText').innerHTML = `<b>${n}</b> just bought <b>${i}</b> ✅`;
-        
         let box = document.getElementById('notification');
         box.style.display = 'block';
         setTimeout(() => { box.style.display = 'none'; }, 5000);
     }
-    setInterval(showNotify, 8000); // Popup every 8 seconds
+    setInterval(showNotify, 8000);
 
-    // 3. Navigation Logic
-    let currentUID = "";
-    
+    // 3. Navigation & Payment Logic
     function goToPayment(limit, price) {
-        currentUID = document.getElementById('playerUID').value;
-        if(currentUID.length < 5) {
-            alert("Please enter a valid Player UID first!");
-            return;
-        }
-
+        let uid = document.getElementById('playerUID').value;
+        if(uid.length < 5) { alert("Please enter Player UID first!"); return; }
         document.getElementById('home').classList.remove('active');
         document.getElementById('payment').classList.add('active');
-        
         document.getElementById('payAmount').innerText = "PAY ₹" + price;
-        document.getElementById('displayDetails').innerText = "UID: " + currentUID + " | Item: ₹" + limit + " Limit";
-
-        // Dynamic QR Generation
-        let upiLink = `upi://pay?pa=sunny999@upi&pn=Sunny999Bot&am=${price}`;
-        document.getElementById('qrImg').src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + encodeURIComponent(upiLink);
+        document.getElementById('finalUID').innerText = uid;
     }
 
     function processPayment() {
         document.getElementById('payment').classList.remove('active');
         document.getElementById('success').classList.add('active');
-    }
-
-    function openWhatsApp() {
-        let msg = `Hello Sunny! I have completed the payment on your website. UID: ${currentUID}. Please verify and activate my limit.`;
-        window.open("https://wa.me/918597741762?text=" + encodeURIComponent(msg));
+        
+        let elem = document.getElementById("myBar");
+        let width = 0;
+        let id = setInterval(frame, 100);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                document.getElementById('statusUpdate').innerText = "Activation Pending. Contact on Instagram.";
+                setTimeout(() => {
+                    alert("Verification successful! Activation in progress. Send payment screenshot to Instagram.");
+                }, 1000);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+                if(width == 30) document.getElementById('statusUpdate').innerText = "Verifying UPI Transaction...";
+                if(width == 60) document.getElementById('statusUpdate').innerText = "Allocating Carding Limit...";
+                if(width == 90) document.getElementById('statusUpdate').innerText = "Updating Database Server...";
+            }
+        }
     }
 </script>
 
