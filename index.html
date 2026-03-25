@@ -81,6 +81,7 @@
             <input type="number" class="u-uid" placeholder="PLAYER UID">
             <button class="btn btn-dm" onclick="pay(499, '5,000 Diamonds')">5,000 DM - ₹499</button>
             <button class="btn btn-dm" onclick="pay(899, '10,000 Diamonds')">10,000 DM - ₹899</button>
+            <button class="btn btn-dm" onclick="pay(1999, 'Unlimited DM')">UNLIMITED - ₹1,999</button>
         </div>
 
         <div class="card" style="border-top: 4px solid var(--neon-red);">
@@ -100,10 +101,10 @@
             <p class="step-text">📸 <span style="color:var(--accent)">Step 1:</span> QR Code ka Screenshot le kar payment karein</p>
             
             <div class="qr-box">
-                <img id="qrImg" src="1000046377.jpg" alt="Scan to Pay">
+                <img id="qrImg" src="1000046393.jpg" alt="Scan to Pay">
             </div>
             
-            <div style="color: var(--accent); font-weight: bold; margin-bottom: 20px; font-family: 'Orbitron'; letter-spacing: 1px;">UPI ID: sunny999@upi</div>
+            <div style="color: var(--accent); font-weight: bold; margin-bottom: 20px; font-family: 'Orbitron'; letter-spacing: 1px;">UPI ID: sunny999bot@slc</div>
             
             <p class="step-text">📲 <span style="color:var(--accent)">Step 2:</span> Niche diye gaye button se Instagram par proof bheje</p>
             
@@ -135,7 +136,6 @@
         alert("Instagram par Screenshot bhej do, 1 minute me done ho jayega!");
     }
 
-    // FAKE BUY POP UP LOGIC
     const names = ["Aman_FF", "Sk_Sabir", "Boss_User", "Legend_Bot", "Rohan_YT", "Abhi_Gaming", "Rahul_99"];
     const items = ["5,000 Diamonds", "₹10,000 Carding Limit", "8Prime Ultra Chip", "Unlimited DM", "₹50,000 Carding Limit"];
 
@@ -148,7 +148,6 @@
         setTimeout(() => { box.style.display = 'none'; }, 4000);
     }
     
-    // Auto-Popups every 8 seconds
     setInterval(showPopup, 8000);
 </script>
 
