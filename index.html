@@ -14,7 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#050505,#120000,#050505);
+background:linear-gradient(135deg,#030303,#120000,#050505);
 color:white;
 overflow-x:hidden;
 }
@@ -80,11 +80,11 @@ font-weight:bold;
 .stats{
 display:flex;
 justify-content:center;
-gap:25px;
+gap:20px;
 font-weight:bold;
 margin-top:18px;
 flex-wrap:wrap;
-font-size:18px;
+font-size:16px;
 }
 
 .authBtns{
@@ -146,9 +146,9 @@ background:linear-gradient(45deg,#ff0000,#6b0000);
 padding:35px;
 border-radius:18px;
 text-align:center;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
-line-height:1.4;
+line-height:1.5;
 box-shadow:0 0 25px rgba(255,0,0,.5);
 }
 
@@ -183,8 +183,7 @@ border-radius:12px;
 font-weight:bold;
 cursor:pointer;
 }
-
-.rewardGrid{
+  .rewardGrid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
@@ -199,8 +198,6 @@ padding:14px;
 text-align:center;
 cursor:pointer;
 transition:.3s;
-position:relative;
-overflow:hidden;
 }
 
 .rewardCard:hover{
@@ -215,10 +212,7 @@ object-fit:cover;
 border-radius:10px;
 }
 
-.rewardCard h3{
-margin-top:10px;
-}
-  .claimBtn{
+.claimBtn{
 width:100%;
 padding:18px;
 margin-top:20px;
@@ -230,13 +224,6 @@ font-size:20px;
 font-weight:bold;
 cursor:pointer;
 box-shadow:0 0 20px red;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.03);}
-100%{transform:scale(1);}
 }
 
 .sideBtn{
@@ -251,15 +238,8 @@ cursor:pointer;
 font-size:16px;
 }
 
-.ytBtn{
-background:red;
-color:white;
-}
-
-.tgBtn{
-background:#0088cc;
-color:white;
-}
+.ytBtn{background:red;color:white;}
+.igBtn{background:#c13584;color:white;}
 
 .popup,.successPopup,.authPopup{
 display:none;
@@ -276,16 +256,11 @@ background:#111;
 padding:20px;
 border-radius:16px;
 width:90%;
-max-width:400px;
+max-width:420px;
 border:1px solid red;
 }
 
-.modal h2{
-margin-bottom:15px;
-}
-
-.modal input,
-.modal select{
+.modal input,.modal select{
 width:100%;
 padding:15px;
 background:#000;
@@ -295,15 +270,30 @@ border-radius:10px;
 margin-bottom:12px;
 }
 
-.modal button{
-width:100%;
-padding:15px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
+.wheelWrap{
+text-align:center;
+}
+
+.wheel{
+width:250px;
+height:250px;
+border-radius:50%;
+margin:20px auto;
+border:10px solid red;
+background:conic-gradient(
+#ff0000 0deg 51deg,
+#111 51deg 102deg,
+#ff4444 102deg 153deg,
+#222 153deg 204deg,
+#ff0000 204deg 255deg,
+#111 255deg 306deg,
+#ff4444 306deg 360deg
+);
+transition:transform 5s ease-out;
+}
+
+.pointer{
+font-size:30px;
 }
 
 .liveChat{
@@ -322,33 +312,15 @@ padding:10px;
 border-radius:10px;
 }
 
-.wheel{
-width:180px;
-height:180px;
-border-radius:50%;
-border:8px solid red;
-margin:20px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:20px;
-box-shadow:0 0 25px red;
-cursor:pointer;
-}
-
 @media(max-width:900px){
 .main{
 grid-template-columns:1fr;
 }
-
 .uidArea{
 flex-direction:column;
 }
-
-.textBanner{
-font-size:22px;
-padding:25px;
+.rewardGrid{
+grid-template-columns:1fr;
 }
 }
 </style>
@@ -403,8 +375,13 @@ padding:25px;
 
 <div class="card">
 <div class="textBanner">
-💎 UNLIMITED DIAMOND GIVEAWAY 💎<br>
-SUNNY 999 BOT × MOHIT LIVE 🔥
+🎁 FREE GIFT DAILY — LIMITED 1000 WINNERS ONLY 💎<br><br>
+✅ SUBSCRIBE SUNNY 999 BOT YOUTUBE 📺<br>
+✅ FOLLOW INSTAGRAM PAGE 📸<br>
+✅ SHARE WITH 20 FRIENDS 📤<br>
+✅ WATCH LIVE STREAM 1 MINUTE 🎮<br>
+✅ ENTER VALID FREE FIRE UID 🎯<br>
+✅ CLAIM BEFORE TIMER ENDS ⏳
 </div>
 </div>
 
@@ -423,8 +400,13 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 
 <div id="status" style="margin-top:15px;font-weight:bold;"></div>
 
-<button class="sideBtn ytBtn">📺 JOIN YOUTUBE</button>
-<button class="sideBtn tgBtn">✈ JOIN TELEGRAM</button>
+<button class="sideBtn ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">
+📺 JOIN YOUTUBE
+</button>
+
+<button class="sideBtn igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">
+📸 FOLLOW INSTAGRAM
+</button>
 </div>
 
 <div class="card">
@@ -442,6 +424,20 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 <h3>EMOTE</h3>
 </div>
 
+<div class="rewardCard" onclick="showBundle()">
+<div style="height:180px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#ff0000,#8b0000,#111);font-size:28px;font-weight:bold;text-align:center;">
+🔥 PREMIUM<br>BUNDLE
+</div>
+<h3>BUNDLE</h3>
+</div>
+
+<div class="rewardCard" onclick="showEvo()">
+<div style="height:180px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#111,#ff0000,#8b0000);font-size:28px;font-weight:bold;text-align:center;">
+⚡ EVO<br>GUN
+</div>
+<h3>EVO GUN</h3>
+</div>
+
 </div>
 
 <button class="claimBtn" onclick="claimGift()">
@@ -449,21 +445,12 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 </button>
 </div>
 
-<div class="card">
+<div class="card wheelWrap">
 <h2>🎰 SPIN TO WIN</h2>
-<div class="wheel" onclick="spinWheel()">SPIN</div>
-<div id="spinResult" style="text-align:center;font-weight:bold;"></div>
-</div>
-
-<div class="card">
-<h2>🎁 MYSTERY GIFT</h2>
-<button class="claimBtn" onclick="mysteryGift()">OPEN MYSTERY BOX</button>
-</div>
-
-<div class="card">
-<h2>👑 VIP CLUB</h2>
-<p>Join VIP Giveaway Club for premium rewards & priority gifts.</p>
-<button class="claimBtn">JOIN VIP</button>
+<div class="pointer">⬇</div>
+<div class="wheel" id="wheel"></div>
+<button class="claimBtn" onclick="spinWheel()">SPIN NOW</button>
+<div id="spinResult" style="margin-top:15px;font-weight:bold;"></div>
 </div>
 
 </div>
@@ -489,8 +476,8 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 <div class="chatMsg">King: Sunny OP 💎</div>
 </div>
 </div>
-</div>
 
+</div>
 </div>
   <!-- EMOTE POPUP -->
 <div class="popup" id="emotePopup">
@@ -501,8 +488,53 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 <option>Top DJ</option>
 <option>FF Dance</option>
 <option>Haha Emote</option>
+<option>Flowers of Love</option>
+<option>Pirate Flag</option>
+<option>Moon Flip</option>
+<option>Shake With Me</option>
+<option>Baby Shark</option>
+<option>Kung Fu Dab</option>
 </select>
 <button onclick="selectEmote()">SELECT</button>
+</div>
+</div>
+
+<!-- BUNDLE POPUP -->
+<div class="popup" id="bundlePopup">
+<div class="modal">
+<h2>Select Bundle</h2>
+<select id="bundleSelect">
+<option>Golden Shade Bundle</option>
+<option>Hip Hop Golden Bundle</option>
+<option>Cobra Bundle</option>
+<option>Golden Sakura Bundle</option>
+<option>Red Criminal Bundle</option>
+<option>Blue Criminal Bundle</option>
+<option>Green Criminal Bundle</option>
+<option>Purple Criminal Bundle</option>
+<option>Golden Criminal Bundle</option>
+</select>
+<button onclick="selectBundle()">SELECT</button>
+</div>
+</div>
+
+<!-- EVO POPUP -->
+<div class="popup" id="evoPopup">
+<div class="modal">
+<h2>Select Evo Gun</h2>
+<select id="evoSelect">
+<option>MP40 Predatory Cobra</option>
+<option>MP40 Flashing Spade</option>
+<option>AK Blue Flame Draco</option>
+<option>M1014 Green Flame Draco</option>
+<option>SCAR Megalodon Alpha</option>
+<option>UMP Cataclysm</option>
+<option>FAMAS Golden Glory</option>
+<option>XM8 Cosmic Beast</option>
+<option>M1887 One Punch Man</option>
+<option>MP5 Platinum Divinity</option>
+</select>
+<button onclick="selectEvo()">SELECT</button>
 </div>
 </div>
 
@@ -531,7 +563,7 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 <div class="successPopup" id="successPopup">
 <div class="modal">
 <h2>🎉 CONGRATULATIONS! YOU WON 💎</h2>
-<p>Your reward will arrive within 2 hours.</p>
+<p id="successText">Your gift has been sent to your Free Fire mailbox. Delivery within 2 hours.</p>
 <button onclick="closeSuccess()">OK</button>
 </div>
 </div>
@@ -539,27 +571,30 @@ SUNNY 999 BOT × MOHIT LIVE 🔥
 <script>
 let selectedGift="";
 let uidVerified=false;
+let wheelRotation=0;
 
-function showLogin(){
-document.getElementById("loginPopup").style.display="flex";
-}
-
-function showSignup(){
-document.getElementById("signupPopup").style.display="flex";
-}
-
+function showLogin(){ document.getElementById("loginPopup").style.display="flex"; }
+function showSignup(){ document.getElementById("signupPopup").style.display="flex"; }
 function closeAuth(){
 document.getElementById("loginPopup").style.display="none";
 document.getElementById("signupPopup").style.display="none";
 }
 
-function showEmote(){
-document.getElementById("emotePopup").style.display="flex";
-}
+function showEmote(){ document.getElementById("emotePopup").style.display="flex"; }
+function showBundle(){ document.getElementById("bundlePopup").style.display="flex"; }
+function showEvo(){ document.getElementById("evoPopup").style.display="flex"; }
 
 function selectEmote(){
 selectedGift=document.getElementById("emoteSelect").value;
 document.getElementById("emotePopup").style.display="none";
+}
+function selectBundle(){
+selectedGift=document.getElementById("bundleSelect").value;
+document.getElementById("bundlePopup").style.display="none";
+}
+function selectEvo(){
+selectedGift=document.getElementById("evoSelect").value;
+document.getElementById("evoPopup").style.display="none";
 }
 
 function pickGift(el,gift){
@@ -580,14 +615,18 @@ status.style.color="orange";
 return;
 }
 
-status.innerHTML="⏳ Verifying UID...";
 status.style.color="yellow";
+status.innerHTML="🔄 Connecting to Free Fire Server...";
+
+setTimeout(()=>{
+status.innerHTML="📦 Processing Reward Request...";
+},2000);
 
 setTimeout(()=>{
 status.innerHTML="✅ UID Verified Successfully";
 status.style.color="lime";
 uidVerified=true;
-},2500);
+},4500);
 }
 
 function claimGift(){
@@ -605,7 +644,14 @@ status.style.color="orange";
 return;
 }
 
+status.style.color="yellow";
+status.innerHTML="📨 Sending gift to Free Fire mailbox...";
+
+setTimeout(()=>{
 document.getElementById("successPopup").style.display="flex";
+status.innerHTML="✅ Reward Sent Successfully";
+status.style.color="lime";
+},3000);
 }
 
 function closeSuccess(){
@@ -613,46 +659,30 @@ document.getElementById("successPopup").style.display="none";
 }
 
 function spinWheel(){
-const rewards=["500 Diamonds","Emote","VIP Pass","Lucky Bonus"];
-let win=rewards[Math.floor(Math.random()*rewards.length)];
-document.getElementById("spinResult").innerHTML="🎉 You won "+win;
-}
-
-function mysteryGift(){
-alert("🎁 Mystery Gift Opened! Bonus Reward Added!");
-}
-
-const winners=[
-"👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎",
-"🔥 SUNNY ELITE WON VIP BONUS",
-"⚡ FF MASTER WON LUCKY SPIN"
+const rewards=[
+"500 Diamonds",
+"1000 Diamonds",
+"VIP Bonus",
+"Cobra Bundle",
+"MP40 Predatory Cobra",
+"Random Emote",
+"Mystery Gift"
 ];
 
-let w=0;
-setInterval(()=>{
-w=(w+1)%winners.length;
-document.getElementById("winnerTicker").innerHTML=winners[w];
-},4000);
+let reward=rewards[Math.floor(Math.random()*rewards.length)];
+wheelRotation += 1800 + Math.floor(Math.random()*1000);
 
-let countdown=7200;
-setInterval(()=>{
-countdown--;
-let h=String(Math.floor(countdown/3600)).padStart(2,'0');
-let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
-let s=String(countdown%60).padStart(2,'0');
-document.getElementById("timer").innerHTML=`⏳ ${h}:${m}:${s}`;
-if(countdown<=0) countdown=7200;
-},1000);
+document.getElementById("wheel").style.transform=`rotate(${wheelRotation}deg)`;
+
+setTimeout(()=>{
+document.getElementById("spinResult").innerHTML="🎉 YOU WON: " + reward;
+},5000);
+}
 
 setInterval(()=>{
 let users=1400+Math.floor(Math.random()*500);
 document.getElementById("onlineUsers").innerHTML=`👥 ${users} USERS`;
 },3000);
-
-setInterval(()=>{
-let amount=1200000+Math.floor(Math.random()*99999);
-document.getElementById("jackpot").innerHTML=`💎 ${amount.toLocaleString()} GIVEN`;
-},5000);
 
 setInterval(()=>{
 let chat=[
@@ -664,6 +694,16 @@ let chat=[
 let msg=chat[Math.floor(Math.random()*chat.length)];
 document.getElementById("liveChat").innerHTML += `<div class="chatMsg">${msg}</div>`;
 },6000);
+
+let countdown=7200;
+setInterval(()=>{
+countdown--;
+let h=String(Math.floor(countdown/3600)).padStart(2,'0');
+let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+let s=String(countdown%60).padStart(2,'0');
+document.getElementById("timer").innerHTML=`⏳ ${h}:${m}:${s}`;
+if(countdown<=0) countdown=7200;
+},1000);
 </script>
 
 </body>
