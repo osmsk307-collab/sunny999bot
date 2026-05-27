@@ -3,99 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNNY 999 BOT - Reward Portal</title>
+<title>SUNNY 999 BOT PRO PORTAL</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e') center/cover;
-color:white;min-height:100vh
+color:white;
+min-height:100vh;
 }
+
 header{
-display:flex;justify-content:space-between;align-items:center;
-padding:20px;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);
-position:sticky;top:0
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:999;
 }
-.logo{font-size:32px;font-weight:bold;color:orange}
-.btn{
-padding:10px 20px;border:none;border-radius:12px;cursor:pointer;
-font-weight:bold
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:orange;
 }
-.login{background:#222;color:white}
-.signup{background:orange;color:black}
+
+.topBtns button{
+padding:10px 16px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+margin-left:8px;
+}
+
+.loginBtn{
+background:#222;
+color:white;
+}
+
+.signupBtn{
+background:orange;
+color:black;
+}
+
 .container{
-max-width:1200px;margin:auto;padding:20px;
-display:grid;grid-template-columns:2fr 1fr;gap:20px
+max-width:1200px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
 }
+
 .card{
 background:rgba(0,0,0,.55);
 border:1px solid rgba(255,165,0,.3);
-border-radius:20px;padding:20px;backdrop-filter:blur(10px)
+border-radius:20px;
+padding:20px;
+backdrop-filter:blur(10px);
 }
-h1{font-size:42px;margin:10px 0}
-input{
-width:100%;padding:15px;border:none;border-radius:12px;
-background:#111;color:white;margin:15px 0
+
+.statusBar{
+margin-bottom:15px;
+font-weight:bold;
 }
+
+.banner{
+width:100%;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+h1{
+font-size:40px;
+margin:10px 0;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#111;
+color:white;
+margin:12px 0;
+}
+
 .gifts{
-display:grid;grid-template-columns:repeat(2,1fr);gap:10px
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:10px;
 }
+
 .gift{
-padding:15px;background:#111;border:1px solid #333;
-border-radius:15px;text-align:center;cursor:pointer
+padding:15px;
+background:#111;
+border:1px solid #333;
+border-radius:15px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
 }
-.gift:hover,.selected{background:orange;color:black}
-.claim{
-width:100%;padding:15px;background:orange;color:black;
-border:none;border-radius:15px;font-size:18px;font-weight:bold;
-margin-top:15px;cursor:pointer
+
+.gift:hover,.selected{
+background:orange;
+color:black;
 }
-.status{margin-top:15px;font-weight:bold}
-.live-item{margin:10px 0}
-.live-box{
-height:200px;background:#111;border-radius:15px;
-display:flex;align-items:center;justify-content:center
+
+.claimBtn{
+width:100%;
+padding:15px;
+background:orange;
+color:black;
+border:none;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:15px;
 }
+
+#status{
+margin-top:15px;
+font-weight:bold;
+}
+
+.popup,
+.loginModal,
+.successPopup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.modal{
+background:#111;
+padding:20px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#111;
+padding:12px;
+border-radius:12px;
+border:1px solid orange;
+z-index:999;
+}
+
+.liveBox{
+height:220px;
+border-radius:15px;
+overflow:hidden;
+background:#111;
+}
+
+.successCard{
+background:#111;
+padding:25px;
+border-radius:20px;
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+.closeBtn{
+margin-top:15px;
+padding:12px 20px;
+background:orange;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+}
+
 @media(max-width:768px){
-.container{grid-template-columns:1fr}
-.logo{font-size:22px}
-h1{font-size:28px}
+.container{
+grid-template-columns:1fr;
+}
+.logo{
+font-size:22px;
+}
+h1{
+font-size:28px;
+}
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">SUNNY 999 BOT</div>
-<div>
-<button class="btn login">Login</button>
-<button class="btn signup">Sign Up</button>
+
+<div class="topBtns">
+<button class="loginBtn" onclick="showLogin()">Login</button>
+<button class="signupBtn" onclick="showLogin()">Sign Up</button>
 </div>
 </header>
 
 <div class="container">
-<div class="card">
-<div>🟢 SERVER ONLINE | 👥 <span id="online">1287</span> online</div>
-<h1>FREE FIRE REWARD PORTAL</h1>
-<p>Enter UID and claim your reward</p>
 
-<input type="text" id="uid" placeholder="Enter Free Fire UID">
+<div class="card">
+
+<div class="statusBar">
+🟢 SERVER ONLINE |
+👥 <span id="online">1542</span> |
+⏳ <span id="timer">02:00:00</span>
+</div>
+
+<img
+class="banner"
+src="https://images.unsplash.com/photo-1542751371-adc38448a05e"
+/>
+
+<h1>FREE FIRE REWARD PORTAL</h1>
+<p>Enter UID and claim your premium reward</p>
+
+<input
+type="text"
+id="uid"
+placeholder="Enter Free Fire UID"
+/>
 
 <div class="gifts">
-<div class="gift" onclick="selectGift(this,'100 Diamonds')">100 Diamonds</div>
-<div class="gift" onclick="selectGift(this,'Elite Pass')">Elite Pass</div>
-<div class="gift" onclick="selectGift(this,'Evo Gun')">Evo Gun</div>
-<div class="gift" onclick="selectGift(this,'Legendary Bundle')">Legendary Bundle</div>
+<div class="gift" onclick="pickGift(this,'100 Diamonds')">100 Diamonds</div>
+<div class="gift" onclick="pickGift(this,'Elite Pass')">Elite Pass</div>
+<div class="gift" onclick="showBundle()">Bundle</div>
+<div class="gift" onclick="showEmote()">Emote</div>
+<div class="gift" onclick="showEvo()">Evo Gun</div>
+<div class="gift" onclick="pickGift(this,'Weekly Membership')">Membership</div>
 </div>
 
-<button class="claim" onclick="claimGift()">VERIFY & CLAIM</button>
-<div class="status" id="status"></div>
-</div>
+<button class="claimBtn" onclick="claimGift()">
+VERIFY & CLAIM
+</button>
 
+<div id="status"></div>
+
+</div>
 <div>
+
 <div class="card">
 <h2>🎁 Live Claims</h2>
-<div class="live-item" id="claims">RX_HUNTER claimed Evo Gun</div>
+<div id="claims">RX_HUNTER claimed Cobra Bundle 🔥</div>
 </div>
 
 <div class="card" style="margin-top:20px">
@@ -107,55 +279,200 @@ h1{font-size:28px}
 
 <div class="card" style="margin-top:20px">
 <h2>📺 LIVE STREAM</h2>
-<div class="live-box">YouTube Live Embed Here</div>
-</div>
+<div class="liveBox">
+<iframe
+width="100%"
+height="100%"
+src="https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig"
+frameborder="0"
+allowfullscreen>
+</iframe>
 </div>
 </div>
 
+</div>
+</div>
+
+<!-- Bundle Popup -->
+<div class="popup" id="bundlePopup">
+<div class="modal">
+<h2>Select Bundle</h2>
+<select id="bundleSelect">
+<option>Cobra Bundle</option>
+<option>Hip Hop Bundle</option>
+<option>Criminal Bundle</option>
+<option>Sakura Bundle</option>
+<option>Angelic Bundle</option>
+</select>
+<button class="claimBtn" onclick="selectBundle()">Select Bundle</button>
+</div>
+</div>
+
+<!-- Emote Popup -->
+<div class="popup" id="emotePopup">
+<div class="modal">
+<h2>Select Emote</h2>
+<select id="emoteSelect">
+<option>LOL Emote</option>
+<option>Top DJ</option>
+<option>FF Dance</option>
+<option>Haha Emote</option>
+</select>
+<button class="claimBtn" onclick="selectEmote()">Select Emote</button>
+</div>
+</div>
+
+<!-- Evo Popup -->
+<div class="popup" id="evoPopup">
+<div class="modal">
+<h2>Select Evo Gun</h2>
+<select id="evoSelect">
+<option>M1014 Evo</option>
+<option>AK Evo</option>
+<option>MP40 Evo</option>
+<option>SCAR Evo</option>
+</select>
+<button class="claimBtn" onclick="selectEvo()">Select Evo</button>
+</div>
+</div>
+
+<!-- Login Popup -->
+<div class="loginModal" id="loginBox">
+<div class="modal">
+<h2>Login / Signup</h2>
+<input placeholder="Username">
+<input type="password" placeholder="Password">
+<button class="claimBtn" onclick="hideLogin()">Continue</button>
+</div>
+</div>
+
+<!-- Success Popup -->
+<div class="successPopup" id="successPopup">
+<div class="successCard">
+<h2>🎉 Gift Sent Successfully</h2>
+<p>
+Your selected reward has been sent to your
+Free Fire mailbox.
+Delivery within 2 hours.
+</p>
+<button class="closeBtn" onclick="closeSuccess()">OK</button>
+</div>
+</div>
+
+<div class="toast" id="toast">
+Player123 claimed Elite Pass 🔥
+</div>
 <script>
-let selectedGift = "";
-const claims = [
-"RX_HUNTER claimed Evo Gun",
+let selectedGift="";
+
+const claims=[
+"RX_HUNTER claimed Cobra Bundle 🔥",
 "KING_777 claimed Elite Pass",
 "PRO_SONU claimed 100 Diamonds",
-"DARK_OP claimed Bundle"
+"DARK_OP claimed FF Dance Emote",
+"NOOB_KING claimed MP40 Evo"
 ];
 
-function selectGift(el,gift){
-document.querySelectorAll(".gift").forEach(g=>g.classList.remove("selected"));
+function pickGift(el,gift){
+document.querySelectorAll(".gift").forEach(g=>{
+g.classList.remove("selected");
+});
 el.classList.add("selected");
-selectedGift = gift;
+selectedGift=gift;
+}
+
+function showBundle(){
+document.getElementById("bundlePopup").style.display="flex";
+}
+
+function showEmote(){
+document.getElementById("emotePopup").style.display="flex";
+}
+
+function showEvo(){
+document.getElementById("evoPopup").style.display="flex";
+}
+
+function showLogin(){
+document.getElementById("loginBox").style.display="flex";
+}
+
+function hideLogin(){
+document.getElementById("loginBox").style.display="none";
+}
+
+function selectBundle(){
+selectedGift=document.getElementById("bundleSelect").value;
+document.getElementById("bundlePopup").style.display="none";
+}
+
+function selectEmote(){
+selectedGift=document.getElementById("emoteSelect").value;
+document.getElementById("emotePopup").style.display="none";
+}
+
+function selectEvo(){
+selectedGift=document.getElementById("evoSelect").value;
+document.getElementById("evoPopup").style.display="none";
+}
+
+function closeSuccess(){
+document.getElementById("successPopup").style.display="none";
 }
 
 function claimGift(){
-let uid = document.getElementById("uid").value;
-let status = document.getElementById("status");
+let uid=document.getElementById("uid").value;
+let status=document.getElementById("status");
 
 if(!uid || !selectedGift){
-status.innerHTML = "⚠️ Enter UID and select gift";
+status.innerHTML="⚠️ Enter UID and select reward";
 return;
 }
 
-status.innerHTML = "⏳ Verifying UID...";
-setTimeout(()=>{
-status.innerHTML = "📦 Reward queued...";
-},1500);
+status.innerHTML="⏳ Checking UID...";
 
 setTimeout(()=>{
-status.innerHTML = "✅ Gift selected successfully! Sent to your Free Fire mailbox within 2 hours";
-},3000);
+status.innerHTML="📦 Verifying reward...";
+},1200);
+
+setTimeout(()=>{
+status.innerHTML="🚀 Sending reward...";
+},2200);
+
+setTimeout(()=>{
+document.getElementById("successPopup").style.display="flex";
+status.innerHTML="";
+},3500);
 }
 
 setInterval(()=>{
-document.getElementById("online").innerText =
-1200 + Math.floor(Math.random()*300);
+document.getElementById("online").innerText=
+1400+Math.floor(Math.random()*400);
 },3000);
 
 let i=0;
 setInterval(()=>{
 i=(i+1)%claims.length;
 document.getElementById("claims").innerText=claims[i];
+document.getElementById("toast").innerText=claims[i];
 },2500);
+
+let sec=7200;
+
+setInterval(()=>{
+sec--;
+
+let h=String(Math.floor(sec/3600)).padStart(2,'0');
+let m=String(Math.floor((sec%3600)/60)).padStart(2,'0');
+let s=String(sec%60).padStart(2,'0');
+
+document.getElementById("timer").innerText=
+`${h}:${m}:${s}`;
+
+if(sec<=0){
+sec=7200;
+}
+},1000);
 </script>
 
 </body>
