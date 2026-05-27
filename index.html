@@ -18,11 +18,6 @@ background:#070707;
 color:white;
 }
 
-a{
-text-decoration:none;
-color:white;
-}
-
 .container{
 width:95%;
 max-width:1400px;
@@ -44,7 +39,16 @@ padding:16px;
 box-shadow:0 0 10px rgba(255,0,0,.08);
 }
 
-/* TOP HEADER */
+.topTicker{
+background:red;
+padding:10px;
+text-align:center;
+font-weight:bold;
+position:sticky;
+top:0;
+z-index:9999;
+}
+
 .topHeader{
 background:#0b0b0b;
 border-bottom:1px solid #222;
@@ -66,8 +70,8 @@ gap:12px;
 }
 
 .brand img{
-width:55px;
-height:55px;
+width:60px;
+height:60px;
 border-radius:50%;
 border:2px solid red;
 object-fit:cover;
@@ -91,7 +95,6 @@ color:#aaa;
 display:flex;
 gap:25px;
 flex-wrap:wrap;
-align-items:center;
 }
 
 .stat{
@@ -120,7 +123,6 @@ background:red;
 color:white;
 }
 
-/* NAV */
 .navbar{
 background:#101010;
 border-bottom:1px solid #222;
@@ -137,13 +139,9 @@ flex-wrap:wrap;
 font-size:14px;
 font-weight:bold;
 color:#ddd;
+text-decoration:none;
 }
 
-.navWrap a:hover{
-color:red;
-}
-
-/* BANNER */
 .banner{
 width:100%;
 border-radius:14px;
@@ -152,24 +150,19 @@ display:block;
 
 .socialBar{
 display:flex;
-justify-content:space-around;
+flex-direction:column;
 gap:10px;
 margin-top:12px;
-background:#111;
-padding:10px;
-border-radius:12px;
-flex-wrap:wrap;
 }
 
 .socialBtn{
-background:#1a1a1a;
-padding:10px 14px;
+background:#111;
+padding:16px;
 border-radius:10px;
 font-weight:bold;
-font-size:14px;
+text-align:center;
 }
 
-/* UID SECTION */
 .uidTitle{
 font-size:24px;
 margin-bottom:14px;
@@ -200,10 +193,9 @@ font-weight:bold;
 cursor:pointer;
 }
 
-/* REWARDS */
 .rewardGrid{
 display:grid;
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:14px;
 margin-top:18px;
 }
@@ -215,17 +207,11 @@ padding:14px;
 border-radius:14px;
 text-align:center;
 cursor:pointer;
-transition:.2s;
-}
-
-.rewardCard:hover{
-transform:scale(1.03);
-border-color:red;
 }
 
 .rewardCard img{
 width:100%;
-height:110px;
+height:120px;
 object-fit:cover;
 border-radius:10px;
 margin-bottom:10px;
@@ -244,7 +230,51 @@ cursor:pointer;
 margin-top:20px;
 }
 
-/* MOBILE */
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+align-items:center;
+justify-content:center;
+z-index:99999;
+}
+
+.modal{
+background:#111;
+padding:20px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+}
+
+.modal select{
+width:100%;
+padding:14px;
+background:#222;
+color:white;
+border:none;
+border-radius:10px;
+margin:15px 0;
+}
+
+.liveImg{
+width:100%;
+border-radius:14px;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+padding:14px;
+border:2px solid red;
+border-radius:12px;
+z-index:99999;
+display:none;
+}
+
 @media(max-width:900px){
 .mainLayout{
 grid-template-columns:1fr;
@@ -255,22 +285,22 @@ grid-template-columns:repeat(2,1fr);
 .uidWrap{
 flex-direction:column;
 }
-.topWrap{
-flex-direction:column;
-align-items:flex-start;
-}
 }
 </style>
 </head>
 
 <body>
 
+<div class="topTicker" id="winnerTicker">
+👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎
+</div>
+
 <div class="topHeader">
 <div class="container">
 <div class="topWrap">
 
 <div class="brand">
-<img src="YOUR_PROFILE_IMAGE_LINK">
+<img src="sunny-logo.jpg">
 <div class="brandText">
 <h1>SUNNY <span>999 BOT</span></h1>
 <p>OFFICIAL FREE FIRE REWARD PORTAL</p>
@@ -279,8 +309,8 @@ align-items:flex-start;
 
 <div class="topStats">
 <div class="stat">🟢 SERVER ONLINE</div>
-<div class="stat">👥 1527 USERS</div>
-<div class="stat">⏳ 01:59:48</div>
+<div class="stat" id="onlineUsers">👥 1527 USERS</div>
+<div class="stat" id="timer">⏳ 01:59:48</div>
 </div>
 
 <div class="loginBtns">
@@ -295,12 +325,11 @@ align-items:flex-start;
 <div class="navbar">
 <div class="container">
 <div class="navWrap">
-<a href="#">🏠 HOME</a>
-<a href="#">🛡 HOW IT WORKS</a>
-<a href="#">📺 LIVE STREAM</a>
-<a href="#">🏆 LEADERBOARD</a>
-<a href="#">🎁 GIVEAWAY</a>
-<a href="#">☎ SUPPORT</a>
+<a href="#">HOME</a>
+<a href="#">HOW IT WORKS</a>
+<a href="#">LIVE STREAM</a>
+<a href="#">LEADERBOARD</a>
+<a href="#">SUPPORT</a>
 </div>
 </div>
 </div>
@@ -311,64 +340,56 @@ align-items:flex-start;
 <div>
 
 <div class="card">
-<img
-class="banner"
-src="YOUR_TAMMU_BANNER_LINK"
->
+<img class="banner" src="sunny-banner.jpg">
 
 <div class="socialBar">
-<div class="socialBtn">📺 SUNNY 999 BOT</div>
-<div class="socialBtn">📸 sunny_999_bot</div>
-<div class="socialBtn">✈ Sunny_999_Bot_Legend</div>
+<div class="socialBtn">
+👑 OFFICIAL PARTNER BY — SUNNY 999 BOT × MOHIT LIVE
+</div>
+
+<div class="socialBtn" style="color:#ffcc00;">
+🎁 REAL GIVEAWAY DAILY 🎁
+</div>
 </div>
 </div>
 
 <div class="card" style="margin-top:20px;">
-<h2 class="uidTitle">🎁 ENTER YOUR FREE FIRE UID</h2>
+<h2 class="uidTitle">🎮 ENTER YOUR FREE FIRE UID</h2>
 
 <div class="uidWrap">
 <input
 type="text"
 id="uid"
-placeholder="Enter Free Fire UID Here..."
+placeholder="Enter Free Fire UID..."
 >
-<button>CHECK UID</button>
+<button onclick="checkUID()">CHECK UID</button>
 </div>
 
-<p style="color:#999;margin-top:10px;">
-Make sure to enter correct UID. Rewards will be sent to this UID.
-</p>
+<div id="status" style="margin-top:12px;font-weight:bold;"></div>
 </div>
 
 <div class="card" style="margin-top:20px;">
-<h2 style="font-size:24px;margin-bottom:15px;">
-🎁 CHOOSE YOUR REWARD
-</h2>
+<h2>🎁 CHOOSE YOUR REWARD</h2>
 
 <div class="rewardGrid">
 
 <div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
-<img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png">
+<img src="diamond.jpg">
 <h3>100 DIAMONDS</h3>
 </div>
 
-<div class="rewardCard" onclick="pickGift(this,'Elite Pass')">
-<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
-<h3>ELITE PASS</h3>
-</div>
-
-<div class="rewardCard" onclick="pickGift(this,'Bundle')">
-<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+<div class="rewardCard" onclick="showBundle()">
+<img src="bundle.jpg">
 <h3>BUNDLE</h3>
 </div>
 
-<div class="rewardCard" onclick="pickGift(this,'Emote')">
-<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+<div class="rewardCard" onclick="showEmote()">
+<img src="emote.jpg">
 <h3>EMOTE</h3>
 </div>
 
-<div class="rewardCard" onclick="pickGift(this,'Evo Gun')">
-<img src="https://cdn-icons-png.flaticon.com/512/3598/3598931.png">
+<div class="rewardCard" onclick="showEvo()">
+<img src="evogun.jpg">
 <h3>EVO GUN</h3>
 </div>
 
@@ -377,61 +398,192 @@ Make sure to enter correct UID. Rewards will be sent to this UID.
 <button class="verifyBtn" onclick="claimGift()">
 🚀 VERIFY & CLAIM REWARD
 </button>
-
-<div id="status" style="margin-top:15px;font-weight:bold;"></div>
-</div>
-
-<div class="card" style="margin-top:20px;">
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center;">
-
-<div>
-<h3>🛡</h3>
-<p>100% SAFE</p>
-<small>No Ban</small>
-</div>
-
-<div>
-<h3>⚡</h3>
-<p>INSTANT DELIVERY</p>
-<small>Within 2 Hours</small>
-</div>
-
-<div>
-<h3>👤</h3>
-<p>NO HACK</p>
-<small>100% Legal</small>
-</div>
-
-<div>
-<h3>👑</h3>
-<p>TRUSTED</p>
-<small>By Millions</small>
-</div>
-
-</div>
 </div>
 
 <div class="card" style="margin-top:20px;">
 <h2>🛡 HOW IT WORKS?</h2>
 
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center;margin-top:20px;">
-<div>📱<br>ENTER UID</div>
-<div>🎁<br>SELECT REWARD</div>
-<div>✔<br>VERIFY UID</div>
-<div>📦<br>GET REWARD</div>
-</div>
-</div>
-</div>
-    <script>
-let selectedGift = "";
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+text-align:center;
+margin-top:18px;
+">
 
-const liveClaims = [
+<div>📱<br>ENTER UID</div>
+<div>✔<br>VERIFY UID</div>
+<div>🎁<br>SELECT REWARD</div>
+<div>📦<br>GET GIFT</div>
+
+</div>
+</div>
+</div>
+<!-- RIGHT SIDE -->
+<div>
+
+<div class="card">
+<h2 style="margin-bottom:15px;">📺 LIVE STREAM</h2>
+
+<img class="liveImg" src="mohit-banner.jpg">
+
+<div style="margin-top:15px;">
+<h3>MOHIT LIVE × SUNNY 999 BOT</h3>
+<p style="color:#aaa;margin-top:6px;">
+OFFICIAL DAILY GIVEAWAY LIVE STREAM
+</p>
+
+<button style="
+width:100%;
+margin-top:15px;
+padding:14px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+">
+WATCH LIVE
+</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<h2>🎁 LIVE CLAIMS</h2>
+
+<div id="claimsBox" style="
+margin-top:15px;
+display:grid;
+gap:12px;
+font-weight:bold;
+">
+<div>RX_HUNTER claimed Cobra Bundle 🔥</div>
+<div>PRO_SONU claimed 100 Diamonds 💎</div>
+<div>DARK_OP claimed MP40 Evo 🔫</div>
+<div>NOOB_KING claimed Emote 😂</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<h2>🏆 LEADERBOARD</h2>
+
+<div style="
+margin-top:15px;
+display:grid;
+gap:12px;
+font-weight:bold;
+">
+<div>#1 MOHIT LIVE 👑</div>
+<div>#2 SUNNY ELITE 🔥</div>
+<div>#3 FF MASTER 💎</div>
+<div>#4 HEADSHOT KING ⚡</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="container">
+
+<div class="card" style="margin-top:20px;">
+<h2>📢 ANNOUNCEMENT</h2>
+<p style="margin-top:10px;color:#ccc;">
+Daily giveaways active now. Rewards sent within 2 hours after verification.
+</p>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<div style="
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+text-align:center;
+">
+
+<div>
+<h3>250K+</h3>
+<p>Total Users</p>
+</div>
+
+<div>
+<h3>1.5M+</h3>
+<p>Rewards Sent</p>
+</div>
+
+<div>
+<h3>1527</h3>
+<p>Users Online</p>
+</div>
+
+<div>
+<h3>8542</h3>
+<p>Today's Claims</p>
+</div>
+
+</div>
+</div>
+<!-- Bundle Popup -->
+<div class="popup" id="bundlePopup">
+<div class="modal">
+<h2>Select Bundle</h2>
+<select id="bundleSelect">
+<option>Golden Shade Bundle</option>
+<option>HipHop Golden Bundle</option>
+<option>Cobra Bundle</option>
+<option>Golden Sakura Bundle</option>
+<option>Red Criminal Bundle</option>
+</select>
+<button class="verifyBtn" onclick="selectBundle()">SELECT</button>
+</div>
+</div>
+
+<!-- Emote Popup -->
+<div class="popup" id="emotePopup">
+<div class="modal">
+<h2>Select Emote</h2>
+<select id="emoteSelect">
+<option>LOL Emote</option>
+<option>Top DJ Emote</option>
+<option>FF Dance Emote</option>
+<option>Haha Emote</option>
+</select>
+<button class="verifyBtn" onclick="selectEmote()">SELECT</button>
+</div>
+</div>
+
+<!-- Evo Popup -->
+<div class="popup" id="evoPopup">
+<div class="modal">
+<h2>Select Evo Gun</h2>
+<select id="evoSelect">
+<option>MP40 Evo</option>
+<option>AK Evo</option>
+<option>M1014 Evo</option>
+<option>SCAR Evo</option>
+</select>
+<button class="verifyBtn" onclick="selectEvo()">SELECT</button>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let selectedGift="";
+let uidVerified=false;
+
+const claims=[
 "RX_HUNTER claimed Cobra Bundle 🔥",
 "PRO_SONU claimed 100 Diamonds 💎",
 "DARK_OP claimed MP40 Evo 🔫",
-"KING_777 claimed Elite Pass 🎟",
 "NOOB_KING claimed Emote 😂",
-"FF_MASTER claimed Angelic Bundle 👑"
+"AMAN FF claimed Golden Sakura Bundle 👑"
+];
+
+const winners=[
+"👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎",
+"🏆 DAILY WINNER: SUNNY ELITE WON RED CRIMINAL BUNDLE 🔥",
+"⚡ DAILY WINNER: RX_HUNTER WON MP40 EVO GUN"
 ];
 
 function pickGift(el,gift){
@@ -439,77 +591,134 @@ document.querySelectorAll(".rewardCard").forEach(card=>{
 card.style.border="1px solid #333";
 });
 el.style.border="2px solid red";
-selectedGift = gift;
+selectedGift=gift;
 }
 
-function claimGift(){
-let uid = document.getElementById("uid").value;
-let status = document.getElementById("status");
+function showBundle(){
+document.getElementById("bundlePopup").style.display="flex";
+}
 
-if(!uid || !selectedGift){
-status.innerHTML = "⚠ Please enter UID and select reward";
-status.style.color = "orange";
+function showEmote(){
+document.getElementById("emotePopup").style.display="flex";
+}
+
+function showEvo(){
+document.getElementById("evoPopup").style.display="flex";
+}
+
+function selectBundle(){
+selectedGift=document.getElementById("bundleSelect").value;
+document.getElementById("bundlePopup").style.display="none";
+}
+
+function selectEmote(){
+selectedGift=document.getElementById("emoteSelect").value;
+document.getElementById("emotePopup").style.display="none";
+}
+
+function selectEvo(){
+selectedGift=document.getElementById("evoSelect").value;
+document.getElementById("evoPopup").style.display="none";
+}
+
+function checkUID(){
+let uid=document.getElementById("uid").value;
+let status=document.getElementById("status");
+
+if(!uid){
+status.innerHTML="⚠ Enter Free Fire UID";
+status.style.color="orange";
 return;
 }
 
-status.innerHTML = "⏳ Checking UID...";
-status.style.color = "yellow";
+status.innerHTML="⏳ Checking UID...";
+status.style.color="yellow";
 
 setTimeout(()=>{
-status.innerHTML = "📦 Verifying reward...";
-},1200);
-
-setTimeout(()=>{
-status.innerHTML = "🚀 Sending reward...";
-},2500);
-
-setTimeout(()=>{
-status.innerHTML = "✅ Reward sent successfully! Delivery within 2 hours.";
-status.style.color = "lime";
-},4000);
+status.innerHTML="✅ UID Verified Successfully";
+status.style.color="lime";
+uidVerified=true;
+},2000);
 }
 
-/* LIVE CLAIM ROTATION */
-let claimIndex = 0;
+function claimGift(){
+let status=document.getElementById("status");
 
+if(!uidVerified){
+status.innerHTML="⚠ First verify UID";
+status.style.color="orange";
+return;
+}
+
+if(!selectedGift){
+status.innerHTML="⚠ Select reward first";
+status.style.color="orange";
+return;
+}
+
+status.innerHTML="📦 Sending reward...";
+status.style.color="yellow";
+
+setTimeout(()=>{
+status.innerHTML="✅ Reward Sent Successfully! Delivery within 2 hours";
+status.style.color="lime";
+showToast("🎉 Gift Sent Successfully!");
+},2500);
+}
+
+function showToast(msg){
+let toast=document.getElementById("toast");
+toast.innerHTML=msg;
+toast.style.display="block";
+
+setTimeout(()=>{
+toast.style.display="none";
+},3000);
+}
+
+let claimIndex=0;
 setInterval(()=>{
-claimIndex++;
-if(claimIndex >= liveClaims.length){
-claimIndex = 0;
-}
-
-document.getElementById("claimsBox").innerHTML = `
-<div>${liveClaims[claimIndex]}</div>
-<div>${liveClaims[(claimIndex+1)%liveClaims.length]}</div>
-<div>${liveClaims[(claimIndex+2)%liveClaims.length]}</div>
-<div>${liveClaims[(claimIndex+3)%liveClaims.length]}</div>
-<div>${liveClaims[(claimIndex+4)%liveClaims.length]}</div>
+claimIndex=(claimIndex+1)%claims.length;
+document.getElementById("claimsBox").innerHTML=`
+<div>${claims[claimIndex]}</div>
+<div>${claims[(claimIndex+1)%claims.length]}</div>
+<div>${claims[(claimIndex+2)%claims.length]}</div>
+<div>${claims[(claimIndex+3)%claims.length]}</div>
 `;
-},2500);
+},3000);
 
-/* COUNTDOWN */
-let countdown = 7200;
+let winIndex=0;
+setInterval(()=>{
+winIndex=(winIndex+1)%winners.length;
+document.getElementById("winnerTicker").innerHTML=winners[winIndex];
+},5000);
 
+let countdown=7200;
 setInterval(()=>{
 countdown--;
+let h=String(Math.floor(countdown/3600)).padStart(2,'0');
+let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+let s=String(countdown%60).padStart(2,'0');
 
-let h = String(Math.floor(countdown/3600)).padStart(2,'0');
-let m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');
-let s = String(countdown%60).padStart(2,'0');
+document.getElementById("timer").innerHTML=`⏳ ${h}:${m}:${s}`;
 
-document.querySelectorAll(".stat")[2].innerHTML = `⏳ ${h}:${m}:${s}`;
-
-if(countdown <= 0){
-countdown = 7200;
+if(countdown<=0){
+countdown=7200;
 }
 },1000);
 
-/* ONLINE USERS */
 setInterval(()=>{
-let users = 1400 + Math.floor(Math.random()*400);
-document.querySelectorAll(".stat")[1].innerHTML = `👥 ${users} USERS`;
+let users=1400+Math.floor(Math.random()*400);
+document.getElementById("onlineUsers").innerHTML=`👥 ${users} USERS`;
 },3000);
 
+setInterval(()=>{
+showToast("📺 MOHIT LIVE subscribed to SUNNY 999 BOT ✅");
+},12000);
+
+setInterval(()=>{
+showToast(`👀 ${20+Math.floor(Math.random()*40)} people viewing this page`);
+},18000);
 </script>
 
 </body>
