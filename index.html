@@ -24,35 +24,18 @@ max-width:1400px;
 margin:auto;
 }
 
-.mainLayout{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-margin-top:20px;
-}
-
-.card{
-background:#0d0d0d;
-border:1px solid #222;
-border-radius:16px;
-padding:16px;
-box-shadow:0 0 10px rgba(255,0,0,.08);
-}
-
 .topTicker{
 background:red;
-padding:10px;
+padding:12px;
 text-align:center;
 font-weight:bold;
-position:sticky;
-top:0;
-z-index:9999;
+font-size:18px;
 }
 
 .topHeader{
 background:#0b0b0b;
+padding:15px 0;
 border-bottom:1px solid #222;
-padding:12px 0;
 }
 
 .topWrap{
@@ -70,8 +53,8 @@ gap:12px;
 }
 
 .brand img{
-width:60px;
-height:60px;
+width:65px;
+height:65px;
 border-radius:50%;
 border:2px solid red;
 object-fit:cover;
@@ -79,32 +62,20 @@ object-fit:cover;
 
 .brandText h1{
 font-size:34px;
-font-weight:bold;
 }
 
-.brandText h1 span{
+.brandText span{
 color:red;
-}
-
-.brandText p{
-font-size:13px;
-color:#aaa;
 }
 
 .topStats{
 display:flex;
 gap:25px;
-flex-wrap:wrap;
-}
-
-.stat{
-font-size:14px;
 font-weight:bold;
-color:#ddd;
 }
 
 .loginBtns button{
-padding:10px 18px;
+padding:12px 20px;
 border:none;
 border-radius:10px;
 font-weight:bold;
@@ -115,7 +86,6 @@ margin-left:8px;
 .login{
 background:#111;
 color:white;
-border:1px solid #444;
 }
 
 .signup{
@@ -124,9 +94,9 @@ color:white;
 }
 
 .navbar{
-background:#101010;
-border-bottom:1px solid #222;
+background:#111;
 padding:14px 0;
+border-bottom:1px solid #222;
 }
 
 .navWrap{
@@ -136,10 +106,23 @@ flex-wrap:wrap;
 }
 
 .navWrap a{
-font-size:14px;
-font-weight:bold;
-color:#ddd;
+color:white;
 text-decoration:none;
+font-weight:bold;
+}
+
+.mainLayout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:#0d0d0d;
+border:1px solid #222;
+border-radius:16px;
+padding:16px;
 }
 
 .banner{
@@ -159,28 +142,23 @@ margin-top:12px;
 background:#111;
 padding:16px;
 border-radius:10px;
-font-weight:bold;
 text-align:center;
-}
-
-.uidTitle{
-font-size:24px;
-margin-bottom:14px;
+font-weight:bold;
 }
 
 .uidWrap{
 display:flex;
-gap:12px;
+gap:10px;
+margin-top:15px;
 }
 
 .uidWrap input{
 flex:1;
 padding:15px;
-background:#080808;
+background:#111;
 border:1px solid #333;
 border-radius:12px;
 color:white;
-font-size:16px;
 }
 
 .uidWrap button{
@@ -190,97 +168,41 @@ color:white;
 border:none;
 border-radius:12px;
 font-weight:bold;
-cursor:pointer;
 }
 
 .rewardGrid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px;
-margin-top:18px;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
 }
 
 .rewardCard{
 background:#111;
 border:1px solid #333;
-padding:14px;
 border-radius:14px;
+padding:14px;
 text-align:center;
 cursor:pointer;
 }
 
 .rewardCard img{
 width:100%;
-height:120px;
+height:150px;
 object-fit:cover;
 border-radius:10px;
-margin-bottom:10px;
-}
-
-.verifyBtn{
-width:100%;
-padding:18px;
-background:red;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-margin-top:20px;
-}
-
-.popup{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-align-items:center;
-justify-content:center;
-z-index:99999;
-}
-
-.modal{
-background:#111;
-padding:20px;
-border-radius:20px;
-width:90%;
-max-width:420px;
-}
-
-.modal select{
-width:100%;
-padding:14px;
-background:#222;
-color:white;
-border:none;
-border-radius:10px;
-margin:15px 0;
+display:block;
 }
 
 .liveImg{
 width:100%;
-border-radius:14px;
-}
-
-.toast{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#111;
-padding:14px;
-border:2px solid red;
 border-radius:12px;
-z-index:99999;
-display:none;
+display:block;
 }
 
 @media(max-width:900px){
 .mainLayout{
 grid-template-columns:1fr;
-}
-.rewardGrid{
-grid-template-columns:repeat(2,1fr);
 }
 .uidWrap{
 flex-direction:column;
@@ -288,7 +210,6 @@ flex-direction:column;
 }
 </style>
 </head>
-
 <body>
 
 <div class="topTicker" id="winnerTicker">
@@ -300,17 +221,15 @@ flex-direction:column;
 <div class="topWrap">
 
 <div class="brand">
-<img src="./sunny-logo.jpg">
+<img src="sunny-logo.jpg">
 <div class="brandText">
 <h1>SUNNY <span>999 BOT</span></h1>
 <p>OFFICIAL FREE FIRE REWARD PORTAL</p>
 </div>
 </div>
-
 <div class="topStats">
-<div class="stat">🟢 SERVER ONLINE</div>
-<div class="stat" id="onlineUsers">👥 1527 USERS</div>
-<div class="stat" id="timer">⏳ 01:59:48</div>
+<div id="onlineUsers">👥 1527 USERS</div>
+<div id="timer">⏳ 01:59:48</div>
 </div>
 
 <div class="loginBtns">
@@ -336,32 +255,29 @@ flex-direction:column;
 
 <div class="container">
 <div class="mainLayout">
-    <!-- LEFT SIDE -->
+
+<!-- LEFT -->
 <div>
 
 <div class="card">
-<img class="banner" src="./sunny-banner.jpg">
+<img class="banner" src="sunny-banner.jpg">
 
 <div class="socialBar">
 <div class="socialBtn">
 👑 OFFICIAL PARTNER BY — SUNNY 999 BOT × MOHIT LIVE
 </div>
 
-<div class="socialBtn" style="color:#ffcc00;">
+<div class="socialBtn">
 🎁 REAL GIVEAWAY DAILY 🎁
 </div>
 </div>
 </div>
 
 <div class="card" style="margin-top:20px;">
-<h2 class="uidTitle">🎮 ENTER YOUR FREE FIRE UID</h2>
+<h2>🎮 ENTER YOUR FREE FIRE UID</h2>
 
 <div class="uidWrap">
-<input
-type="text"
-id="uid"
-placeholder="Enter Free Fire UID..."
->
+<input type="text" id="uid" placeholder="Enter Free Fire UID">
 <button onclick="checkUID()">CHECK UID</button>
 </div>
 
@@ -374,32 +290,42 @@ placeholder="Enter Free Fire UID..."
 <div class="rewardGrid">
 
 <div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
-<img src="./diamond.jpg">
+<img src="diamond.jpg">
 <h3>100 DIAMONDS</h3>
 </div>
 
 <div class="rewardCard" onclick="showBundle()">
-<img src="./bundle.jpg">
+<img src="bundle.jpg">
 <h3>BUNDLE</h3>
 </div>
 
 <div class="rewardCard" onclick="showEmote()">
-<img src="./emote.jpg">
+<img src="emote.jpg">
 <h3>EMOTE</h3>
 </div>
 
 <div class="rewardCard" onclick="showEvo()">
-<img src="./evogun.jpg">
+<img src="evogun.jpg">
 <h3>EVO GUN</h3>
 </div>
 
 </div>
 
-<button class="verifyBtn" onclick="claimGift()">
+<button onclick="claimGift()" style="
+width:100%;
+padding:18px;
+margin-top:20px;
+background:red;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+">
 🚀 VERIFY & CLAIM REWARD
 </button>
 </div>
-
 <div class="card" style="margin-top:20px;">
 <h2>🛡 HOW IT WORKS?</h2>
 
@@ -418,14 +344,16 @@ margin-top:18px;
 
 </div>
 </div>
+
 </div>
-    <!-- RIGHT SIDE -->
+
+<!-- RIGHT SIDE -->
 <div>
 
 <div class="card">
-<h2 style="margin-bottom:15px;">📺 LIVE STREAM</h2>
+<h2>📺 LIVE STREAM</h2>
 
-<img class="liveImg" src="./mohit-logo.jpg">
+<img class="liveImg" src="mohit-logo.jpg">
 
 <div style="margin-top:15px;">
 <h3>MOHIT LIVE × SUNNY 999 BOT</h3>
@@ -435,14 +363,13 @@ OFFICIAL DAILY GIVEAWAY LIVE STREAM
 
 <button style="
 width:100%;
-margin-top:15px;
 padding:14px;
+margin-top:15px;
 background:red;
 color:white;
 border:none;
 border-radius:10px;
 font-weight:bold;
-cursor:pointer;
 ">
 WATCH LIVE
 </button>
@@ -451,13 +378,7 @@ WATCH LIVE
 
 <div class="card" style="margin-top:20px;">
 <h2>🎁 LIVE CLAIMS</h2>
-
-<div id="claimsBox" style="
-margin-top:15px;
-display:grid;
-gap:12px;
-font-weight:bold;
-">
+<div id="claimsBox" style="margin-top:15px;display:grid;gap:10px;">
 <div>RX_HUNTER claimed Cobra Bundle 🔥</div>
 <div>PRO_SONU claimed 100 Diamonds 💎</div>
 <div>DARK_OP claimed MP40 Evo 🔫</div>
@@ -468,62 +389,18 @@ font-weight:bold;
 <div class="card" style="margin-top:20px;">
 <h2>🏆 LEADERBOARD</h2>
 
-<div style="
-margin-top:15px;
-display:grid;
-gap:12px;
-font-weight:bold;
-">
+<div style="margin-top:15px;display:grid;gap:10px;">
 <div>#1 MOHIT LIVE 👑</div>
 <div>#2 SUNNY ELITE 🔥</div>
 <div>#3 FF MASTER 💎</div>
 <div>#4 HEADSHOT KING ⚡</div>
 </div>
+
 </div>
 
 </div>
 </div>
-
-<div class="container">
-
-<div class="card" style="margin-top:20px;">
-<h2>📢 ANNOUNCEMENT</h2>
-<p style="margin-top:10px;color:#ccc;">
-Daily giveaways active now. Rewards sent within 2 hours after verification.
-</p>
-</div>
-
-<div class="card" style="margin-top:20px;">
-<div style="
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-text-align:center;
-">
-
-<div>
-<h3>250K+</h3>
-<p>Total Users</p>
-</div>
-
-<div>
-<h3>1.5M+</h3>
-<p>Rewards Sent</p>
-</div>
-
-<div>
-<h3>1527</h3>
-<p>Users Online</p>
-</div>
-
-<div>
-<h3>8542</h3>
-<p>Today's Claims</p>
-</div>
-
-</div>
-</div>
-    <!-- Bundle Popup -->
+<!-- POPUPS -->
 <div class="popup" id="bundlePopup">
 <div class="modal">
 <h2>Select Bundle</h2>
@@ -534,11 +411,10 @@ text-align:center;
 <option>Golden Sakura Bundle</option>
 <option>Red Criminal Bundle</option>
 </select>
-<button class="verifyBtn" onclick="selectBundle()">SELECT</button>
+<button onclick="selectBundle()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
 </div>
 </div>
 
-<!-- Emote Popup -->
 <div class="popup" id="emotePopup">
 <div class="modal">
 <h2>Select Emote</h2>
@@ -548,11 +424,10 @@ text-align:center;
 <option>FF Dance Emote</option>
 <option>Haha Emote</option>
 </select>
-<button class="verifyBtn" onclick="selectEmote()">SELECT</button>
+<button onclick="selectEmote()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
 </div>
 </div>
 
-<!-- Evo Popup -->
 <div class="popup" id="evoPopup">
 <div class="modal">
 <h2>Select Evo Gun</h2>
@@ -562,29 +437,13 @@ text-align:center;
 <option>M1014 Evo</option>
 <option>SCAR Evo</option>
 </select>
-<button class="verifyBtn" onclick="selectEvo()">SELECT</button>
+<button onclick="selectEvo()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
 </div>
 </div>
-
-<div class="toast" id="toast"></div>
 
 <script>
 let selectedGift="";
 let uidVerified=false;
-
-const claims=[
-"RX_HUNTER claimed Cobra Bundle 🔥",
-"PRO_SONU claimed 100 Diamonds 💎",
-"DARK_OP claimed MP40 Evo 🔫",
-"NOOB_KING claimed Emote 😂",
-"AMAN FF claimed Golden Sakura Bundle 👑"
-];
-
-const winners=[
-"👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎",
-"🏆 DAILY WINNER: SUNNY ELITE WON RED CRIMINAL BUNDLE 🔥",
-"⚡ DAILY WINNER: RX_HUNTER WON MP40 EVO GUN"
-];
 
 function pickGift(el,gift){
 document.querySelectorAll(".rewardCard").forEach(card=>{
@@ -632,13 +491,11 @@ return;
 }
 
 status.innerHTML="⏳ Checking UID...";
-status.style.color="yellow";
 
 setTimeout(()=>{
 status.innerHTML="✅ UID Verified Successfully";
 status.style.color="lime";
 uidVerified=true;
-showToast("✅ UID Verified Successfully");
 },2000);
 }
 
@@ -646,7 +503,7 @@ function claimGift(){
 let status=document.getElementById("status");
 
 if(!uidVerified){
-status.innerHTML="⚠ First verify UID";
+status.innerHTML="⚠ Verify UID first";
 status.style.color="orange";
 return;
 }
@@ -658,41 +515,30 @@ return;
 }
 
 status.innerHTML="📦 Sending reward...";
-status.style.color="yellow";
 
 setTimeout(()=>{
 status.innerHTML="✅ Reward Sent Successfully! Delivery within 2 hours";
 status.style.color="lime";
-showToast("🎉 Gift Sent Successfully!");
 },2500);
 }
 
-function showToast(msg){
-let toast=document.getElementById("toast");
-toast.innerHTML=msg;
-toast.style.display="block";
+const claims=[
+"RX_HUNTER claimed Cobra Bundle 🔥",
+"PRO_SONU claimed 100 Diamonds 💎",
+"DARK_OP claimed MP40 Evo 🔫",
+"NOOB_KING claimed Emote 😂"
+];
 
-setTimeout(()=>{
-toast.style.display="none";
-},3000);
-}
-
-let claimIndex=0;
+let c=0;
 setInterval(()=>{
-claimIndex=(claimIndex+1)%claims.length;
+c=(c+1)%claims.length;
 document.getElementById("claimsBox").innerHTML=`
-<div>${claims[claimIndex]}</div>
-<div>${claims[(claimIndex+1)%claims.length]}</div>
-<div>${claims[(claimIndex+2)%claims.length]}</div>
-<div>${claims[(claimIndex+3)%claims.length]}</div>
+<div>${claims[c]}</div>
+<div>${claims[(c+1)%claims.length]}</div>
+<div>${claims[(c+2)%claims.length]}</div>
+<div>${claims[(c+3)%claims.length]}</div>
 `;
 },3000);
-
-let winIndex=0;
-setInterval(()=>{
-winIndex=(winIndex+1)%winners.length;
-document.getElementById("winnerTicker").innerHTML=winners[winIndex];
-},5000);
 
 let countdown=7200;
 setInterval(()=>{
@@ -700,28 +546,15 @@ countdown--;
 let h=String(Math.floor(countdown/3600)).padStart(2,'0');
 let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
 let s=String(countdown%60).padStart(2,'0');
-
 document.getElementById("timer").innerHTML=`⏳ ${h}:${m}:${s}`;
-
-if(countdown<=0){
-countdown=7200;
-}
+if(countdown<=0) countdown=7200;
 },1000);
 
 setInterval(()=>{
 let users=1400+Math.floor(Math.random()*400);
 document.getElementById("onlineUsers").innerHTML=`👥 ${users} USERS`;
 },3000);
-
-setInterval(()=>{
-showToast("📺 MOHIT LIVE subscribed to SUNNY 999 BOT ✅");
-},12000);
-
-setInterval(()=>{
-showToast(`👀 ${20+Math.floor(Math.random()*40)} people viewing this page`);
-},18000);
 </script>
 
 </body>
 </html>
-    
