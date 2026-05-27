@@ -103,7 +103,6 @@ font-weight:bold;
 .authRow{
 display:flex;
 justify-content:center;
-gap:10px;
 margin-top:15px;
 }
 
@@ -161,8 +160,7 @@ padding:14px;
 margin-top:16px;
 box-shadow:0 0 10px rgba(255,0,0,.08);
 }
-
-.rulesBox{
+  .rulesBox{
 background:linear-gradient(135deg,#111,#1a0000);
 border:1px solid red;
 border-radius:14px;
@@ -195,7 +193,8 @@ border-radius:12px;
 font-weight:bold;
 cursor:pointer;
 }
-  .progressBar{
+
+.progressBar{
 width:100%;
 height:12px;
 background:#222;
@@ -209,7 +208,7 @@ display:none;
 height:100%;
 width:0%;
 background:red;
-transition:width .4s;
+transition:.4s;
 }
 
 .socialBtns{
@@ -234,6 +233,18 @@ color:white;
 
 .igBtn{
 background:#c13584;
+color:white;
+}
+
+.shareBtn{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#ff6600;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
 color:white;
 }
 
@@ -291,8 +302,7 @@ height:120px;
 object-fit:cover;
 border-radius:10px;
 }
-
-.rewardTitle{
+  .rewardTitle{
 margin-top:8px;
 font-size:14px;
 font-weight:bold;
@@ -341,13 +351,14 @@ max-height:220px;
 overflow:auto;
 }
 
-.chatMsg,.leaderboard div,.missionItem{
+.chatMsg,.leaderboard div{
 background:#111;
 padding:10px;
 border-radius:10px;
 margin-top:8px;
 }
-  .popup,.authPopup,.successPopup{
+
+.popup,.authPopup,.successPopup{
 display:none;
 position:fixed;
 inset:0;
@@ -420,8 +431,7 @@ flex-direction:column;
 </style>
 </head>
 <body>
-
-<div class="topTicker">
+  <div class="topTicker" id="topTicker">
 👑 MOHIT LIVE — OFFICIAL SPONSOR PARTNER 🔥
 </div>
 
@@ -482,7 +492,8 @@ z-index:99998;
 </div>
 </div>
 </div>
-  <div class="container">
+
+<div class="container">
 <div class="main">
 
 <!-- LEFT -->
@@ -513,18 +524,18 @@ z-index:99998;
 
 <div id="status" style="margin-top:12px;font-weight:bold;"></div>
 
+<button class="shareBtn" onclick="fakeShare()">📤 SHARE TO 20 FRIENDS</button>
+
+<label style="display:block;margin-top:12px;font-weight:bold;">
+<input type="checkbox" id="shareCheck"> I shared with 20 friends
+</label>
+
 <div class="socialBtns">
-<button class="ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">
-📺 YOUTUBE
-</button>
-
-<button class="igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">
-📸 INSTAGRAM
-</button>
+<button class="ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">📺 YOUTUBE</button>
+<button class="igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">📸 INSTAGRAM</button>
 </div>
 </div>
-
-<div class="card">
+  <div class="card">
 <h2>📦 REWARD STOCK</h2>
 <div id="stockBox">
 💎 Diamonds left: 37<br>
@@ -591,12 +602,12 @@ font-weight:bold;
 <h2>🎰 SPIN TO WIN</h2>
 <div class="wheel" id="wheel"></div>
 <button class="claimBtn" onclick="spinWheel()">SPIN NOW</button>
-<div id="spinResult" class="missionItem">Try your luck 🎯</div>
+<div id="spinResult" class="chatMsg">Try your luck 🎯</div>
 </div>
 
 </div>
-  
-  <!-- RIGHT -->
+
+<!-- RIGHT -->
 <div class="sideSection">
 
 <div class="card">
@@ -621,8 +632,7 @@ font-weight:bold;
 </div>
 </div>
 </div>
-
-<!-- LOGIN -->
+  <!-- LOGIN POPUP -->
 <div class="authPopup" id="loginPopup">
 <div class="modal">
 <h2>LOGIN</h2>
@@ -632,19 +642,26 @@ font-weight:bold;
 </div>
 </div>
 
-<!-- SUCCESS -->
+<!-- SUCCESS POPUP -->
 <div class="successPopup" id="successPopup">
 <div class="modal">
 <h2>🎉 CONGRATULATIONS!</h2>
 
-<p style="line-height:1.8;font-size:16px;">
-🔄 Connecting to Garena Server...<br>
-📦 Processing Reward Request...<br>
-🎮 Verifying Free Fire MAX Account...<br>
-📨 Reward Sent to Mailbox Successfully ✅
-</p>
+<div id="popupProcess" style="
+line-height:1.9;
+font-size:16px;
+margin-top:15px;
+text-align:left;
+">
+🔄 Connecting to Garena Server...
+</div>
 
-<p style="margin-top:10px;color:#00ff66;font-weight:bold;">
+<p id="deliveryText" style="
+margin-top:12px;
+color:#00ff66;
+font-weight:bold;
+display:none;
+">
 Delivery within 2 hours ⏳
 </p>
 
@@ -671,11 +688,6 @@ Delivery within 2 hours ⏳
 <option>Applause</option>
 <option>Siiii!</option>
 <option>Threaten</option>
-<option>FFWC Throne</option>
-<option>Tea Time</option>
-<option>Rose Emote</option>
-<option>Heartbroken</option>
-<option>Love Kiss</option>
 <option>Victory Dance</option>
 </select>
 <button onclick="selectEmote()">SELECT</button>
@@ -687,7 +699,6 @@ Delivery within 2 hours ⏳
 <div class="modal">
 <h2>Select Bundle</h2>
 <select id="bundleSelect" size="10">
-<option>Golden Shade Bundle</option>
 <option>Cobra Bundle</option>
 <option>Red Criminal Bundle</option>
 <option>Blue Criminal Bundle</option>
@@ -708,15 +719,11 @@ Delivery within 2 hours ⏳
 <h2>Select Evo Gun</h2>
 <select id="evoSelect" size="10">
 <option>MP40 Predatory Cobra</option>
-<option>MP40 Flashing Spade</option>
 <option>AK Blue Flame Draco</option>
 <option>M1014 Green Flame Draco</option>
 <option>SCAR Megalodon Alpha</option>
 <option>UMP Cataclysm</option>
 <option>FAMAS Golden Glory</option>
-<option>XM8 Cosmic Beast</option>
-<option>GROZA Thunder Fang</option>
-<option>M1887 Winterlands</option>
 </select>
 <button onclick="selectEvo()">SELECT</button>
 </div>
@@ -729,22 +736,14 @@ let wheelRotation=0;
 let countdown=7200;
 let jackpotValue=1254890;
 let soundOn=true;
-  const winnerNames=[
-"MOHIT LIVE",
-"RAHUL GAMER",
-"AMAN FF",
-"SUNNY ELITE",
-"HEADSHOT KING",
-"ARJUN LIVE",
-"COBRA FF"
-];
+
+const winnerNames=["MOHIT LIVE","RAHUL GAMER","AMAN FF","SUNNY ELITE","HEADSHOT KING"];
 
 function updateDailyWinner(){
 const winner=winnerNames[Math.floor(Math.random()*winnerNames.length)];
-document.querySelector(".topTicker").innerHTML=
+document.getElementById("topTicker").innerHTML=
 `👑 DAILY WINNER RESULT 9 PM: ${winner} WON 1,00,000 DIAMONDS 💎 | OFFICIAL SPONSOR: MOHIT LIVE 🔥`;
 }
-
 updateDailyWinner();
 
 function toggleSound(){
@@ -752,79 +751,81 @@ soundOn=!soundOn;
 soundBtn.innerHTML=soundOn?"🔊 ON":"🔇 OFF";
 }
 
-function showLogin(){
-loginPopup.style.display="flex";
-}
+function showLogin(){ loginPopup.style.display="flex"; }
+function closeAuth(){ loginPopup.style.display="none"; }
+function closeSuccess(){ successPopup.style.display="none"; }
 
-function closeAuth(){
-loginPopup.style.display="none";
-}
-
-function closeSuccess(){
-successPopup.style.display="none";
-}
-
-function showEmote(){
-emotePopup.style.display="flex";
-}
-
-function showBundle(){
-bundlePopup.style.display="flex";
-}
-
-function showEvo(){
-evoPopup.style.display="flex";
-}
+function showEmote(){ emotePopup.style.display="flex"; }
+function showBundle(){ bundlePopup.style.display="flex"; }
+function showEvo(){ evoPopup.style.display="flex"; }
 
 function selectEmote(){
 selectedGift=emoteSelect.value;
 emotePopup.style.display="none";
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
+document.querySelectorAll('.rewardCard')[1].style.border='2px solid red';
 }
 
 function selectBundle(){
 selectedGift=bundleSelect.value;
 bundlePopup.style.display="none";
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
+document.querySelectorAll('.rewardCard')[2].style.border='2px solid red';
 }
 
 function selectEvo(){
 selectedGift=evoSelect.value;
 evoPopup.style.display="none";
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
+document.querySelectorAll('.rewardCard')[3].style.border='2px solid red';
 }
 
 function pickGift(el,g){
 selectedGift=g;
-document.querySelectorAll('.rewardCard').forEach(c=>{
-c.style.border='1px solid #333';
-});
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
 el.style.border='2px solid red';
 }
 
-function checkUID(){
+function fakeShare(){
+status.innerHTML="📤 Opening share...";
+setTimeout(()=>{
+shareCheck.checked=true;
+status.innerHTML="✅ Shared successfully with 20 friends";
+},3000);
+}
+  function checkUID(){
 if(!uid.value){
 status.innerHTML="⚠ Enter UID first";
 return;
 }
 
+uidVerified=false;
 progressBar.style.display="block";
 progressFill.style.width="0%";
 
 status.innerHTML="🔄 Connecting to Free Fire Server...";
+progressFill.style.width="20%";
 
 setTimeout(()=>{
-progressFill.style.width="35%";
 status.innerHTML="📡 Contacting Reward Server...";
-},1000);
+progressFill.style.width="45%";
+},1500);
 
 setTimeout(()=>{
+status.innerHTML="🎮 Verifying UID Account...";
 progressFill.style.width="70%";
-status.innerHTML="📦 Processing UID...";
-},2500);
+},3000);
+
+setTimeout(()=>{
+status.innerHTML="📦 Checking Reward Eligibility...";
+progressFill.style.width="90%";
+},4500);
 
 setTimeout(()=>{
 progressFill.style.width="100%";
 uidVerified=true;
-status.innerHTML="✅ UID Verified Successfully<br><br>🎁 <b>Select what you want below:</b>";
-},4000);
+status.innerHTML="✅ UID Verified Successfully<br><br>🎁 <b>Select your gift below ↓</b>";
+},6000);
 }
 
 function launchConfetti(){
@@ -854,62 +855,54 @@ status.innerHTML="⚠ Select reward first";
 return;
 }
 
-progressBar.style.display="block";
-progressFill.style.width="0%";
-
-if(soundOn){
-try{
-claimSound.play();
-}catch(e){}
+if(!shareCheck.checked){
+status.innerHTML="⚠ Share with 20 friends first";
+return;
 }
 
-status.innerHTML="🔄 Connecting to Garena Server...";
-progressFill.style.width="20%";
-
-setTimeout(()=>{
-status.innerHTML="📦 Processing Reward Request...";
-progressFill.style.width="45%";
-},1500);
-
-setTimeout(()=>{
-status.innerHTML="🎮 Verifying Free Fire MAX Account...";
-progressFill.style.width="70%";
-},3000);
-
-setTimeout(()=>{
-status.innerHTML="📨 Sending Reward to Mailbox...";
-progressFill.style.width="95%";
-},4500);
-
-setTimeout(()=>{
-progressFill.style.width="100%";
-launchConfetti();
-status.innerHTML="✅ Reward Sent Successfully!";
 successPopup.style.display="flex";
-},6500);
+
+const popupProcess=document.getElementById("popupProcess");
+const deliveryText=document.getElementById("deliveryText");
+
+deliveryText.style.display="none";
+popupProcess.innerHTML="🔄 Connecting to Garena Server...";
+
+if(soundOn){
+try{claimSound.play();}catch(e){}
+}
+
+setTimeout(()=>{
+popupProcess.innerHTML += "<br>📦 Processing Reward Request...";
+},1200);
+
+setTimeout(()=>{
+popupProcess.innerHTML += "<br>🎮 Verifying Free Fire MAX Account...";
+},2500);
+
+setTimeout(()=>{
+popupProcess.innerHTML += "<br>📨 Sending Reward to Mailbox...";
+},4000);
+
+setTimeout(()=>{
+popupProcess.innerHTML += "<br>✅ Reward Sent Successfully!";
+deliveryText.style.display="block";
+launchConfetti();
+},5500);
 }
 
 function spinWheel(){
-const rewards=[
-"500 Diamonds",
-"1000 Diamonds",
-"Cobra Bundle",
-"VIP Bonus"
-];
-
+const rewards=["500 Diamonds","1000 Diamonds","Cobra Bundle","VIP Bonus"];
 wheelRotation += 2000 + Math.random()*1000;
 wheel.style.transform=`rotate(${wheelRotation}deg)`;
 
 setTimeout(()=>{
-spinResult.innerHTML=
-"🎉 YOU WON: " +
-rewards[Math.floor(Math.random()*rewards.length)];
+spinResult.innerHTML="🎉 YOU WON: " + rewards[Math.floor(Math.random()*rewards.length)];
 },5000);
 }
 
 setInterval(()=>{
-onlineUsers.innerHTML=
-`👥 ${1400+Math.floor(Math.random()*500)} USERS`;
+onlineUsers.innerHTML=`👥 ${1400+Math.floor(Math.random()*500)} USERS`;
 },3000);
 
 setInterval(()=>{
@@ -922,7 +915,6 @@ toastBox.innerHTML=[
 
 setInterval(()=>{
 countdown--;
-
 let h=String(Math.floor(countdown/3600)).padStart(2,'0');
 let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
 let s=String(countdown%60).padStart(2,'0');
@@ -948,14 +940,7 @@ stockBox.innerHTML=
 },6000);
 
 setInterval(()=>{
-const names=[
-"MOHIT LIVE",
-"SUNNY ELITE",
-"FF MASTER",
-"HEADSHOT KING",
-"COBRA KING"
-];
-
+const names=["MOHIT LIVE","SUNNY ELITE","FF MASTER","HEADSHOT KING","COBRA KING"];
 document.querySelector(".leaderboard").innerHTML=`
 <div>#1 ${names[Math.floor(Math.random()*names.length)]} 👑</div>
 <div>#2 ${names[Math.floor(Math.random()*names.length)]} 🔥</div>
@@ -966,20 +951,11 @@ document.querySelector(".leaderboard").innerHTML=`
 
 setInterval(()=>{
 const users=["Rahul","Aman","King","Rohit","Arjun","Legend"];
-const msgs=[
-"OMG reward working 🔥",
-"I got emote 😂",
-"Sunny OP 💎",
-"Bundle received 😍",
-"Evo gun claim done ⚡"
-];
+const msgs=["OMG reward working 🔥","I got emote 😂","Sunny OP 💎","Bundle received 😍"];
 
 const msg=document.createElement("div");
 msg.className="chatMsg";
-msg.innerHTML=
-users[Math.floor(Math.random()*users.length)] +
-": " +
-msgs[Math.floor(Math.random()*msgs.length)];
+msg.innerHTML=users[Math.floor(Math.random()*users.length)] + ": " + msgs[Math.floor(Math.random()*msgs.length)];
 
 liveChat.prepend(msg);
 
@@ -998,11 +974,11 @@ d.style.left=Math.random()*100+"vw";
 
 document.body.appendChild(d);
 
-setTimeout(()=>{
-d.remove();
-},5000);
+setTimeout(()=>d.remove(),5000);
 },800);
 
 </script>
 </body>
 </html>
+  
+  
