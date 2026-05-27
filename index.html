@@ -58,11 +58,6 @@ font-size:14px;
 font-weight:bold;
 }
 
-.server-ok {
-color: #00ffcc;
-text-shadow: 0 0 5px #00ffcc;
-}
-
 .authRow{
 display:flex;
 justify-content:center;
@@ -103,19 +98,6 @@ font-size:14px;
 font-weight:bold;
 }
 
-.navIcons div {
-cursor: pointer;
-transition: 0.2s;
-padding: 4px 10px;
-border-radius: 6px;
-}
-
-.navIcons div:hover, .activeNav {
-color: red;
-background: rgba(255, 0, 0, 0.05);
-text-shadow: 0 0 8px red;
-}
-
 .card{
 background:rgba(20,20,20,.95);
 border:1px solid #222;
@@ -147,11 +129,6 @@ border-radius:12px;
 border:1px solid #333;
 background:#111;
 color:white;
-outline: none;
-}
-
-.uidArea input:focus {
-border-color: red;
 }
 
 .uidArea button{
@@ -164,6 +141,7 @@ font-weight:bold;
 cursor: pointer;
 }
 
+/* Simple Loading Bar Injection */
 #progressContainer {
 width: 100%; 
 background: #222; 
@@ -218,16 +196,15 @@ margin-top:15px;
 background:#111;
 border:1px solid #333;
 border-radius:14px;
-padding:12px;
+padding:10px;
 text-align:center;
 cursor:pointer;
-transition: all 0.3s ease-in-out;
+transition:.3s;
 }
 
 .rewardCard:hover{
-transform:translateY(-4px);
-border-color: #ff0000;
-box-shadow:0 0 20px rgba(255, 0, 0, 0.6);
+transform:translateY(-3px);
+box-shadow:0 0 15px red;
 }
 
 .rewardCard img{
@@ -241,15 +218,6 @@ border-radius:10px;
 margin-top:8px;
 font-size:14px;
 font-weight:bold;
-text-transform: uppercase;
-}
-
-.stock-alert {
-font-size: 11px;
-color: #ffaa00;
-font-weight: bold;
-display: block;
-margin-top: 4px;
 }
 
 .claimBtn{
@@ -264,25 +232,6 @@ font-weight:bold;
 font-size:16px;
 box-shadow:0 0 15px red;
 cursor:pointer;
-transition: 0.2s;
-}
-
-.claimBtn:hover {
-box-shadow: 0 0 22px rgba(255,0,0,0.8);
-}
-
-.shareBtn {
-background: #25D366 !important;
-color: white !important;
-box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
-display: none;
-animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-0% { transform: scale(1); }
-50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(37, 211, 102, 0.7); }
-100% { transform: scale(1); }
 }
 
 .popup,.successPopup,.authPopup,.toast{
@@ -293,7 +242,6 @@ background:rgba(0,0,0,.82);
 justify-content:center;
 align-items:center;
 z-index:9999;
-backdrop-filter: blur(4px);
 }
 
 .modal{
@@ -303,7 +251,6 @@ border-radius:16px;
 width:92%;
 max-width:400px;
 border:1px solid red;
-box-shadow: 0 0 25px rgba(255,0,0,0.3);
 }
 
 .modal h2{
@@ -319,11 +266,6 @@ background:#000;
 color:white;
 border:1px solid #333;
 border-radius:10px;
-outline: none;
-}
-
-.modal select:focus {
-border-color: red;
 }
 
 .modal button{
@@ -352,7 +294,7 @@ margin-top:8px;
 
 .liveChat{
 max-height:220px;
-overflow-y:auto;
+overflow:auto;
 scroll-behavior: smooth;
 }
 
@@ -389,24 +331,13 @@ bottom:20px;
 left:-400px;
 background:#111;
 border:1px solid red;
-padding:14px 20px;
+padding:12px;
 border-radius:12px;
-box-shadow:0 0 20px rgba(255,0,0,0.4);
+box-shadow:0 0 20px red;
 z-index:99999;
 font-size:13px;
 font-weight:bold;
-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-border-left: 5px solid red;
-}
-
-.footer {
-text-align: center;
-padding: 25px;
-color: #555;
-font-size: 13px;
-font-weight: bold;
-margin-top: 30px;
-border-top: 1px solid #151515;
+transition: all 0.4s ease-in-out;
 }
 
 .main{
@@ -421,12 +352,6 @@ grid-template-columns:1fr;
 }
 .uidArea{
 flex-direction:column;
-}
-.toastBox {
-bottom: 15px;
-left: -400px;
-width: 90%;
-max-width: 320px;
 }
 }
 </style>
@@ -445,7 +370,7 @@ max-width: 320px;
 </div>
 
 <div class="stats">
-<div class="server-ok">⚡ SERVER: ONLINE (32ms)</div>
+<div>🟢 SERVER ONLINE</div>
 <div id="onlineUsers">👥 1527 USERS</div>
 <div id="timer">⏳ 01:59:48</div>
 <div id="jackpot">💎 12,54,890 GIVEN</div>
@@ -463,13 +388,12 @@ max-width: 320px;
 <div class="container">
 <div class="navIcons">
 <div>🏠 HOME</div>
-<div class="activeNav">🎁 REWARDS</div>
+<div>🎁 REWARDS</div>
 <div>🎰 SPIN</div>
 <div>👑 VIP</div>
 </div>
 </div>
 </div>
-
 <div class="container">
 <div class="main">
 
@@ -480,7 +404,7 @@ max-width: 320px;
 <b>🎁 FREE GIFT DAILY — OFFICIAL REWARD RULES 💎</b><br>
 📌 Rule 1: One reward per UID account balance daily.<br>
 📌 Rule 2: Rewards will be delivered directly to the in-game mail box.<br>
-📌 Rule 3: Must share panel link to complete validation process safely.<br>
+📌 Rule 3: Must complete standard WhatsApp validation verification lock process safely.<br>
 📌 Rule 4: Fake UIDs or script bots will be automatic banned.
 </div>
 </div>
@@ -518,13 +442,13 @@ max-width: 320px;
 <div class="rewardCard" id="card-diamond" onclick="pickGift(this,'100 Diamonds')">
 <img src="diamond.jpg">
 <div class="rewardTitle" id="title-diamond">100 DIAMONDS</div>
-<span class="stock-alert">🔥 Only 8 Left Today</span>
+<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">🔥 Only 8 Left Today</div>
 </div>
 
 <div class="rewardCard" id="card-emote" onclick="showEmote()">
 <img src="emote.jpg">
 <div class="rewardTitle" id="title-emote">EMOTE</div>
-<span class="stock-alert">⚡ Limited Slots</span>
+<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">⚡ Limited Slots</div>
 </div>
 
 <div class="rewardCard" id="card-bundle" onclick="showBundle()">
@@ -532,7 +456,7 @@ max-width: 320px;
 🔥 BUNDLE
 </div>
 <div class="rewardTitle" id="title-bundle">BUNDLE</div>
-<span class="stock-alert">🔥 94% Claimed</span>
+<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">🔥 94% Claimed</div>
 </div>
 
 <div class="rewardCard" id="card-evo" onclick="showEvo()">
@@ -540,16 +464,13 @@ max-width: 320px;
 ⚡ EVO GUN
 </div>
 <div class="rewardTitle" id="title-evo">EVO GUN</div>
-<span class="stock-alert">⚡ High Demand</span>
+<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">⚡ High Demand</div>
 </div>
 
 </div>
 
-<button class="claimBtn" id="mainActionBtn" onclick="claimGift()">
+<button class="claimBtn" id="actionRewardBtn" onclick="claimGift()">
 🚀 CLAIM REWARD
-</button>
-<button class="claimBtn shareBtn" id="whatsappShareBtn" onclick="shareOnWhatsApp()">
-🟢 SHARE ON WHATSAPP TO UNLOCK
 </button>
 </div>
 
@@ -593,15 +514,10 @@ max-width: 320px;
 </div>
 </div>
 
-<div class="footer">
+<div style="text-align: center; padding: 20px; color: #444; font-size: 13px; font-weight: bold; margin-top: 20px; border-top: 1px solid #151515;">
 © 2026 Sunny 999 Bot Reward Portal. All Rights Reserved.
 </div>
 </div>
-
-<div class="toastBox" id="toastBox">
-🔥 Rahul just won Cobra Bundle
-</div>
-
 <div class="authPopup" id="loginPopup">
 <div class="modal">
 <h2>LOGIN</h2>
@@ -806,15 +722,16 @@ max-width: 320px;
 </div>
 </div>
 
+<div class="toastBox" id="toastBox">
+🔥 Rahul just won Cobra Bundle
+</div>
+
 <script>
 let selectedGift="";
 let uidVerified=false;
 let wheelRotation=0;
 let whatsappClicks = 0;
 let initialJackpot = 1254890;
-
-let userDevice = "Android Phone";
-if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) { userDevice = "iOS Device"; }
 
 function showLogin(){document.getElementById("loginPopup").style.display="flex";}
 function showSignup(){document.getElementById("signupPopup").style.display="flex";}
@@ -827,76 +744,114 @@ function showEmote(){document.getElementById("emotePopup").style.display="flex";
 function showBundle(){document.getElementById("bundlePopup").style.display="flex";}
 function showEvo(){document.getElementById("evoPopup").style.display="flex";}
 
-function statusUpdate(msg, color) {
-let status = document.getElementById("status");
-status.innerHTML = msg;
-status.style.color = color;
-}
-
-function resetCards() {
-document.querySelectorAll(".rewardCard").forEach(card=>{
-card.style.border="1px solid #333";
-card.style.boxShadow="none";
-});
-}
-
 function selectEmote(){
 selectedGift=document.getElementById("emoteSelect").value;
 document.getElementById("emotePopup").style.display="none";
-resetCards();
-let target = document.getElementById("card-emote");
-target.style.border="2px solid red";
-target.style.boxShadow="0 0 15px rgba(255,0,0,0.5)";
 document.getElementById("title-emote").innerHTML = selectedGift;
-statusUpdate("Selected: " + selectedGift, "lime");
+document.getElementById("card-emote").style.border = "2px solid red";
 }
 
 function selectBundle(){
 selectedGift=document.getElementById("bundleSelect").value;
 document.getElementById("bundlePopup").style.display="none";
-resetCards();
-let target = document.getElementById("card-bundle");
-target.style.border="2px solid red";
-target.style.boxShadow="0 0 15px rgba(255,0,0,0.5)";
 document.getElementById("title-bundle").innerHTML = selectedGift;
-statusUpdate("Selected: " + selectedGift, "lime");
+document.getElementById("card-bundle").style.border = "2px solid red";
 }
 
 function selectEvo(){
 selectedGift=document.getElementById("evoSelect").value;
 document.getElementById("evoPopup").style.display="none";
-resetCards();
-let target = document.getElementById("card-evo");
-target.style.border="2px solid red";
-target.style.boxShadow="0 0 15px rgba(255,0,0,0.5)";
 document.getElementById("title-evo").innerHTML = selectedGift;
-statusUpdate("Selected: " + selectedGift, "lime");
+document.getElementById("card-evo").style.border = "2px solid red";
 }
 
 function pickGift(el,gift){
-resetCards();
+document.querySelectorAll(".rewardCard").forEach(card=>{
+card.style.border="1px solid #333";
+});
 el.style.border="2px solid red";
-el.style.boxShadow="0 0 15px rgba(255,0,0,0.5)";
 selectedGift=gift;
-statusUpdate("Selected: " + selectedGift, "lime");
 }
 
+// Upgraded checkUID with Progress bar logic inside original design
 function checkUID(){
 let uid=document.getElementById("uid").value;
+let status=document.getElementById("status");
 let pContainer = document.getElementById("progressContainer");
 let pBar = document.getElementById("progressBar");
 
 if(!uid){
-statusUpdate("⚠ Enter UID first", "orange");
+status.innerHTML="⚠ Enter UID first";
+status.style.color="orange";
 return;
 }
 
 pContainer.style.display = "block";
 pBar.style.width = "0%";
-statusUpdate("🔄 Official Server Check Initiated...", "yellow");
+status.style.color="yellow";
+status.innerHTML="🔄 Connecting to Free Fire Server...";
 
 let width = 0;
 let interval = setInterval(() => {
 if (width >= 100) {
 clearInterval(interval);
-statusUpdate(`✅ UID Verified Successfully [${userDevice}]. Select Your Reward.`, 
+status.innerHTML="✅ UID Verified Successfully";
+status.style.color="lime";
+uidVerified=true;
+} else {
+width += 5;
+pBar.style.width = width + "%";
+if(width == 40) status.innerHTML="📦 Processing Request Database Sync...";
+if(width == 80) status.innerHTML="⚡ Validating security firewall slots...";
+}
+}, 120);
+}
+
+// Updated claimGift with WhatsApp Limit Loop system integration
+function claimGift(){
+let status=document.getElementById("status");
+let btn = document.getElementById("actionRewardBtn");
+
+if(!uidVerified){
+status.innerHTML="⚠ Verify UID first";
+status.style.color="orange";
+return;
+}
+
+if(!selectedGift){
+status.innerHTML="⚠ Select reward first";
+status.style.color="orange";
+return;
+}
+
+if (whatsappClicks < 5) {
+status.style.color="orange";
+status.innerHTML = `🚨 VALIDATION LOCK: Share panel link on WhatsApp to complete transaction pipeline. (${whatsappClicks}/5) shared.`;
+btn.innerHTML = "🟢 SHARE ON WHATSAPP TO UNLOCK";
+btn.style.background = "#25D366";
+btn.setAttribute("onclick", "shareLinkLoop()");
+return;
+}
+}
+
+function shareLinkLoop() {
+let status=document.getElementById("status");
+let btn = document.getElementById("actionRewardBtn");
+whatsappClicks++;
+
+let shareUrl = window.location.href;
+let text = encodeURIComponent(`🔥 SUNNY 999 BOT REWARD PORTAL! Claim Free Rare Bundles, 10,000 Diamonds and Evo Gun Skins instantly. 100% Real Link 👉 ${shareUrl}`);
+window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+
+if (whatsappClicks < 5) {
+status.innerHTML = `🟢 Validation Count: (${whatsappClicks}/5) shared. Complete remaining share locks.`;
+} else {
+status.style.color="yellow";
+status.innerHTML="📨 Validation complete! Sending gift packets to Free Fire mailbox...";
+btn.innerHTML = "📦 PACKET TRANSMISSION LOCKED";
+btn.style.background = "#333";
+btn.disabled = true;
+
+setTimeout(()=>{
+document.getElementById("successPopup").style.display="flex";
+status.innerHTML="✅ R
