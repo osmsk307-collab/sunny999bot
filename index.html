@@ -1,605 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNNY 999 BOT - Official Rewards</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUNNY 999 BOT</title>
 
-    <style>
-        /* Color Palette & Basic Setup */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-        body {
-            background-color: #0b0c10;
-            color: #ffffff;
-        }
+body{
+background:#070707;
+color:white;
+}
 
-        /* Helper Classes */
-        .highlight-orange { color: #ff9900; }
-        .highlight-green { color: #00ff66; }
-        .icon-orange { color: #ff9900; margin-right: 8px; }
+a{
+text-decoration:none;
+color:white;
+}
 
-        /* Top Navigation Header */
-        header {
-            background-color: #1f2833;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            border-bottom: 3px solid #ff9900;
-        }
+.container{
+width:95%;
+max-width:1400px;
+margin:auto;
+}
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+.mainLayout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+margin-top:20px;
+}
 
-        .verified-tick {
-            color: #00bfff;
-            font-size: 16px;
-        }
+.card{
+background:#0d0d0d;
+border:1px solid #222;
+border-radius:16px;
+padding:16px;
+box-shadow:0 0 10px rgba(255,0,0,.08);
+}
 
-        .tagline {
-            font-size: 11px;
-            color: #00ff66;
-            letter-spacing: 1px;
-        }
+/* TOP HEADER */
+.topHeader{
+background:#0b0b0b;
+border-bottom:1px solid #222;
+padding:12px 0;
+}
 
-        .server-status {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-        }
+.topWrap{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
+}
 
-        .online-dot {
-            color: #00ff66;
-            animation: blink 1.5s infinite;
-        }
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
-        @keyframes blink {
-            50% { opacity: 0.4; }
-        }
+.brand img{
+width:55px;
+height:55px;
+border-radius:50%;
+border:2px solid red;
+object-fit:cover;
+}
 
-        /* Multi-Column Main Layout */
-        .main-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            gap: 20px;
-            padding: 0 15px;
-        }
+.brandText h1{
+font-size:34px;
+font-weight:bold;
+}
 
-        .content-left {
-            flex: 2;
-        }
+.brandText h1 span{
+color:red;
+}
 
-        .sidebar-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+.brandText p{
+font-size:13px;
+color:#aaa;
+}
 
-        /* Reusable Gaming Boxes */
-        .section-card, .sidebar-card {
-            background-color: #151a21;
-            border: 1px solid #232d3a;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+.topStats{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+align-items:center;
+}
 
-        /* Banner Slider Box */
-        .banner-slider {
-            background: linear-gradient(135deg, #ff9900 0%, #151a21 70%);
-            height: 180px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-left: 5px solid #ff9900;
-        }
+.stat{
+font-size:14px;
+font-weight:bold;
+color:#ddd;
+}
 
-        .partner-badge {
-            background: #000;
-            color: #ff9900;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: bold;
-            border-radius: 4px;
-        }
+.loginBtns button{
+padding:10px 18px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin-left:8px;
+}
 
-        /* Input Fields & Buttons */
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
+.login{
+background:#111;
+color:white;
+border:1px solid #444;
+}
 
-        input[type="text"] {
-            flex: 1;
-            background-color: #0b0c10;
-            border: 1px solid #ff9900;
-            padding: 12px;
-            color: #fff;
-            border-radius: 4px;
-            outline: none;
-        }
+.signup{
+background:red;
+color:white;
+}
 
-        .btn-orange {
-            background-color: #ff9900;
-            color: #000;
-            border: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
+/* NAV */
+.navbar{
+background:#101010;
+border-bottom:1px solid #222;
+padding:14px 0;
+}
 
-        .btn-orange:hover {
-            background-color: #cc7a00;
-        }
+.navWrap{
+display:flex;
+gap:28px;
+flex-wrap:wrap;
+}
 
-        .input-note {
-            font-size: 12px;
-            color: #777;
-            margin-top: 8px;
-        }
+.navWrap a{
+font-size:14px;
+font-weight:bold;
+color:#ddd;
+}
 
-        /* Grid Configuration for Item Grid */
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
+.navWrap a:hover{
+color:red;
+}
 
-        .reward-item {
-            background-color: #0b0c10;
-            border: 2px solid #232d3a;
-            border-radius: 6px;
-            padding: 15px 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+/* BANNER */
+.banner{
+width:100%;
+border-radius:14px;
+display:block;
+}
 
-        .reward-item:hover, .reward-item.selected {
-            border-color: #ff9900;
-            box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
-        }
+.socialBar{
+display:flex;
+justify-content:space-around;
+gap:10px;
+margin-top:12px;
+background:#111;
+padding:10px;
+border-radius:12px;
+flex-wrap:wrap;
+}
 
-        .reward-item img {
-            max-width: 100%;
-            margin-bottom: 10px;
-        }
+.socialBtn{
+background:#1a1a1a;
+padding:10px 14px;
+border-radius:10px;
+font-weight:bold;
+font-size:14px;
+}
 
-        .reward-item p {
-            font-size: 11px;
-            font-weight: bold;
-        }
+/* UID SECTION */
+.uidTitle{
+font-size:24px;
+margin-bottom:14px;
+}
 
-        .btn-claim-large {
-            width: 100%;
-            background: linear-gradient(90deg, #ff9900, #ff5500);
-            color: #000;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+.uidWrap{
+display:flex;
+gap:12px;
+}
 
-        /* Safety & Step Guidelines */
-        .trust-badges {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+.uidWrap input{
+flex:1;
+padding:15px;
+background:#080808;
+border:1px solid #333;
+border-radius:12px;
+color:white;
+font-size:16px;
+}
 
-        .badge {
-            background-color: #151a21;
-            padding: 15px;
-            text-align: center;
-            border-radius: 6px;
-        }
+.uidWrap button{
+padding:15px 24px;
+background:red;
+color:white;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+}
 
-        .badge i {
-            color: #ff9900;
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
+/* REWARDS */
+.rewardGrid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;
+margin-top:18px;
+}
 
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            gap: 10px;
-        }
+.rewardCard{
+background:#111;
+border:1px solid #333;
+padding:14px;
+border-radius:14px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+}
 
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #0b0c10;
-            padding: 10px;
-            border-radius: 6px;
-            flex: 1;
-        }
+.rewardCard:hover{
+transform:scale(1.03);
+border-color:red;
+}
 
-        .step-num {
-            background-color: #ff9900;
-            color: #000;
-            font-weight: bold;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.rewardCard img{
+width:100%;
+height:110px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
 
-        /* Widgets Styling */
-        .card-header {
-            border-bottom: 1px solid #232d3a;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
+.verifyBtn{
+width:100%;
+padding:18px;
+background:red;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:20px;
+}
 
-        .live-badge {
-            background-color: #ff0000;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-        }
-
-        .btn-live {
-            width: 100%;
-            padding: 8px;
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .claim-entry, .leaderboard-entry {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #232d3a;
-            font-size: 13px;
-        }
-
-        /* Bottom Metrics Counter */
-        .stats-bar {
-            background-color: #1f2833;
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            border-radius: 8px;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .stat-item i {
-            font-size: 30px;
-            color: #ff9900;
-        }
-
-        /* Footer Grid */
-        footer {
-            background-color: #05070a;
-            padding: 40px 5%;
-            margin-top: 40px;
-            border-top: 1px solid #232d3a;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-        }
-
-        /* CUSTOM GAME POP-UP MODAL DIALOG */
-        .modal-overlay {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-card {
-            background-color: #151a21;
-            border: 2px solid #ff9900;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 420px;
-            box-shadow: 0 0 25px rgba(255, 153, 0, 0.3);
-            animation: popupScale 0.3s ease-out forwards;
-            overflow: hidden;
-        }
-
-        @keyframes popupScale {
-            from { transform: scale(0.7); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-header {
-            background-color: #1f2833;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #232d3a;
-        }
-
-        .modal-header h3 {
-            font-size: 15px;
-            letter-spacing: 1px;
-        }
-
-        .close-modal-btn {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .close-modal-btn:hover {
-            color: #ff9900;
-        }
-
-        .modal-body {
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .modal-icon-container {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .pulse-green {
-            color: #00ff66;
-            text-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
-        }
-
-        .pulse-orange {
-            color: #ff9900;
-            text-shadow: 0 0 15px rgba(255, 153, 0, 0.5);
-        }
-
-        #modalMessage {
-            font-size: 15px;
-            line-height: 1.5;
-            color: #e0e0e0;
-        }
-
-        .modal-footer {
-            padding: 15px 20px;
-            background-color: #0b0c10;
-            text-align: center;
-            border-top: 1px solid #232d3a;
-        }
-
-        .modal-btn {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive Viewports */
-        @media (max-width: 768px) {
-            .main-container, .stats-bar, .footer-grid, .steps-container {
-                flex-direction: column;
-                grid-template-columns: 1fr;
-            }
-            .rewards-grid, .trust-badges {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+/* MOBILE */
+@media(max-width:900px){
+.mainLayout{
+grid-template-columns:1fr;
+}
+.rewardGrid{
+grid-template-columns:repeat(2,1fr);
+}
+.uidWrap{
+flex-direction:column;
+}
+.topWrap{
+flex-direction:column;
+align-items:flex-start;
+}
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo-area">
-            <img src="https://via.placeholder.com/50" alt="Logo" class="logo-img">
-            <div>
-                <h1>SUNNY 999 BOT <span class="verified-tick">✓</span></h1>
-                <p class="tagline">OFFICIAL FREE FIRE REWARD BOT</p>
-            </div>
-        </div>
-        <div class="server-status">
-            <span><i class="fas fa-circle online-dot"></i> SERVER ONLINE: <strong class="highlight-green">1,517</strong></span>
-            <span><i class="far fa-clock"></i> NEXT UPDATE IN: <strong class="highlight-orange">01:59:48</strong></span>
-        </div>
-    </header>
+<div class="topHeader">
+<div class="container">
+<div class="topWrap">
 
-    <div class="main-container">
-        <main class="content-left">
-            <div class="banner-slider">
-                <div class="banner-content">
-                    <h2>SUNNY 999 BOT</h2>
-                    <p>TRUSTED BY MILLIONS</p>
-                    <span class="partner-badge">OFFICIAL PARTNER</span>
-                </div>
-            </div>
+<div class="brand">
+<img src="YOUR_PROFILE_IMAGE_LINK">
+<div class="brandText">
+<h1>SUNNY <span>999 BOT</span></h1>
+<p>OFFICIAL FREE FIRE REWARD PORTAL</p>
+</div>
+</div>
 
-            <section class="section-card uid-section">
-                <h3><i class="fas fa-keyboard icon-orange"></i> ENTER YOUR FREE FIRE UID</h3>
-                <div class="input-group">
-                    <input type="text" id="uidInput" placeholder="Enter Free Fire UID Here...">
-                    <button class="btn-orange" onclick="checkUID()">CHECK UID</button>
-                </div>
-                <p class="input-note">Make sure to enter correct UID. Rewards will be sent to this UID.</p>
-            </section>
+<div class="topStats">
+<div class="stat">🟢 SERVER ONLINE</div>
+<div class="stat">👥 1527 USERS</div>
+<div class="stat">⏳ 01:59:48</div>
+</div>
 
-            <section class="section-card rewards-section">
-                <h3><i class="fas fa-gift icon-orange"></i> CHOOSE YOUR REWARD</h3>
-                <div class="rewards-grid">
-                    <div class="reward-item" onclick="selectReward(this, '100 Diamonds')">
-                        <img src="https://via.placeholder.com/80" alt="Diamonds">
-                        <p>100 DIAMONDS</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Elite Pass')">
-                        <img src="https://via.placeholder.com/80" alt="Elite Pass">
-                        <p>ELITE PASS</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Bundle')">
-                        <img src="https://via.placeholder.com/80" alt="Bundle">
-                        <p>BUNDLE</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Emote')">
-                        <img src="https://via.placeholder.com/80" alt="Emote">
-                        <p>EMOTE</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Evo Gun')">
-                        <img src="https://via.placeholder.com/80" alt="Evo Gun">
-                        <p>EVO GUN</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Weekly Membership')">
-                        <img src="https://via.placeholder.com/80" alt="Weekly">
-                        <p>WEEKLY MEMBERSHIP</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Monthly Membership')">
-                        <img src="https://via.placeholder.com/80" alt="Monthly">
-                        <p>MONTHLY MEMBERSHIP</p>
-                    </div>
-                    <div class="reward-item" onclick="selectReward(this, 'Magic Cube')">
-                        <img src="https://via.placeholder.com/80" alt="Magic Cube">
-                        <p>MAGIC CUBE</p>
-                    </div>
-                </div>
+<div class="loginBtns">
+<button class="login">LOGIN</button>
+<button class="signup">SIGN UP</button>
+</div>
 
-                <button class="btn-claim-large" onclick="verifyAndClaim()"><i class="fas fa-paper-plane"></i> VERIFY & CLAIM REWARD</button>
-            </section>
+</div>
+</div>
+</div>
 
-            <div class="trust-badges">
-                <div class="badge"><i class="fas fa-shield-alt"></i> <h4>100% SAFE</h4><p>No Ban</p></div>
-                <div class="badge"><i class="fas fa-bolt"></i> <h4>INSTANT DELIVERY</h4><p>Within 2 Hours</p></div>
-                <div class="badge"><i class="fas fa-lock"></i> <h4>NO HACK</h4><p>100% Legal</p></div>
-                <div class="badge"><i class="fas fa-crown"></i> <h4>TRUSTED</h4><p>By Millions</p></div>
-            </div>
+<div class="navbar">
+<div class="container">
+<div class="navWrap">
+<a href="#">🏠 HOME</a>
+<a href="#">🛡 HOW IT WORKS</a>
+<a href="#">📺 LIVE STREAM</a>
+<a href="#">🏆 LEADERBOARD</a>
+<a href="#">🎁 GIVEAWAY</a>
+<a href="#">☎ SUPPORT</a>
+</div>
+</div>
+</div>
 
-            <section class="section-card how-it-works">
-                <h3><i class="fas fa-info-circle icon-orange"></i> HOW IT WORKS?</h3>
-                <div class="steps-container">
-                    <div class="step"><div class="step-num">1</div><p><strong>ENTER UID</strong><br>Enter your Free Fire UID</p></div>
-                    <div class="step"><div class="step-num">2</div><p><strong>SELECT REWARD</strong><br>Choose your favorite reward</p></div>
-                    <div class="step"><div class="step-num">3</div><p><strong>VERIFY UID</strong><br>We verify your UID</p></div>
-                    <div class="step"><div class="step-num">4</div><p><strong>GET REWARD</strong><br>Reward will be sent</p></div>
-                </div>
-            </section>
-        </main>
+<div class="container">
+<div class="mainLayout">
+    <!-- LEFT SIDE -->
+<div>
 
-        <aside class="sidebar-right">
-            <div class="sidebar-card">
-                <div class="card-header"><span>🔴 LIVE STREAM</span> <span class="live-badge">LIVE</span></div>
-                <div class="live-stream-placeholder">
-                    <img src="https://via.placeholder.com/300x150" alt="Live Stream" style="width:100%; border-radius: 8px;">
-                    <div class="stream-info">
-                        <p><strong>SUNNY 999 LIVE ✓</strong></p>
-                        <p style="font-size: 12px; color: #aaa; margin-bottom: 10px;">PLAYING FREE FIRE WITH SUBSCRIBERS</p>
-                        <button class="btn-live">WATCH LIVE</button>
-                    </div>
-                </div>
-            </div>
+<div class="card">
+<img
+class="banner"
+src="YOUR_TAMMU_BANNER_LINK"
+>
 
-            <div class="sidebar-card">
-                <div class="card-header"><span>🎁 LIVE CLAIMS</span></div>
-                <div class="live-claims-list">
-                    <div class="claim-entry"><span><strong>RX_HUNTER</strong> claimed <span class="highlight-green">Cobra Bundle</span></span> <span class="time">10s ago</span></div>
-                    <div class="claim-entry"><span><strong>PRO_SONU</strong> claimed <span class="highlight-green">100 Diamonds</span></span> <span class="time">25s ago</span></div>
-                    <div class="claim-entry"><span><strong>DARK_OP</strong> claimed <span class="highlight-green">MP40 Evo</span></span> <span class="time">35s ago</span></div>
-                    <div class="claim-entry"><span><strong>KING_777</strong> claimed <span class="highlight-green">Elite Pass</span></span> <span class="time">45s ago</span></div>
-                </div>
-            </div>
+<div class="socialBar">
+<div class="socialBtn">📺 SUNNY 999 BOT</div>
+<div class="socialBtn">📸 sunny_999_bot</div>
+<div class="socialBtn">✈ Sunny_999_Bot_Legend</div>
+</div>
+</div>
 
-            <div class="sidebar-card">
-                <div class="card-header"><span>🏆 LEADERBOARD (WEEKLY)</span></div>
-                <div class="leaderboard-list">
-                    <div class="leaderboard-entry"><span>1. 👑 SUNNY ELITE</span> <span>💎 25,850</span></div>
-                    <div class="leaderboard-entry"><span>2. 🔥 FF MASTER</span> <span>💎 21,420</span></div>
-                    <div class="leaderboard-entry"><span>3. 🎯 HEADSHOT KING</span> <span>💎 18,760</span></div>
-                    <div class="leaderboard-entry"><span>4. 🦊 RX_HUNTER</span> <span>💎 16,200</span></div>
-                </div>
-            </div>
-        </aside>
-    </div>
+<div class="card" style="margin-top:20px;">
+<h2 class="uidTitle">🎁 ENTER YOUR FREE FIRE UID</h2>
 
-    <div class="stats-bar">
-        <div class="stat-item"><i class="fas fa-users"></i> <div><h4>2,50,000+</h4><p>TOTAL USERS</p></div></div>
-        <div class="stat-item"><i class="fas fa-gift"></i> <div><h4>15,20,000+</h4><p>TOTAL REWARDS SENT</p></div></div>
-        <div class="stat-item"><i class="fas fa-eye"></i> <div><h4>1,517</h4><p>USERS ONLINE</p></div></div>
-    </div>
+<div class="uidWrap">
+<input
+type="text"
+id="uid"
+placeholder="Enter Free Fire UID Here..."
+>
+<button>CHECK UID</button>
+</div>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>SUNNY 999 BOT</h3>
-                <p>India's Most Trusted Free Fire Reward Bot. 100% Safe • Instant Delivery • No Hack</p>
-            </div>
-            <div>
-                <h4>QUICK LINKS</h4>
-                <p>Home | How It Works | Privacy Policy | Contact Us</p>
-            </div>
-            <div>
-                <h4>CONTACT US</h4>
-                <p>Email: support@sunny999bot.com</p>
-                <p>WhatsApp: +91 1234567890</p>
-            </div>
-        </div>
-        <p class="copyright">© 2026 SUNNY 999 BOT. All Rights Reserved.</p>
-    </footer>
+<p style="color:#999;margin-top:10px;">
+Make sure to enter correct UID. Rewards will be sent to this UID.
+</p>
+</div>
 
-    <div id="customModal" class="modal-overlay">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h3><i class="fas fa-shield-alt icon-orange"></i> SYSTEM NOTICE</h3>
-                <button class="close-modal-btn" onclick="closePopup()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-icon-container">
-                    <i id="modalIcon" class="fas fa-check-circle pulse-green"></i>
-                </div>
-                <p id="modalMessage">Your n
+<div class="card" style="margin-top:20px;">
+<h2 style="font-size:24px;margin-bottom:15px;">
+🎁 CHOOSE YOUR REWARD
+</h2>
+
+<div class="rewardGrid">
+
+<div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
+<img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png">
+<h3>100 DIAMONDS</h3>
+</div>
+
+<div class="rewardCard" onclick="pickGift(this,'Elite Pass')">
+<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
+<h3>ELITE PASS</h3>
+</div>
+
+<div class="rewardCard" onclick="pickGift(this,'Bundle')">
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
+<h3>BUNDLE</h3>
+</div>
+
+<div class="rewardCard" onclick="pickGift(this,'Emote')">
+<img src="https://cdn-icons-png.flaticon.com/512/742/742751.png">
+<h3>EMOTE</h3>
+</div>
+
+<div class="rewardCard" onclick="pickGift(this,'Evo Gun')">
+<img src="https://cdn-icons-png.flaticon.com/512/3598/3598931.png">
+<h3>EVO GUN</h3>
+</div>
+
+</div>
+
+<button class="verifyBtn" onclick="claimGift()">
+🚀 VERIFY & CLAIM REWARD
+</button>
+
+<div id="status" style="margin-top:15px;font-weight:bold;"></div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center;">
+
+<div>
+<h3>🛡</h3>
+<p>100% SAFE</p>
+<small>No Ban</small>
+</div>
+
+<div>
+<h3>⚡</h3>
+<p>INSTANT DELIVERY</p>
+<small>Within 2 Hours</small>
+</div>
+
+<div>
+<h3>👤</h3>
+<p>NO HACK</p>
+<small>100% Legal</small>
+</div>
+
+<div>
+<h3>👑</h3>
+<p>TRUSTED</p>
+<small>By Millions</small>
+</div>
+
+</div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<h2>🛡 HOW IT WORKS?</h2>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center;margin-top:20px;">
+<div>📱<br>ENTER UID</div>
+<div>🎁<br>SELECT REWARD</div>
+<div>✔<br>VERIFY UID</div>
+<div>📦<br>GET REWARD</div>
+</div>
+</div>
+</div>
+    <script>
+let selectedGift = "";
+
+const liveClaims = [
+"RX_HUNTER claimed Cobra Bundle 🔥",
+"PRO_SONU claimed 100 Diamonds 💎",
+"DARK_OP claimed MP40 Evo 🔫",
+"KING_777 claimed Elite Pass 🎟",
+"NOOB_KING claimed Emote 😂",
+"FF_MASTER claimed Angelic Bundle 👑"
+];
+
+function pickGift(el,gift){
+document.querySelectorAll(".rewardCard").forEach(card=>{
+card.style.border="1px solid #333";
+});
+el.style.border="2px solid red";
+selectedGift = gift;
+}
+
+function claimGift(){
+let uid = document.getElementById("uid").value;
+let status = document.getElementById("status");
+
+if(!uid || !selectedGift){
+status.innerHTML = "⚠ Please enter UID and select reward";
+status.style.color = "orange";
+return;
+}
+
+status.innerHTML = "⏳ Checking UID...";
+status.style.color = "yellow";
+
+setTimeout(()=>{
+status.innerHTML = "📦 Verifying reward...";
+},1200);
+
+setTimeout(()=>{
+status.innerHTML = "🚀 Sending reward...";
+},2500);
+
+setTimeout(()=>{
+status.innerHTML = "✅ Reward sent successfully! Delivery within 2 hours.";
+status.style.color = "lime";
+},4000);
+}
+
+/* LIVE CLAIM ROTATION */
+let claimIndex = 0;
+
+setInterval(()=>{
+claimIndex++;
+if(claimIndex >= liveClaims.length){
+claimIndex = 0;
+}
+
+document.getElementById("claimsBox").innerHTML = `
+<div>${liveClaims[claimIndex]}</div>
+<div>${liveClaims[(claimIndex+1)%liveClaims.length]}</div>
+<div>${liveClaims[(claimIndex+2)%liveClaims.length]}</div>
+<div>${liveClaims[(claimIndex+3)%liveClaims.length]}</div>
+<div>${liveClaims[(claimIndex+4)%liveClaims.length]}</div>
+`;
+},2500);
+
+/* COUNTDOWN */
+let countdown = 7200;
+
+setInterval(()=>{
+countdown--;
+
+let h = String(Math.floor(countdown/3600)).padStart(2,'0');
+let m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+let s = String(countdown%60).padStart(2,'0');
+
+document.querySelectorAll(".stat")[2].innerHTML = `⏳ ${h}:${m}:${s}`;
+
+if(countdown <= 0){
+countdown = 7200;
+}
+},1000);
+
+/* ONLINE USERS */
+setInterval(()=>{
+let users = 1400 + Math.floor(Math.random()*400);
+document.querySelectorAll(".stat")[1].innerHTML = `👥 ${users} USERS`;
+},3000);
+
+</script>
+
+</body>
+</html>
