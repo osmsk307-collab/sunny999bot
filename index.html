@@ -1,479 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNNY 999 BOT PRO PORTAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUNNY 999 BOT - Official Rewards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    <style>
+        /* Color Palette & Basic Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body{
-background:
-linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.92)),
-url('https://images.unsplash.com/photo-1542751371-adc38448a05e') center/cover;
-color:white;
-min-height:100vh;
-}
+        body {
+            background-color: #0b0c10;
+            color: #ffffff;
+        }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-background:rgba(0,0,0,.6);
-backdrop-filter:blur(12px);
-position:sticky;
-top:0;
-z-index:999;
-}
+        /* Helper Classes */
+        .highlight-orange { color: #ff9900; }
+        .highlight-green { color: #00ff66; }
+        .icon-orange { color: #ff9900; margin-right: 8px; }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:orange;
-}
+        /* Top Navigation Header */
+        header {
+            background-color: #1f2833;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 3px solid #ff9900;
+        }
 
-.topBtns button{
-padding:10px 16px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:bold;
-margin-left:8px;
-}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.loginBtn{
-background:#222;
-color:white;
-}
+        .verified-tick {
+            color: #00bfff;
+            font-size: 16px;
+        }
 
-.signupBtn{
-background:orange;
-color:black;
-}
+        .tagline {
+            font-size: 11px;
+            color: #00ff66;
+            letter-spacing: 1px;
+        }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-}
+        .server-status {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
 
-.card{
-background:rgba(0,0,0,.55);
-border:1px solid rgba(255,165,0,.3);
-border-radius:20px;
-padding:20px;
-backdrop-filter:blur(10px);
-}
+        .online-dot {
+            color: #00ff66;
+            animation: blink 1.5s infinite;
+        }
 
-.statusBar{
-margin-bottom:15px;
-font-weight:bold;
-}
+        @keyframes blink {
+            50% { opacity: 0.4; }
+        }
 
-.banner{
-width:100%;
-border-radius:18px;
-margin-bottom:15px;
-}
+        /* Multi-Column Main Layout */
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 15px;
+        }
 
-h1{
-font-size:40px;
-margin:10px 0;
-}
+        .content-left {
+            flex: 2;
+        }
 
-input,select{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#111;
-color:white;
-margin:12px 0;
-}
+        .sidebar-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-.gifts{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:10px;
-}
+        /* Reusable Gaming Boxes */
+        .section-card, .sidebar-card {
+            background-color: #151a21;
+            border: 1px solid #232d3a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-.gift{
-padding:15px;
-background:#111;
-border:1px solid #333;
-border-radius:15px;
-text-align:center;
-cursor:pointer;
-transition:.2s;
-}
+        /* Banner Slider Box */
+        .banner-slider {
+            background: linear-gradient(135deg, #ff9900 0%, #151a21 70%);
+            height: 180px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff9900;
+        }
 
-.gift:hover,.selected{
-background:orange;
-color:black;
-}
+        .partner-badge {
+            background: #000;
+            color: #ff9900;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
 
-.claimBtn{
-width:100%;
-padding:15px;
-background:orange;
-color:black;
-border:none;
-border-radius:15px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-margin-top:15px;
-}
+        /* Input Fields & Buttons */
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
 
-#status{
-margin-top:15px;
-font-weight:bold;
-}
+        input[type="text"] {
+            flex: 1;
+            background-color: #0b0c10;
+            border: 1px solid #ff9900;
+            padding: 12px;
+            color: #fff;
+            border-radius: 4px;
+            outline: none;
+        }
 
-.popup,
-.loginModal,
-.successPopup{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.85);
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
+        .btn-orange {
+            background-color: #ff9900;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
 
-.modal{
-background:#111;
-padding:20px;
-border-radius:20px;
-width:90%;
-max-width:400px;
-}
+        .btn-orange:hover {
+            background-color: #cc7a00;
+        }
 
-.toast{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#111;
-padding:12px;
-border-radius:12px;
-border:1px solid orange;
-z-index:999;
-}
+        .input-note {
+            font-size: 12px;
+            color: #777;
+            margin-top: 8px;
+        }
 
-.liveBox{
-height:220px;
-border-radius:15px;
-overflow:hidden;
-background:#111;
-}
+        /* Grid Configuration for Item Grid */
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
 
-.successCard{
-background:#111;
-padding:25px;
-border-radius:20px;
-text-align:center;
-max-width:400px;
-width:90%;
-}
+        .reward-item {
+            background-color: #0b0c10;
+            border: 2px solid #232d3a;
+            border-radius: 6px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-.closeBtn{
-margin-top:15px;
-padding:12px 20px;
-background:orange;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-}
+        .reward-item:hover, .reward-item.selected {
+            border-color: #ff9900;
+            box-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+        }
 
-@media(max-width:768px){
-.container{
-grid-template-columns:1fr;
-}
-.logo{
-font-size:22px;
-}
-h1{
-font-size:28px;
-}
-}
-</style>
+        .reward-item img {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .reward-item p {
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .btn-claim-large {
+            width: 100%;
+            background: linear-gradient(90deg, #ff9900, #ff5500);
+            color: #000;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Safety & Step Guidelines */
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background-color: #151a21;
+            padding: 15px;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .badge i {
+            color: #ff9900;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #0b0c10;
+            padding: 10px;
+            border-radius: 6px;
+            flex: 1;
+        }
+
+        .step-num {
+            background-color: #ff9900;
+            color: #000;
+            font-weight: bold;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Widgets Styling */
+        .card-header {
+            border-bottom: 1px solid #232d3a;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .live-badge {
+            background-color: #ff0000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .btn-live {
+            width: 100%;
+            padding: 8px;
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .claim-entry, .leaderboard-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #232d3a;
+            font-size: 13px;
+        }
+
+        /* Bottom Metrics Counter */
+        .stats-bar {
+            background-color: #1f2833;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-item i {
+            font-size: 30px;
+            color: #ff9900;
+        }
+
+        /* Footer Grid */
+        footer {
+            background-color: #05070a;
+            padding: 40px 5%;
+            margin-top: 40px;
+            border-top: 1px solid #232d3a;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+        }
+
+        /* CUSTOM GAME POP-UP MODAL DIALOG */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-card {
+            background-color: #151a21;
+            border: 2px solid #ff9900;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 25px rgba(255, 153, 0, 0.3);
+            animation: popupScale 0.3s ease-out forwards;
+            overflow: hidden;
+        }
+
+        @keyframes popupScale {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            background-color: #1f2833;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #232d3a;
+        }
+
+        .modal-header h3 {
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .close-modal-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            color: #ff9900;
+        }
+
+        .modal-body {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .modal-icon-container {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .pulse-green {
+            color: #00ff66;
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
+        }
+
+        .pulse-orange {
+            color: #ff9900;
+            text-shadow: 0 0 15px rgba(255, 153, 0, 0.5);
+        }
+
+        #modalMessage {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            background-color: #0b0c10;
+            text-align: center;
+            border-top: 1px solid #232d3a;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Viewports */
+        @media (max-width: 768px) {
+            .main-container, .stats-bar, .footer-grid, .steps-container {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .rewards-grid, .trust-badges {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">SUNNY 999 BOT</div>
+    <header>
+        <div class="logo-area">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="logo-img">
+            <div>
+                <h1>SUNNY 999 BOT <span class="verified-tick">✓</span></h1>
+                <p class="tagline">OFFICIAL FREE FIRE REWARD BOT</p>
+            </div>
+        </div>
+        <div class="server-status">
+            <span><i class="fas fa-circle online-dot"></i> SERVER ONLINE: <strong class="highlight-green">1,517</strong></span>
+            <span><i class="far fa-clock"></i> NEXT UPDATE IN: <strong class="highlight-orange">01:59:48</strong></span>
+        </div>
+    </header>
 
-<div class="topBtns">
-<button class="loginBtn" onclick="showLogin()">Login</button>
-<button class="signupBtn" onclick="showLogin()">Sign Up</button>
-</div>
-</header>
+    <div class="main-container">
+        <main class="content-left">
+            <div class="banner-slider">
+                <div class="banner-content">
+                    <h2>SUNNY 999 BOT</h2>
+                    <p>TRUSTED BY MILLIONS</p>
+                    <span class="partner-badge">OFFICIAL PARTNER</span>
+                </div>
+            </div>
 
-<div class="container">
+            <section class="section-card uid-section">
+                <h3><i class="fas fa-keyboard icon-orange"></i> ENTER YOUR FREE FIRE UID</h3>
+                <div class="input-group">
+                    <input type="text" id="uidInput" placeholder="Enter Free Fire UID Here...">
+                    <button class="btn-orange" onclick="checkUID()">CHECK UID</button>
+                </div>
+                <p class="input-note">Make sure to enter correct UID. Rewards will be sent to this UID.</p>
+            </section>
 
-<div class="card">
+            <section class="section-card rewards-section">
+                <h3><i class="fas fa-gift icon-orange"></i> CHOOSE YOUR REWARD</h3>
+                <div class="rewards-grid">
+                    <div class="reward-item" onclick="selectReward(this, '100 Diamonds')">
+                        <img src="https://via.placeholder.com/80" alt="Diamonds">
+                        <p>100 DIAMONDS</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Elite Pass')">
+                        <img src="https://via.placeholder.com/80" alt="Elite Pass">
+                        <p>ELITE PASS</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Bundle')">
+                        <img src="https://via.placeholder.com/80" alt="Bundle">
+                        <p>BUNDLE</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Emote')">
+                        <img src="https://via.placeholder.com/80" alt="Emote">
+                        <p>EMOTE</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Evo Gun')">
+                        <img src="https://via.placeholder.com/80" alt="Evo Gun">
+                        <p>EVO GUN</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Weekly Membership')">
+                        <img src="https://via.placeholder.com/80" alt="Weekly">
+                        <p>WEEKLY MEMBERSHIP</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Monthly Membership')">
+                        <img src="https://via.placeholder.com/80" alt="Monthly">
+                        <p>MONTHLY MEMBERSHIP</p>
+                    </div>
+                    <div class="reward-item" onclick="selectReward(this, 'Magic Cube')">
+                        <img src="https://via.placeholder.com/80" alt="Magic Cube">
+                        <p>MAGIC CUBE</p>
+                    </div>
+                </div>
 
-<div class="statusBar">
-🟢 SERVER ONLINE |
-👥 <span id="online">1542</span> |
-⏳ <span id="timer">02:00:00</span>
-</div>
+                <button class="btn-claim-large" onclick="verifyAndClaim()"><i class="fas fa-paper-plane"></i> VERIFY & CLAIM REWARD</button>
+            </section>
 
-<img
-class="banner"
-src="https://images.unsplash.com/photo-1542751371-adc38448a05e"
-/>
+            <div class="trust-badges">
+                <div class="badge"><i class="fas fa-shield-alt"></i> <h4>100% SAFE</h4><p>No Ban</p></div>
+                <div class="badge"><i class="fas fa-bolt"></i> <h4>INSTANT DELIVERY</h4><p>Within 2 Hours</p></div>
+                <div class="badge"><i class="fas fa-lock"></i> <h4>NO HACK</h4><p>100% Legal</p></div>
+                <div class="badge"><i class="fas fa-crown"></i> <h4>TRUSTED</h4><p>By Millions</p></div>
+            </div>
 
-<h1>FREE FIRE REWARD PORTAL</h1>
-<p>Enter UID and claim your premium reward</p>
+            <section class="section-card how-it-works">
+                <h3><i class="fas fa-info-circle icon-orange"></i> HOW IT WORKS?</h3>
+                <div class="steps-container">
+                    <div class="step"><div class="step-num">1</div><p><strong>ENTER UID</strong><br>Enter your Free Fire UID</p></div>
+                    <div class="step"><div class="step-num">2</div><p><strong>SELECT REWARD</strong><br>Choose your favorite reward</p></div>
+                    <div class="step"><div class="step-num">3</div><p><strong>VERIFY UID</strong><br>We verify your UID</p></div>
+                    <div class="step"><div class="step-num">4</div><p><strong>GET REWARD</strong><br>Reward will be sent</p></div>
+                </div>
+            </section>
+        </main>
 
-<input
-type="text"
-id="uid"
-placeholder="Enter Free Fire UID"
-/>
+        <aside class="sidebar-right">
+            <div class="sidebar-card">
+                <div class="card-header"><span>🔴 LIVE STREAM</span> <span class="live-badge">LIVE</span></div>
+                <div class="live-stream-placeholder">
+                    <img src="https://via.placeholder.com/300x150" alt="Live Stream" style="width:100%; border-radius: 8px;">
+                    <div class="stream-info">
+                        <p><strong>SUNNY 999 LIVE ✓</strong></p>
+                        <p style="font-size: 12px; color: #aaa; margin-bottom: 10px;">PLAYING FREE FIRE WITH SUBSCRIBERS</p>
+                        <button class="btn-live">WATCH LIVE</button>
+                    </div>
+                </div>
+            </div>
 
-<div class="gifts">
-<div class="gift" onclick="pickGift(this,'100 Diamonds')">100 Diamonds</div>
-<div class="gift" onclick="pickGift(this,'Elite Pass')">Elite Pass</div>
-<div class="gift" onclick="showBundle()">Bundle</div>
-<div class="gift" onclick="showEmote()">Emote</div>
-<div class="gift" onclick="showEvo()">Evo Gun</div>
-<div class="gift" onclick="pickGift(this,'Weekly Membership')">Membership</div>
-</div>
+            <div class="sidebar-card">
+                <div class="card-header"><span>🎁 LIVE CLAIMS</span></div>
+                <div class="live-claims-list">
+                    <div class="claim-entry"><span><strong>RX_HUNTER</strong> claimed <span class="highlight-green">Cobra Bundle</span></span> <span class="time">10s ago</span></div>
+                    <div class="claim-entry"><span><strong>PRO_SONU</strong> claimed <span class="highlight-green">100 Diamonds</span></span> <span class="time">25s ago</span></div>
+                    <div class="claim-entry"><span><strong>DARK_OP</strong> claimed <span class="highlight-green">MP40 Evo</span></span> <span class="time">35s ago</span></div>
+                    <div class="claim-entry"><span><strong>KING_777</strong> claimed <span class="highlight-green">Elite Pass</span></span> <span class="time">45s ago</span></div>
+                </div>
+            </div>
 
-<button class="claimBtn" onclick="claimGift()">
-VERIFY & CLAIM
-</button>
+            <div class="sidebar-card">
+                <div class="card-header"><span>🏆 LEADERBOARD (WEEKLY)</span></div>
+                <div class="leaderboard-list">
+                    <div class="leaderboard-entry"><span>1. 👑 SUNNY ELITE</span> <span>💎 25,850</span></div>
+                    <div class="leaderboard-entry"><span>2. 🔥 FF MASTER</span> <span>💎 21,420</span></div>
+                    <div class="leaderboard-entry"><span>3. 🎯 HEADSHOT KING</span> <span>💎 18,760</span></div>
+                    <div class="leaderboard-entry"><span>4. 🦊 RX_HUNTER</span> <span>💎 16,200</span></div>
+                </div>
+            </div>
+        </aside>
+    </div>
 
-<div id="status"></div>
+    <div class="stats-bar">
+        <div class="stat-item"><i class="fas fa-users"></i> <div><h4>2,50,000+</h4><p>TOTAL USERS</p></div></div>
+        <div class="stat-item"><i class="fas fa-gift"></i> <div><h4>15,20,000+</h4><p>TOTAL REWARDS SENT</p></div></div>
+        <div class="stat-item"><i class="fas fa-eye"></i> <div><h4>1,517</h4><p>USERS ONLINE</p></div></div>
+    </div>
 
-</div>
-<div>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>SUNNY 999 BOT</h3>
+                <p>India's Most Trusted Free Fire Reward Bot. 100% Safe • Instant Delivery • No Hack</p>
+            </div>
+            <div>
+                <h4>QUICK LINKS</h4>
+                <p>Home | How It Works | Privacy Policy | Contact Us</p>
+            </div>
+            <div>
+                <h4>CONTACT US</h4>
+                <p>Email: support@sunny999bot.com</p>
+                <p>WhatsApp: +91 1234567890</p>
+            </div>
+        </div>
+        <p class="copyright">© 2026 SUNNY 999 BOT. All Rights Reserved.</p>
+    </footer>
 
-<div class="card">
-<h2>🎁 Live Claims</h2>
-<div id="claims">RX_HUNTER claimed Cobra Bundle 🔥</div>
-</div>
-
-<div class="card" style="margin-top:20px">
-<h2>🏆 Leaderboard</h2>
-<div>#1 SUNNY ELITE</div>
-<div>#2 FF MASTER</div>
-<div>#3 HEADSHOT KING</div>
-</div>
-
-<div class="card" style="margin-top:20px">
-<h2>📺 LIVE STREAM</h2>
-<div class="liveBox">
-<iframe
-width="100%"
-height="100%"
-src="https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig"
-frameborder="0"
-allowfullscreen>
-</iframe>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- Bundle Popup -->
-<div class="popup" id="bundlePopup">
-<div class="modal">
-<h2>Select Bundle</h2>
-<select id="bundleSelect">
-<option>Cobra Bundle</option>
-<option>Hip Hop Bundle</option>
-<option>Criminal Bundle</option>
-<option>Sakura Bundle</option>
-<option>Angelic Bundle</option>
-</select>
-<button class="claimBtn" onclick="selectBundle()">Select Bundle</button>
-</div>
-</div>
-
-<!-- Emote Popup -->
-<div class="popup" id="emotePopup">
-<div class="modal">
-<h2>Select Emote</h2>
-<select id="emoteSelect">
-<option>LOL Emote</option>
-<option>Top DJ</option>
-<option>FF Dance</option>
-<option>Haha Emote</option>
-</select>
-<button class="claimBtn" onclick="selectEmote()">Select Emote</button>
-</div>
-</div>
-
-<!-- Evo Popup -->
-<div class="popup" id="evoPopup">
-<div class="modal">
-<h2>Select Evo Gun</h2>
-<select id="evoSelect">
-<option>M1014 Evo</option>
-<option>AK Evo</option>
-<option>MP40 Evo</option>
-<option>SCAR Evo</option>
-</select>
-<button class="claimBtn" onclick="selectEvo()">Select Evo</button>
-</div>
-</div>
-
-<!-- Login Popup -->
-<div class="loginModal" id="loginBox">
-<div class="modal">
-<h2>Login / Signup</h2>
-<input placeholder="Username">
-<input type="password" placeholder="Password">
-<button class="claimBtn" onclick="hideLogin()">Continue</button>
-</div>
-</div>
-
-<!-- Success Popup -->
-<div class="successPopup" id="successPopup">
-<div class="successCard">
-<h2>🎉 Gift Sent Successfully</h2>
-<p>
-Your selected reward has been sent to your
-Free Fire mailbox.
-Delivery within 2 hours.
-</p>
-<button class="closeBtn" onclick="closeSuccess()">OK</button>
-</div>
-</div>
-
-<div class="toast" id="toast">
-Player123 claimed Elite Pass 🔥
-</div>
-<script>
-let selectedGift="";
-
-const claims=[
-"RX_HUNTER claimed Cobra Bundle 🔥",
-"KING_777 claimed Elite Pass",
-"PRO_SONU claimed 100 Diamonds",
-"DARK_OP claimed FF Dance Emote",
-"NOOB_KING claimed MP40 Evo"
-];
-
-function pickGift(el,gift){
-document.querySelectorAll(".gift").forEach(g=>{
-g.classList.remove("selected");
-});
-el.classList.add("selected");
-selectedGift=gift;
-}
-
-function showBundle(){
-document.getElementById("bundlePopup").style.display="flex";
-}
-
-function showEmote(){
-document.getElementById("emotePopup").style.display="flex";
-}
-
-function showEvo(){
-document.getElementById("evoPopup").style.display="flex";
-}
-
-function showLogin(){
-document.getElementById("loginBox").style.display="flex";
-}
-
-function hideLogin(){
-document.getElementById("loginBox").style.display="none";
-}
-
-function selectBundle(){
-selectedGift=document.getElementById("bundleSelect").value;
-document.getElementById("bundlePopup").style.display="none";
-}
-
-function selectEmote(){
-selectedGift=document.getElementById("emoteSelect").value;
-document.getElementById("emotePopup").style.display="none";
-}
-
-function selectEvo(){
-selectedGift=document.getElementById("evoSelect").value;
-document.getElementById("evoPopup").style.display="none";
-}
-
-function closeSuccess(){
-document.getElementById("successPopup").style.display="none";
-}
-
-function claimGift(){
-let uid=document.getElementById("uid").value;
-let status=document.getElementById("status");
-
-if(!uid || !selectedGift){
-status.innerHTML="⚠️ Enter UID and select reward";
-return;
-}
-
-status.innerHTML="⏳ Checking UID...";
-
-setTimeout(()=>{
-status.innerHTML="📦 Verifying reward...";
-},1200);
-
-setTimeout(()=>{
-status.innerHTML="🚀 Sending reward...";
-},2200);
-
-setTimeout(()=>{
-document.getElementById("successPopup").style.display="flex";
-status.innerHTML="";
-},3500);
-}
-
-setInterval(()=>{
-document.getElementById("online").innerText=
-1400+Math.floor(Math.random()*400);
-},3000);
-
-let i=0;
-setInterval(()=>{
-i=(i+1)%claims.length;
-document.getElementById("claims").innerText=claims[i];
-document.getElementById("toast").innerText=claims[i];
-},2500);
-
-let sec=7200;
-
-setInterval(()=>{
-sec--;
-
-let h=String(Math.floor(sec/3600)).padStart(2,'0');
-let m=String(Math.floor((sec%3600)/60)).padStart(2,'0');
-let s=String(sec%60).padStart(2,'0');
-
-document.getElementById("timer").innerText=
-`${h}:${m}:${s}`;
-
-if(sec<=0){
-sec=7200;
-}
-},1000);
-</script>
-
-</body>
-</html>
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fas fa-shield-alt icon-orange"></i> SYSTEM NOTICE</h3>
+                <button class="close-modal-btn" onclick="closePopup()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon-container">
+                    <i id="modalIcon" class="fas fa-check-circle pulse-green"></i>
+                </div>
+                <p id="modalMessage">Your n
