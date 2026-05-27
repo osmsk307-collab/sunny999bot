@@ -300,7 +300,7 @@ flex-direction:column;
 <div class="topWrap">
 
 <div class="brand">
-<img src="sunny-logo.jpg">
+<img src="./sunny-logo.jpg">
 <div class="brandText">
 <h1>SUNNY <span>999 BOT</span></h1>
 <p>OFFICIAL FREE FIRE REWARD PORTAL</p>
@@ -340,7 +340,7 @@ flex-direction:column;
 <div>
 
 <div class="card">
-<img class="banner" src="sunny-banner.jpg">
+<img class="banner" src="./sunny-banner.jpg">
 
 <div class="socialBar">
 <div class="socialBtn">
@@ -374,22 +374,22 @@ placeholder="Enter Free Fire UID..."
 <div class="rewardGrid">
 
 <div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
-<img src="diamond.jpg">
+<img src="./diamond.jpg">
 <h3>100 DIAMONDS</h3>
 </div>
 
 <div class="rewardCard" onclick="showBundle()">
-<img src="bundle.jpg">
+<img src="./bundle.jpg">
 <h3>BUNDLE</h3>
 </div>
 
 <div class="rewardCard" onclick="showEmote()">
-<img src="emote.jpg">
+<img src="./emote.jpg">
 <h3>EMOTE</h3>
 </div>
 
 <div class="rewardCard" onclick="showEvo()">
-<img src="evogun.jpg">
+<img src="./evogun.jpg">
 <h3>EVO GUN</h3>
 </div>
 
@@ -419,13 +419,13 @@ margin-top:18px;
 </div>
 </div>
 </div>
-<!-- RIGHT SIDE -->
+    <!-- RIGHT SIDE -->
 <div>
 
 <div class="card">
 <h2 style="margin-bottom:15px;">📺 LIVE STREAM</h2>
 
-<img class="liveImg" src="mohit-banner.jpg">
+<img class="liveImg" src="./mohit-logo.jpg">
 
 <div style="margin-top:15px;">
 <h3>MOHIT LIVE × SUNNY 999 BOT</h3>
@@ -523,7 +523,7 @@ text-align:center;
 
 </div>
 </div>
-<!-- Bundle Popup -->
+    <!-- Bundle Popup -->
 <div class="popup" id="bundlePopup">
 <div class="modal">
 <h2>Select Bundle</h2>
@@ -638,6 +638,7 @@ setTimeout(()=>{
 status.innerHTML="✅ UID Verified Successfully";
 status.style.color="lime";
 uidVerified=true;
+showToast("✅ UID Verified Successfully");
 },2000);
 }
 
@@ -723,3 +724,4 @@ showToast(`👀 ${20+Math.floor(Math.random()*40)} people viewing this page`);
 
 </body>
 </html>
+    
