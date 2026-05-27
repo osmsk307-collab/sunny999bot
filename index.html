@@ -14,7 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#070707;
+background:#050505;
 color:white;
 }
 
@@ -28,17 +28,17 @@ margin:auto;
 background:red;
 padding:12px;
 text-align:center;
-font-weight:bold;
 font-size:18px;
+font-weight:bold;
 }
 
-.topHeader{
+.header{
 background:#0b0b0b;
 padding:15px 0;
 border-bottom:1px solid #222;
 }
 
-.topWrap{
+.headerWrap{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -46,35 +46,36 @@ flex-wrap:wrap;
 gap:15px;
 }
 
-.brand{
+.logoWrap{
 display:flex;
 align-items:center;
 gap:12px;
 }
 
-.brand img{
-width:65px;
-height:65px;
+.logoWrap img{
+width:70px;
+height:70px;
 border-radius:50%;
 border:2px solid red;
 object-fit:cover;
 }
 
-.brandText h1{
+.logoText h1{
 font-size:34px;
 }
 
-.brandText span{
+.logoText span{
 color:red;
 }
 
-.topStats{
+.stats{
 display:flex;
-gap:25px;
+gap:20px;
 font-weight:bold;
+flex-wrap:wrap;
 }
 
-.loginBtns button{
+.authBtns button{
 padding:12px 20px;
 border:none;
 border-radius:10px;
@@ -83,35 +84,35 @@ cursor:pointer;
 margin-left:8px;
 }
 
-.login{
+.loginBtn{
 background:#111;
 color:white;
 }
 
-.signup{
+.signupBtn{
 background:red;
 color:white;
 }
 
 .navbar{
-background:#111;
-padding:14px 0;
+background:#101010;
+padding:15px 0;
 border-bottom:1px solid #222;
 }
 
-.navWrap{
+.navLinks{
 display:flex;
-gap:28px;
+gap:25px;
 flex-wrap:wrap;
 }
 
-.navWrap a{
+.navLinks a{
 color:white;
 text-decoration:none;
 font-weight:bold;
 }
 
-.mainLayout{
+.main{
 display:grid;
 grid-template-columns:2fr 1fr;
 gap:20px;
@@ -131,46 +132,45 @@ border-radius:14px;
 display:block;
 }
 
-.socialBar{
-display:flex;
-flex-direction:column;
+.socialBox{
+display:grid;
 gap:10px;
-margin-top:12px;
+margin-top:15px;
 }
 
 .socialBtn{
 background:#111;
 padding:16px;
-border-radius:10px;
+border-radius:12px;
 text-align:center;
 font-weight:bold;
 }
 
-.uidWrap{
+.uidArea{
 display:flex;
 gap:10px;
 margin-top:15px;
 }
 
-.uidWrap input{
+.uidArea input{
 flex:1;
 padding:15px;
-background:#111;
-border:1px solid #333;
 border-radius:12px;
+border:1px solid #333;
+background:#111;
 color:white;
 }
 
-.uidWrap button{
-padding:15px 24px;
+.uidArea button{
+padding:15px 25px;
 background:red;
 color:white;
 border:none;
 border-radius:12px;
 font-weight:bold;
+cursor:pointer;
 }
-
-.rewardGrid{
+  .rewardGrid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
@@ -184,6 +184,7 @@ border-radius:14px;
 padding:14px;
 text-align:center;
 cursor:pointer;
+transition:.2s;
 }
 
 .rewardCard img{
@@ -194,17 +195,79 @@ border-radius:10px;
 display:block;
 }
 
+.rewardCard:hover{
+border:2px solid red;
+}
+
 .liveImg{
 width:100%;
 border-radius:12px;
 display:block;
 }
 
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.modal{
+background:#111;
+padding:20px;
+border-radius:16px;
+width:90%;
+max-width:400px;
+border:1px solid red;
+}
+
+.modal h2{
+margin-bottom:15px;
+}
+
+.modal select{
+width:100%;
+padding:15px;
+background:#000;
+color:white;
+border:1px solid #333;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.modal button{
+width:100%;
+padding:15px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.claimBtn{
+width:100%;
+padding:18px;
+margin-top:20px;
+background:red;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
 @media(max-width:900px){
-.mainLayout{
+.main{
 grid-template-columns:1fr;
 }
-.uidWrap{
+
+.uidArea{
 flex-direction:column;
 }
 }
@@ -212,38 +275,38 @@ flex-direction:column;
 </head>
 <body>
 
-<div class="topTicker" id="winnerTicker">
+<div class="topTicker">
 👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎
 </div>
 
-<div class="topHeader">
+<div class="header">
 <div class="container">
-<div class="topWrap">
+<div class="headerWrap">
 
-<div class="brand">
+<div class="logoWrap">
 <img src="sunny-logo.jpg">
-<div class="brandText">
+<div class="logoText">
 <h1>SUNNY <span>999 BOT</span></h1>
 <p>OFFICIAL FREE FIRE REWARD PORTAL</p>
 </div>
 </div>
-<div class="topStats">
+
+<div class="stats">
 <div id="onlineUsers">👥 1527 USERS</div>
 <div id="timer">⏳ 01:59:48</div>
 </div>
 
-<div class="loginBtns">
-<button class="login">LOGIN</button>
-<button class="signup">SIGN UP</button>
+<div class="authBtns">
+<button class="loginBtn">LOGIN</button>
+<button class="signupBtn">SIGN UP</button>
 </div>
 
 </div>
 </div>
 </div>
-
 <div class="navbar">
 <div class="container">
-<div class="navWrap">
+<div class="navLinks">
 <a href="#">HOME</a>
 <a href="#">HOW IT WORKS</a>
 <a href="#">LIVE STREAM</a>
@@ -254,7 +317,7 @@ flex-direction:column;
 </div>
 
 <div class="container">
-<div class="mainLayout">
+<div class="main">
 
 <!-- LEFT -->
 <div>
@@ -262,7 +325,7 @@ flex-direction:column;
 <div class="card">
 <img class="banner" src="sunny-banner.jpg">
 
-<div class="socialBar">
+<div class="socialBox">
 <div class="socialBtn">
 👑 OFFICIAL PARTNER BY — SUNNY 999 BOT × MOHIT LIVE
 </div>
@@ -276,12 +339,12 @@ flex-direction:column;
 <div class="card" style="margin-top:20px;">
 <h2>🎮 ENTER YOUR FREE FIRE UID</h2>
 
-<div class="uidWrap">
+<div class="uidArea">
 <input type="text" id="uid" placeholder="Enter Free Fire UID">
 <button onclick="checkUID()">CHECK UID</button>
 </div>
 
-<div id="status" style="margin-top:12px;font-weight:bold;"></div>
+<div id="status" style="margin-top:15px;font-weight:bold;"></div>
 </div>
 
 <div class="card" style="margin-top:20px;">
@@ -311,74 +374,38 @@ flex-direction:column;
 
 </div>
 
-<button onclick="claimGift()" style="
-width:100%;
-padding:18px;
-margin-top:20px;
-background:red;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-">
+<button class="claimBtn" onclick="claimGift()">
 🚀 VERIFY & CLAIM REWARD
 </button>
 </div>
+
 <div class="card" style="margin-top:20px;">
 <h2>🛡 HOW IT WORKS?</h2>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-text-align:center;
-margin-top:18px;
-">
-
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center;margin-top:15px;">
 <div>📱<br>ENTER UID</div>
-<div>✔<br>VERIFY UID</div>
-<div>🎁<br>SELECT REWARD</div>
-<div>📦<br>GET GIFT</div>
-
+<div>✔<br>VERIFY</div>
+<div>🎁<br>SELECT</div>
+<div>📦<br>GET REWARD</div>
 </div>
 </div>
 
 </div>
 
-<!-- RIGHT SIDE -->
+<!-- RIGHT -->
 <div>
 
 <div class="card">
 <h2>📺 LIVE STREAM</h2>
+<img class="liveImg" src="mohit-live.jpg">
 
-<img class="liveImg" src="mohit-logo.jpg">
-
-<div style="margin-top:15px;">
-<h3>MOHIT LIVE × SUNNY 999 BOT</h3>
-<p style="color:#aaa;margin-top:6px;">
-OFFICIAL DAILY GIVEAWAY LIVE STREAM
-</p>
-
-<button style="
-width:100%;
-padding:14px;
-margin-top:15px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-font-weight:bold;
-">
+<button class="claimBtn" style="margin-top:15px;">
 WATCH LIVE
 </button>
 </div>
-</div>
-
-<div class="card" style="margin-top:20px;">
+  <div class="card" style="margin-top:20px;">
 <h2>🎁 LIVE CLAIMS</h2>
-<div id="claimsBox" style="margin-top:15px;display:grid;gap:10px;">
+<div id="claimsBox" style="display:grid;gap:10px;margin-top:15px;">
 <div>RX_HUNTER claimed Cobra Bundle 🔥</div>
 <div>PRO_SONU claimed 100 Diamonds 💎</div>
 <div>DARK_OP claimed MP40 Evo 🔫</div>
@@ -388,18 +415,18 @@ WATCH LIVE
 
 <div class="card" style="margin-top:20px;">
 <h2>🏆 LEADERBOARD</h2>
-
-<div style="margin-top:15px;display:grid;gap:10px;">
+<div style="display:grid;gap:10px;margin-top:15px;">
 <div>#1 MOHIT LIVE 👑</div>
 <div>#2 SUNNY ELITE 🔥</div>
 <div>#3 FF MASTER 💎</div>
 <div>#4 HEADSHOT KING ⚡</div>
 </div>
-
 </div>
 
 </div>
 </div>
+</div>
+
 <!-- POPUPS -->
 <div class="popup" id="bundlePopup">
 <div class="modal">
@@ -411,7 +438,7 @@ WATCH LIVE
 <option>Golden Sakura Bundle</option>
 <option>Red Criminal Bundle</option>
 </select>
-<button onclick="selectBundle()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
+<button onclick="selectBundle()">SELECT</button>
 </div>
 </div>
 
@@ -420,11 +447,11 @@ WATCH LIVE
 <h2>Select Emote</h2>
 <select id="emoteSelect">
 <option>LOL Emote</option>
-<option>Top DJ Emote</option>
-<option>FF Dance Emote</option>
+<option>Top DJ</option>
+<option>FF Dance</option>
 <option>Haha Emote</option>
 </select>
-<button onclick="selectEmote()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
+<button onclick="selectEmote()">SELECT</button>
 </div>
 </div>
 
@@ -437,7 +464,7 @@ WATCH LIVE
 <option>M1014 Evo</option>
 <option>SCAR Evo</option>
 </select>
-<button onclick="selectEvo()" style="width:100%;padding:15px;background:red;color:white;border:none;border-radius:10px;">SELECT</button>
+<button onclick="selectEvo()">SELECT</button>
 </div>
 </div>
 
@@ -485,7 +512,7 @@ let uid=document.getElementById("uid").value;
 let status=document.getElementById("status");
 
 if(!uid){
-status.innerHTML="⚠ Enter Free Fire UID";
+status.innerHTML="⚠ Enter UID first";
 status.style.color="orange";
 return;
 }
@@ -551,7 +578,7 @@ if(countdown<=0) countdown=7200;
 },1000);
 
 setInterval(()=>{
-let users=1400+Math.floor(Math.random()*400);
+let users=1400+Math.floor(Math.random()*300);
 document.getElementById("onlineUsers").innerHTML=`👥 ${users} USERS`;
 },3000);
 </script>
