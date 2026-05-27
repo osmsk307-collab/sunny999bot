@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNNY 999 BOT PREMIUM</title>
+<title>SUNNY 999 BOT ULTIMATE PREMIUM</title>
 
 <style>
 *{
@@ -17,6 +17,7 @@ body{
 background:linear-gradient(135deg,#050505,#120000,#050505);
 color:white;
 overflow-x:hidden;
+position:relative;
 }
 
 .container{
@@ -30,18 +31,40 @@ background:linear-gradient(90deg,#ff0000,#8b0000);
 padding:10px;
 text-align:center;
 font-weight:bold;
-font-size:15px;
+font-size:14px;
 box-shadow:0 0 15px red;
-transition: all 0.5s ease-in-out;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.03);}
+100%{transform:scale(1);}
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+.rain{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall 5s linear infinite;
+z-index:999;
+pointer-events:none;
 }
 
 .header{
-padding:20px 0;
+padding:18px 0;
 text-align:center;
 }
 
 .logoText h1{
-font-size:42px;
+font-size:38px;
+text-shadow:0 0 10px red;
 }
 
 .logoText span{
@@ -51,10 +74,10 @@ color:red;
 .stats{
 display:flex;
 justify-content:center;
-gap:14px;
+gap:12px;
 flex-wrap:wrap;
 margin-top:14px;
-font-size:14px;
+font-size:13px;
 font-weight:bold;
 }
 
@@ -66,11 +89,12 @@ margin-top:15px;
 }
 
 .authBtn{
-padding:10px 20px;
+padding:10px 18px;
 border:none;
 border-radius:12px;
 font-weight:bold;
 cursor:pointer;
+transition:.3s;
 }
 
 .loginBtn{
@@ -85,7 +109,7 @@ color:white;
 }
 
 .navbar{
-background:#0f0f0f;
+background:#111;
 padding:12px;
 border-top:1px solid #222;
 border-bottom:1px solid #222;
@@ -94,26 +118,32 @@ border-bottom:1px solid #222;
 .navIcons{
 display:flex;
 justify-content:space-around;
-font-size:14px;
+font-size:13px;
 font-weight:bold;
 }
 
+.main{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:16px;
+}
+
 .card{
-background:rgba(20,20,20,.95);
+background:#151515;
 border:1px solid #222;
-border-radius:18px;
-padding:15px;
-margin-top:18px;
-box-shadow:0 0 12px rgba(255,0,0,.08);
+border-radius:16px;
+padding:14px;
+margin-top:16px;
+box-shadow:0 0 10px rgba(255,0,0,.08);
 }
 
 .rulesBox{
 background:linear-gradient(135deg,#111,#1a0000);
 border:1px solid red;
-border-radius:16px;
-padding:15px;
-font-size:14px;
+border-radius:14px;
+padding:14px;
 line-height:1.8;
+font-size:14px;
 }
 
 .uidArea{
@@ -126,38 +156,18 @@ margin-top:12px;
 flex:1;
 padding:14px;
 border-radius:12px;
-border:1px solid #333;
 background:#111;
 color:white;
+border:1px solid #333;
 }
-
-.uidArea button{
-padding:14px 18px;
+  .uidArea button{
+padding:14px;
+border:none;
 background:red;
 color:white;
-border:none;
 border-radius:12px;
 font-weight:bold;
-cursor: pointer;
-}
-
-/* Simple Loading Bar Injection */
-#progressContainer {
-width: 100%; 
-background: #222; 
-border-radius: 20px; 
-margin-top: 15px; 
-display: none; 
-overflow: hidden; 
-border: 1px solid #333;
-}
-
-#progressBar {
-width: 0%; 
-height: 10px; 
-background: linear-gradient(90deg, #ff0000, #ff5555); 
-transition: width 0.1s linear; 
-box-shadow: 0 0 10px #ff0000;
+cursor:pointer;
 }
 
 .socialBtns{
@@ -175,21 +185,14 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.ytBtn{
-background:red;
-color:white;
-}
-
-.igBtn{
-background:#c13584;
-color:white;
-}
+.ytBtn{background:red;color:white;}
+.igBtn{background:#c13584;color:white;}
 
 .rewardGrid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:12px;
-margin-top:15px;
+margin-top:14px;
 }
 
 .rewardCard{
@@ -199,12 +202,25 @@ border-radius:14px;
 padding:10px;
 text-align:center;
 cursor:pointer;
+position:relative;
 transition:.3s;
 }
 
 .rewardCard:hover{
-transform:translateY(-3px);
-box-shadow:0 0 15px red;
+transform:translateY(-4px);
+box-shadow:0 0 18px red;
+}
+
+.hotBadge{
+position:absolute;
+top:8px;
+right:8px;
+background:red;
+padding:4px 8px;
+font-size:11px;
+font-weight:bold;
+border-radius:20px;
+animation:pulse 1s infinite;
 }
 
 .rewardCard img{
@@ -223,22 +239,74 @@ font-weight:bold;
 .claimBtn{
 width:100%;
 padding:14px;
-margin-top:15px;
+margin-top:14px;
 background:linear-gradient(45deg,#ff0000,#a30000);
 border:none;
 border-radius:12px;
 color:white;
 font-weight:bold;
 font-size:16px;
-box-shadow:0 0 15px red;
 cursor:pointer;
+box-shadow:0 0 15px red;
 }
 
-.popup,.successPopup,.authPopup,.toast{
+.wheel{
+width:220px;
+height:220px;
+margin:15px auto;
+border-radius:50%;
+border:8px solid red;
+background:conic-gradient(
+#ff0000 0deg 45deg,
+#111 45deg 90deg,
+#ff4444 90deg 135deg,
+#222 135deg 180deg,
+#ff0000 180deg 225deg,
+#111 225deg 270deg,
+#ff4444 270deg 315deg,
+#222 315deg 360deg
+);
+transition:transform 5s ease-out;
+}
+
+.sideSection{
+display:grid;
+gap:16px;
+}
+
+.liveChat{
+max-height:220px;
+overflow:auto;
+}
+
+.chatMsg,.leaderboard div,.missionItem{
+background:#111;
+padding:10px;
+border-radius:10px;
+margin-top:8px;
+}
+
+.progressBar{
+width:100%;
+height:12px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+margin-top:10px;
+display:none;
+}
+
+.progressFill{
+height:100%;
+width:0%;
+background:red;
+transition:width .4s;
+}
+  .popup,.authPopup,.successPopup{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.82);
+background:rgba(0,0,0,.85);
 justify-content:center;
 align-items:center;
 z-index:9999;
@@ -247,15 +315,17 @@ z-index:9999;
 .modal{
 background:#111;
 padding:20px;
+border:1px solid red;
 border-radius:16px;
 width:92%;
-max-width:400px;
-border:1px solid red;
+max-width:420px;
+max-height:85vh;
+overflow:auto;
 }
 
 .modal h2{
-margin-bottom:15px;
 text-align:center;
+margin-bottom:15px;
 }
 
 .modal input,.modal select{
@@ -279,71 +349,42 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.sideSection{
-display:grid;
-gap:18px;
-}
-
-.leaderboard div,
-.chatMsg{
-background:#111;
-padding:10px;
-border-radius:10px;
-margin-top:8px;
-}
-
-.liveChat{
-max-height:220px;
-overflow:auto;
-scroll-behavior: smooth;
-}
-
-.wheelWrap{
-text-align:center;
-}
-
-.pointer{
-font-size:26px;
-}
-
-.wheel{
-width:220px;
-height:220px;
-margin:15px auto;
-border-radius:50%;
-border:8px solid red;
-background:conic-gradient(
-#ff0000 0deg 45deg,
-#111 45deg 90deg,
-#ff4444 90deg 135deg,
-#222 135deg 180deg,
-#ff0000 180deg 225deg,
-#111 225deg 270deg,
-#ff4444 270deg 315deg,
-#222 315deg 360deg
-);
-transition:transform 5s ease-out;
-}
-
 .toastBox{
 position:fixed;
-bottom:20px;
-left:-400px;
+top:20px;
+right:12px;
 background:#111;
 border:1px solid red;
-padding:12px;
+padding:10px;
 border-radius:12px;
-box-shadow:0 0 20px red;
+box-shadow:0 0 15px red;
 z-index:99999;
 font-size:13px;
 font-weight:bold;
-transition: all 0.4s ease-in-out;
 }
 
-.main{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:18px;
+.liveBadge{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+border:1px solid red;
+padding:10px 14px;
+border-radius:12px;
+font-weight:bold;
+z-index:9999;
+box-shadow:0 0 10px red;
+}
+
+.copyBtn{
+margin-top:10px;
+padding:10px;
+width:100%;
+border:none;
+background:#222;
+color:white;
+border-radius:10px;
+cursor:pointer;
 }
 
 @media(max-width:900px){
@@ -354,20 +395,24 @@ grid-template-columns:1fr;
 flex-direction:column;
 }
 }
+
 </style>
 </head>
 <body>
 
-<div class="topTicker" id="winnerTicker">
-👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎
-</div>
+<div class="topTicker">👑 DAILY WINNER: MOHIT LIVE WON 1,00,000 DIAMONDS 💎</div>
+<div class="liveBadge">🔴 LIVE • Admin Online</div>
+<div class="toastBox" id="toastBox">🔥 Rahul from India won Cobra Bundle</div>
+
+<audio id="claimSound">
+<source src="https://www.soundjay.com/buttons/sounds/button-3.mp3">
+</audio>
+
+<canvas id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:99998;"></canvas>
 
 <div class="header">
 <div class="container">
-
-<div class="logoText">
-<h1>SUNNY <span>999 BOT</span></h1>
-</div>
+<div class="logoText"><h1>SUNNY <span>999 BOT</span></h1></div>
 
 <div class="stats">
 <div>🟢 SERVER ONLINE</div>
@@ -380,7 +425,6 @@ flex-direction:column;
 <button class="authBtn loginBtn" onclick="showLogin()">LOGIN</button>
 <button class="authBtn signupBtn" onclick="showSignup()">SIGN UP</button>
 </div>
-
 </div>
 </div>
 
@@ -397,15 +441,17 @@ flex-direction:column;
 <div class="container">
 <div class="main">
 
+<!-- LEFT -->
 <div>
 
 <div class="card">
 <div class="rulesBox">
-<b>🎁 FREE GIFT DAILY — OFFICIAL REWARD RULES 💎</b><br>
-📌 Rule 1: One reward per UID account balance daily.<br>
-📌 Rule 2: Rewards will be delivered directly to the in-game mail box.<br>
-📌 Rule 3: Must complete standard WhatsApp validation verification lock process safely.<br>
-📌 Rule 4: Fake UIDs or script bots will be automatic banned.
+<b>🎁 FREE GIFT DAILY — 1000 WINNERS 💎</b><br>
+☑ Subscribe SUNNY 999 BOT 📺<br>
+☑ Follow Instagram 📸<br>
+☑ Share with 20 friends 📤<br>
+☑ Watch live 1 minute 🎮<br>
+☑ Enter valid UID 🎯
 </div>
 </div>
 
@@ -417,20 +463,30 @@ flex-direction:column;
 <button onclick="checkUID()">CHECK UID</button>
 </div>
 
-<div id="progressContainer">
-<div id="progressBar"></div>
+<div class="progressBar" id="progressBar">
+<div class="progressFill" id="progressFill"></div>
 </div>
 
 <div id="status" style="margin-top:12px;font-weight:bold;"></div>
 
 <div class="socialBtns">
-<button class="ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">
-📺 YOUTUBE
-</button>
+<button class="ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">📺 YOUTUBE</button>
+<button class="igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">📸 INSTAGRAM</button>
+</div>
+</div>
 
-<button class="igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">
-📸 INSTAGRAM
-</button>
+<div class="card">
+<h2>🎁 DAILY COUPON</h2>
+<div class="missionItem" id="couponText">SUNNY999FREE</div>
+<button class="copyBtn" onclick="copyCoupon()">COPY CODE</button>
+</div>
+
+<div class="card">
+<h2>📦 REWARD STOCK</h2>
+<div id="stockBox">
+💎 Diamonds left: 37<br>
+🔥 Bundles left: 12<br>
+⚡ Evo Guns left: 9
 </div>
 </div>
 
@@ -438,52 +494,59 @@ flex-direction:column;
 <h2>🎁 CHOOSE REWARD</h2>
 
 <div class="rewardGrid">
-
-<div class="rewardCard" id="card-diamond" onclick="pickGift(this,'100 Diamonds')">
+<div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
 <img src="diamond.jpg">
-<div class="rewardTitle" id="title-diamond">100 DIAMONDS</div>
-<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">🔥 Only 8 Left Today</div>
+<div class="rewardTitle">100 DIAMONDS</div>
 </div>
 
-<div class="rewardCard" id="card-emote" onclick="showEmote()">
+<div class="rewardCard" onclick="showEmote()">
 <img src="emote.jpg">
-<div class="rewardTitle" id="title-emote">EMOTE</div>
-<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">⚡ Limited Slots</div>
+<div class="rewardTitle">EMOTE</div>
 </div>
 
-<div class="rewardCard" id="card-bundle" onclick="showBundle()">
-<div style="height:120px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#ff0000,#8b0000,#111);font-weight:bold;">
-🔥 BUNDLE
-</div>
-<div class="rewardTitle" id="title-bundle">BUNDLE</div>
-<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">🔥 94% Claimed</div>
+<div class="rewardCard" onclick="showBundle()">
+<div class="hotBadge">HOT 🔥</div>
+<div style="height:120px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#ff0000,#8b0000,#111);font-weight:bold;">🔥 BUNDLE</div>
+<div class="rewardTitle">BUNDLE</div>
 </div>
 
-<div class="rewardCard" id="card-evo" onclick="showEvo()">
-<div style="height:120px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#111,#ff0000,#8b0000);font-weight:bold;">
-⚡ EVO GUN
+<div class="rewardCard" onclick="showEvo()">
+<div class="hotBadge">HOT 🔥</div>
+<div style="height:120px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(45deg,#111,#ff0000,#8b0000);font-weight:bold;">⚡ EVO GUN</div>
+<div class="rewardTitle">EVO GUN</div>
 </div>
-<div class="rewardTitle" id="title-evo">EVO GUN</div>
-<div style="font-size:11px;color:#ffaa00;font-weight:bold;margin-top:4px;">⚡ High Demand</div>
-</div>
-
 </div>
 
-<button class="claimBtn" id="actionRewardBtn" onclick="claimGift()">
-🚀 CLAIM REWARD
-</button>
+<button class="claimBtn" onclick="claimGift()">🚀 CLAIM REWARD</button>
 </div>
-
-<div class="card wheelWrap">
+<div class="card">
 <h2>🎰 SPIN TO WIN</h2>
-<div class="pointer">⬇</div>
 <div class="wheel" id="wheel"></div>
 <button class="claimBtn" onclick="spinWheel()">SPIN NOW</button>
-<div id="spinResult" style="margin-top:12px;font-weight:bold;"></div>
+<div id="spinResult" class="missionItem">Try your luck 🎯</div>
+</div>
+
+<div class="card">
+<h2>🎁 SCRATCH CARD</h2>
+<button class="claimBtn" onclick="scratchReward()">SCRATCH NOW</button>
+<div id="scratchResult"></div>
+</div>
+
+<div class="card">
+<h2>🏆 TREASURE CHEST</h2>
+<button class="claimBtn" onclick="openChest()">OPEN CHEST</button>
+<div id="chestResult"></div>
+</div>
+
+<div class="card">
+<h2>🎁 MYSTERY GIFT</h2>
+<button class="claimBtn" onclick="mysteryGift()">OPEN GIFT</button>
+<div id="mysteryResult"></div>
 </div>
 
 </div>
 
+<!-- RIGHT -->
 <div class="sideSection">
 
 <div class="card">
@@ -506,18 +569,25 @@ flex-direction:column;
 </div>
 
 <div class="card">
-<h2>👑 VIP CLUB</h2>
-<p>Join VIP for faster rewards & bonus gifts.</p>
-<button class="claimBtn">JOIN VIP</button>
+<h2>👑 VIP REWARDS</h2>
+<div class="missionItem">💎 5000 Diamonds</div>
+<div class="missionItem">🔥 Legendary Bundle</div>
+<div class="missionItem">⚡ Premium Evo Gun</div>
+</div>
+
+<div class="card">
+<h2>📋 MISSIONS</h2>
+<label class="missionItem"><input type="checkbox"> Subscribe</label>
+<label class="missionItem"><input type="checkbox"> Follow Instagram</label>
+<label class="missionItem"><input type="checkbox"> Share 20 Friends</label>
+<label class="missionItem"><input type="checkbox"> Watch Live</label>
 </div>
 
 </div>
 </div>
+</div>
 
-<div style="text-align: center; padding: 20px; color: #444; font-size: 13px; font-weight: bold; margin-top: 20px; border-top: 1px solid #151515;">
-© 2026 Sunny 999 Bot Reward Portal. All Rights Reserved.
-</div>
-</div>
+<!-- LOGIN -->
 <div class="authPopup" id="loginPopup">
 <div class="modal">
 <h2>LOGIN</h2>
@@ -527,6 +597,7 @@ flex-direction:column;
 </div>
 </div>
 
+<!-- SIGNUP -->
 <div class="authPopup" id="signupPopup">
 <div class="modal">
 <h2>SIGN UP</h2>
@@ -537,321 +608,191 @@ flex-direction:column;
 </div>
 </div>
 
+<!-- SUCCESS -->
 <div class="successPopup" id="successPopup">
 <div class="modal">
 <h2>🎉 CONGRATULATIONS!</h2>
-<p id="successText">📨 Your gift has been sent to your Free Fire mailbox. Delivery within 2 hours.</p>
+<p>📨 Your gift has been sent to your Free Fire mailbox. Delivery within 2 hours.</p>
 <button onclick="closeSuccess()">OK</button>
 </div>
 </div>
-
+<!-- EMOTE POPUP -->
 <div class="popup" id="emotePopup">
 <div class="modal">
 <h2>Select Emote</h2>
-<select id="emoteSelect">
-<option>LOL Emote</option>
-<option>Top DJ</option>
-<option>FF Dance</option>
-<option>Haha Emote</option>
-<option>Flowers of Love</option>
-<option>Pirate Flag</option>
-<option>Moon Flip</option>
-<option>Shake With Me</option>
-<option>Baby Shark</option>
-<option>Kung Fu Dab</option>
-<option>Booyah!</option>
-<option>Applause</option>
-<option>Siiii!</option>
-<option>Threaten</option>
-<option>FFWC Throne</option>
-<option>Tea Time</option>
-<option>Rose Emote</option>
-<option>Heartbroken</option>
-<option>Love Kiss</option>
-<option>Victory Dance</option>
-<option>Clown Trick</option>
-<option>Money Rain</option>
-<option>Laugh Attack</option>
-<option>Zombie Walk</option>
-<option>Ghost Move</option>
-<option>Disco Fever</option>
-<option>Hip Hop Dance</option>
-<option>Break Dance</option>
-<option>Royal Bow</option>
-<option>Salute</option>
-<option>Angel Dance</option>
-<option>Shadow Move</option>
-<option>Fire Celebration</option>
-<option>Spin Master</option>
-<option>Champion Pose</option>
-<option>Mic Drop</option>
-<option>Dance Party</option>
-<option>Crazy Jump</option>
-<option>Rock Star</option>
-<option>DJ Drop</option>
-<option>Power Flex</option>
-<option>Hero Entry</option>
-<option>Gun Spin</option>
-<option>Ninja Move</option>
-<option>Dragon Roar</option>
-<option>Royal Clap</option>
-<option>Victory Jump</option>
-<option>Heart Dance</option>
-<option>Party Time</option>
-<option>Legend Pose 🔥</option>
+<select id="emoteSelect" size="10">
+<option>LOL Emote</option><option>Top DJ</option><option>FF Dance</option><option>Haha Emote</option>
+<option>Flowers of Love</option><option>Pirate Flag</option><option>Moon Flip</option><option>Shake With Me</option>
+<option>Baby Shark</option><option>Kung Fu Dab</option><option>Booyah!</option><option>Applause</option>
+<option>Siiii!</option><option>Threaten</option><option>FFWC Throne</option><option>Tea Time</option>
+<option>Rose Emote</option><option>Heartbroken</option><option>Love Kiss</option><option>Victory Dance</option>
+<option>Clown Trick</option><option>Money Rain</option><option>Laugh Attack</option><option>Zombie Walk</option>
+<option>Ghost Move</option><option>Disco Fever</option><option>Hip Hop Dance</option><option>Break Dance</option>
+<option>Royal Bow</option><option>Salute</option><option>Angel Dance</option><option>Shadow Move</option>
+<option>Fire Celebration</option><option>Spin Master</option><option>Champion Pose</option><option>Mic Drop</option>
+<option>Dance Party</option><option>Crazy Jump</option><option>Rock Star</option><option>DJ Drop</option>
+<option>Power Flex</option><option>Hero Entry</option><option>Gun Spin</option><option>Ninja Move</option>
+<option>Dragon Roar</option><option>Royal Clap</option><option>Victory Jump</option><option>Heart Dance</option>
+<option>Party Time</option><option>Legend Pose</option>
 </select>
 <button onclick="selectEmote()">SELECT</button>
 </div>
 </div>
 
+<!-- BUNDLE POPUP -->
 <div class="popup" id="bundlePopup">
 <div class="modal">
 <h2>Select Bundle</h2>
-<select id="bundleSelect">
-<option>Golden Shade Bundle</option>
-<option>Hip Hop Golden Bundle</option>
-<option>Cobra Bundle</option>
-<option>Golden Sakura Bundle</option>
-<option>Red Criminal Bundle</option>
-<option>Blue Criminal Bundle</option>
-<option>Green Criminal Bundle</option>
-<option>Purple Criminal Bundle</option>
-<option>White Criminal Bundle</option>
-<option>Black Criminal Bundle</option>
-<option>Golden Criminal Bundle</option>
-<option>Sakura Bundle</option>
-<option>Angelic Bundle</option>
-<option>Dino Bundle</option>
-<option>Cobra Rage Bundle</option>
-<option>Rampage Bundle</option>
-<option>Street Boy Bundle</option>
-<option>Street Girl Bundle</option>
-<option>Royal Warrior Bundle</option>
-<option>Samurai Bundle</option>
-<option>Ancient Rome Bundle</option>
-<option>Mummy Bundle</option>
-<option>Zombie Samurai Bundle</option>
-<option>Galaxy Bundle</option>
-<option>Dragon Warrior Bundle</option>
-<option>Phoenix Bundle</option>
-<option>Shadow Rogue Bundle</option>
-<option>Night Clown Bundle</option>
-<option>Joker Bundle</option>
-<option>Beast Bundle</option>
-<option>Ghost Pirate Bundle</option>
-<option>Pirate Captain Bundle</option>
-<option>Royal Prince Bundle</option>
-<option>Royal King Bundle</option>
-<option>Royal Queen Bundle</option>
-<option>Assassin Bundle</option>
-<option>Ninja Bundle</option>
-<option>Cyber Hacker Bundle</option>
-<option>Techno Bundle</option>
-<option>Robot Bundle</option>
-<option>Space Ranger Bundle</option>
-<option>Inferno Bundle</option>
-<option>Ice Blue Bundle</option>
-<option>Thunder Bundle</option>
-<option>Fireborn Bundle</option>
-<option>Elite Hero Bundle</option>
-<option>Champion Bundle</option>
-<option>Dark Knight Bundle</option>
-<option>Venom Bundle</option>
-<option>Legendary Hero Bundle 🔥</option>
+<select id="bundleSelect" size="10">
+<option>Golden Shade Bundle</option><option>Hip Hop Golden Bundle</option><option>Cobra Bundle</option>
+<option>Golden Sakura Bundle</option><option>Red Criminal Bundle</option><option>Blue Criminal Bundle</option>
+<option>Green Criminal Bundle</option><option>Purple Criminal Bundle</option><option>White Criminal Bundle</option>
+<option>Black Criminal Bundle</option><option>Golden Criminal Bundle</option><option>Sakura Bundle</option>
+<option>Angelic Bundle</option><option>Dino Bundle</option><option>Cobra Rage Bundle</option>
+<option>Rampage Bundle</option><option>Street Boy Bundle</option><option>Street Girl Bundle</option>
+<option>Royal Warrior Bundle</option><option>Samurai Bundle</option><option>Ancient Rome Bundle</option>
+<option>Mummy Bundle</option><option>Zombie Samurai Bundle</option><option>Galaxy Bundle</option>
+<option>Dragon Warrior Bundle</option><option>Phoenix Bundle</option><option>Shadow Rogue Bundle</option>
+<option>Night Clown Bundle</option><option>Joker Bundle</option><option>Beast Bundle</option>
+<option>Ghost Pirate Bundle</option><option>Pirate Captain Bundle</option><option>Royal Prince Bundle</option>
+<option>Royal King Bundle</option><option>Royal Queen Bundle</option><option>Assassin Bundle</option>
+<option>Ninja Bundle</option><option>Cyber Hacker Bundle</option><option>Techno Bundle</option>
+<option>Robot Bundle</option><option>Space Ranger Bundle</option><option>Inferno Bundle</option>
+<option>Ice Blue Bundle</option><option>Thunder Bundle</option><option>Fireborn Bundle</option>
+<option>Elite Hero Bundle</option><option>Champion Bundle</option><option>Dark Knight Bundle</option>
+<option>Venom Bundle</option><option>Legendary Hero Bundle</option>
 </select>
 <button onclick="selectBundle()">SELECT</button>
 </div>
 </div>
 
+<!-- EVO POPUP -->
 <div class="popup" id="evoPopup">
 <div class="modal">
 <h2>Select Evo Gun</h2>
-<select id="evoSelect">
-<option>MP40 Predatory Cobra</option>
-<option>MP40 Flashing Spade</option>
-<option>MP40 Crazy Bunny</option>
-<option>MP40 Royal Flush</option>
-<option>AK Blue Flame Draco</option>
-<option>AK Dragon Flame</option>
-<option>AK Infernal Draco</option>
-<option>M1014 Green Flame Draco</option>
-<option>M1014 Scorpio Shatter</option>
-<option>M1014 Underground Howl</option>
-<option>M1014 Apocalyptic Red</option>
-<option>SCAR Megalodon Alpha</option>
-<option>SCAR Titan Mark</option>
-<option>SCAR Phantom Assassin</option>
-<option>UMP Cataclysm</option>
-<option>UMP Electric Shock</option>
-<option>UMP Cyber Flash</option>
-<option>FAMAS Demonic Grin</option>
-<option>FAMAS Golden Glory</option>
-<option>FAMAS Moonlight Ballad</option>
-<option>XM8 Destiny Guardian</option>
-<option>XM8 Cosmic Beast</option>
-<option>XM8 Gold Rush</option>
-<option>GROZA Bang Bang</option>
-<option>GROZA Thunder Fang</option>
-<option>GROZA Golden Wrath</option>
-<option>AUG Cyber Bounty Hunter</option>
-<option>AUG Star Soul</option>
-<option>AUG Royal Hunter</option>
-<option>M1887 Sterling Conqueror</option>
-<option>M1887 One Punch Man</option>
-<option>M1887 Winterlands</option>
-<option>M1887 Inferno Red</option>
-<option>PARAFAL Blood Moon</option>
-<option>PARAFAL Flaming Beast</option>
-<option>PARAFAL Dark Venom</option>
-<option>AN94 Evil Howler</option>
-<option>AN94 Moonlight Beast</option>
-<option>AN94 Crimson Hunter</option>
-<option>Desert Eagle Gilded Corrosion</option>
-<option>MP5 Platinum Divinity</option>
-<option>Vector Aquablaze Wrath</option>
-<option>Charge Buster Lava Fury</option>
-<option>Woodpecker Fierce Demilord</option>
-<option>M60 Crazy Bunny</option>
-<option>Bizon Night Hunter</option>
-<option>MAG-7 Electric Blaze</option>
-<option>CG15 Cyber Storm</option>
-<option>Kingfisher Frost Fang</option>
-<option>AC80 Golden Thunder 🔥</option>
+<select id="evoSelect" size="10">
+<option>MP40 Predatory Cobra</option><option>MP40 Flashing Spade</option><option>MP40 Crazy Bunny</option>
+<option>MP40 Royal Flush</option><option>AK Blue Flame Draco</option><option>AK Dragon Flame</option>
+<option>M1014 Green Flame Draco</option><option>M1014 Scorpio Shatter</option><option>M1014 Underground Howl</option>
+<option>SCAR Megalodon Alpha</option><option>SCAR Titan Mark</option><option>UMP Cataclysm</option>
+<option>UMP Electric Shock</option><option>FAMAS Demonic Grin</option><option>FAMAS Golden Glory</option>
+<option>XM8 Destiny Guardian</option><option>XM8 Cosmic Beast</option><option>GROZA Bang Bang</option>
+<option>GROZA Thunder Fang</option><option>AUG Cyber Bounty Hunter</option><option>AUG Star Soul</option>
+<option>M1887 Sterling Conqueror</option><option>M1887 One Punch Man</option><option>M1887 Winterlands</option>
+<option>PARAFAL Blood Moon</option><option>PARAFAL Flaming Beast</option><option>AN94 Evil Howler</option>
+<option>AN94 Moonlight Beast</option><option>Desert Eagle Gilded Corrosion</option><option>MP5 Platinum Divinity</option>
 </select>
 <button onclick="selectEvo()">SELECT</button>
 </div>
 </div>
 
-<div class="toastBox" id="toastBox">
-🔥 Rahul just won Cobra Bundle
-</div>
-
 <script>
-let selectedGift="";
-let uidVerified=false;
-let wheelRotation=0;
-let whatsappClicks = 0;
-let initialJackpot = 1254890;
+let selectedGift="",uidVerified=false,wheelRotation=0,countdown=7200,jackpot=1254890;
 
-function showLogin(){document.getElementById("loginPopup").style.display="flex";}
-function showSignup(){document.getElementById("signupPopup").style.display="flex";}
-function closeAuth(){
-document.getElementById("loginPopup").style.display="none";
-document.getElementById("signupPopup").style.display="none";
+function showLogin(){loginPopup.style.display="flex";}
+function showSignup(){signupPopup.style.display="flex";}
+function closeAuth(){loginPopup.style.display="none";signupPopup.style.display="none";}
+function closeSuccess(){successPopup.style.display="none";}
+
+function showEmote(){emotePopup.style.display="flex";}
+function showBundle(){bundlePopup.style.display="flex";}
+function showEvo(){evoPopup.style.display="flex";}
+
+function selectEmote(){selectedGift=emoteSelect.value;emotePopup.style.display="none";}
+function selectBundle(){selectedGift=bundleSelect.value;bundlePopup.style.display="none";}
+function selectEvo(){selectedGift=evoSelect.value;evoPopup.style.display="none";}
+
+function pickGift(el,g){
+selectedGift=g;
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
+el.style.border='2px solid red';
 }
 
-function showEmote(){document.getElementById("emotePopup").style.display="flex";}
-function showBundle(){document.getElementById("bundlePopup").style.display="flex";}
-function showEvo(){document.getElementById("evoPopup").style.display="flex";}
-
-function selectEmote(){
-selectedGift=document.getElementById("emoteSelect").value;
-document.getElementById("emotePopup").style.display="none";
-document.getElementById("title-emote").innerHTML = selectedGift;
-document.getElementById("card-emote").style.border = "2px solid red";
+function copyCoupon(){
+navigator.clipboard.writeText("SUNNY999FREE");
+alert("Coupon copied!");
 }
 
-function selectBundle(){
-selectedGift=document.getElementById("bundleSelect").value;
-document.getElementById("bundlePopup").style.display="none";
-document.getElementById("title-bundle").innerHTML = selectedGift;
-document.getElementById("card-bundle").style.border = "2px solid red";
-}
-
-function selectEvo(){
-selectedGift=document.getElementById("evoSelect").value;
-document.getElementById("evoPopup").style.display="none";
-document.getElementById("title-evo").innerHTML = selectedGift;
-document.getElementById("card-evo").style.border = "2px solid red";
-}
-
-function pickGift(el,gift){
-document.querySelectorAll(".rewardCard").forEach(card=>{
-card.style.border="1px solid #333";
-});
-el.style.border="2px solid red";
-selectedGift=gift;
-}
-
-// Upgraded checkUID with Progress bar logic inside original design
 function checkUID(){
-let uid=document.getElementById("uid").value;
-let status=document.getElementById("status");
-let pContainer = document.getElementById("progressContainer");
-let pBar = document.getElementById("progressBar");
-
-if(!uid){
-status.innerHTML="⚠ Enter UID first";
-status.style.color="orange";
-return;
-}
-
-pContainer.style.display = "block";
-pBar.style.width = "0%";
-status.style.color="yellow";
-status.innerHTML="🔄 Connecting to Free Fire Server...";
-
-let width = 0;
-let interval = setInterval(() => {
-if (width >= 100) {
-clearInterval(interval);
-status.innerHTML="✅ UID Verified Successfully";
-status.style.color="lime";
-uidVerified=true;
-} else {
-width += 5;
-pBar.style.width = width + "%";
-if(width == 40) status.innerHTML="📦 Processing Request Database Sync...";
-if(width == 80) status.innerHTML="⚡ Validating security firewall slots...";
-}
-}, 120);
-}
-
-// Updated claimGift with WhatsApp Limit Loop system integration
-function claimGift(){
-let status=document.getElementById("status");
-let btn = document.getElementById("actionRewardBtn");
-
-if(!uidVerified){
-status.innerHTML="⚠ Verify UID first";
-status.style.color="orange";
-return;
-}
-
-if(!selectedGift){
-status.innerHTML="⚠ Select reward first";
-status.style.color="orange";
-return;
-}
-
-if (whatsappClicks < 5) {
-status.style.color="orange";
-status.innerHTML = `🚨 VALIDATION LOCK: Share panel link on WhatsApp to complete transaction pipeline. (${whatsappClicks}/5) shared.`;
-btn.innerHTML = "🟢 SHARE ON WHATSAPP TO UNLOCK";
-btn.style.background = "#25D366";
-btn.setAttribute("onclick", "shareLinkLoop()");
-return;
-}
-}
-
-function shareLinkLoop() {
-let status=document.getElementById("status");
-let btn = document.getElementById("actionRewardBtn");
-whatsappClicks++;
-
-let shareUrl = window.location.href;
-let text = encodeURIComponent(`🔥 SUNNY 999 BOT REWARD PORTAL! Claim Free Rare Bundles, 10,000 Diamonds and Evo Gun Skins instantly. 100% Real Link 👉 ${shareUrl}`);
-window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-
-if (whatsappClicks < 5) {
-status.innerHTML = `🟢 Validation Count: (${whatsappClicks}/5) shared. Complete remaining share locks.`;
-} else {
-status.style.color="yellow";
-status.innerHTML="📨 Validation complete! Sending gift packets to Free Fire mailbox...";
-btn.innerHTML = "📦 PACKET TRANSMISSION LOCKED";
-btn.style.background = "#333";
-btn.disabled = true;
-
+if(!uid.value){status.innerHTML="⚠ Enter UID";return;}
+progressBar.style.display="block";
+status.innerHTML="🔄 Connecting...";
+progressFill.style.width="30%";
+setTimeout(()=>{status.innerHTML="📦 Processing...";progressFill.style.width="70%";},1500);
 setTimeout(()=>{
-document.getElementById("successPopup").style.display="flex";
-status.innerHTML="✅ R
+status.innerHTML="✅ UID Verified";
+progressFill.style.width="100%";
+uidVerified=true;
+},3500);
+}
+
+function launchConfetti(){
+const c=confetti,ctx=c.getContext("2d");
+c.width=innerWidth;c.height=innerHeight;
+for(let i=0;i<200;i++){
+ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
+ctx.fillRect(Math.random()*c.width,Math.random()*c.height,6,6);
+}
+setTimeout(()=>ctx.clearRect(0,0,c.width,c.height),2000);
+}
+
+function claimGift(){
+if(!uidVerified){status.innerHTML="⚠ Verify UID";return;}
+if(!selectedGift){status.innerHTML="⚠ Select reward";return;}
+try{claimSound.play();}catch(e){}
+launchConfetti();
+status.innerHTML="📨 Sending gift...";
+setTimeout(()=>successPopup.style.display="flex",2500);
+}
+
+function spinWheel(){
+const rewards=["500 Diamonds","1000 Diamonds","VIP Bonus","Cobra Bundle"];
+wheelRotation += 2000 + Math.random()*1000;
+wheel.style.transform=`rotate(${wheelRotation}deg)`;
+setTimeout(()=>spinResult.innerHTML="🎉 YOU WON: "+rewards[Math.floor(Math.random()*rewards.length)],5000);
+}
+
+function scratchReward(){scratchResult.innerHTML="💎 You won 500 Diamonds";}
+function openChest(){chestResult.innerHTML="🔥 Cobra Bundle Found";}
+function mysteryGift(){
+const gifts=["💎 500 Diamonds","🔥 Bundle","⚡ Evo Gun","👑 VIP Bonus"];
+mysteryResult.innerHTML=gifts[Math.floor(Math.random()*gifts.length)];
+}
+
+setInterval(()=>onlineUsers.innerHTML=`👥 ${1400+Math.floor(Math.random()*500)} USERS`,3000);
+setInterval(()=>toastBox.innerHTML=["🔥 Rahul from India won Bundle","💎 Aman won 1000 Diamonds","⚡ Only 127 rewards left"][Math.floor(Math.random()*3)],5000);
+setInterval(()=>{
+countdown--;
+let h=String(Math.floor(countdown/3600)).padStart(2,'0');
+let m=String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+let s=String(countdown%60).padStart(2,'0');
+timer.innerHTML=`⏳ ${h}:${m}:${s}`;
+if(countdown<=0) countdown=7200;
+},1000);
+
+setInterval(()=>{
+jackpot += Math.floor(Math.random()*200);
+jackpotEl = document.getElementById("jackpot");
+if(jackpotEl) jackpotEl.innerHTML=`💎 ${jackpot.toLocaleString()} GIVEN`;
+},4000);
+
+setInterval(()=>{
+let d=document.createElement("div");
+d.className="rain";
+d.innerHTML="💎";
+d.style.left=Math.random()*100+"vw";
+document.body.appendChild(d);
+setTimeout(()=>d.remove(),5000);
+},800);
+
+setInterval(()=>{
+stockBox.innerHTML=`💎 Diamonds left: ${20+Math.floor(Math.random()*20)}<br>
+🔥 Bundles left: ${5+Math.floor(Math.random()*10)}<br>
+⚡ Evo Guns left: ${3+Math.floor(Math.random()*8)}`;
+},6000);
+
+setTimeout(()=>loginPopup.style.display="flex",10000);
+</script>
+
+</body>
+</html>
