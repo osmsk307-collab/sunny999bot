@@ -20,7 +20,7 @@ background:linear-gradient(135deg,#050505,#170000,#050505);
 color:white;
 overflow-x:hidden;
 zoom:.93;
-padding-bottom: 90px; /* Fixed space for large bottom timer */
+padding-bottom: 70px; /* Fixed screen space for bottom black screen timer */
 }
 
 .container{
@@ -76,7 +76,6 @@ z-index:999;
 pointer-events:none;
 }
 
-/* FIX: Floating buttons position changed to prevent screen overlap blocking clicks */
 .soundToggle{
 position:fixed;
 top:10px;
@@ -107,7 +106,7 @@ max-width:200px;
 
 .bottomToastBox {
 position:fixed;
-bottom:100px;
+bottom:80px;
 left:10px;
 background:#111;
 border:1px solid #00ff66;
@@ -443,27 +442,27 @@ color: #ffcc00;
 margin-bottom: 3px;
 }
 
+/* --- LOGIC: REGISTERING TIMER BAR FIXED ON BLACK BOTTOM SCREEN AREA --- */
 .bottomTimerBar {
 position: fixed;
 bottom: 0;
 left: 0;
 width: 100%;
-background: linear-gradient(0deg, #1f0000, #050505);
-border-top: 2px solid red;
-padding: 15px;
+background: #000000; /* Pure Black Screen Background */
+border-top: 1px solid #1a1a1a;
+padding: 14px;
 text-align: center;
 z-index: 999998;
-box-shadow: 0 -5px 25px rgba(255,0,0,0.4);
 }
 .bottomTimerText {
-font-size: 26px;
+font-size: 24px;
 font-weight: bold;
 color: #fff;
-text-shadow: 0 0 15px red;
-letter-spacing: 2px;
+text-shadow: 0 0 10px red;
+letter-spacing: 1px;
 }
 
-/* MOBILE RESPONSIVE 2-2 VIEW */
+/* MOBILE RESPONSIVE 2-2 GRAPHIC GRID */
 @media(max-width:900px){
 .rewardGrid{
 grid-template-columns: 1fr 1fr;
@@ -485,7 +484,7 @@ font-size: 9px;
 padding: 2px 5px;
 }
 .bottomTimerText {
-font-size: 22px;
+font-size: 20px;
 }
 }
 
@@ -1027,4 +1026,76 @@ cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
 
 setTimeout(()=>{
 cFill.style.width='95%';
-cText.innerHTML = `
+cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
+},6200);
+
+setTimeout(()=>{
+cFill.style.width='100%';
+cPopup.style.display = 'none';
+
+document.getElementById('successPopup').style.display='flex';
+document.getElementById('popupProcess').innerHTML=
+`
+🔄 Connecting to Garena Server...<br>
+📦 Processing ${selectedGift} Request...<br>
+🎮 Verifying Free Fire MAX Account...<br>
+📨 Sending ${selectedGift} To Mailbox...<br>
+✅ ${selectedGift} Sent Successfully!
+`;
+document.getElementById('deliveryText').style.display='block';
+},8000);
+}
+
+function closePopup(){
+document.getElementById('successPopup').style.display='none';
+}
+
+setInterval(()=>{
+const msgs=[
+'🔥 Rahul from India won Cobra Bundle',
+'⚡ Arjun from India won Evo Gun',
+'💎 Aman from India won 1000 Diamonds'
+];
+document.getElementById('toastBox').innerHTML=
+msgs[Math.floor(Math.random()*msgs.length)];
+},4000);
+
+setInterval(()=>{
+visitors += Math.floor(Math.random()*20)-5;
+if(visitors<4000){visitors=4000;}
+document.getElementById("realVisitors").innerHTML=
+`🌍 LIVE VISITORS: ${visitors.toLocaleString()}`;
+},3000);
+
+// TIMER LOGIC FOR MAIN BLACK SCREEN AT BOTTOM
+setInterval(()=>{
+if(totalSeconds > 0) {
+totalSeconds--;
+let hrs = Math.floor(totalSeconds / 3600);
+let mins = Math.floor((totalSeconds % 3600) / 60);
+let secs = totalSeconds % 60;
+
+let formattedTime = 
+(hrs < 10 ? "0" + hrs : hrs) + ":" + 
+(mins < 10 ? "0" + mins : mins) + ":" + 
+(secs < 10 ? "0" + secs : secs);
+
+const timerDisplay = document.getElementById("liveCountdown");
+if(timerDisplay) {
+timerDisplay.innerHTML = `⏳ OFFER ENDS IN: ${formattedTime}`;
+}
+}
+}, 1000);
+
+setInterval(()=>{
+const randomUids = ['3842','9104','5521','7310','2284','6049','1873'];
+const randomRewards = ['Cobra Bundle','Evo AK47 Skin','1000 Diamonds','Flower of Love Emote','Hip Hop Bundle'];
+const u = randomUids[Math.floor(Math.random()*randomUids.length)];
+const r = randomRewards[Math.floor(Math.random()*randomRewards.length)];
+document.getElementById("bottomToast").innerHTML = `✅ UID ${u}*** claimed ${r} 🎉`;
+}, 5000);
+
+</script>
+
+</body>
+</html>
