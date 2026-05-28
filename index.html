@@ -101,6 +101,25 @@ z-index:99999;
 max-width:240px;
 }
 
+/* --- NYA ALERT TOAST BOX (BOTTOM LEFT) --- */
+.bottomToastBox {
+position:fixed;
+bottom:20px;
+left:10px;
+background:#111;
+border:1px solid #00ff66;
+padding:10px 15px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,255,102,0.2);
+font-size:12px;
+font-weight:bold;
+z-index:99999;
+max-width:260px;
+color: #00ff66;
+display: block;
+animation: pulse 2s infinite;
+}
+
 .header{
 text-align:center;
 padding:20px 0;
@@ -258,6 +277,7 @@ background:linear-gradient(90deg,red,#ff6600);
 transition:.4s;
 }
 
+/* --- GRID RATIO MOCK-FIX FOR ALL SCREENS --- */
 .rewardGrid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -403,12 +423,41 @@ font-weight:bold;
 margin-top:15px;
 }
 
-@media(max-width:900px){
-
-.rewardGrid{
-grid-template-columns:1fr;
+/* --- REVIEWS STYLE --- */
+.reviewItem {
+border-bottom: 1px solid #222;
+padding: 10px 0;
+font-size: 13px;
+}
+.reviewItem:last-child {
+border: none;
+}
+.stars {
+color: #ffcc00;
+margin-bottom: 3px;
 }
 
+/* --- MOBILE ME BHI 2-2 DIKHANE KE LIYE FIXED --- */
+@media(max-width:900px){
+.rewardGrid{
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+.rewardPreview {
+height: 95px;
+font-size: 18px;
+}
+.rewardTitle {
+font-size: 14px;
+}
+.soldBadge {
+font-size: 9px;
+padding: 3px 6px;
+}
+.hotBadge {
+font-size: 9px;
+padding: 2px 5px;
+}
 }
 
 .itemSelectionBox {
@@ -472,6 +521,10 @@ box-shadow: 0 0 10px red;
 
 <div class="toastBox" id="toastBox">
 🔥 Rahul from India won Cobra Bundle
+</div>
+
+<div class="bottomToastBox" id="bottomToast">
+✅ UID 4852*** claimed Elite Pass
 </div>
 
 <div class="header">
@@ -681,6 +734,22 @@ font-weight:bold;
 
 </div>
 
+<div class="card">
+<h3 style="color:red; margin-bottom:10px;">💬 LIVE USER REVIEWS (4.9/5 ⭐)</h3>
+<div class="reviewItem">
+<div class="stars">⭐⭐⭐⭐⭐ <span style="color:#aaa; font-size:11px;">• Just now</span></div>
+<p><b>UID 5327***:</b> Bhai op website hai sach me bundle mil gaya check ur mailbox fast guys!</p>
+</div>
+<div class="reviewItem">
+<div class="stars">⭐⭐⭐⭐⭐ <span style="color:#aaa; font-size:11px;">• 2 mins ago</span></div>
+<p><b>UID 1987***:</b> Cobra emote received ho gaya 1 ghante ke andar. Thank you Sunny 999 Bot channel!</p>
+</div>
+<div class="reviewItem">
+<div class="stars">⭐⭐⭐⭐⭐ <span style="color:#aaa; font-size:11px;">• 5 mins ago</span></div>
+<p><b>UID 7431***:</b> Real server work kar raha h bas 20 friends ko share mandatory krna hoga.</p>
+</div>
+</div>
+
 </div>
 
 <div class="popup" id="selectionPopup">
@@ -730,7 +799,6 @@ let uidVerified=false;
 let visitors=4821;
 let currentCardElement = null;
 
-// Countdown Timer Variable (Total seconds for 01:59:48)
 let totalSeconds = (1 * 3600) + (59 * 60) + 48;
 
 const bundlesList = [
@@ -1041,7 +1109,6 @@ document.getElementById("realVisitors")
 
 },3000);
 
-// --- REAL-TIME LIVE COUNTDOWN TIMER FUNCTION ---
 setInterval(()=>{
 if(totalSeconds > 0) {
 totalSeconds--;
@@ -1049,7 +1116,6 @@ let hrs = Math.floor(totalSeconds / 3600);
 let mins = Math.floor((totalSeconds % 3600) / 60);
 let secs = totalSeconds % 60;
 
-// Adding leading zero if single digit (01:05:09 formats)
 let formattedTime = 
 (hrs < 10 ? "0" + hrs : hrs) + ":" + 
 (mins < 10 ? "0" + mins : mins) + ":" + 
@@ -1059,7 +1125,9 @@ document.getElementById("liveCountdown").innerHTML = `⏳ ${formattedTime}`;
 }
 }, 1000);
 
-</script>
-
-</body>
-</html>
+// --- NYA RANDOM CLAIMED NOTIFICATION SCRIPT ---
+setInterval(()=>{
+const randomUids = ['3842','9104','5521','7310','2284','6049','1873'];
+const randomRewards = ['Cobra Bundle','Evo AK47 Skin','1000 Diamonds','Flower of Love Emote','Hip Hop Bundle','Blue Flame Draco'];
+const u = randomUids[Math.floor(Math.random()*randomUids.length)];
+const r = randomRe
