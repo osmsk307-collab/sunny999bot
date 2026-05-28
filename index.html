@@ -20,6 +20,7 @@ background:linear-gradient(135deg,#050505,#170000,#050505);
 color:white;
 overflow-x:hidden;
 zoom:.93;
+padding-bottom: 80px; /* Space for large bottom timer */
 }
 
 .container{
@@ -101,10 +102,9 @@ z-index:99999;
 max-width:240px;
 }
 
-/* --- NYA ALERT TOAST BOX (BOTTOM LEFT) --- */
 .bottomToastBox {
 position:fixed;
-bottom:20px;
+bottom:90px;
 left:10px;
 background:#111;
 border:1px solid #00ff66;
@@ -116,7 +116,6 @@ font-weight:bold;
 z-index:99999;
 max-width:260px;
 color: #00ff66;
-display: block;
 animation: pulse 2s infinite;
 }
 
@@ -277,7 +276,6 @@ background:linear-gradient(90deg,red,#ff6600);
 transition:.4s;
 }
 
-/* --- GRID RATIO MOCK-FIX FOR ALL SCREENS --- */
 .rewardGrid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -293,6 +291,7 @@ padding:10px;
 text-align:center;
 position:relative;
 transition:.3s;
+cursor:pointer;
 }
 
 .rewardCard:active{
@@ -423,7 +422,6 @@ font-weight:bold;
 margin-top:15px;
 }
 
-/* --- REVIEWS STYLE --- */
 .reviewItem {
 border-bottom: 1px solid #222;
 padding: 10px 0;
@@ -437,7 +435,28 @@ color: #ffcc00;
 margin-bottom: 3px;
 }
 
-/* --- MOBILE ME BHI 2-2 DIKHANE KE LIYE FIXED --- */
+/* --- NYA BADA BOTTOM TIMER BAR --- */
+.bottomTimerBar {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(0deg, #1f0000, #050505);
+border-top: 2px solid red;
+padding: 15px;
+text-align: center;
+z-index: 999998;
+box-shadow: 0 -5px 25px rgba(255,0,0,0.4);
+}
+.bottomTimerText {
+font-size: 26px;
+font-weight: bold;
+color: #fff;
+text-shadow: 0 0 15px red;
+letter-spacing: 2px;
+}
+
+/* --- MOBILE LAYOUT SETTINGS (2-2 PAAS ME) --- */
 @media(max-width:900px){
 .rewardGrid{
 grid-template-columns: 1fr 1fr;
@@ -458,8 +477,12 @@ padding: 3px 6px;
 font-size: 9px;
 padding: 2px 5px;
 }
+.bottomTimerText {
+font-size: 22px;
+}
 }
 
+/* --- SELECTION POPUP STYLE --- */
 .itemSelectionBox {
 max-height: 250px;
 overflow-y: auto;
@@ -469,16 +492,13 @@ grid-template-columns: 1fr;
 gap: 10px;
 padding-right: 5px;
 }
-
 .itemSelectionBox::-webkit-scrollbar {
 width: 6px;
 }
-
 .itemSelectionBox::-webkit-scrollbar-thumb {
 background: red;
 border-radius: 10px;
 }
-
 .selectOptionBtn {
 background: #1a1a1a !important;
 border: 1px solid #333 !important;
@@ -491,11 +511,26 @@ cursor: pointer;
 transition: 0.2s;
 margin-top: 0 !important;
 }
-
 .selectOptionBtn:hover, .selectOptionBtn:active {
 background: red !important;
 border-color: red !important;
 box-shadow: 0 0 10px red;
+}
+
+/* --- POPUP UID LOADER PROGRESS --- */
+.popupLoaderBar {
+width: 100%;
+height: 12px;
+background: #222;
+border-radius: 10px;
+overflow: hidden;
+margin-top: 15px;
+}
+.popupLoaderFill {
+height: 100%;
+width: 0%;
+background: linear-gradient(90deg, red, #ff6600);
+transition: 0.3s;
 }
 
 </style>
@@ -536,7 +571,6 @@ SUNNY <span>999 BOT</span>
 <div class="stats">
 <div>🟢 SERVER ONLINE</div>
 <div>👥 1527 USERS</div>
-<div id="liveCountdown">⏳ 01:59:48</div>
 <div>💎 12,54,890 GIVEN</div>
 </div>
 
@@ -752,6 +786,10 @@ font-weight:bold;
 
 </div>
 
+<div class="bottomTimerBar">
+<div class="bottomTimerText" id="liveCountdown">⏳ OFFER ENDS IN: 01:59:48</div>
+</div>
+
 <div class="popup" id="selectionPopup">
 <div class="popupContent">
 <h2 id="selectionPopupTitle">SELECT ITEM</h2>
@@ -761,35 +799,36 @@ font-weight:bold;
 </div>
 </div>
 
-<div class="popup" id="successPopup">
-
+<div class="popup" id="uidPopup">
 <div class="popupContent">
-
-<h2>
-🎉 CONGRATULATIONS!
-</h2>
-
-<div id="popupProcess" style="
-line-height:1.9;
-font-weight:bold;
-">
+<h2 style="color:red;">🛡️ SECURE VERIFICATION</h2>
+<div id="uidPopupText" style="font-weight:bold; line-height:1.8; margin-top:10px;">Starting...</div>
+<div class="popupLoaderBar">
+<div class="popupLoaderFill" id="uidPopupFill"></div>
+</div>
+</div>
 </div>
 
-<p id="deliveryText" style="
-margin-top:12px;
-color:#00ff66;
-display:none;
-font-weight:bold;
-">
+<div class="popup" id="claimPopup">
+<div class="popupContent">
+<h2 style="color:red;">🚀 PROCESSING REQUEST</h2>
+<div id="claimPopupText" style="font-weight:bold; line-height:1.8; margin-top:10px;">Initializing...</div>
+<div class="popupLoaderBar">
+<div class="popupLoaderFill" id="claimPopupFill"></div>
+</div>
+</div>
+</div>
+
+<div class="popup" id="successPopup">
+<div class="popupContent">
+<h2>🎉 CONGRATULATIONS!</h2>
+<div id="popupProcess" style="line-height:1.9; font-weight:bold;">
+</div>
+<p id="deliveryText" style="margin-top:12px; color:#00ff66; display:none; font-weight:bold;">
 Delivery within 2 hours ⏳
 </p>
-
-<button onclick="closePopup()">
-OK
-</button>
-
+<button onclick="closePopup()">OK</button>
 </div>
-
 </div>
 
 <script>
@@ -863,8 +902,8 @@ selectedGift = item;
 applyCardBorder(currentCardElement);
 closeSelectionPopup();
 const status=document.getElementById('status');
-if(status.innerHTML.includes("SELECT YOUR GIFT")) {
-status.innerHTML = `✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${item}<br>CLICK CLAIM REWARD BELOW ↓`;
+if(status) {
+status.innerHTML = `✅ SELECTED: ${item}<br>CLICK CLAIM REWARD BELOW ↓`;
 }
 };
 container.appendChild(btn);
@@ -878,256 +917,113 @@ document.getElementById('selectionPopup').style.display = 'none';
 }
 
 function fakeShare(){
-
-document.getElementById('statusBox')
-.style.display='block';
-
-document.getElementById('status')
-.innerHTML='📤 Opening share...';
+document.getElementById('statusBox').style.display='block';
+document.getElementById('status').innerHTML='📤 Opening share...';
 
 setTimeout(()=>{
-
-document.getElementById('shareCheck')
-.checked=true;
-
-document.getElementById('status')
-.innerHTML='✅ Shared successfully with 20 friends';
-
+document.getElementById('shareCheck').checked=true;
+document.getElementById('status').innerHTML='✅ Shared successfully with 20 friends';
 },2500);
-
 }
 
 function checkUID(){
-
 const uid=document.getElementById('uid').value;
-
 const status=document.getElementById('status');
-
 const fill=document.getElementById('progressFill');
-
-document.getElementById('statusBox')
-.style.display='block';
+const pPopup = document.getElementById('uidPopup');
+const pText = document.getElementById('uidPopupText');
+const pFill = document.getElementById('uidPopupFill');
 
 if(!uid){
-
+document.getElementById('statusBox').style.display='block';
 status.innerHTML='⚠ Enter UID first';
 return;
-
 }
 
-fill.style.width='0%';
-
-status.innerHTML=
-'🔄 Connecting to Free Fire Server...';
-
-fill.style.width='20%';
+// Open UID Popup
+pPopup.style.display = 'flex';
+pFill.style.width = '0%';
+pText.innerHTML = '🔄 Connecting to Free Fire Server...';
 
 setTimeout(()=>{
-
-status.innerHTML=
-'📡 Contacting Reward Server...';
-
-fill.style.width='40%';
-
-},1200);
+pText.innerHTML = '📡 Contacting Reward Server...';
+pFill.style.width = '40%';
+}, 1200);
 
 setTimeout(()=>{
-
-status.innerHTML=
-'🎮 Verifying Free Fire MAX Account...';
-
-fill.style.width='65%';
-
-},2600);
+pText.innerHTML = '🎮 Verifying Free Fire MAX Account...';
+pFill.style.width = '70%';
+}, 2600);
 
 setTimeout(()=>{
-
-status.innerHTML=
-'🤖 AI checking account security...';
-
-fill.style.width='85%';
-
-},4200);
+pText.innerHTML = '🤖 AI checking account security...';
+pFill.style.width = '90%';
+}, 4200);
 
 setTimeout(()=>{
-
-fill.style.width='100%';
-
+pFill.style.width = '100%';
 uidVerified=true;
+pPopup.style.display = 'none'; // Close validation popup
 
+document.getElementById('statusBox').style.display='block';
+fill.style.width='100%';
 if(selectedGift) {
 status.innerHTML=`✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${selectedGift}<br>CLICK CLAIM REWARD BELOW ↓`;
 } else {
 status.innerHTML='✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
 }
-
-},5800);
-
+}, 5500);
 }
 
 function claimGift(){
-
 const status=document.getElementById('status');
 
 if(!uidVerified){
-
+document.getElementById('statusBox').style.display='block';
 status.innerHTML='⚠ VERIFY UID FIRST';
 return;
-
 }
-
 if(!selectedGift){
-
+document.getElementById('statusBox').style.display='block';
 status.innerHTML='⚠ SELECT REWARD FIRST';
 return;
-
 }
-
 if(!document.getElementById('shareCheck').checked){
-
+document.getElementById('statusBox').style.display='block';
 status.innerHTML='⚠ SHARE WITH 20 FRIENDS FIRST';
 return;
-
 }
 
-document.getElementById('claimLoaderBox')
-.style.display='block';
+const cPopup = document.getElementById('claimPopup');
+const cText = document.getElementById('claimPopupText');
+const cFill = document.getElementById('claimPopupFill');
 
-const loader=document.getElementById('claimLoader');
-
-const text=document.getElementById('claimText');
-
-loader.style.width='5%';
-
-text.innerHTML=
-'🔄 Connecting to Garena Server...';
+cPopup.style.display = 'flex';
+cFill.style.width = '5%';
+cText.innerHTML = '🔄 Connecting to Garena Server...';
 
 setTimeout(()=>{
-
-loader.style.width='20%';
-
-text.innerHTML=
-'📡 Establishing secure connection...';
-
+cFill.style.width='25%';
+cText.innerHTML = '📡 Establishing secure connection...';
 },1200);
 
 setTimeout(()=>{
-
-loader.style.width='40%';
-
-text.innerHTML=
-'🤖 AI checking account security...';
-
+cFill.style.width='50%';
+cText.innerHTML = '🤖 AI checking account security...';
 },2600);
 
 setTimeout(()=>{
-
-loader.style.width='60%';
-
-text.innerHTML=
-`📦 Processing ${selectedGift} Request...`;
-
+cFill.style.width='75%';
+cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
 },4200);
 
 setTimeout(()=>{
-
-loader.style.width='80%';
-
-text.innerHTML=
-'🎮 Verifying Free Fire MAX Account...';
-
-},5800);
+cFill.style.width='95%';
+cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
+},6200);
 
 setTimeout(()=>{
+cFill.style.width='100%';
+cPopup.style.display = 'none'; // Close loader popup
 
-loader.style.width='95%';
-
-text.innerHTML=
-`📨 Sending ${selectedGift} To Mailbox...`;
-
-},7200);
-
-setTimeout(()=>{
-
-loader.style.width='100%';
-
-text.innerHTML=
-`✅ ${selectedGift} Sent Successfully!`;
-
-document.getElementById('successPopup')
-.style.display='flex';
-
-document.getElementById('popupProcess')
-.innerHTML=
-`
-🔄 Connecting to Garena Server...<br>
-📦 Processing ${selectedGift} Request...<br>
-🎮 Verifying Free Fire MAX Account...<br>
-📨 Sending ${selectedGift} To Mailbox...<br>
-✅ ${selectedGift} Sent Successfully!
-`;
-
-document.getElementById('deliveryText')
-.style.display='block';
-
-},9000);
-
-}
-
-function closePopup(){
-
-document.getElementById('successPopup')
-.style.display='none';
-
-}
-
-setInterval(()=>{
-
-const msgs=[
-'🔥 Rahul from India won Cobra Bundle',
-'⚡ Arjun from India won Evo Gun',
-'💎 Aman from India won 1000 Diamonds'
-];
-
-document.getElementById('toastBox')
-.innerHTML=
-msgs[Math.floor(Math.random()*msgs.length)];
-
-},4000);
-
-setInterval(()=>{
-
-visitors += Math.floor(Math.random()*20)-5;
-
-if(visitors<4000){
-visitors=4000;
-}
-
-document.getElementById("realVisitors")
-.innerHTML=
-`🌍 LIVE VISITORS: ${visitors.toLocaleString()}`;
-
-},3000);
-
-setInterval(()=>{
-if(totalSeconds > 0) {
-totalSeconds--;
-let hrs = Math.floor(totalSeconds / 3600);
-let mins = Math.floor((totalSeconds % 3600) / 60);
-let secs = totalSeconds % 60;
-
-let formattedTime = 
-(hrs < 10 ? "0" + hrs : hrs) + ":" + 
-(mins < 10 ? "0" + mins : mins) + ":" + 
-(secs < 10 ? "0" + secs : secs);
-
-document.getElementById("liveCountdown").innerHTML = `⏳ ${formattedTime}`;
-}
-}, 1000);
-
-// --- NYA RANDOM CLAIMED NOTIFICATION SCRIPT ---
-setInterval(()=>{
-const randomUids = ['3842','9104','5521','7310','2284','6049','1873'];
-const randomRewards = ['Cobra Bundle','Evo AK47 Skin','1000 Diamonds','Flower of Love Emote','Hip Hop Bundle','Blue Flame Draco'];
-const u = randomUids[Math.floor(Math.random()*randomUids.length)];
-const r = randomRe
+document.getElementByI
