@@ -6,7 +6,6 @@
 <title>SUNNY 999 BOT ULTIMATE</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -19,6 +18,7 @@ background:linear-gradient(135deg,#050505,#120000,#050505);
 color:white;
 overflow-x:hidden;
 position:relative;
+zoom:.93;
 }
 
 .container{
@@ -56,17 +56,6 @@ font-size:13px;
 box-shadow:0 0 12px purple;
 }
 
-.bottomScroll{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:red;
-padding:8px;
-font-weight:bold;
-z-index:99999;
-}
-
 @keyframes pulse{
 0%{transform:scale(1);}
 50%{transform:scale(1.03);}
@@ -74,9 +63,7 @@ z-index:99999;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh);
-}
+to{transform:translateY(110vh);}
 }
 
 .rain{
@@ -94,7 +81,8 @@ text-align:center;
 }
 
 .logoText h1{
-font-size:40px;
+font-size:28px;
+margin-top:8px;
 text-shadow:0 0 12px red;
 }
 
@@ -105,10 +93,10 @@ color:red;
 .stats{
 display:flex;
 justify-content:center;
-gap:12px;
+gap:10px;
 flex-wrap:wrap;
-margin-top:14px;
-font-size:13px;
+margin-top:10px;
+font-size:12px;
 font-weight:bold;
 }
 
@@ -138,10 +126,25 @@ top:140px;
 left:15px;
 z-index:9999;
 background:#111;
-border:1px solid red;
+border:2px solid red;
 padding:10px;
 border-radius:12px;
 cursor:pointer;
+}
+
+.toastBox{
+position:fixed;
+top:170px;
+right:10px;
+background:#111;
+border:2px solid red;
+padding:10px 14px;
+border-radius:16px;
+box-shadow:0 0 20px red;
+z-index:99999;
+font-size:12px;
+font-weight:bold;
+max-width:240px;
 }
 
 .navbar{
@@ -181,7 +184,8 @@ padding:14px;
 line-height:1.8;
 font-size:14px;
 }
-  .uidArea{
+
+.uidArea{
 display:flex;
 gap:10px;
 margin-top:12px;
@@ -194,6 +198,8 @@ border-radius:12px;
 background:#111;
 color:white;
 border:1px solid #333;
+font-size:16px;
+box-shadow:0 0 10px rgba(255,0,0,.3);
 }
 
 .uidArea button{
@@ -204,6 +210,7 @@ color:white;
 border-radius:12px;
 font-weight:bold;
 cursor:pointer;
+box-shadow:0 0 15px red;
 }
 
 .progressBar{
@@ -213,7 +220,6 @@ background:#222;
 border-radius:20px;
 overflow:hidden;
 margin-top:10px;
-display:none;
 }
 
 .progressFill{
@@ -223,47 +229,10 @@ background:linear-gradient(90deg,red,#ff6600);
 transition:.4s;
 }
 
-.socialBtns{
-display:flex;
-gap:10px;
-margin-top:12px;
-}
-
-.socialBtns button{
-flex:1;
-padding:12px;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.ytBtn{
-background:red;
-color:white;
-}
-
-.igBtn{
-background:#c13584;
-color:white;
-}
-
-.shareBtn{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#ff6600;
-border:none;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-color:white;
-}
-
 .rewardGrid{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
+grid-template-columns:1fr 1fr;
+gap:10px;
 margin-top:14px;
 }
 
@@ -271,16 +240,25 @@ margin-top:14px;
 background:#111;
 border:1px solid #333;
 border-radius:14px;
-padding:10px;
+padding:8px;
+min-height:210px;
 text-align:center;
 cursor:pointer;
 position:relative;
 transition:.3s;
 }
 
-.rewardCard:hover{
-transform:translateY(-4px);
-box-shadow:0 0 18px red;
+.rewardCard img{
+width:100%;
+height:95px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.rewardTitle{
+margin-top:8px;
+font-size:14px;
+font-weight:bold;
 }
 
 .hotBadge{
@@ -292,7 +270,6 @@ padding:4px 8px;
 font-size:11px;
 font-weight:bold;
 border-radius:20px;
-animation:pulse 1s infinite;
 }
 
 .soldBadge{
@@ -308,49 +285,19 @@ font-weight:bold;
 box-shadow:0 0 10px #00ff66;
 }
 
-.rewardCard img{
-width:100%;
-height:120px;
-object-fit:cover;
-border-radius:10px;
-}
-
-.rewardTitle{
-margin-top:8px;
-font-size:14px;
-font-weight:bold;
-}
-
 .claimBtn{
 width:100%;
-padding:14px;
+padding:16px;
 margin-top:14px;
 background:linear-gradient(45deg,#ff0000,#a30000);
 border:none;
-border-radius:12px;
+border-radius:14px;
 color:white;
 font-weight:bold;
-font-size:16px;
+font-size:18px;
 cursor:pointer;
-box-shadow:0 0 15px red;
-}
-  .wheel{
-width:220px;
-height:220px;
-margin:15px auto;
-border-radius:50%;
-border:8px solid red;
-background:conic-gradient(
-#ff0000 0deg 45deg,
-#111 45deg 90deg,
-#ff4444 90deg 135deg,
-#222 135deg 180deg,
-#ff0000 180deg 225deg,
-#111 225deg 270deg,
-#ff4444 270deg 315deg,
-#222 315deg 360deg
-);
-transition:transform 5s ease-out;
+box-shadow:0 0 10px red,0 0 25px rgba(255,0,0,.7);
+animation:pulse 1.5s infinite;
 }
 
 #claimLoaderBox{
@@ -358,21 +305,13 @@ display:none;
 margin-top:15px;
 }
 
-#claimLoader{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,red,#ff6600);
-transition:.4s;
-}
-
-.sideSection{
-display:grid;
-gap:16px;
-}
-
-.liveChat{
-max-height:220px;
-overflow:auto;
+.wheel{
+width:180px;
+height:180px;
+margin:15px auto;
+border-radius:50%;
+border:8px solid red;
+background:conic-gradient(#ff0000 0deg 45deg,#111 45deg 90deg,#ff4444 90deg 135deg,#222 135deg 180deg,#ff0000 180deg 225deg,#111 225deg 270deg,#ff4444 270deg 315deg,#222 315deg 360deg);
 }
 
 .chatMsg,.leaderboard div{
@@ -399,13 +338,6 @@ border:1px solid red;
 border-radius:16px;
 width:92%;
 max-width:420px;
-max-height:85vh;
-overflow:auto;
-}
-
-.modal h2{
-text-align:center;
-margin-bottom:15px;
 }
 
 .modal input,.modal select{
@@ -426,39 +358,13 @@ color:white;
 border:none;
 border-radius:10px;
 font-weight:bold;
-cursor:pointer;
-}
-
-.toastBox{
-position:fixed;
-top:120px;
-right:12px;
-background:#111;
-border:1px solid red;
-padding:10px;
-border-radius:12px;
-box-shadow:0 0 15px red;
-z-index:99999;
-font-size:13px;
-font-weight:bold;
 }
 
 @media(max-width:900px){
-
-.main{
-grid-template-columns:1fr;
+.main{grid-template-columns:1fr;}
+.rewardGrid{grid-template-columns:1fr;}
+.uidArea{flex-direction:column;}
 }
-
-.uidArea{
-flex-direction:column;
-}
-
-.rewardGrid{
-grid-template-columns:1fr;
-}
-
-}
-
 </style>
 </head>
 <body>
@@ -482,26 +388,9 @@ grid-template-columns:1fr;
 <div class="toastBox" id="toastBox">
 🔥 Rahul from India won Cobra Bundle
 </div>
-<audio id="claimSound">
-<source src="https://www.soundjay.com/buttons/sounds/button-3.mp3">
-</audio>
-
-<canvas id="confetti" style="
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:99998;
-"></canvas>
-
-<div class="bottomScroll">
-<marquee>
-🔥 OB49 EVENT LIVE NOW 🔥 FREE EVO GUN EVENT 🔥 SUNNY 999 BOT OFFICIAL 🔥
-</marquee>
-</div>
 
 <div class="header">
 <div class="container">
-
 <div class="logoText">
 <h1>SUNNY <span>999 BOT</span></h1>
 </div>
@@ -514,16 +403,12 @@ z-index:99998;
 </div>
 
 <div class="authRow">
-<button class="authBtn loginBtn" onclick="showLogin()">
-LOGIN
-</button>
+<button class="authBtn loginBtn" onclick="showLogin()">LOGIN</button>
 </div>
-
 </div>
 </div>
 
 <div class="navbar">
-<div class="container">
 <div class="navIcons">
 <div>🏠 HOME</div>
 <div>🎁 REWARDS</div>
@@ -531,12 +416,9 @@ LOGIN
 <div>💬 LIVE</div>
 </div>
 </div>
-</div>
 
 <div class="container">
 <div class="main">
-
-<!-- LEFT -->
 <div>
 
 <div class="card">
@@ -551,7 +433,6 @@ LOGIN
 </div>
 
 <div class="card">
-
 <h2>🎮 ENTER YOUR FREE FIRE UID</h2>
 
 <div class="uidArea">
@@ -559,479 +440,211 @@ LOGIN
 <button onclick="checkUID()">CHECK UID</button>
 </div>
 
-<div class="progressBar" id="progressBar">
-<div class="progressFill" id="progressFill"></div>
-</div>
+<button class="claimBtn" onclick="fakeShare()">📤 SHARE TO 20 FRIENDS</button>
 
-<div id="status" style="
-margin-top:12px;
-font-weight:bold;
-line-height:1.8;
-"></div>
-
-<button class="shareBtn" onclick="fakeShare()">
-📤 SHARE TO 20 FRIENDS
-</button>
-
-<label style="
-display:block;
-margin-top:12px;
-font-weight:bold;
-">
-<input type="checkbox" id="shareCheck">
-I shared with 20 friends
+<label style="display:block;margin-top:12px;font-weight:bold;">
+<input type="checkbox" id="shareCheck"> I shared with 20 friends
 </label>
 
-<div class="socialBtns">
-
-<button class="ytBtn"
-onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">
-📺 YOUTUBE
-</button>
-
-<button class="igBtn"
-onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">
-📸 INSTAGRAM
-</button>
-
+<div id="statusBox" style="display:none;margin-top:15px;background:#111;padding:12px;border-radius:12px;border:1px solid red;box-shadow:0 0 12px rgba(255,0,0,.5);">
+<div class="progressBar">
+<div class="progressFill" id="progressFill"></div>
 </div>
+<div id="status" style="margin-top:12px;font-weight:bold;line-height:1.8;font-size:14px;"></div>
 </div>
-<div class="card">
-
-<h2>📦 REWARD STOCK</h2>
-
-<div id="stockBox" class="chatMsg">
-💎 Diamonds left: 37<br>
-🔥 Bundles left: 12<br>
-⚡ Evo Guns left: 9
-</div>
-
 </div>
 
 <div class="card">
-
 <h2>🎁 CHOOSE REWARD</h2>
-
 <div class="rewardGrid">
-
-<div class="rewardCard"
-onclick="pickGift(this,'100 Diamonds')">
-
-<img src="diamond.jpg">
-
-<div class="rewardTitle">
-100 DIAMONDS
+<div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
+<img src="https://i.imgur.com/X6XKx9D.jpeg">
+<div class="rewardTitle">100 DIAMONDS</div>
 </div>
 
+<div class="rewardCard" onclick="pickGift(this,'Emote')">
+<img src="https://i.imgur.com/1m0G8hB.jpeg">
+<div class="rewardTitle">EMOTE</div>
 </div>
 
-<div class="rewardCard"
-onclick="showEmote()">
-
-<img src="emote.jpg">
-
-<div class="rewardTitle">
-EMOTE
+<div class="rewardCard" onclick="pickGift(this,'Bundle')">
+<div class="hotBadge">HOT 🔥</div>
+<div class="soldBadge">93% SOLD</div>
+<div style="height:95px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:red;">🔥 BUNDLE</div>
+<div class="rewardTitle">BUNDLE</div>
 </div>
 
+<div class="rewardCard" onclick="pickGift(this,'Evo Gun')">
+<div class="hotBadge">HOT 🔥</div>
+<div class="soldBadge">89% SOLD</div>
+<div style="height:95px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:red;">⚡ EVO GUN</div>
+<div class="rewardTitle">EVO GUN</div>
+</div>
 </div>
 
-<div class="rewardCard"
-onclick="showBundle()">
-
-<div class="hotBadge">
-HOT 🔥
-</div>
-
-<div class="soldBadge">
-93% SOLD
-</div>
-
-<div style="
-height:120px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(45deg,#ff0000,#8b0000,#111);
-font-weight:bold;
-">
-🔥 BUNDLE
-</div>
-
-<div class="rewardTitle">
-BUNDLE
-</div>
-
-</div>
-
-<div class="rewardCard"
-onclick="showEvo()">
-
-<div class="hotBadge">
-HOT 🔥
-</div>
-
-<div class="soldBadge">
-89% SOLD
-</div>
-
-<div style="
-height:120px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(45deg,#111,#ff0000,#8b0000);
-font-weight:bold;
-">
-⚡ EVO GUN
-</div>
-
-<div class="rewardTitle">
-EVO GUN
-</div>
-
-</div>
-
-</div>
-
-<button class="claimBtn" onclick="claimGift()">
-🚀 CLAIM REWARD
-</button>
-
-<!-- ULTRA CLAIM LOADER -->
+<button class="claimBtn" onclick="claimGift()">🚀 CLAIM REWARD</button>
 
 <div id="claimLoaderBox">
-
-<div style="
-background:#222;
-height:14px;
-border-radius:20px;
-overflow:hidden;
-">
-
+<div style="background:#222;height:14px;border-radius:20px;overflow:hidden;">
 <div id="claimLoader"></div>
-
 </div>
-
-<div id="claimText" style="
-margin-top:10px;
-font-weight:bold;
-line-height:1.8;
-">
-🔄 Preparing secure transfer...
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>🎰 SPIN TO WIN</h2>
-
-<div class="wheel" id="wheel"></div>
-
-<button class="claimBtn"
-onclick="spinWheel()">
-SPIN NOW
-</button>
-
-<div id="spinResult" class="chatMsg">
-Try your luck 🎯
-</div>
-
-</div>
-
-</div>
-<!-- RIGHT SIDE -->
-
-<div class="sideSection">
-
-<!-- LIVE CLAIM COUNTER -->
-
-<div class="card">
-<h2>🔥 LIVE CLAIM COUNTER</h2>
-
-<div id="claimCounter" class="chatMsg">
-127 players claiming rewards now
-</div>
-
-</div>
-
-<!-- AI SECURITY -->
-
-<div class="card">
-<h2>🤖 AI SECURITY</h2>
-
-<div id="aiScan" class="chatMsg">
-🛡 Secure Garena Protected Server
-</div>
-
-</div>
-
-<!-- EVENT TIMER -->
-
-<div class="card">
-<h2>⏰ EVENT ENDS IN</h2>
-
-<div id="eventTimer" class="chatMsg">
-01:59:59
-</div>
-
-</div>
-
-<!-- PAYMENT PROOF -->
-
-<div class="card">
-<h2>💸 PAYMENT PROOF</h2>
-
-<div id="paymentProof" class="chatMsg">
-Rahul received ₹500
-</div>
-
-</div>
-
-<!-- REDEEM CODE -->
-
-<div class="card">
-<h2>🎁 REDEEM CODE</h2>
-
-<div id="redeemCode" class="chatMsg">
-SUNNY-FF-2026
-</div>
-
-</div>
-
-<!-- LUCKY UID -->
-
-<div class="card">
-<h2>🍀 LUCKY UID</h2>
-
-<div id="luckyUid" class="chatMsg">
-527381920
-</div>
-
-</div>
-
-<!-- TOP CLAIMER -->
-
-<div class="card">
-<h2>👑 DAILY TOP CLAIMER</h2>
-
-<div id="topClaimer" class="chatMsg">
-#1 Rahul — 57 Claims
-</div>
-
-</div>
-
-<!-- JACKPOT -->
-
-<div class="card">
-<h2>💎 JACKPOT ALERT</h2>
-
-<div id="jackpotAlert" class="chatMsg">
-🎉 Arjun almost won 50,000 Diamonds
-</div>
-
-</div>
-
-<!-- LEADERBOARD -->
-
-<div class="card">
-
-<h2>🏆 LEADERBOARD</h2>
-
-<div class="leaderboard">
-
-<div>#1 MOHIT LIVE 👑</div>
-<div>#2 SUNNY ELITE 🔥</div>
-<div>#3 FF MASTER 💎</div>
-<div>#4 HEADSHOT KING ⚡</div>
-
-</div>
-
-</div>
-
-<!-- LIVE CHAT -->
-
-<div class="card">
-
-<h2>💬 LIVE CHAT</h2>
-
-<div class="liveChat" id="liveChat">
-
-<div class="chatMsg">
-Rahul: OMG reward working 🔥
-</div>
-
-<div class="chatMsg">
-Aman: I got emote 😂
-</div>
-
-<div class="chatMsg">
-King: Sunny OP 💎
-</div>
-
-</div>
-
-</div>
-
-<!-- ADMIN SUPPORT -->
-
-<div class="card">
-
-<h2>💬 ADMIN SUPPORT</h2>
-
-<div class="chatMsg">
-🟢 Admin Online 24/7
-</div>
-
-<button class="claimBtn">
-CONTACT ADMIN
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<!-- LOGIN POPUP -->
-
-<div class="authPopup" id="loginPopup">
-<div class="modal">
-
-<h2>LOGIN</h2>
-
-<input type="email" placeholder="Enter Gmail">
-
-<input type="password" placeholder="Enter Password">
-
-<button onclick="closeAuth()">
-LOGIN
-</button>
-
+<div id="claimText" style="margin-top:10px;font-weight:bold;line-height:1.8;">🔄 Preparing secure transfer...</div>
 </div>
 </div>
 
-<!-- SUCCESS POPUP -->
+</div>
+</div>
+</div>
 
 <div class="successPopup" id="successPopup">
 <div class="modal">
-
 <h2>🎉 CONGRATULATIONS!</h2>
-
-<div id="popupProcess" style="
-line-height:1.9;
-font-size:16px;
-margin-top:15px;
-text-align:left;
-">
-🔄 Connecting to Garena Server...
-</div>
-
-<p id="deliveryText" style="
-margin-top:12px;
-color:#00ff66;
-font-weight:bold;
-display:none;
-">
-Delivery within 2 hours ⏳
-</p>
-
-<button onclick="closeSuccess()">
-OK
-</button>
-
+<div id="popupProcess" style="line-height:1.9;font-size:16px;margin-top:15px;text-align:left;"></div>
+<p id="deliveryText" style="margin-top:12px;color:#00ff66;font-weight:bold;display:none;">Delivery within 2 hours ⏳</p>
+<button onclick="closeSuccess()">OK</button>
 </div>
 </div>
 
-<!-- EMOTE POPUP -->
+<script>
+let selectedGift='';
+let uidVerified=false;
+let soundOn=true;
 
-<div class="popup" id="emotePopup">
-<div class="modal">
+function toggleSound(){
+soundOn=!soundOn;
+document.getElementById('soundBtn').innerHTML=soundOn?'🔊 ON':'🔇 OFF';
+}
 
-<h2>Select Emote</h2>
+function pickGift(el,g){
+selectedGift=g;
+document.querySelectorAll('.rewardCard').forEach(c=>c.style.border='1px solid #333');
+el.style.border='2px solid red';
+}
 
-<select id="emoteSelect" size="10">
+function fakeShare(){
+document.getElementById('statusBox').style.display='block';
+document.getElementById('status').innerHTML='📤 Opening share...';
+setTimeout(()=>{
+document.getElementById('shareCheck').checked=true;
+document.getElementById('status').innerHTML='✅ Shared successfully with 20 friends';
+},2500);
+}
 
-<option>LOL Emote</option>
-<option>Top DJ</option>
-<option>FF Dance</option>
-<option>Haha Emote</option>
-<option>Flowers of Love</option>
-<option>Pirate Flag</option>
-<option>Moon Flip</option>
-<option>Shake With Me</option>
-<option>Baby Shark</option>
-<option>Kung Fu Dab</option>
-<option>Booyah!</option>
-<option>Applause</option>
-<option>Siiii!</option>
-<option>Threaten</option>
-<option>Victory Dance</option>
+function checkUID(){
+const uid=document.getElementById('uid').value;
+const status=document.getElementById('status');
+const box=document.getElementById('statusBox');
+const fill=document.getElementById('progressFill');
 
-</select>
+if(!uid){
+box.style.display='block';
+status.innerHTML='⚠ Enter UID first';
+return;
+}
 
-<button onclick="selectEmote()">
-SELECT
-</button>
+box.style.display='block';
+fill.style.width='0%';
+status.innerHTML='🔄 Connecting to Free Fire Server...';
+fill.style.width='20%';
 
-</div>
-</div>
+setTimeout(()=>{
+status.innerHTML='📡 Contacting Reward Server...';
+fill.style.width='40%';
+},1200);
 
-<!-- BUNDLE POPUP -->
+setTimeout(()=>{
+status.innerHTML='🎮 Verifying Free Fire MAX Account...';
+fill.style.width='65%';
+},2600);
 
-<div class="popup" id="bundlePopup">
-<div class="modal">
+setTimeout(()=>{
+status.innerHTML='🤖 AI checking account security...';
+fill.style.width='85%';
+},4200);
 
-<h2>Select Bundle</h2>
+setTimeout(()=>{
+fill.style.width='100%';
+uidVerified=true;
+status.innerHTML='✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
+},5800);
+}
 
-<select id="bundleSelect" size="10">
+function claimGift(){
+const status=document.getElementById('status');
+const box=document.getElementById('statusBox');
+const fill=document.getElementById('progressFill');
 
-<option>Cobra Bundle</option>
-<option>Red Criminal Bundle</option>
-<option>Blue Criminal Bundle</option>
-<option>Green Criminal Bundle</option>
-<option>Purple Criminal Bundle</option>
-<option>Sakura Bundle</option>
-<option>Angelic Bundle</option>
-<option>Dino Bundle</option>
-<option>Rampage Bundle</option>
+if(!uidVerified){
+box.style.display='block';
+status.innerHTML='⚠ VERIFY UID FIRST';
+return;
+}
 
-</select>
+if(!selectedGift){
+box.style.display='block';
+status.innerHTML='⚠ SELECT REWARD FIRST';
+return;
+}
 
-<button onclick="selectBundle()">
-SELECT
-</button>
+if(!document.getElementById('shareCheck').checked){
+box.style.display='block';
+status.innerHTML='⚠ SHARE WITH 20 FRIENDS FIRST';
+return;
+}
 
-</div>
-</div>
+const loader=document.getElementById('claimLoader');
+const text=document.getElementById('claimText');
+document.getElementById('claimLoaderBox').style.display='block';
 
-<!-- EVO POPUP -->
+loader.style.width='5%';
+text.innerHTML='🔄 Connecting to Garena Server...';
 
-<div class="popup" id="evoPopup">
-<div class="modal">
+setTimeout(()=>{
+loader.style.width='20%';
+text.innerHTML='📡 Establishing secure connection...';
+},1000);
 
-<h2>Select Evo Gun</h2>
+setTimeout(()=>{
+loader.style.width='40%';
+text.innerHTML='🤖 AI checking account security...';
+},2200);
 
-<select id="evoSelect" size="10">
+setTimeout(()=>{
+loader.style.width='60%';
+text.innerHTML='📦 Processing Reward Request...';
+},3400);
 
-<option>MP40 Predatory Cobra</option>
-<option>AK Blue Flame Draco</option>
-<option>M1014 Green Flame Draco</option>
-<option>SCAR Megalodon Alpha</option>
-<option>UMP Cataclysm</option>
-<option>FAMAS Golden Glory</option>
+setTimeout(()=>{
+loader.style.width='80%';
+text.innerHTML='🎮 Verifying Free Fire MAX Account...';
+},4800);
 
-</select>
+setTimeout(()=>{
+loader.style.width='95%';
+text.innerHTML='📨 Sending Reward To Mailbox...';
+},6200);
 
-<button onclick="selectEvo()">
-SELECT
-</button>
+setTimeout(()=>{
+loader.style.width='100%';
+text.innerHTML='✅ Reward Sent Successfully!';
 
-</div>
-</div>
+document.getElementById('successPopup').style.display='flex';
+document.getElementById('popupProcess').innerHTML='🔄 Connecting to Garena Server...<br>📦 Processing Reward Request...<br>🎮 Verifying Free Fire MAX Account...<br>📨 Sending Reward To Mailbox...<br>✅ Reward Sent Successfully!';
+document.getElementById('deliveryText').style.display='block';
+},8200);
+}
+
+function closeSuccess(){
+document.getElementById('successPopup').style.display='none';
+}
+
+setInterval(()=>{
+document.getElementById('toastBox').innerHTML=[
+'🔥 Rahul from India won Cobra Bundle',
+'💎 Aman from India won 1000 Diamonds',
+'⚡ Arjun from India won Evo Gun'
+][Math.floor(Math.random()*3)];
+},4000);
+</script>
+</body>
+</html>
