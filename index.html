@@ -60,58 +60,23 @@ font-size:13px;
 100%{transform:scale(1);}
 }
 
-@keyframes fall{
-to{
-transform:translateY(110vh);
-}
-}
-
-.rain{
-position:fixed;
-top:-20px;
-font-size:20px;
-animation:fall 5s linear infinite;
-z-index:999;
-pointer-events:none;
-}
-
-.soundToggle{
-background:#111;
-border:2px solid red;
-padding:10px 16px;
-border-radius:14px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-display:inline-block;
-}
-
-.toastBox{
-background:#111;
-border:2px solid red;
-padding:10px 16px;
-border-radius:14px;
-box-shadow:0 0 15px rgba(255,0,0,0.3);
-font-size:13px;
-font-weight:bold;
-max-width:280px;
-display:inline-block;
-}
-
 .bottomToastBox {
 position:fixed;
 bottom:20px;
-left:10px;
+left:5px;
+right:5px;
+margin:0 auto;
 background:#111;
 border:1px solid #00ff66;
-padding:10px 15px;
+padding:12px 15px;
 border-radius:10px;
 box-shadow:0 0 15px rgba(0,255,102,0.2);
-font-size:12px;
+font-size:13px;
 font-weight:bold;
 z-index:99999;
-max-width:260px;
+max-width:320px;
 color: #00ff66;
+text-align:center;
 animation: pulse 2s infinite;
 }
 
@@ -148,6 +113,17 @@ gap:12px;
 margin-top:15px;
 flex-wrap:wrap;
 padding:0 10px;
+}
+
+.soundToggle{
+background:#111;
+border:2px solid red;
+padding:10px 16px;
+border-radius:14px;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+display:inline-block;
 }
 
 .navbar{
@@ -374,18 +350,6 @@ cursor:pointer;
 transform:scale(.97);
 }
 
-#claimLoaderBox{
-display:none;
-margin-top:15px;
-}
-
-#claimLoader{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,red,#ff6600);
-transition:.4s;
-}
-
 .popup{
 display:none;
 position:fixed;
@@ -463,6 +427,7 @@ font-size: 12px;
 color: #555;
 font-weight: bold;
 letter-spacing: 1px;
+margin-bottom: 60px; /* Space for fixed live notification box */
 }
 
 @media(max-width:900px){
@@ -487,10 +452,6 @@ padding: 2px 5px;
 }
 .bottomTimerText {
 font-size: 20px;
-}
-.toastBox {
-max-width: 210px;
-font-size: 11px;
 }
 .soundToggle {
 padding: 8px 12px;
@@ -565,7 +526,7 @@ transition: 0.3s;
 </div>
 
 <div class="bottomToastBox" id="bottomToast">
-✅ UID 4852*** claimed Elite Pass
+✅ UID 5814*** claimed ⚡ MP40 Predatory Cobra 🎉
 </div>
 
 <div class="header">
@@ -592,9 +553,6 @@ text-shadow:0 0 10px red;
 <div class="headerActionArea">
 <div class="soundToggle" id="soundBtn">
 🔊 ON
-</div>
-<div class="toastBox" id="toastBox">
-🔥 Rahul from India won Cobra Bundle
 </div>
 </div>
 
@@ -754,29 +712,6 @@ EVO GUN
 🚀 CLAIM REWARD
 </button>
 
-<div id="claimLoaderBox">
-
-<div style="
-background:#222;
-height:14px;
-border-radius:20px;
-overflow:hidden;
-">
-
-<div id="claimLoader"></div>
-
-</div>
-
-<div id="claimText" style="
-margin-top:12px;
-line-height:1.8;
-font-weight:bold;
-">
-🔄 Preparing secure transfer...
-</div>
-
-</div>
-
 </div>
 
 <div class="card">
@@ -808,8 +743,7 @@ COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
 <div class="popup" id="selectionPopup">
 <div class="popupContent">
 <h2 id="selectionPopupTitle">SELECT ITEM</h2>
-<div class="itemSelectionBox" id="selectionItemsContainer">
-</div>
+<div class="itemSelectionBox" id="selectionItemsContainer"></div>
 <button onclick="closeSelectionPopup()" style="background:#333;">CANCEL</button>
 </div>
 </div>
@@ -837,8 +771,7 @@ COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
 <div class="popup" id="successPopup">
 <div class="popupContent">
 <h2>🎉 CONGRATULATIONS!</h2>
-<div id="popupProcess" style="line-height:1.9; font-weight:bold;">
-</div>
+<div id="popupProcess" style="line-height:1.9; font-weight:bold;"></div>
 <p id="deliveryText" style="margin-top:12px; color:#00ff66; display:none; font-weight:bold;">
 Delivery within 2 hours ⏳
 </p>
@@ -853,7 +786,8 @@ let uidVerified=false;
 let visitors=4821;
 let currentCardElement = null;
 
-let totalSeconds = (1 * 3600) + (59 * 60) + 48;
+// TIMER RUN LOGIC FIXED FULLY (2 Hours Countdown System)
+let totalSeconds = 7188; 
 
 const bundlesList = [
 "🔥 Golden Shade", "🔥 Purple Shade", "🔥 Golden Hip Hop", "🔥 Golden Sakura", "🔥 Cobra Bundle",
@@ -886,6 +820,7 @@ selectedGift = g;
 applyCardBorder(el);
 const status=document.getElementById('status');
 if(status) {
+document.getElementById('statusBox').style.display='block';
 status.innerHTML = `✅ SELECTED: 100 Diamonds<br>CLICK CLAIM REWARD BELOW ↓`;
 }
 } else if(g === 'Bundle') {
@@ -898,8 +833,7 @@ openSelectionModal("SELECT EVO GUN", evoGunsList);
 }
 
 function applyCardBorder(el) {
-document.querySelectorAll('.rewardCard')
-.forEach(card=>{
+document.querySelectorAll('.rewardCard').forEach(card=>{
 card.style.border='1px solid #333';
 });
 if(el) el.style.border='2px solid red';
@@ -918,6 +852,7 @@ btn.onclick = function() {
 selectedGift = item;
 applyCardBorder(currentCardElement);
 closeSelectionPopup();
+document.getElementById('statusBox').style.display='block';
 const status=document.getElementById('status');
 if(status) {
 status.innerHTML = `✅ SELECTED: ${item}<br>CLICK CLAIM REWARD BELOW ↓`;
@@ -964,17 +899,17 @@ pText.innerHTML = '🔄 Connecting to Free Fire Server...';
 setTimeout(()=>{
 pText.innerHTML = '📡 Contacting Reward Server...';
 pFill.style.width = '40%';
-}, 1200);
+}, 1000);
 
 setTimeout(()=>{
 pText.innerHTML = '🎮 Verifying Free Fire MAX Account...';
 pFill.style.width = '70%';
-}, 2600);
+}, 2000);
 
 setTimeout(()=>{
 pText.innerHTML = '🤖 AI checking account security...';
 pFill.style.width = '90%';
-}, 4200);
+}, 3000);
 
 setTimeout(()=>{
 pFill.style.width = '100%';
@@ -988,7 +923,7 @@ status.innerHTML=`✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${selected
 } else {
 status.innerHTML='✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
 }
-}, 5500);
+}, 4000);
 }
 
 function claimGift(){
@@ -1021,26 +956,51 @@ cText.innerHTML = '🔄 Connecting to Garena Server...';
 setTimeout(()=>{
 cFill.style.width='25%';
 cText.innerHTML = '📡 Establishing secure connection...';
-},1200);
+},1000);
 
 setTimeout(()=>{
 cFill.style.width='50%';
 cText.innerHTML = '🤖 AI checking account security...';
-},2600);
+},2000);
 
 setTimeout(()=>{
 cFill.style.width='75%';
 cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
-},4200);
+},3000);
 
 setTimeout(()=>{
 cFill.style.width='95%';
 cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
-},6200);
+},4000);
 
 setTimeout(()=>{
 cFill.style.width='100%';
 cPopup.style.display = 'none';
 
 document.getElementById('successPopup').style.display='flex';
-document.getElementById('popupProc
+document.getElementById('popupProcess').innerHTML=
+`
+🔄 Connecting to Garena Server...<br>
+📦 Processing ${selectedGift} Request...<br>
+🎮 Verifying Free Fire MAX Account...<br>
+📨 Sending ${selectedGift} To Mailbox...<br>
+✅ ${selectedGift} Sent Successfully!
+`;
+document.getElementById('deliveryText').style.display='block';
+},5000);
+}
+
+function closePopup(){
+document.getElementById('successPopup').style.display='none';
+}
+
+// TIMER TICK LOGIC FIXED (Runs continuous every second)
+setInterval(()=>{
+if(totalSeconds > 0) {
+totalSeconds--;
+let hrs = Math.floor(totalSeconds / 3600);
+let mins = Math.floor((totalSeconds % 3600) / 60);
+let secs = totalSeconds % 60;
+
+let formattedTime = 
+(hrs < 10 ? "0" 
