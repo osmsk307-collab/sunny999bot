@@ -20,7 +20,7 @@ background:linear-gradient(135deg,#050505,#170000,#050505);
 color:white;
 overflow-x:hidden;
 zoom:.93;
-padding-bottom: 80px; /* Space for large bottom timer */
+padding-bottom: 90px; /* Fixed space for large bottom timer */
 }
 
 .container{
@@ -76,35 +76,38 @@ z-index:999;
 pointer-events:none;
 }
 
+/* FIX: Floating buttons position changed to prevent screen overlap blocking clicks */
 .soundToggle{
 position:fixed;
-top:170px;
+top:10px;
 left:10px;
 background:#111;
 border:2px solid red;
-padding:10px;
+padding:8px 12px;
 border-radius:14px;
 z-index:99999;
+font-size:12px;
+font-weight:bold;
 }
 
 .toastBox{
 position:fixed;
-top:170px;
+top:45px;
 right:10px;
 background:#111;
 border:2px solid red;
-padding:12px;
+padding:10px;
 border-radius:14px;
 box-shadow:0 0 20px red;
-font-size:12px;
+font-size:11px;
 font-weight:bold;
 z-index:99999;
-max-width:240px;
+max-width:200px;
 }
 
 .bottomToastBox {
 position:fixed;
-bottom:90px;
+bottom:100px;
 left:10px;
 background:#111;
 border:1px solid #00ff66;
@@ -210,6 +213,7 @@ color:white;
 font-weight:bold;
 font-size:18px;
 box-shadow:0 0 18px red;
+cursor:pointer;
 }
 
 .socialBtns{
@@ -226,6 +230,7 @@ border-radius:14px;
 color:white;
 font-weight:bold;
 font-size:18px;
+cursor:pointer;
 }
 
 .ytBtn{
@@ -249,6 +254,7 @@ color:white;
 font-weight:bold;
 font-size:18px;
 box-shadow:0 0 18px red;
+cursor:pointer;
 }
 
 #statusBox{
@@ -366,6 +372,7 @@ font-weight:bold;
 color:white;
 box-shadow:0 0 20px red;
 animation:pulse 1.5s infinite;
+cursor:pointer;
 }
 
 .claimBtn:active,
@@ -420,6 +427,7 @@ border-radius:14px;
 color:white;
 font-weight:bold;
 margin-top:15px;
+cursor:pointer;
 }
 
 .reviewItem {
@@ -435,7 +443,6 @@ color: #ffcc00;
 margin-bottom: 3px;
 }
 
-/* --- NYA BADA BOTTOM TIMER BAR --- */
 .bottomTimerBar {
 position: fixed;
 bottom: 0;
@@ -456,7 +463,7 @@ text-shadow: 0 0 15px red;
 letter-spacing: 2px;
 }
 
-/* --- MOBILE LAYOUT SETTINGS (2-2 PAAS ME) --- */
+/* MOBILE RESPONSIVE 2-2 VIEW */
 @media(max-width:900px){
 .rewardGrid{
 grid-template-columns: 1fr 1fr;
@@ -482,7 +489,6 @@ font-size: 22px;
 }
 }
 
-/* --- SELECTION POPUP STYLE --- */
 .itemSelectionBox {
 max-height: 250px;
 overflow-y: auto;
@@ -517,7 +523,6 @@ border-color: red !important;
 box-shadow: 0 0 10px red;
 }
 
-/* --- POPUP UID LOADER PROGRESS --- */
 .popupLoaderBar {
 width: 100%;
 height: 12px;
@@ -871,6 +876,10 @@ currentCardElement = el;
 if(g === '100 Diamonds') {
 selectedGift = g;
 applyCardBorder(el);
+const status=document.getElementById('status');
+if(status) {
+status.innerHTML = `✅ SELECTED: 100 Diamonds<br>CLICK CLAIM REWARD BELOW ↓`;
+}
 } else if(g === 'Bundle') {
 openSelectionModal("SELECT BUNDLE", bundlesList);
 } else if(g === 'Emote') {
@@ -940,7 +949,6 @@ status.innerHTML='⚠ Enter UID first';
 return;
 }
 
-// Open UID Popup
 pPopup.style.display = 'flex';
 pFill.style.width = '0%';
 pText.innerHTML = '🔄 Connecting to Free Fire Server...';
@@ -963,7 +971,7 @@ pFill.style.width = '90%';
 setTimeout(()=>{
 pFill.style.width = '100%';
 uidVerified=true;
-pPopup.style.display = 'none'; // Close validation popup
+pPopup.style.display = 'none';
 
 document.getElementById('statusBox').style.display='block';
 fill.style.width='100%';
@@ -1019,11 +1027,4 @@ cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
 
 setTimeout(()=>{
 cFill.style.width='95%';
-cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
-},6200);
-
-setTimeout(()=>{
-cFill.style.width='100%';
-cPopup.style.display = 'none'; // Close loader popup
-
-document.getElementByI
+cText.innerHTML = `
