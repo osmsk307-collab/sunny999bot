@@ -4,558 +4,121 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ff0000">
-<title>SUNNY 999 BOT</title>
+<title>SUNNY 999 BOT — PREMIUM VIP</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#050505,#170000,#050505);
-color:white;
-overflow-x:hidden;
-zoom:.93;
-}
-
-.container{
-width:94%;
-margin:auto;
-}
-
-.topTicker{
-background:linear-gradient(90deg,#ff0000,#990000);
-padding:10px;
-text-align:center;
-font-weight:bold;
-font-size:14px;
-box-shadow:0 0 15px red;
-animation:pulse 1.5s infinite;
-}
-
-.warningBanner{
-background:linear-gradient(90deg,#ffcc00,#ff6600);
-padding:10px;
-text-align:center;
-font-weight:bold;
-font-size:13px;
-color:black;
-}
-
-.eventBanner{
-background:linear-gradient(90deg,#7a00ff,#ff0033);
-padding:10px;
-text-align:center;
-font-weight:bold;
-font-size:13px;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.03);}
-100%{transform:scale(1);}
-}
-
-.bottomToastBox {
-position:fixed;
-bottom:20px;
-left:5px;
-right:5px;
-margin:0 auto;
-background:#111;
-border:1px solid #00ff66;
-padding:12px 15px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,255,102,0.2);
-font-size:13px;
-font-weight:bold;
-z-index:99999;
-max-width:320px;
-color: #00ff66;
-text-align:center;
-animation: pulse 2s infinite;
-}
-
-.header{
-text-align:center;
-padding:15px 0 5px 0;
-}
-
-.logo{
-font-size:34px;
-font-weight:bold;
-text-shadow:0 0 15px red;
-}
-
-.logo span{
-color:red;
-}
-
-.stats{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin-top:10px;
-font-size:12px;
-font-weight:bold;
-}
-
-.headerActionArea {
-display:flex;
-justify-content:center;
-align-items:center;
-gap:12px;
-margin-top:15px;
-flex-wrap:wrap;
-padding:0 10px;
-}
-
-.soundToggle{
-background:#111;
-border:2px solid red;
-padding:10px 16px;
-border-radius:14px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-display:inline-block;
-}
-
-.navbar{
-background:#111;
-padding:14px;
-margin-top:15px;
-}
-
-.navIcons{
-display:flex;
-justify-content:space-around;
-font-weight:bold;
-}
-
-.card{
-background:#111;
-border-radius:18px;
-padding:16px;
-margin-top:18px;
-border:1px solid #222;
-box-shadow:0 0 10px rgba(255,0,0,.15);
-}
-
-.rulesBox{
-border:2px solid red;
-padding:15px;
-border-radius:14px;
-line-height:1.9;
-background:rgba(255,0,0,.05);
-}
-
-.uidArea{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin-top:15px;
-}
-
-.uidArea input{
-padding:16px;
-border:none;
-border-radius:14px;
-background:#050505;
-color:white;
-border:1px solid #333;
-font-size:16px;
-box-shadow:0 0 10px rgba(255,0,0,.3);
-}
-
-.uidArea button{
-padding:16px;
-background:red;
-border:none;
-border-radius:14px;
-color:white;
-font-weight:bold;
-font-size:18px;
-box-shadow:0 0 18px red;
-cursor:pointer;
-}
-
-.socialBtns{
-display:flex;
-gap:10px;
-margin-top:14px;
-}
-
-.socialBtns button{
-flex:1;
-padding:15px;
-border:none;
-border-radius:14px;
-color:white;
-font-weight:bold;
-font-size:18px;
-cursor:pointer;
-}
-
-.ytBtn{
-background:red;
-box-shadow:0 0 15px red;
-}
-
-.igBtn{
-background:#c13584;
-box-shadow:0 0 15px #ff00aa;
-}
-
-.shareBtn{
-width:100%;
-padding:16px;
-background:red;
-border:none;
-border-radius:14px;
-margin-top:14px;
-color:white;
-font-weight:bold;
-font-size:18px;
-box-shadow:0 0 18px red;
-cursor:pointer;
-}
-
-#statusBox{
-display:none;
-margin-top:15px;
-background:#0d0d0d;
-padding:14px;
-border-radius:14px;
-border:1px solid red;
-}
-
-.progressBar{
-width:100%;
-height:14px;
-background:#222;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
-}
-
-.progressFill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,red,#ff6600);
-transition:.4s;
-}
-
-.rewardGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:15px;
-}
-
-.rewardCard{
-background:#0a0a0a;
-border:1px solid #333;
-border-radius:16px;
-padding:10px;
-text-align:center;
-position:relative;
-transition:.3s;
-cursor:pointer;
-}
-
-.rewardCard:active{
-transform:scale(.96);
-}
-
-.rewardPreview{
-height:110px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-font-weight:bold;
-}
-
-.diamondBg{
-background:linear-gradient(45deg,#0011ff,#00bbff,#111);
-}
-
-.emoteBg{
-background:linear-gradient(45deg,#7700ff,#ff00ff,#111);
-}
-
-.bundleBg{
-background:linear-gradient(45deg,#ff0000,#770000,#111);
-}
-
-.evoBg{
-background:linear-gradient(45deg,#111,#ff0000,#770000);
-}
-
-.rewardTitle{
-margin-top:10px;
-font-size:18px;
-font-weight:bold;
-}
-
-.hotBadge{
-position:absolute;
-top:8px;
-right:8px;
-background:red;
-padding:4px 8px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold;
-}
-
-.soldBadge{
-position:absolute;
-bottom:8px;
-left:8px;
-background:#00ff66;
-color:black;
-padding:4px 10px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold;
-box-shadow:0 0 12px #00ff66;
-}
-
-.claimBtn{
-width:100%;
-padding:18px;
-background:linear-gradient(45deg,#ff0000,#990000);
-border:none;
-border-radius:16px;
-margin-top:16px;
-font-size:22px;
-font-weight:bold;
-color:white;
-box-shadow:0 0 20px red;
-animation:pulse 1.5s infinite;
-cursor:pointer;
-}
-
-.claimBtn:active,
-.shareBtn:active,
-.uidArea button:active{
-transform:scale(.97);
-}
-
-.popup{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.9);
-justify-content:center;
-align-items:center;
-z-index:999999;
-}
-
-.popupContent{
-background:#111;
-padding:22px;
-border-radius:18px;
-width:90%;
-max-width:400px;
-border:2px solid red;
-box-shadow:0 0 25px red;
-}
-
-.popupContent h2{
-text-align:center;
-margin-bottom:14px;
-}
-
-.popupContent button{
-width:100%;
-padding:15px;
-background:red;
-border:none;
-border-radius:14px;
-color:white;
-font-weight:bold;
-margin-top:15px;
-cursor:pointer;
-}
-
-.reviewItem {
-border-bottom: 1px solid #222;
-padding: 10px 0;
-font-size: 13px;
-}
-.reviewItem:last-child {
-border: none;
-}
-.stars {
-color: #ffcc00;
-margin-bottom: 3px;
-}
-
-.bottomTimerBar {
-width: 100%;
-background: #000000;
-border-top: 2px solid red;
-padding: 20px 15px;
-text-align: center;
-margin-top: 30px;
-box-shadow: 0 -5px 20px rgba(255,0,0,0.2);
-}
-.bottomTimerText {
-font-size: 24px;
-font-weight: bold;
-color: #fff;
-text-shadow: 0 0 10px red;
-letter-spacing: 1px;
-}
-
-.copyrightSection {
-width: 100%;
-background: #050505;
-border-top: 1px solid #111;
-padding: 15px;
-text-align: center;
-font-size: 12px;
-color: #555;
-font-weight: bold;
-letter-spacing: 1px;
-margin-bottom: 60px; /* Space for fixed live notification box */
-}
-
-@media(max-width:900px){
-.rewardGrid{
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-}
-.rewardPreview {
-height: 95px;
-font-size: 18px;
-}
-.rewardTitle {
-font-size: 14px;
-}
-.soldBadge {
-font-size: 9px;
-padding: 3px 6px;
-}
-.hotBadge {
-font-size: 9px;
-padding: 2px 5px;
-}
-.bottomTimerText {
-font-size: 20px;
-}
-.soundToggle {
-padding: 8px 12px;
-font-size: 12px;
-}
-}
-
-.itemSelectionBox {
-max-height: 250px;
-overflow-y: auto;
-margin-top: 15px;
-display: grid;
-grid-template-columns: 1fr;
-gap: 10px;
-padding-right: 5px;
-}
-.itemSelectionBox::-webkit-scrollbar {
-width: 6px;
-}
-.itemSelectionBox::-webkit-scrollbar-thumb {
-background: red;
-border-radius: 10px;
-}
-.selectOptionBtn {
-background: #1a1a1a !important;
-border: 1px solid #333 !important;
-padding: 12px !important;
-border-radius: 10px !important;
-color: white !important;
-text-align: left !important;
-font-size: 14px !important;
-cursor: pointer;
-transition: 0.2s;
-margin-top: 0 !important;
-}
-.selectOptionBtn:hover, .selectOptionBtn:active {
-background: red !important;
-border-color: red !important;
-box-shadow: 0 0 10px red;
-}
-
-.popupLoaderBar {
-width: 100%;
-height: 12px;
-background: #222;
-border-radius: 10px;
-overflow: hidden;
-margin-top: 15px;
-}
-.popupLoaderFill {
-height: 100%;
-width: 0%;
-background: linear-gradient(90deg, red, #ff6600);
-transition: 0.3s;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:linear-gradient(135deg,#050505,#170000,#050505);color:white;overflow-x:hidden;zoom:.93;}
+.container{width:94%;margin:auto;}
+.topTicker{background:linear-gradient(90deg,#ff0000,#990000);padding:10px;text-align:center;font-weight:bold;font-size:14px;box-shadow:0 0 15px red;animation:pulse 1.5s infinite;}
+.warningBanner{background:linear-gradient(90deg,#ffcc00,#ff6600);padding:10px;text-align:center;font-weight:bold;font-size:13px;color:black;}
+.eventBanner{background:linear-gradient(90deg,#7a00ff,#ff0033);padding:10px;text-align:center;font-weight:bold;font-size:13px;transition:0.5s ease;}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
+@keyframes popupAnim{from{transform:scale(.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+.particle{position:fixed;color:#00bbff;font-size:14px;pointer-events:none;z-index:9999;animation:floatUp 4s linear infinite;text-shadow:0 0 5px #0011ff;}
+@keyframes floatUp{0%{transform:translateY(100vh) translateX(0);opacity:1;}100%{transform:translateY(-10vh) translateX(50px);opacity:0;}}
+#introLoader{position:fixed;inset:0;background:#000;z-index:9999999;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.introLogo{font-size:40px;font-weight:bold;text-shadow:0 0 20px red;margin-bottom:20px;animation:pulse 1s infinite;}
+.introBar{width:200px;height:6px;background:#222;border-radius:10px;overflow:hidden;}
+.introFill{width:0%;height:100%;background:red;box-shadow:0 0 10px red;animation:loadIntro 2.5s forwards ease-in-out;}
+@keyframes loadIntro{100%{width:100%;}}
+.bottomToastBox{position:fixed;bottom:20px;left:5px;right:5px;margin:0 auto;background:#111;border:1px solid #00ff66;padding:12px 15px;border-radius:10px;box-shadow:0 0 15px rgba(0,255,102,0.2);font-size:13px;font-weight:bold;z-index:99999;max-width:320px;color:#00ff66;text-align:center;animation:pulse 2s infinite;}
+.header{text-align:center;padding:15px 0 5px 0;}
+.logo{font-size:34px;font-weight:bold;text-shadow:0 0 15px red;position:relative;animation:glitch 2s infinite;}
+.logo span{color:red;}
+@keyframes glitch{0%{transform:translate(0);}20%{transform:translate(-2px,2px);}40%{transform:translate(2px,-2px);}60%{transform:translate(-2px,0);}80%{transform:translate(2px,2px);}100%{transform:translate(0);}}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:bold;}
+.headerActionArea{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:15px;flex-wrap:wrap;padding:0 10px;}
+.soundToggle{background:#111;border:2px solid red;padding:10px 16px;border-radius:14px;font-size:14px;font-weight:bold;cursor:pointer;display:inline-block;}
+.navbar{background:#111;padding:14px;margin-top:15px;}
+.navIcons{display:flex;justify-content:space-around;font-weight:bold;}
+.card{background:#111;border-radius:18px;padding:16px;margin-top:18px;border:1px solid #222;box-shadow:0 0 10px rgba(255,0,0,.15);position:relative;}
+.rarity-mythic{border:1px solid #ff0077 !important;box-shadow:0 0 10px rgba(255,0,119,0.2) !important;}
+.rarity-legendary{border:1px solid #ffaa00 !important;box-shadow:0 0 10px rgba(255,170,0,0.2) !important;}
+.vipBadge{position:absolute;top:-10px;left:15px;background:linear-gradient(45deg,#ffaa00,#ff0055);color:black;font-size:10px;font-weight:bold;padding:3px 8px;border-radius:5px;box-shadow:0 0 10px #ffaa00;}
+.rulesBox{border:2px solid red;padding:15px;border-radius:14px;line-height:1.9;background:rgba(255,0,0,.05);}
+.sliderArea{background:#0d0d0d;border:1px dashed red;padding:12px;border-radius:12px;text-align:center;font-weight:bold;color:#ff3333;margin-top:10px;overflow:hidden;white-space:nowrap;}
+.sliderContent{display:inline-block;animation:scrollSlider 10s linear infinite;}
+@keyframes scrollSlider{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+.uidArea{display:flex;flex-direction:column;gap:12px;margin-top:15px;}
+.uidArea input{padding:16px;border:none;border-radius:14px;background:#050505;color:white;border:1px solid #333;font-size:16px;box-shadow:0 0 10px rgba(255,0,0,.3);}
+.uidArea button{padding:16px;background:red;border:none;border-radius:14px;color:white;font-weight:bold;font-size:18px;box-shadow:0 0 18px red;cursor:pointer;}
+.socialBtns{display:flex;gap:10px;margin-top:14px;}
+.socialBtns button{flex:1;padding:15px;border:none;border-radius:14px;color:white;font-weight:bold;font-size:18px;cursor:pointer;}
+.ytBtn{background:red;box-shadow:0 0 15px red;}
+.igBtn{background:#c13584;box-shadow:0 0 15px #ff00aa;}
+.shareBtn{width:100%;padding:16px;background:red;border:none;border-radius:14px;margin-top:14px;color:white;font-weight:bold;font-size:18px;box-shadow:0 0 18px red;cursor:pointer;}
+#statusBox{display:none;margin-top:15px;background:#0d0d0d;padding:14px;border-radius:14px;border:1px solid red;}
+.progressBar{width:100%;height:14px;background:#222;border-radius:20px;overflow:hidden;margin-top:10px;}
+.progressFill{height:100%;width:0%;background:linear-gradient(90deg,red,#ff6600);transition:.4s;}
+.rewardGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px;}
+.rewardCard{background:#0a0a0a;border:1px solid #333;border-radius:16px;padding:10px;text-align:center;position:relative;transition:.3s;cursor:pointer;}
+.rewardCard:hover{transform:perspective(1000px) rotateX(8deg) scale(1.04);box-shadow:0 0 30px red;transition:.4s;}
+.rewardPreview{height:110px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;}
+.diamondBg{background:linear-gradient(45deg,#0011ff,#00bbff,#111);}
+.emoteBg{background:linear-gradient(45deg,#7700ff,#ff00ff,#111);}
+.bundleBg{background:linear-gradient(45deg,#ff0055,#770000,#111);}
+.evoBg{background:linear-gradient(45deg,#ffaa00,#775500,#111);}
+.rewardTitle{margin-top:10px;font-size:18px;font-weight:bold;}
+.hotBadge{position:absolute;top:8px;right:8px;background:red;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:bold;}
+.soldBadge{position:absolute;bottom:8px;left:8px;background:#00ff66;color:black;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:bold;box-shadow:0 0 12px #00ff66;}
+.stockWarning{font-size:11px;color:#ff3333;margin-top:4px;font-weight:bold;}
+.claimBtn{width:100%;padding:18px;background:linear-gradient(45deg,#ff0000,#990000);border:none;border-radius:16px;margin-top:16px;font-size:22px;font-weight:bold;color:white;box-shadow:0 0 20px red;animation:pulse 1.5s infinite;cursor:pointer;}
+.premiumGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px;}
+.premiumSubCard{background:#0a0a0a;border:1px solid #222;padding:12px;border-radius:14px;text-align:center;}
+.premiumSubCard button{width:100%;padding:10px;background:red;border:none;color:white;font-weight:bold;border-radius:8px;margin-top:8px;cursor:pointer;box-shadow:0 0 10px red;}
+.leaderboardItem{display:flex;justify-content:space-between;background:#050505;padding:8px 12px;border-radius:8px;margin-top:6px;font-size:13px;border-left:3px solid gold;}
+.bottomTimerBar{width:100%;background:#000000;border-top:2px solid red;padding:20px 15px;text-align:center;margin-top:30px;box-shadow:0 -5px 20px rgba(255,0,0,0.2);}
+.bottomTimerText{font-size:24px;font-weight:bold;color:#fff;text-shadow:0 0 10px red;letter-spacing:1px;}
+.copyrightSection{width:100%;background:#050505;border-top:1px solid #111;padding:15px;text-align:center;font-size:12px;color:#555;font-weight:bold;letter-spacing:1px;margin-bottom:60px;}
+.popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);justify-content:center;align-items:center;z-index:999999;padding:15px;}
+.popupLoaderBar{width:100%;height:12px;background:#222;border-radius:10px;overflow:hidden;margin-top:15px;}
+.popupLoaderFill{height:100%;width:0%;background:linear-gradient(90deg, red, #ff6600);transition:0.3s;}
+.popupContent{background:#111;padding:22px;border-radius:18px;width:100%;max-width:400px;border:2px solid red;box-shadow:0 0 25px red;animation:popupAnim .25s ease;position:relative;}
+button{cursor:pointer;border:none;outline:none;}
+button:active{transform:scale(.96);}
+body::before{content:'';position:fixed;width:300px;height:300px;background:radial-gradient(circle, rgba(255,0,0,.15), transparent 70%);pointer-events:none;z-index:999;animation:cursorGlow 6s linear infinite;}
+@keyframes cursorGlow{0%{transform:translate(0,0);}25%{transform:translate(60vw,10vh);}50%{transform:translate(30vw,50vh);}75%{transform:translate(80vw,70vh);}100%{transform:translate(0,0);}}
 </style>
 </head>
 
 <body>
 
-<div class="topTicker">
-👑 MOHIT LIVE — OFFICIAL SPONSOR PARTNER 🔥
+<audio id="bgMusic" loop>
+<source src="https://files.catbox.moe/8f31x8.mp3" type="audio/mpeg">
+</audio>
+
+<div id="introLoader">
+<div class="introLogo">SUNNY 999 BOT</div>
+<div class="introBar"><div class="introFill"></div></div>
+<div style="margin-top:10px; font-weight:bold; color:red; font-size:12px;">LOADING PREMIUM VIP SYSTEMS... 0%</div>
 </div>
 
-<div class="warningBanner">
-⚠ SUBSCRIBE YOUTUBE + FOLLOW INSTAGRAM NAHI KIYA TO REWARD WORK NAHI KAREGA ⚠
+<div class="topTicker">👑 MOHIT LIVE — OFFICIAL SPONSOR PARTNER 🔥</div>
+<div class="warningBanner">⚠ SUBSCRIBE YOUTUBE + FOLLOW INSTAGRAM NAHI KIYA TO REWARD WORK NAHI KAREGA ⚠</div>
+<div class="eventBanner" id="liveBanners">🎉 OB UPDATE SPECIAL GIVEAWAY LIVE 🔥</div>
+<div class="bottomToastBox" id="bottomToast">✅ UID 5814*** claimed ⚡ MP40 Predatory Cobra 🎉</div>
+
+<div id="floatingReward" style="position:fixed; top:20%; left:50%; transform:translateX(-50%); background:#111; padding:15px 25px; border-radius:15px; border:2px solid red; box-shadow:0 0 25px red; font-weight:bold; z-index:999999; display:none;">
+🎁 USER WON 5000💎
 </div>
 
-<div class="eventBanner">
-🎉 OB UPDATE SPECIAL GIVEAWAY LIVE 🔥
-</div>
-
-<div class="bottomToastBox" id="bottomToast">
-✅ UID 5814*** claimed ⚡ MP40 Predatory Cobra 🎉
+<div id="liveChatSystem" style="position:fixed; right:10px; bottom:90px; width:220px; background:#111; border:1px solid red; border-radius:12px; padding:10px; z-index:99999; box-shadow:0 0 15px rgba(255,0,0,.3); font-size:12px; font-weight:bold;">
+<div style="color:red; margin-bottom:8px;">💬 LIVE CHAT</div>
+<div id="chatMessages" style="height:120px; overflow:hidden; line-height:1.7; color:#00ff66;"></div>
 </div>
 
 <div class="header">
-
-<div class="logo">
-SUNNY <span>999 BOT</span>
-</div>
-
+<div class="logo">SUNNY <span>999 BOT</span></div>
 <div class="stats">
 <div>🟢 SERVER ONLINE</div>
 <div>👥 1527 USERS</div>
 <div>💎 12,54,890 GIVEN</div>
 </div>
-
-<div id="realVisitors" style="
-margin-top:10px;
-font-weight:bold;
-font-size:14px;
-text-shadow:0 0 10px red;
-">
-🌍 LIVE VISITORS: 4,913
-</div>
-
-<div class="headerActionArea">
-<div class="soundToggle" id="soundBtn">
-🔊 ON
-</div>
-</div>
-
+<div id="deviceDetectText" style="margin-top:8px; font-size:12px; color:#00ff66; font-weight:bold;">📱 SYSTEM: DETECTING...</div>
+<div style="font-size:11px; color:#ff3333; font-weight:bold; margin-top:3px; animation:pulse 1s infinite;">⚠️ FAKE SERVER OVERLOAD DETECTED: high load traffic bypass active.</div>
+<div id="realVisitors" style="margin-top:10px; font-weight:bold; font-size:14px; text-shadow:0 0 10px red;">🌍 LIVE VISITORS: 4,913</div>
+<div class="headerActionArea"><div class="soundToggle" id="soundBtn">🔊 ON</div></div>
 </div>
 
 <div class="navbar">
@@ -568,9 +131,10 @@ text-shadow:0 0 10px red;
 </div>
 
 <div class="container">
+<div class="sliderArea"><div class="sliderContent">⚡ COBRA BUNDLE IS RUNNING HOT OUT OF STOCK! ONLY FEW ROSTERS LEFT! CLAIM ASAP! ⚡ NEW EMOTES ADDED! ⚡</div></div>
 
-<div class="card">
-
+<div class="card rarity-mythic">
+<div class="vipBadge">PREMIUM</div>
 <div class="rulesBox">
 <b>🎁 FREE GIFT DAILY — 1000 WINNERS 💎</b><br>
 ☑ Subscribe SUNNY 999 BOT 📺<br>
@@ -579,139 +143,97 @@ text-shadow:0 0 10px red;
 ☑ Watch live 1 minute 🎮<br>
 ☑ Enter valid UID 🎯
 </div>
+</div>
 
+<div class="card rarity-legendary">
+<h3>🎁 DAILY STREAK BONUS</h3>
+<p style="font-size:13px; margin-top:4px; color:#aaa;">Claim your free daily token eligibility below:</p>
+<div style="display:flex; gap:8px; margin-top:10px;">
+<div style="flex:1; background:#222; padding:8px; border-radius:8px; text-align:center; border:1px solid #ffaa00;">Day 1<br>✅</div>
+<div style="flex:1; background:#0d0d0d; padding:8px; border-radius:8px; text-align:center;">Day 2<br>🔒</div>
+<div style="flex:1; background:#0d0d0d; padding:8px; border-radius:8px; text-align:center;">Day 3<br>🔒</div>
+</div>
+<button onclick="claimDailyStreak()" style="width:100%; margin-top:10px; padding:10px; background:linear-gradient(90deg,#ffaa00,red); border:none; border-radius:10px; font-weight:bold; color:black; cursor:pointer;">CLAIM TODAY'S MULTIPLIER</button>
 </div>
 
 <div class="card">
-
 <h2>🎮 ENTER YOUR FREE FIRE UID</h2>
-
 <div class="uidArea">
-
 <input type="text" id="uid" placeholder="Enter Free Fire UID">
-
-<button onclick="checkUID()">
-CHECK UID
-</button>
-
+<button onclick="checkUID()">CHECK UID</button>
 </div>
-
 <div class="socialBtns">
-
-<button class="ytBtn"
-onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">
-📺 YOUTUBE
-</button>
-
-<button class="igBtn"
-onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">
-📸 INSTAGRAM
-</button>
-
+<button class="ytBtn" onclick="window.open('https://youtube.com/@sunny999bot?si=5lO9396co-xXepM6','_blank')">📺 YOUTUBE</button>
+<button class="igBtn" onclick="window.open('https://www.instagram.com/sunny999bot?igsh=cDBmdHBnaDlycWUx','_blank')">📸 INSTAGRAM</button>
 </div>
-
-<button class="shareBtn" onclick="fakeShare()">
-📤 SHARE TO 20 FRIENDS
-</button>
-
-<label style="display:block;margin-top:12px;font-size:18px;">
-<input type="checkbox" id="shareCheck">
-I shared with 20 friends
-</label>
-
+<button class="shareBtn" onclick="fakeShare()">📤 SHARE TO 20 FRIENDS</button>
+<label style="display:block;margin-top:12px;font-size:18px;"><input type="checkbox" id="shareCheck"> I shared with 20 friends</label>
 <div id="statusBox">
-
-<div class="progressBar">
-<div class="progressFill" id="progressFill"></div>
+<div class="progressBar"><div class="progressFill" id="progressFill"></div></div>
+<div id="status" style="margin-top:12px; line-height:1.8; font-weight:bold;"></div>
+</div>
 </div>
 
-<div id="status" style="
-margin-top:12px;
-line-height:1.8;
-font-weight:bold;
-">
+<div style="margin-top:20px; text-align:center; font-weight:bold; color:yellow; text-shadow:0 0 10px orange;">🔥 TODAY'S TOP TRENDING ULTRA REWARDS 🔥</div>
+
+<div class="card">
+<h2>🎁 CHOOSE REWARD</h2>
+<div class="rewardGrid">
+<div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
+<div class="rewardPreview diamondBg">💎 DIAMONDS</div>
+<div class="rewardTitle">100 DIAMONDS</div>
+<div class="stockWarning">⚡ INSTANT SYNC</div>
+</div>
+<div class="rewardCard" onclick="pickGift(this,'Emote')">
+<div class="rewardPreview emoteBg">🕺 EMOTE</div>
+<div class="rewardTitle">EMOTE</div>
+<div class="stockWarning">🔥 92% ALLOCATED</div>
+</div>
+<div class="rewardCard" onclick="pickGift(this,'Bundle')">
+<div class="hotBadge">HOT 🔥</div>
+<div class="soldBadge">93% SOLD</div>
+<div class="rewardPreview bundleBg">🔥 BUNDLE</div>
+<div class="rewardTitle">BUNDLE</div>
+<div class="stockWarning" style="margin-top:14px;">⚠️ LOW STOCK</div>
+</div>
+<div class="rewardCard" onclick="pickGift(this,'Evo Gun')">
+<div class="hotBadge">HOT 🔥</div>
+<div class="soldBadge">89% SOLD</div>
+<div class="rewardPreview evoBg">⚡ EVO GUN</div>
+<div class="rewardTitle">EVO GUN</div>
+<div class="stockWarning" style="margin-top:14px;">⚠️ DROP RATE HIGH</div>
+</div>
+</div>
+<button class="claimBtn" onclick="claimGift()">🚀 CLAIM REWARD</button>
 </div>
 
+<div class="premiumGrid">
+<div class="premiumSubCard rarity-legendary">
+<h3>🎰 LUCKY SPIN</h3>
+<div id="spinStatusText" style="font-size:12px; color:#aaa; margin-top:4px;">Win Up To 5000💎</div>
+<button onclick="triggerLuckySpin()">SPIN FREE</button>
+</div>
+<div class="premiumSubCard rarity-mythic">
+<h3>📦 MYSTERY BOX</h3>
+<div id="mysteryBoxText" style="font-size:12px; color:#aaa; margin-top:4px;">Contains Secret Vault</div>
+<button onclick="triggerMysteryBox()" style="background:linear-gradient(45deg,#ff0055,#770000);">OPEN BOX</button>
+</div>
 </div>
 
+<div class="card rarity-legendary">
+<h3>🔑 PREMIUM REDEEM CODE GENERATOR</h3>
+<p style="font-size:13px; color:#aaa; margin-top:2px;">Generate temporary system bypass voucher code:</p>
+<div id="generatedCodeDisplay" style="background:#000; padding:12px; font-size:18px; text-align:center; border-radius:10px; margin-top:10px; font-weight:bold; letter-spacing:2px; border:1px dashed #ffaa00; color:#ffaa00;">CLICK GENERATE ↓</div>
+<button onclick="generateVoucherCode()" style="width:100%; padding:12px; border:none; font-weight:bold; background:red; color:white; border-radius:10px; margin-top:10px; cursor:pointer; box-shadow:0 0 10px red;">GENERATE LIVE VOUCHER</button>
 </div>
 
 <div class="card">
-
-<h2>🎁 CHOOSE REWARD</h2>
-
-<div class="rewardGrid">
-
-<div class="rewardCard" onclick="pickGift(this,'100 Diamonds')">
-
-<div class="rewardPreview diamondBg">
-💎 DIAMONDS
+<h3>🏆 LIVE ACTIVITY LEADERBOARD</h3>
+<div id="leaderboardBox">
+<div class="leaderboardItem"><span>1. UID 9384***</span><span style="color:gold;">50000 💎</span></div>
+<div class="leaderboardItem" style="border-left-color:silver;"><span>2. UID 1249***</span><span style="color:silver;">Sakura Bundle</span></div>
+<div class="leaderboardItem" style="border-left-color:#cd7f32;"><span>3. UID 8821***</span><span style="color:#cd7f32;">Evo MP40 Skin</span></div>
 </div>
-
-<div class="rewardTitle">
-100 DIAMONDS
-</div>
-
-</div>
-
-<div class="rewardCard" onclick="pickGift(this,'Emote')">
-
-<div class="rewardPreview emoteBg">
-🕺 EMOTE
-</div>
-
-<div class="rewardTitle">
-EMOTE
-</div>
-
-</div>
-
-<div class="rewardCard" onclick="pickGift(this,'Bundle')">
-
-<div class="hotBadge">
-HOT 🔥
-</div>
-
-<div class="soldBadge">
-93% SOLD
-</div>
-
-<div class="rewardPreview bundleBg">
-🔥 BUNDLE
-</div>
-
-<div class="rewardTitle">
-BUNDLE
-</div>
-
-</div>
-
-<div class="rewardCard" onclick="pickGift(this,'Evo Gun')">
-
-<div class="hotBadge">
-HOT 🔥
-</div>
-
-<div class="soldBadge">
-89% SOLD
-</div>
-
-<div class="rewardPreview evoBg">
-⚡ EVO GUN
-</div>
-
-<div class="rewardTitle">
-EVO GUN
-</div>
-
-</div>
-
-</div>
-
-<button class="claimBtn" onclick="claimGift()">
-🚀 CLAIM REWARD
-</button>
-
 </div>
 
 <div class="card">
@@ -729,29 +251,31 @@ EVO GUN
 <p><b>UID 7431***:</b> Real server work kar raha h bas 20 friends ko share mandatory krna hoga.</p>
 </div>
 </div>
-
 </div>
 
-<div class="bottomTimerBar">
-<div class="bottomTimerText" id="liveCountdown">⏳ OFFER ENDS IN: 01:59:48</div>
-</div>
+<div class="bottomTimerBar"><div class="bottomTimerText" id="liveCountdown">⏳ OFFER ENDS IN: 01:59:48</div></div>
+<div class="copyrightSection">COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.</div>
 
-<div class="copyrightSection">
-COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
+<div class="popup" id="regionModal" style="display:none;">
+<div class="popupContent" style="text-align:center;">
+<h2 style="color:#ffaa00;">🌐 REGION DETECTED</h2>
+<p id="regionText" style="font-weight:bold; margin-top:10px; font-size:16px;">CONNECTING TO SERVER...</p>
+<button onclick="closeRegionModal()" style="background:#ffaa00; color:black; font-weight:bold;">ENTER REWARD PANEL</button>
+</div>
 </div>
 
 <div class="popup" id="selectionPopup">
 <div class="popupContent">
-<h2 id="selectionPopupTitle">SELECT ITEM</h2>
+<h2 id="selectionPopupTitle">🎁 SELECT ITEM</h2>
 <div class="itemSelectionBox" id="selectionItemsContainer"></div>
-<button onclick="closeSelectionPopup()" style="background:#333;">CANCEL</button>
+<button onclick="closeSelectionPopup()" style="width:100%; padding:12px; margin-top:14px; background:#333; color:white; font-weight:bold; border-radius:10px;">CANCEL</button>
 </div>
 </div>
 
 <div class="popup" id="uidPopup">
 <div class="popupContent">
-<h2 style="color:red;">🛡️ SECURE VERIFICATION</h2>
-<div id="uidPopupText" style="font-weight:bold; line-height:1.8; margin-top:10px;">Starting...</div>
+<h2 style="color:red;">🛡️ VERIFYING UID</h2>
+<div id="uidPopupText" style="margin-top:12px; font-weight:bold; line-height:1.8;">Checking...</div>
 <div class="popupLoaderBar">
 <div class="popupLoaderFill" id="uidPopupFill"></div>
 </div>
@@ -760,8 +284,8 @@ COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
 
 <div class="popup" id="claimPopup">
 <div class="popupContent">
-<h2 style="color:red;">🚀 PROCESSING REQUEST</h2>
-<div id="claimPopupText" style="font-weight:bold; line-height:1.8; margin-top:10px;">Initializing...</div>
+<h2 style="color:red;">🚀 PROCESSING CLAIM</h2>
+<div id="claimPopupText" style="margin-top:12px; font-weight:bold; line-height:1.8;">Initializing...</div>
 <div class="popupLoaderBar">
 <div class="popupLoaderFill" id="claimPopupFill"></div>
 </div>
@@ -770,237 +294,319 @@ COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
 
 <div class="popup" id="successPopup">
 <div class="popupContent">
-<h2>🎉 CONGRATULATIONS!</h2>
-<div id="popupProcess" style="line-height:1.9; font-weight:bold;"></div>
-<p id="deliveryText" style="margin-top:12px; color:#00ff66; display:none; font-weight:bold;">
-Delivery within 2 hours ⏳
-</p>
-<button onclick="closePopup()">OK</button>
+<h2 style="color:#00ff66;">🎉 REWARD SUCCESSFUL</h2>
+<div id="popupProcess" style="margin-top:12px; line-height:1.8; font-weight:bold;"></div>
+<div id="deliveryText" style="display:none; margin-top:12px; color:#00ff66; font-weight:bold;">📨 Reward sent to mailbox successfully</div>
+<button onclick="closePopup()" style="width:100%; padding:14px; margin-top:16px; background:red; color:white; font-weight:bold; border-radius:12px; box-shadow:0 0 15px red;">OK</button>
 </div>
 </div>
-
 <script>
-
 let selectedGift="";
 let uidVerified=false;
-let visitors=4821;
 let currentCardElement = null;
-
-// TIMER RUN LOGIC FIXED FULLY (2 Hours Countdown System)
+let visitors=4821;
 let totalSeconds = 7188; 
 
 const bundlesList = [
-"🔥 Golden Shade", "🔥 Purple Shade", "🔥 Golden Hip Hop", "🔥 Golden Sakura", "🔥 Cobra Bundle",
-"🔥 Criminal Bundle", "🔥 Green Criminal", "🔥 Red Criminal", "🔥 Blue Criminal", "🔥 Hip Hop Bundle",
-"🔥 Sakura Bundle", "🔥 Galaxy Dino Bundle", "🔥 Shadow Rogue Bundle", "🔥 Rampage Bundle", "🔥 Samurai Bundle",
-"🔥 Angelic Bundle", "🔥 Royal Warrior Bundle", "🔥 Ghost Pirate Bundle", "🔥 Titan Bundle", "🔥 Neon Punk Bundle"
+    "🔥 Golden Shade", "🔥 Purple Shade", "🔥 Golden Hip Hop", "🔥 Cobra Bundle", "🔥 Sakura Bundle",
+    "🔥 Rampage Bundle", "🔥 Samurai Bundle", "🔥 Angelic Bundle"
 ];
 
 const emotesList = [
-"🕺 Top DJ", "🕺 LOL", "🕺 Flowers of Love", "🕺 Baby Shark", "🕺 Pirate Flag",
-"🕺 Moon Flip", "🕺 Shake With Me", "🕺 Applause", "🕺 Siii", "🕺 FF Dance",
-"🕺 Booyah", "🕺 Kung Fu Dab", "🕺 Threaten", "🕺 Battle Style", "🕺 Selfie",
-"🕺 Tea Time", "🕺 Doggie", "🕺 Captain Booyah", "🕺 Eat My Dust", "🕺 Funky Dance",
-"🕺 Hello", "🕺 Soul Shaking", "🕺 Provoke", "🕺 Dangerous Game", "🕺 Power Of Money",
-"🕺 Aim Fire", "🕺 One Finger Pushup", "🕺 The Swan", "🕺 Chicken", "🕺 Make It Rain"
+    "🕺 Top DJ", "🕺 LOL", "🕺 Baby Shark", "🕺 Flowers of Love", "🕺 Pirate Flag",
+    "🕺 Booyah!", "🕺 Shake With Me", "🕺 FFWC Throne"
 ];
 
 const evoGunsList = [
-"⚡ MP40 Predatory Cobra", "⚡ AK Blue Flame Draco", "⚡ M1014 Green Flame Draco", "⚡ SCAR Megalodon Alpha", "⚡ UMP Cataclysm",
-"⚡ FAMAS Golden Glory", "⚡ M1887 Sterling Conqueror", "⚡ XM8 Destiny Guardian", "⚡ MP5 Platinum Divinity", "⚡ Parafal Demonic Grin",
-"⚡ Groza Bang", "⚡ AN94 Evil Howler", "⚡ M4A1 Infernal Draco", "⚡ AUG Cyber Bounty Hunter", "⚡ P90 Gilded Corrosion",
-"⚡ M60 Crazy Bunny", "⚡ Bizon Gold Beast", "⚡ SKS Urban Rager", "⚡ Thompson Cindered Colossus", "⚡ Vector Aquablaze Wrath"
+    "⚡ MP40 Predatory Cobra", "⚡ AK Blue Flame Draco", "⚡ SCAR Megalodon Alpha", "⚡ M1014 Green Flame Draco",
+    "⚡ UMP Booyah Day", "⚡ MP5 Platinum Divinity", "⚡ XM8 Destiny Guardian"
 ];
 
-function pickGift(el,g){
-currentCardElement = el;
+const bgMusic = document.getElementById("bgMusic");
+const soundBtn = document.getElementById("soundBtn");
 
-if(g === '100 Diamonds') {
-selectedGift = g;
-applyCardBorder(el);
-const status=document.getElementById('status');
-if(status) {
-document.getElementById('statusBox').style.display='block';
-status.innerHTML = `✅ SELECTED: 100 Diamonds<br>CLICK CLAIM REWARD BELOW ↓`;
-}
-} else if(g === 'Bundle') {
-openSelectionModal("SELECT BUNDLE", bundlesList);
-} else if(g === 'Emote') {
-openSelectionModal("SELECT EMOTE", emotesList);
-} else if(g === 'Evo Gun') {
-openSelectionModal("SELECT EVO GUN", evoGunsList);
-}
+if(soundBtn && bgMusic){
+    soundBtn.onclick = function(){
+        if(soundBtn.innerText.includes("ON")){
+            soundBtn.innerText = "🔇 OFF";
+            bgMusic.pause();
+        } else {
+            soundBtn.innerText = "🔊 ON";
+            bgMusic.play();
+        }
+    };
 }
 
-function applyCardBorder(el) {
-document.querySelectorAll('.rewardCard').forEach(card=>{
-card.style.border='1px solid #333';
-});
-if(el) el.style.border='2px solid red';
+function pickGift(el, g) {
+    currentCardElement = el;
+    document.querySelectorAll('.rewardCard').forEach(card => {
+        card.style.border = '1px solid #333';
+        card.style.boxShadow = 'none';
+    });
+    el.style.border = '2px solid red';
+    el.style.boxShadow = '0 0 20px red';
+    selectedGift = g;
+
+    if (g === "Bundle") { openSelectionModal("🔥 SELECT BUNDLE", bundlesList); }
+    else if (g === "Emote") { openSelectionModal("🕺 SELECT EMOTE", emotesList); }
+    else if (g === "Evo Gun") { openSelectionModal("⚡ SELECT EVO GUN", evoGunsList); }
+    else { showMiniPopup("💎 100 Diamonds Selected"); }
 }
 
 function openSelectionModal(title, items) {
-document.getElementById('selectionPopupTitle').innerText = title;
-const container = document.getElementById('selectionItemsContainer');
-container.innerHTML = "";
+    document.getElementById("selectionPopup").style.display = "flex";
+    document.getElementById("selectionPopupTitle").innerHTML = title;
+    const container = document.getElementById("selectionItemsContainer");
+    container.innerHTML = "";
 
-items.forEach(item => {
-const btn = document.createElement('button');
-btn.className = 'selectOptionBtn';
-btn.innerText = item;
-btn.onclick = function() {
-selectedGift = item;
-applyCardBorder(currentCardElement);
-closeSelectionPopup();
-document.getElementById('statusBox').style.display='block';
-const status=document.getElementById('status');
-if(status) {
-status.innerHTML = `✅ SELECTED: ${item}<br>CLICK CLAIM REWARD BELOW ↓`;
-}
-};
-container.appendChild(btn);
-});
-
-document.getElementById('selectionPopup').style.display = 'flex';
+    items.forEach(item => {
+        const btn = document.createElement("button");
+        btn.className = "selectOptionBtn";
+        btn.innerHTML = item;
+        btn.onclick = function() {
+            selectedGift = item;
+            closeSelectionPopup();
+            showMiniPopup("✅ " + item + " Selected");
+            document.getElementById('statusBox').style.display='block';
+            const status = document.getElementById('status');
+            if(status) { status.innerHTML = `✅ SELECTED: ${item}<br><br>🚀 CLICK CLAIM REWARD BELOW`; }
+        };
+        container.appendChild(btn);
+    });
 }
 
-function closeSelectionPopup() {
-document.getElementById('selectionPopup').style.display = 'none';
+function closeSelectionPopup() { document.getElementById("selectionPopup").style.display = "none"; }
+
+function checkUID() {
+    const uid = document.getElementById("uid").value;
+    if (!uid) { alert("⚠ Enter UID First"); return; }
+    
+    document.getElementById("uidPopup").style.display = "flex";
+    
+    let load = 0;
+    const uidFill = document.getElementById("uidPopupFill");
+    const pText = document.getElementById("uidPopupText");
+    
+    if(uidFill) uidFill.style.width = "0%";
+    if(pText) pText.innerHTML = "🛡️ AI SECURITY SCAN: Checking Account standing...";
+
+    const uidInterval = setInterval(() => {
+        load += 10;
+        if(uidFill) uidFill.style.width = load + "%";
+        if(pText) {
+            if(load === 30) pText.innerHTML = "📡 Syncing Garena Rewards Bypass...";
+            if(load === 60) pText.innerHTML = "🎮 Extracting Player Avatar MetaData... 🔥";
+        }
+        if(load >= 100){
+            clearInterval(uidInterval);
+            uidVerified = true;
+            document.getElementById("uidPopup").style.display = "none";
+            showMiniPopup("🛡️ UID VERIFIED");
+            document.getElementById('statusBox').style.display='block';
+            const fill = document.getElementById('progressFill');
+            if(fill) fill.style.width = '100%';
+            const status = document.getElementById('status');
+            if(status) {
+                status.innerHTML = selectedGift ? `✅ UID SECURITY SYNC COMPLETED<br><br>🎁 ALLOCATED: ${selectedGift}<br>🚀 CLICK CLAIM REWARD BELOW` : '✅ UID SECURITY SYNC COMPLETED<br><br>🎁 CHOOSE REWARD MODULE BELOW ↓';
+            }
+        }
+    }, 200);
 }
 
-function fakeShare(){
-document.getElementById('statusBox').style.display='block';
-document.getElementById('status').innerHTML='📤 Opening share...';
-
-setTimeout(()=>{
-document.getElementById('shareCheck').checked=true;
-document.getElementById('status').innerHTML='✅ Shared successfully with 20 friends';
-},2500);
+function fakeShare() {
+    document.getElementById("shareCheck").checked = true;
+    document.getElementById('statusBox').style.display='block';
+    const status = document.getElementById('status');
+    if(status) status.innerHTML = '✅ System Bypass verified: Shared successfully with 20 friends';
+    showMiniPopup("📤 Shared Successfully");
 }
 
-function checkUID(){
-const uid=document.getElementById('uid').value;
-const status=document.getElementById('status');
-const fill=document.getElementById('progressFill');
-const pPopup = document.getElementById('uidPopup');
-const pText = document.getElementById('uidPopupText');
-const pFill = document.getElementById('uidPopupFill');
+function claimGift() {
+    if (!uidVerified) { alert("⚠ Verify UID First"); return; }
+    if (!selectedGift) { alert("⚠ Select Reward First"); return; }
+    if(!document.getElementById('shareCheck').checked){ alert("Share With 20 Friends First"); return; }
 
-if(!uid){
-document.getElementById('statusBox').style.display='block';
-status.innerHTML='⚠ Enter UID first';
-return;
+    document.getElementById("claimPopup").style.display = "flex";
+    
+    let cLoad = 0;
+    const claimFill = document.getElementById("claimPopupFill");
+    const cText = document.getElementById("claimPopupText");
+    
+    if(claimFill) claimFill.style.width = "0%";
+    if(cText) cText.innerHTML = "🔄 Tunneling Secure Garena Database...";
+
+    const claimInterval = setInterval(() => {
+        cLoad += 8;
+        if(claimFill) claimFill.style.width = cLoad + "%";
+        if(cText) {
+            if(cLoad === 32) cText.innerHTML = "📡 Overriding anti-cheat transaction ledger...";
+            if(cLoad === 64) cText.innerHTML = "🛡️ Injecting automated gift package encryption...";
+        }
+        if(cLoad >= 100){
+            clearInterval(claimInterval);
+            document.getElementById("claimPopup").style.display = "none";
+            document.getElementById("successPopup").style.display = "flex";
+            document.getElementById("deliveryText").style.display = "block";
+            createConfetti();
+            const popProc = document.getElementById('popupProcess');
+            if(popProc) {
+                popProc.innerHTML = `🔄 Tunneling Database Bridge... Success!<br>📦 Syncing payload parameters for ${selectedGift}... Completed!<br>🎮 Security bypass protocol validation... Verified!<br>📨 In-Game Mailbox Queue Dispatch... Complete!<br><br>✅ ${selectedGift} Loaded onto your Profile Account!`;
+            }
+        }
+    }, 200);
 }
 
-pPopup.style.display = 'flex';
-pFill.style.width = '0%';
-pText.innerHTML = '🔄 Connecting to Free Fire Server...';
+function closePopup() { document.getElementById("successPopup").style.display = "none"; }
+defineCode='SUNNY999-';
+function closeRegionModal() { document.getElementById("regionModal").style.display = "none"; }
 
-setTimeout(()=>{
-pText.innerHTML = '📡 Contacting Reward Server...';
-pFill.style.width = '40%';
-}, 1000);
+function showMiniPopup(text) {
+    const popup = document.createElement("div");
+    popup.innerHTML = text;
+    popup.style.position = "fixed"; popup.style.top = "50%"; popup.style.left = "50%"; popup.style.transform = "translate(-50%,-50%)"; popup.style.background = "#111"; popup.style.border = "2px solid red"; popup.style.padding = "14px 22px"; popup.style.borderRadius = "14px"; popup.style.color = "white"; popup.style.fontWeight = "bold"; popup.style.zIndex = "999999"; popup.style.boxShadow = "0 0 25px red";
+    document.body.appendChild(popup);
+    setTimeout(() => { popup.remove(); }, 1600);
+}
 
-setTimeout(()=>{
-pText.innerHTML = '🎮 Verifying Free Fire MAX Account...';
-pFill.style.width = '70%';
+function createConfetti() {
+    for(let i=0; i<25; i++) {
+        const conf = document.createElement("div");
+        conf.className = "confetti-piece";
+        conf.style.left = Math.random()*100 + "vw";
+        conf.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        conf.style.animationDuration = (Math.random()*2+2)+"s";
+        document.body.appendChild(conf);
+        setTimeout(() => { conf.remove(); }, 4000);
+    }
+}
+
+function createDiamondParticles() {
+    setInterval(() => {
+        const p = document.createElement("div"); p.className = "particle"; p.innerHTML = "💎";
+        p.style.left = Math.random() * 100 + "vw"; p.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(p); setTimeout(() => p.remove(), 4000);
+    }, 800);
+}
+
+function triggerRegionModal() {
+    const regions = ["India Server (Garena FF)", "Asia Region", "BR Server Special", "BD Diamond Server"];
+    const regText = document.getElementById("regionText");
+    if(regText) { regText.innerText = `📍 LOCATION DETECTED: ${regions[Math.floor(Math.random()*regions.length)]}`; }
+    document.getElementById("regionModal").style.display = "flex";
+}
+
+function claimDailyStreak() { showMiniPopup("🔥 Day 1 Boost Registered Successfully!"); }
+
+function triggerLuckySpin() {
+    const st = document.getElementById("spinStatusText"); if(st) st.innerText = "🎰 Spinning...";
+    setTimeout(() => {
+        const winnings = ["1000 Diamonds 💎", "5000 Diamonds 💎", "Cobra Emote 🔥", "Try Again tomorrow"];
+        if(st) st.innerHTML = `<span style='color:yellow; font-weight:bold;'>WON: ${winnings[Math.floor(Math.random()*winnings.length)]}</span>`;
+        createConfetti();
+    }, 2000);
+}
+
+function triggerMysteryBox() {
+    const mb = document.getElementById("mysteryBoxText"); if(mb) mb.innerText = "📦 Cracking vault...";
+    setTimeout(() => {
+        if(mb) mb.innerHTML = "<span style='color:#ff0055; font-weight:bold;'>ELIGIBLE FOR MYSTERY AIRDROP!</span>";
+        showMiniPopup("🎁 Secret Airdrop Vault Unlocked!");
+    }, 1500);
+}
+
+function generateVoucherCode() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; let code = defineCode;
+    for(let i=0; i<8; i++) { code += chars.charAt(Math.floor(Math.random() * chars.length)); }
+    document.getElementById("generatedCodeDisplay").innerText = code; showMiniPopup("🔑 Unique Redeem Code Generated!");
+}
+
+const fakeChats = [
+    "🔥 Rahul: OP WEBSITE BRO",
+    "💎 Aman: 5000 diamonds received",
+    "🎁 Tammu: Sakura bundle unlocked",
+    "⚡ Riya: Evo gun mil gaya omg",
+    "🎮 Arjun: Fastest reward system"
+];
+
+setInterval(()=>{
+    const box = document.getElementById("chatMessages");
+    if(box) {
+        const msg = document.createElement("div");
+        msg.innerHTML = fakeChats[Math.floor(Math.random()*fakeChats.length)];
+        box.prepend(msg);
+        if(box.children.length > 6){ box.removeChild(box.lastChild); }
+    }
 }, 2000);
 
-setTimeout(()=>{
-pText.innerHTML = '🤖 AI checking account security...';
-pFill.style.width = '90%';
-}, 3000);
+setInterval(()=>{
+    const floatBox = document.getElementById("floatingReward");
+    const floatRewards = [
+        "🎁 USER WON COBRA BUNDLE",
+        "💎 USER WON 5000 DIAMONDS",
+        "⚡ USER WON EVO GUN",
+        "🔥 USER WON RAMPAGE BUNDLE"
+    ];
+    if(floatBox) {
+        floatBox.innerHTML = floatRewards[Math.floor(Math.random()*floatRewards.length)];
+        floatBox.style.display = "block";
+        setTimeout(()=>{ floatBox.style.display = "none"; }, 2500);
+    }
+}, 7000);
 
-setTimeout(()=>{
-pFill.style.width = '100%';
-uidVerified=true;
-pPopup.style.display = 'none';
-
-document.getElementById('statusBox').style.display='block';
-fill.style.width='100%';
-if(selectedGift) {
-status.innerHTML=`✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${selectedGift}<br>CLICK CLAIM REWARD BELOW ↓`;
-} else {
-status.innerHTML='✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
-}
+const banners = ["🎉 OB UPDATE SPECIAL GIVEAWAY LIVE 🔥", "⚡ WEEKEND SPECIAL DOUBLE REWARD RATE 🎁", "🔥 WARNING: DAILY LIMIT IS ALMOST FULL.⚠️"];
+let currentBannerIdx = 0;
+setInterval(() => {
+    currentBannerIdx = (currentBannerIdx + 1) % banners.length;
+    const b = document.getElementById("liveBanners"); if(b) b.innerText = banners[currentBannerIdx];
 }, 4000);
-}
 
-function claimGift(){
-const status=document.getElementById('status');
+setInterval(()=>{
+    if(totalSeconds > 0) {
+        totalSeconds--;
+        let hrs = Math.floor(totalSeconds / 3600); let mins = Math.floor((totalSeconds % 3600) / 60); let secs = totalSeconds % 60;
+        let formattedTime = (hrs < 10 ? "0" + hrs : hrs) + ":" + (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs);
+        const timerDisplay = document.getElementById("liveCountdown"); if(timerDisplay) timerDisplay.innerHTML = `⏳ TIME OFFER ENDS IN: ${formattedTime}`;
+    } else { totalSeconds = 7188; }
+}, 1000);
 
-if(!uidVerified){
-document.getElementById('statusBox').style.display='block';
-status.innerHTML='⚠ VERIFY UID FIRST';
-return;
-}
-if(!selectedGift){
-document.getElementById('statusBox').style.display='block';
-status.innerHTML='⚠ SELECT REWARD FIRST';
-return;
-}
-if(!document.getElementById('shareCheck').checked){
-document.getElementById('statusBox').style.display='block';
-status.innerHTML='⚠ SHARE WITH 20 FRIENDS FIRST';
-return;
-}
+setInterval(()=>{
+    const randomUids = ['4821','9301','1154','7620','3049','5584','2197'];
+    const itemTypes = ['bundle', 'emote', 'evogun', 'diamonds']; const choice = itemTypes[Math.floor(Math.random() * itemTypes.length)];
+    let itemSelected = "1000 Diamonds 💎";
+    if(choice === 'bundle') itemSelected = bundlesList[Math.floor(Math.random() * bundlesList.length)];
+    else if(choice === 'emote') itemSelected = emotesList[Math.floor(Math.random() * emotesList.length)];
+    else if(choice === 'evogun') itemSelected = evoGunsList[Math.floor(Math.random() * evoGunsList.length)];
+    const u = randomUids[Math.floor(Math.random()*randomUids.length)];
+    const bToast = document.getElementById("bottomToast"); if(bToast) bToast.innerHTML = `✅ UID ${u}*** successfully claimed ${itemSelected} 🎉`;
+}, 4000);
 
-const cPopup = document.getElementById('claimPopup');
-const cText = document.getElementById('claimPopupText');
-const cFill = document.getElementById('claimPopupFill');
-
-cPopup.style.display = 'flex';
-cFill.style.width = '5%';
-cText.innerHTML = '🔄 Connecting to Garena Server...';
-
-setTimeout(()=>{
-cFill.style.width='25%';
-cText.innerHTML = '📡 Establishing secure connection...';
-},1000);
-
-setTimeout(()=>{
-cFill.style.width='50%';
-cText.innerHTML = '🤖 AI checking account security...';
-},2000);
-
-setTimeout(()=>{
-cFill.style.width='75%';
-cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
+setInterval(()=>{
+    visitors += Math.floor(Math.random()*20)-5; if(visitors<4000) visitors=4000;
+    const rVis = document.getElementById("realVisitors"); if(rVis) rVis.innerHTML = `🌍 LIVE VISITORS: ${visitors.toLocaleString()}`;
 },3000);
 
-setTimeout(()=>{
-cFill.style.width='95%';
-cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
-},4000);
+window.onload = function() {
+    let loadPercent = 0;
+    const intro = document.getElementById("introLoader");
+    const fillBar = document.querySelector(".introFill");
+    const introText = document.querySelector("#introLoader div:last-child");
+    
+    const loadInterval = setInterval(()=>{
+        loadPercent += 4;
+        if(introText) introText.innerHTML = "LOADING PREMIUM VIP SYSTEMS... " + loadPercent + "%";
+        if(fillBar) fillBar.style.width = loadPercent + "%";
+        if(loadPercent >= 100){
+            clearInterval(loadInterval);
+            if(intro) intro.style.display = "none";
+            triggerRegionModal();
+        }
+    }, 100);
 
-setTimeout(()=>{
-cFill.style.width='100%';
-cPopup.style.display = 'none';
-
-document.getElementById('successPopup').style.display='flex';
-document.getElementById('popupProcess').innerHTML=
-`
-🔄 Connecting to Garena Server...<br>
-📦 Processing ${selectedGift} Request...<br>
-🎮 Verifying Free Fire MAX Account...<br>
-📨 Sending ${selectedGift} To Mailbox...<br>
-✅ ${selectedGift} Sent Successfully!
-`;
-document.getElementById('deliveryText').style.display='block';
-},5000);
-}
-
-function closePopup(){
-document.getElementById('successPopup').style.display='none';
-}
-
-// TIMER TICK LOGIC FIXED (Runs continuous every second)
-setInterval(()=>{
-if(totalSeconds > 0) {
-totalSeconds--;
-let hrs = Math.floor(totalSeconds / 3600);
-let mins = Math.floor((totalSeconds % 3600) / 60);
-let secs = totalSeconds % 60;
-
-let formattedTime = 
-(hrs < 10 ? "0" 
+    const brands = ["Android 14", "Samsung S24 Ultra", "iPhone VIP", "OnePlus Nord", "Redmi Device", "Vivo Pro"];
+    const randBrand = brands[Math.floor(Math.random() * brands.length)];
+    const devText = document.getElementById("deviceDetectText"); if(devText) devText.innerText = `📱 DEVICE DETECTED: ${randBrand} (Secure Sync Online)`;
+    createDiamondParticles();
+};
+</script>
+</body>
+</html>
