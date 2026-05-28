@@ -453,7 +453,6 @@ text-shadow: 0 0 10px red;
 letter-spacing: 1px;
 }
 
-/* NEW COPYRIGHT SECTION FOOTER STYLE */
 .copyrightSection {
 width: 100%;
 background: #050505;
@@ -802,7 +801,6 @@ font-weight:bold;
 <div class="bottomTimerText" id="liveCountdown">⏳ OFFER ENDS IN: 01:59:48</div>
 </div>
 
-<!-- COPYRIGHT SECTION FOOTER LINKED SUCCESSFULLY -->
 <div class="copyrightSection">
 COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
 </div>
@@ -857,7 +855,6 @@ let currentCardElement = null;
 
 let totalSeconds = (1 * 3600) + (59 * 60) + 48;
 
-// LOGIC: CUSTOM BRAND-NEW BUNDLES LIST ATTACHED
 const bundlesList = [
 "🔥 Golden Shade", "🔥 Purple Shade", "🔥 Golden Hip Hop", "🔥 Golden Sakura", "🔥 Cobra Bundle",
 "🔥 Criminal Bundle", "🔥 Green Criminal", "🔥 Red Criminal", "🔥 Blue Criminal", "🔥 Hip Hop Bundle",
@@ -865,7 +862,6 @@ const bundlesList = [
 "🔥 Angelic Bundle", "🔥 Royal Warrior Bundle", "🔥 Ghost Pirate Bundle", "🔥 Titan Bundle", "🔥 Neon Punk Bundle"
 ];
 
-// LOGIC: CUSTOM BRAND-NEW EMOTES LIST ATTACHED
 const emotesList = [
 "🕺 Top DJ", "🕺 LOL", "🕺 Flowers of Love", "🕺 Baby Shark", "🕺 Pirate Flag",
 "🕺 Moon Flip", "🕺 Shake With Me", "🕺 Applause", "🕺 Siii", "🕺 FF Dance",
@@ -875,7 +871,6 @@ const emotesList = [
 "🕺 Aim Fire", "🕺 One Finger Pushup", "🕺 The Swan", "🕺 Chicken", "🕺 Make It Rain"
 ];
 
-// LOGIC: CUSTOM BRAND-NEW EVO GUNS LIST ATTACHED
 const evoGunsList = [
 "⚡ MP40 Predatory Cobra", "⚡ AK Blue Flame Draco", "⚡ M1014 Green Flame Draco", "⚡ SCAR Megalodon Alpha", "⚡ UMP Cataclysm",
 "⚡ FAMAS Golden Glory", "⚡ M1887 Sterling Conqueror", "⚡ XM8 Destiny Guardian", "⚡ MP5 Platinum Divinity", "⚡ Parafal Demonic Grin",
@@ -1040,4 +1035,12 @@ cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
 
 setTimeout(()=>{
 cFill.style.width='95%';
-c
+cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
+},6200);
+
+setTimeout(()=>{
+cFill.style.width='100%';
+cPopup.style.display = 'none';
+
+document.getElementById('successPopup').style.display='flex';
+document.getElementById('popupProc
