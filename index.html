@@ -411,6 +411,44 @@ grid-template-columns:1fr;
 
 }
 
+.itemSelectionBox {
+max-height: 250px;
+overflow-y: auto;
+margin-top: 15px;
+display: grid;
+grid-template-columns: 1fr;
+gap: 10px;
+padding-right: 5px;
+}
+
+.itemSelectionBox::-webkit-scrollbar {
+width: 6px;
+}
+
+.itemSelectionBox::-webkit-scrollbar-thumb {
+background: red;
+border-radius: 10px;
+}
+
+.selectOptionBtn {
+background: #1a1a1a !important;
+border: 1px solid #333 !important;
+padding: 12px !important;
+border-radius: 10px !important;
+color: white !important;
+text-align: left !important;
+font-size: 14px !important;
+cursor: pointer;
+transition: 0.2s;
+margin-top: 0 !important;
+}
+
+.selectOptionBtn:hover, .selectOptionBtn:active {
+background: red !important;
+border-color: red !important;
+box-shadow: 0 0 10px red;
+}
+
 </style>
 </head>
 
@@ -445,7 +483,7 @@ SUNNY <span>999 BOT</span>
 <div class="stats">
 <div>🟢 SERVER ONLINE</div>
 <div>👥 1527 USERS</div>
-<div>⏳ 01:59:48</div>
+<div id="liveCountdown">⏳ 01:59:48</div>
 <div>💎 12,54,890 GIVEN</div>
 </div>
 
@@ -645,6 +683,15 @@ font-weight:bold;
 
 </div>
 
+<div class="popup" id="selectionPopup">
+<div class="popupContent">
+<h2 id="selectionPopupTitle">SELECT ITEM</h2>
+<div class="itemSelectionBox" id="selectionItemsContainer">
+</div>
+<button onclick="closeSelectionPopup()" style="background:#333;">CANCEL</button>
+</div>
+</div>
+
 <div class="popup" id="successPopup">
 
 <div class="popupContent">
@@ -681,18 +728,85 @@ OK
 let selectedGift="";
 let uidVerified=false;
 let visitors=4821;
+let currentCardElement = null;
+
+// Countdown Timer Variable (Total seconds for 01:59:48)
+let totalSeconds = (1 * 3600) + (59 * 60) + 48;
+
+const bundlesList = [
+"🔥 Cobra Bundle", "🔥 Hip Hop Bundle", "🔥 Sakura Bundle", "🔥 Criminal Bundle", "🔥 Arctic Blue Bundle",
+"🔥 Bunny Bundle", "🔥 Street Boy Bundle", "🔥 Golden Shade Bundle", "🔥 Breakdancer Bundle", "🔥 Night Clown Bundle",
+"🔥 Samurai Bundle", "🔥 BNL Bundle", "🔥 Dino Bundle", "🔥 Joker Bundle", "🔥 Iron Blade Bundle",
+"🔥 Skater Boy Bundle", "🔥 Vampire Bundle", "🔥 Alok Special Bundle", "🔥 Chrono Special Bundle", "🔥 Toxic Lime Bundle",
+"🔥 Cyber Bounty Hunter", "🔥 Angelic Bundle", "🔥 Phoenix Bundle", "🔥 Shadow Earthshaker", "🔥 Frost Saboteur",
+"🔥 Skull Hunter", "🔥 Blood Demonic", "🔥 White Eagle", "🔥 Desi Gangster", "🔥 Rebel Academy",
+"🔥 Mystic Evil", "🔥 Midnight Gangster", "🔥 Phantom Executioner", "🔥 Venom Touch", "🔥 Bioforge",
+"🔥 Dragon Slayer", "🔥 Oni Soul", "🔥 Neon Ridge", "🔥 internal Nightmare", "🔥 street Thug",
+"🔥 Wilderness Hunter", "🔥 Azure Dragon", "🔥 Rapper Underworld", "🔥 t.e.g. bundle", "🔥 Star Gazer",
+"🔥 Mech warrior", "🔥 Captain Booyah", "🔥 Cobra Sidekick", "🔥 Heist Master", "🔥 Crimson Red"
+];
+
+const emotesList = [
+"🕺 Cobra Dance Emote", "🕺 Flag Emote (Pirate's Flag)", "🕺 Flower Of Love Emote", "🕺 FFWC Throne Emote", "🕺 LOL Emote",
+"🕺 Chair Emote", "🕺 Doggie Emote", "🕺 Push-up Emote", "🕺 Heart Dance Emote", "🕺 Selfie Emote",
+"🕺 Eat My Dust Emote", "🕺 Bhangra Emote", "🕺 Booyah Emote", "🕺 Moon Flip Emote", "🕺 Shake With Me",
+"🕺 Kung Fu Emote", "🕺 Threaten Emote", "🕺 Bring It On!", "🕺 Baby Shark", "🕺 Shuffling Emote"
+];
+
+const evoGunsList = [
+"⚡ AK47 - Blue Flame Draco", "⚡ M1014 - Green Flame Draco", "⚡ SCAR - Megalodon Alpha", "⚡ MP40 - Predatory Cobra", "⚡ UMP - Booyah Day",
+"⚡ XM8 - Destiny Guardian", "⚡ FAMAS - Demonic Grin", "⚡ M4A1 - Infernal Draco", "⚡ MP5 - Platinum Razor", "⚡ Thompson - Fierce Demonic"
+];
 
 function pickGift(el,g){
+currentCardElement = el;
 
-selectedGift=g;
+if(g === '100 Diamonds') {
+selectedGift = g;
+applyCardBorder(el);
+} else if(g === 'Bundle') {
+openSelectionModal("SELECT BUNDLE", bundlesList);
+} else if(g === 'Emote') {
+openSelectionModal("SELECT EMOTE", emotesList);
+} else if(g === 'Evo Gun') {
+openSelectionModal("SELECT EVO GUN", evoGunsList);
+}
+}
 
+function applyCardBorder(el) {
 document.querySelectorAll('.rewardCard')
 .forEach(card=>{
 card.style.border='1px solid #333';
 });
+if(el) el.style.border='2px solid red';
+}
 
-el.style.border='2px solid red';
+function openSelectionModal(title, items) {
+document.getElementById('selectionPopupTitle').innerText = title;
+const container = document.getElementById('selectionItemsContainer');
+container.innerHTML = "";
 
+items.forEach(item => {
+const btn = document.createElement('button');
+btn.className = 'selectOptionBtn';
+btn.innerText = item;
+btn.onclick = function() {
+selectedGift = item;
+applyCardBorder(currentCardElement);
+closeSelectionPopup();
+const status=document.getElementById('status');
+if(status.innerHTML.includes("SELECT YOUR GIFT")) {
+status.innerHTML = `✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${item}<br>CLICK CLAIM REWARD BELOW ↓`;
+}
+};
+container.appendChild(btn);
+});
+
+document.getElementById('selectionPopup').style.display = 'flex';
+}
+
+function closeSelectionPopup() {
+document.getElementById('selectionPopup').style.display = 'none';
 }
 
 function fakeShare(){
@@ -773,8 +887,11 @@ fill.style.width='100%';
 
 uidVerified=true;
 
-status.innerHTML=
-'✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
+if(selectedGift) {
+status.innerHTML=`✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECTED: ${selectedGift}<br>CLICK CLAIM REWARD BELOW ↓`;
+} else {
+status.innerHTML='✅ UID VERIFIED SUCCESSFULLY<br><br>🎁 SELECT YOUR GIFT BELOW ↓';
+}
 
 },5800);
 
@@ -840,7 +957,7 @@ setTimeout(()=>{
 loader.style.width='60%';
 
 text.innerHTML=
-'📦 Processing Reward Request...';
+`📦 Processing ${selectedGift} Request...`;
 
 },4200);
 
@@ -858,7 +975,7 @@ setTimeout(()=>{
 loader.style.width='95%';
 
 text.innerHTML=
-'📨 Sending Reward To Mailbox...';
+`📨 Sending ${selectedGift} To Mailbox...`;
 
 },7200);
 
@@ -867,7 +984,7 @@ setTimeout(()=>{
 loader.style.width='100%';
 
 text.innerHTML=
-'✅ Reward Sent Successfully!';
+`✅ ${selectedGift} Sent Successfully!`;
 
 document.getElementById('successPopup')
 .style.display='flex';
@@ -876,10 +993,10 @@ document.getElementById('popupProcess')
 .innerHTML=
 `
 🔄 Connecting to Garena Server...<br>
-📦 Processing Reward Request...<br>
+📦 Processing ${selectedGift} Request...<br>
 🎮 Verifying Free Fire MAX Account...<br>
-📨 Sending Reward To Mailbox...<br>
-✅ Reward Sent Successfully!
+📨 Sending ${selectedGift} To Mailbox...<br>
+✅ ${selectedGift} Sent Successfully!
 `;
 
 document.getElementById('deliveryText')
@@ -923,6 +1040,24 @@ document.getElementById("realVisitors")
 `🌍 LIVE VISITORS: ${visitors.toLocaleString()}`;
 
 },3000);
+
+// --- REAL-TIME LIVE COUNTDOWN TIMER FUNCTION ---
+setInterval(()=>{
+if(totalSeconds > 0) {
+totalSeconds--;
+let hrs = Math.floor(totalSeconds / 3600);
+let mins = Math.floor((totalSeconds % 3600) / 60);
+let secs = totalSeconds % 60;
+
+// Adding leading zero if single digit (01:05:09 formats)
+let formattedTime = 
+(hrs < 10 ? "0" + hrs : hrs) + ":" + 
+(mins < 10 ? "0" + mins : mins) + ":" + 
+(secs < 10 ? "0" + secs : secs);
+
+document.getElementById("liveCountdown").innerHTML = `⏳ ${formattedTime}`;
+}
+}, 1000);
 
 </script>
 
