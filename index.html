@@ -20,7 +20,6 @@ background:linear-gradient(135deg,#050505,#170000,#050505);
 color:white;
 overflow-x:hidden;
 zoom:.93;
-padding-bottom: 70px; /* Fixed screen space for bottom black screen timer */
 }
 
 .container{
@@ -77,36 +76,31 @@ pointer-events:none;
 }
 
 .soundToggle{
-position:fixed;
-top:10px;
-left:10px;
 background:#111;
 border:2px solid red;
-padding:8px 12px;
+padding:10px 16px;
 border-radius:14px;
-z-index:99999;
-font-size:12px;
+font-size:14px;
 font-weight:bold;
+cursor:pointer;
+display:inline-block;
 }
 
 .toastBox{
-position:fixed;
-top:45px;
-right:10px;
 background:#111;
 border:2px solid red;
-padding:10px;
+padding:10px 16px;
 border-radius:14px;
-box-shadow:0 0 20px red;
-font-size:11px;
+box-shadow:0 0 15px rgba(255,0,0,0.3);
+font-size:13px;
 font-weight:bold;
-z-index:99999;
-max-width:200px;
+max-width:280px;
+display:inline-block;
 }
 
 .bottomToastBox {
 position:fixed;
-bottom:80px;
+bottom:20px;
 left:10px;
 background:#111;
 border:1px solid #00ff66;
@@ -123,7 +117,7 @@ animation: pulse 2s infinite;
 
 .header{
 text-align:center;
-padding:20px 0;
+padding:15px 0 5px 0;
 }
 
 .logo{
@@ -146,20 +140,20 @@ font-size:12px;
 font-weight:bold;
 }
 
-.loginBtn{
+.headerActionArea {
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
 margin-top:15px;
-padding:12px 24px;
-background:#111;
-border:1px solid #333;
-color:white;
-border-radius:12px;
-font-weight:bold;
+flex-wrap:wrap;
+padding:0 10px;
 }
 
 .navbar{
 background:#111;
 padding:14px;
-margin-top:10px;
+margin-top:15px;
 }
 
 .navIcons{
@@ -442,17 +436,14 @@ color: #ffcc00;
 margin-bottom: 3px;
 }
 
-/* --- LOGIC: REGISTERING TIMER BAR FIXED ON BLACK BOTTOM SCREEN AREA --- */
 .bottomTimerBar {
-position: fixed;
-bottom: 0;
-left: 0;
 width: 100%;
-background: #000000; /* Pure Black Screen Background */
-border-top: 1px solid #1a1a1a;
-padding: 14px;
+background: #000000;
+border-top: 2px solid red;
+padding: 20px 15px;
 text-align: center;
-z-index: 999998;
+margin-top: 30px;
+box-shadow: 0 -5px 20px rgba(255,0,0,0.2);
 }
 .bottomTimerText {
 font-size: 24px;
@@ -462,7 +453,19 @@ text-shadow: 0 0 10px red;
 letter-spacing: 1px;
 }
 
-/* MOBILE RESPONSIVE 2-2 GRAPHIC GRID */
+/* NEW COPYRIGHT SECTION FOOTER STYLE */
+.copyrightSection {
+width: 100%;
+background: #050505;
+border-top: 1px solid #111;
+padding: 15px;
+text-align: center;
+font-size: 12px;
+color: #555;
+font-weight: bold;
+letter-spacing: 1px;
+}
+
 @media(max-width:900px){
 .rewardGrid{
 grid-template-columns: 1fr 1fr;
@@ -485,6 +488,14 @@ padding: 2px 5px;
 }
 .bottomTimerText {
 font-size: 20px;
+}
+.toastBox {
+max-width: 210px;
+font-size: 11px;
+}
+.soundToggle {
+padding: 8px 12px;
+font-size: 12px;
 }
 }
 
@@ -554,14 +565,6 @@ transition: 0.3s;
 🎉 OB UPDATE SPECIAL GIVEAWAY LIVE 🔥
 </div>
 
-<div class="soundToggle" id="soundBtn">
-🔊 ON
-</div>
-
-<div class="toastBox" id="toastBox">
-🔥 Rahul from India won Cobra Bundle
-</div>
-
 <div class="bottomToastBox" id="bottomToast">
 ✅ UID 4852*** claimed Elite Pass
 </div>
@@ -584,12 +587,17 @@ font-weight:bold;
 font-size:14px;
 text-shadow:0 0 10px red;
 ">
-🌍 LIVE VISITORS: 4821
+🌍 LIVE VISITORS: 4,913
 </div>
 
-<button class="loginBtn">
-LOGIN
-</button>
+<div class="headerActionArea">
+<div class="soundToggle" id="soundBtn">
+🔊 ON
+</div>
+<div class="toastBox" id="toastBox">
+🔥 Rahul from India won Cobra Bundle
+</div>
+</div>
 
 </div>
 
@@ -794,6 +802,11 @@ font-weight:bold;
 <div class="bottomTimerText" id="liveCountdown">⏳ OFFER ENDS IN: 01:59:48</div>
 </div>
 
+<!-- COPYRIGHT SECTION FOOTER LINKED SUCCESSFULLY -->
+<div class="copyrightSection">
+COPYRIGHT ©️ 2026 SUNNY 999 BOT. ALL RIGHTS RESERVED.
+</div>
+
 <div class="popup" id="selectionPopup">
 <div class="popupContent">
 <h2 id="selectionPopupTitle">SELECT ITEM</h2>
@@ -844,29 +857,30 @@ let currentCardElement = null;
 
 let totalSeconds = (1 * 3600) + (59 * 60) + 48;
 
+// LOGIC: CUSTOM BRAND-NEW BUNDLES LIST ATTACHED
 const bundlesList = [
-"🔥 Cobra Bundle", "🔥 Hip Hop Bundle", "🔥 Sakura Bundle", "🔥 Criminal Bundle", "🔥 Arctic Blue Bundle",
-"🔥 Bunny Bundle", "🔥 Street Boy Bundle", "🔥 Golden Shade Bundle", "🔥 Breakdancer Bundle", "🔥 Night Clown Bundle",
-"🔥 Samurai Bundle", "🔥 BNL Bundle", "🔥 Dino Bundle", "🔥 Joker Bundle", "🔥 Iron Blade Bundle",
-"🔥 Skater Boy Bundle", "🔥 Vampire Bundle", "🔥 Alok Special Bundle", "🔥 Chrono Special Bundle", "🔥 Toxic Lime Bundle",
-"🔥 Cyber Bounty Hunter", "🔥 Angelic Bundle", "🔥 Phoenix Bundle", "🔥 Shadow Earthshaker", "🔥 Frost Saboteur",
-"🔥 Skull Hunter", "🔥 Blood Demonic", "🔥 White Eagle", "🔥 Desi Gangster", "🔥 Rebel Academy",
-"🔥 Mystic Evil", "🔥 Midnight Gangster", "🔥 Phantom Executioner", "🔥 Venom Touch", "🔥 Bioforge",
-"🔥 Dragon Slayer", "🔥 Oni Soul", "🔥 Neon Ridge", "🔥 internal Nightmare", "🔥 street Thug",
-"🔥 Wilderness Hunter", "🔥 Azure Dragon", "🔥 Rapper Underworld", "🔥 t.e.g. bundle", "🔥 Star Gazer",
-"🔥 Mech warrior", "🔥 Captain Booyah", "🔥 Cobra Sidekick", "🔥 Heist Master", "🔥 Crimson Red"
+"🔥 Golden Shade", "🔥 Purple Shade", "🔥 Golden Hip Hop", "🔥 Golden Sakura", "🔥 Cobra Bundle",
+"🔥 Criminal Bundle", "🔥 Green Criminal", "🔥 Red Criminal", "🔥 Blue Criminal", "🔥 Hip Hop Bundle",
+"🔥 Sakura Bundle", "🔥 Galaxy Dino Bundle", "🔥 Shadow Rogue Bundle", "🔥 Rampage Bundle", "🔥 Samurai Bundle",
+"🔥 Angelic Bundle", "🔥 Royal Warrior Bundle", "🔥 Ghost Pirate Bundle", "🔥 Titan Bundle", "🔥 Neon Punk Bundle"
 ];
 
+// LOGIC: CUSTOM BRAND-NEW EMOTES LIST ATTACHED
 const emotesList = [
-"🕺 Cobra Dance Emote", "🕺 Flag Emote (Pirate's Flag)", "🕺 Flower Of Love Emote", "🕺 FFWC Throne Emote", "🕺 LOL Emote",
-"🕺 Chair Emote", "🕺 Doggie Emote", "🕺 Push-up Emote", "🕺 Heart Dance Emote", "🕺 Selfie Emote",
-"🕺 Eat My Dust Emote", "🕺 Bhangra Emote", "🕺 Booyah Emote", "🕺 Moon Flip Emote", "🕺 Shake With Me",
-"🕺 Kung Fu Emote", "🕺 Threaten Emote", "🕺 Bring It On!", "🕺 Baby Shark", "🕺 Shuffling Emote"
+"🕺 Top DJ", "🕺 LOL", "🕺 Flowers of Love", "🕺 Baby Shark", "🕺 Pirate Flag",
+"🕺 Moon Flip", "🕺 Shake With Me", "🕺 Applause", "🕺 Siii", "🕺 FF Dance",
+"🕺 Booyah", "🕺 Kung Fu Dab", "🕺 Threaten", "🕺 Battle Style", "🕺 Selfie",
+"🕺 Tea Time", "🕺 Doggie", "🕺 Captain Booyah", "🕺 Eat My Dust", "🕺 Funky Dance",
+"🕺 Hello", "🕺 Soul Shaking", "🕺 Provoke", "🕺 Dangerous Game", "🕺 Power Of Money",
+"🕺 Aim Fire", "🕺 One Finger Pushup", "🕺 The Swan", "🕺 Chicken", "🕺 Make It Rain"
 ];
 
+// LOGIC: CUSTOM BRAND-NEW EVO GUNS LIST ATTACHED
 const evoGunsList = [
-"⚡ AK47 - Blue Flame Draco", "⚡ M1014 - Green Flame Draco", "⚡ SCAR - Megalodon Alpha", "⚡ MP40 - Predatory Cobra", "⚡ UMP - Booyah Day",
-"⚡ XM8 - Destiny Guardian", "⚡ FAMAS - Demonic Grin", "⚡ M4A1 - Infernal Draco", "⚡ MP5 - Platinum Razor", "⚡ Thompson - Fierce Demonic"
+"⚡ MP40 Predatory Cobra", "⚡ AK Blue Flame Draco", "⚡ M1014 Green Flame Draco", "⚡ SCAR Megalodon Alpha", "⚡ UMP Cataclysm",
+"⚡ FAMAS Golden Glory", "⚡ M1887 Sterling Conqueror", "⚡ XM8 Destiny Guardian", "⚡ MP5 Platinum Divinity", "⚡ Parafal Demonic Grin",
+"⚡ Groza Bang", "⚡ AN94 Evil Howler", "⚡ M4A1 Infernal Draco", "⚡ AUG Cyber Bounty Hunter", "⚡ P90 Gilded Corrosion",
+"⚡ M60 Crazy Bunny", "⚡ Bizon Gold Beast", "⚡ SKS Urban Rager", "⚡ Thompson Cindered Colossus", "⚡ Vector Aquablaze Wrath"
 ];
 
 function pickGift(el,g){
@@ -1026,76 +1040,4 @@ cText.innerHTML = `📦 Processing ${selectedGift} Request...`;
 
 setTimeout(()=>{
 cFill.style.width='95%';
-cText.innerHTML = `📨 Sending ${selectedGift} To Mailbox...`;
-},6200);
-
-setTimeout(()=>{
-cFill.style.width='100%';
-cPopup.style.display = 'none';
-
-document.getElementById('successPopup').style.display='flex';
-document.getElementById('popupProcess').innerHTML=
-`
-🔄 Connecting to Garena Server...<br>
-📦 Processing ${selectedGift} Request...<br>
-🎮 Verifying Free Fire MAX Account...<br>
-📨 Sending ${selectedGift} To Mailbox...<br>
-✅ ${selectedGift} Sent Successfully!
-`;
-document.getElementById('deliveryText').style.display='block';
-},8000);
-}
-
-function closePopup(){
-document.getElementById('successPopup').style.display='none';
-}
-
-setInterval(()=>{
-const msgs=[
-'🔥 Rahul from India won Cobra Bundle',
-'⚡ Arjun from India won Evo Gun',
-'💎 Aman from India won 1000 Diamonds'
-];
-document.getElementById('toastBox').innerHTML=
-msgs[Math.floor(Math.random()*msgs.length)];
-},4000);
-
-setInterval(()=>{
-visitors += Math.floor(Math.random()*20)-5;
-if(visitors<4000){visitors=4000;}
-document.getElementById("realVisitors").innerHTML=
-`🌍 LIVE VISITORS: ${visitors.toLocaleString()}`;
-},3000);
-
-// TIMER LOGIC FOR MAIN BLACK SCREEN AT BOTTOM
-setInterval(()=>{
-if(totalSeconds > 0) {
-totalSeconds--;
-let hrs = Math.floor(totalSeconds / 3600);
-let mins = Math.floor((totalSeconds % 3600) / 60);
-let secs = totalSeconds % 60;
-
-let formattedTime = 
-(hrs < 10 ? "0" + hrs : hrs) + ":" + 
-(mins < 10 ? "0" + mins : mins) + ":" + 
-(secs < 10 ? "0" + secs : secs);
-
-const timerDisplay = document.getElementById("liveCountdown");
-if(timerDisplay) {
-timerDisplay.innerHTML = `⏳ OFFER ENDS IN: ${formattedTime}`;
-}
-}
-}, 1000);
-
-setInterval(()=>{
-const randomUids = ['3842','9104','5521','7310','2284','6049','1873'];
-const randomRewards = ['Cobra Bundle','Evo AK47 Skin','1000 Diamonds','Flower of Love Emote','Hip Hop Bundle'];
-const u = randomUids[Math.floor(Math.random()*randomUids.length)];
-const r = randomRewards[Math.floor(Math.random()*randomRewards.length)];
-document.getElementById("bottomToast").innerHTML = `✅ UID ${u}*** claimed ${r} 🎉`;
-}, 5000);
-
-</script>
-
-</body>
-</html>
+c
