@@ -1,0 +1,8 @@
+{
+  "name": "sunny999-payment-bot",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}
