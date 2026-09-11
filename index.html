@@ -8,7 +8,7 @@
 <style>
 :root{
   --bg-dark: #030508;
-  --card-bg: rgba(10, 14, 26, 0.95);
+  --card-bg: rgba(10, 14, 26, 0.96);
   --primary: #9d4edd;
   --cyan: #00f0ff;
   --accent: #ff007f;
@@ -29,14 +29,13 @@ body{
     radial-gradient(circle at 50% 60%, rgba(255, 0, 127, 0.15) 0, transparent 50%);
   color: var(--text-main);
   min-height: 100vh;
-  overflow-x: hidden;
   padding-bottom: 90px;
 }
 
 .container{
   width:min(480px, 100%);
   margin:auto;
-  padding:10px 12px 20px;
+  padding:12px 14px 24px;
 }
 
 /* TOPBAR */
@@ -46,8 +45,8 @@ body{
   justify-content:space-between;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 10px 12px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 12px 14px;
   border-radius: 16px;
   margin-bottom: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.6);
@@ -56,61 +55,56 @@ body{
 .brand-box{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
 }
 
 .menu-icon{
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.15);
-  width: 32px; height: 32px;
-  border-radius: 9px;
-  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3px;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
   cursor: pointer;
 }
-.menu-icon span{ width: 14px; height: 2px; background: #fff; border-radius: 2px; }
+.menu-icon span{ width: 16px; height: 2px; background: #fff; border-radius: 2px; }
 
 .logo-badge{
-  width:36px;
-  height:36px;
-  border-radius:10px;
+  width:40px;
+  height:40px;
+  border-radius:12px;
   background:linear-gradient(135deg, var(--yellow), var(--accent), var(--primary));
   display:flex;
   align-items:center;
   justify-content:center;
   box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
   font-weight: 1000;
-  font-size: 16px;
+  font-size: 18px;
   color: #05070a;
   position: relative;
 }
-.logo-badge::after {
-  content: "👑";
-  position: absolute;
-  top: -10px;
-  font-size: 10px;
-}
 
 .brand-info h2{
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 1000;
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
-.verified-tick{ color: var(--cyan); font-size: 10px; }
+.verified-tick{ color: var(--cyan); font-size: 12px; }
 
 .insta-handle{
-  font-size: 9.5px;
+  font-size: 11px;
   color: var(--cyan);
   text-decoration: none;
   font-weight: 700;
   display: block;
+  margin-top: 1px;
 }
 
 .sub-tagline{
-  font-size: 8px;
+  font-size: 9px;
   color: var(--text-muted);
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -119,314 +113,280 @@ body{
 .top-right-group{
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .online-badge{
   display:flex;
   align-items:center;
-  gap:3px;
-  font-size:9px;
+  gap:4px;
+  font-size: 10px;
   font-weight:900;
   color: var(--success);
   background: rgba(0, 255, 136, 0.1);
   border: 1px solid rgba(0, 255, 136, 0.3);
-  padding: 3px 6px;
-  border-radius: 12px;
+  padding: 4px 8px;
+  border-radius: 14px;
 }
 .online-badge span{
-  width:4px; height:4px; background: var(--success); border-radius: 50%;
-  box-shadow: 0 0 6px var(--success);
-}
-
-.notif-btn{
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
-  width: 32px; height: 32px;
-  border-radius: 9px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: #fff; font-size: 12px; position: relative;
-}
-.notif-dot{
-  position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+  width:6px; height:6px; background: var(--success); border-radius: 50%;
+  box-shadow: 0 0 8px var(--success);
 }
 
 .trusted-lakh-badge{
   background: linear-gradient(135deg, var(--yellow), #ff9800);
   color: #05070a;
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 1000;
-  padding: 3px 8px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,193,7,0.4);
+  padding: 5px 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255,193,7,0.4);
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: inline-block;
 }
 
 /* HERO SECTION */
 .hero{
   text-align: center;
-  padding: 16px 10px 14px;
+  padding: 18px 14px 16px;
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(157, 78, 221, 0.4);
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   position: relative;
   overflow: hidden;
 }
 
-.side-text-left, .side-text-right{
-  position: absolute;
-  writing-mode: vertical-rl;
-  font-size: 7px;
-  font-weight: 1000;
-  letter-spacing: 1.5px;
-  color: var(--cyan);
-  opacity: 0.7;
-  top: 15px;
-}
-.side-text-left{ left: 4px; transform: rotate(180deg); }
-.side-text-right{ right: 4px; color: var(--accent); font-size: 6.5px; }
-
 .hero h1{
-  font-size: clamp(16px, 4.2vw, 23px);
+  font-size: clamp(18px, 5vw, 24px);
   font-weight: 1000;
-  line-height: 1.2;
+  line-height: 1.25;
   background: linear-gradient(90deg, var(--cyan), #fff, var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   text-transform: uppercase;
 }
 
 .trusted-tag{
   display: inline-block;
-  background: rgba(255, 0, 127, 0.12);
+  background: rgba(255, 0, 127, 0.15);
   color: #ff66b2;
-  border: 1px solid rgba(255, 0, 127, 0.35);
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-size: 10px;
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 11px;
   font-weight: 900;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .hero p{
   color: var(--text-muted);
-  font-size: 9.5px;
-  margin-bottom: 10px;
+  font-size: 11px;
+  margin-bottom: 12px;
   font-weight: 600;
 }
 
 .quick-pills-row{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 .quick-pill{
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 5px 2px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 4px;
   border-radius: 8px;
-  font-size: 7.5px;
+  font-size: 9px;
   font-weight: 800;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  white-space: nowrap;
+  gap: 3px;
 }
 
 .urgency-grid{
   display: grid;
   grid-template-columns: 1.3fr 0.9fr;
-  gap: 6px;
+  gap: 8px;
 }
 .urgency-box, .scarcity-box{
   background: rgba(0, 240, 255, 0.05);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 7px 5px;
-  border-radius: 10px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 10px 8px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 900;
   color: var(--cyan);
 }
 .scarcity-box{
   background: rgba(255, 0, 127, 0.05);
-  border-color: rgba(255, 0, 127, 0.2);
+  border-color: rgba(255, 0, 127, 0.25);
   color: var(--accent);
 }
 .timer-val{
   display: block;
   font-family: monospace;
-  font-size: 13px;
+  font-size: 15px;
   color: #fff;
-  margin-top: 2px;
+  margin-top: 4px;
   letter-spacing: 0.5px;
 }
 .timer-labels{
-  display: flex; justify-content: space-around; font-size: 6px; color: var(--text-muted); font-weight: 800; margin-top: 1px;
+  display: flex; justify-content: space-around; font-size: 7.5px; color: var(--text-muted); font-weight: 800; margin-top: 2px;
 }
 
-.grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
+/* CARD SECTION */
 .card{
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border-radius: 18px;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  position: relative;
+  margin-bottom: 14px;
 }
 
 .card h2{
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 1000;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.muted{ color: var(--text-muted); font-size: 9.5px; }
+.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 10px; }
 
-/* PAYMENT SECTION SPLIT */
+/* PAYMENT SECTION */
 .payment-split{
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 .scan-box-wrapper{
   text-align: center;
-  background: rgba(0,0,0,0.3);
-  padding: 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  position: relative;
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 .qr-container{
-  width: 105px;
-  margin: 4px auto;
-  padding: 4px;
+  width: 115px;
+  margin: 6px auto;
+  padding: 6px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
   position: relative;
   overflow: hidden;
 }
-.qr-container img{ width: 100%; display: block; border-radius: 2px; }
-.qr-scanner-line{
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-  animation: scanQR 2s infinite ease-in-out;
-}
-@keyframes scanQR{
-  0%, 100% { top: 5%; opacity: 0.8; }
-  50% { top: 92%; opacity: 1; }
-}
+.qr-container img{ width: 100%; display: block; border-radius: 4px; }
 
 .upi-copy-box{
-  display: flex; align-items: center; gap: 4px;
-  background: rgba(0,0,0,0.5); padding: 4px 6px;
-  border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); margin-top: 4px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(0,0,0,0.6); padding: 6px 8px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 6px;
 }
-.upi-copy-box code{ flex: 1; font-size: 9px; font-weight: bold; color: var(--cyan); }
-.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 3px 6px; border-radius: 4px; font-weight: 900; font-size: 8px; cursor: pointer; }
+.upi-copy-box code{ flex: 1; font-size: 10.5px; font-weight: bold; color: var(--cyan); }
+.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
 
 .upi-apps-col{
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 .upi-app-btn{
-  padding: 8px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
   color: #fff;
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 900;
   text-align: center;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
+  transition: 0.2s;
 }
-.upi-app-btn:hover{ background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); }
+.upi-app-btn:hover{ background: rgba(0, 240, 255, 0.2); border-color: var(--cyan); }
 
 .mini-sec-row{
   display: flex;
-  justify-content: space-between;
-  font-size: 8px;
+  justify-content: space-around;
+  font-size: 10px;
   font-weight: 900;
   color: var(--success);
-  margin-top: 8px;
-}
-
-/* APP LOCKED CARD */
-.app-locked-card{
-  background: linear-gradient(135deg, rgba(10,14,26,0.95), rgba(30,15,40,0.95));
-  border: 1px solid rgba(255, 0, 127, 0.3);
-  border-radius: 18px;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  margin-bottom: 10px;
-}
-.lock-info{ display: flex; align-items: center; gap: 10px; }
-.lock-icon-box{
-  width: 42px; height: 42px; background: rgba(255,0,127,0.15); border: 1px solid rgba(255,0,127,0.4);
-  border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px;
-  box-shadow: 0 0 15px rgba(255,0,127,0.3);
-}
-.lock-title{ font-size: 13px; font-weight: 1000; color: #fff; }
-.lock-sub{ font-size: 8.5px; color: var(--text-muted); margin-top: 1px; font-weight: 700; }
-.lock-action-btn{
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff; padding: 8px 12px; border-radius: 10px;
-  font-size: 9.5px; font-weight: 1000; text-align: center;
-}
-
-/* UTR VERIFY SECTION */
-.utr-section{
   margin-top: 10px;
-  background: rgba(0,0,0,0.3);
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
 }
-.utr-input-group{ display: flex; gap: 5px; align-items: center; }
+
+/* UTR VERIFY */
+.utr-section{
+  margin-top: 12px;
+  background: rgba(0,0,0,0.4);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.utr-input-group{ display: flex; gap: 6px; align-items: center; }
 .utr-wrapper{ flex: 1; position: relative; display: flex; align-items: center; }
 .utr-input{
-  width: 100%; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15);
-  padding: 7px 26px 7px 8px; border-radius: 8px; color: #fff; font-size: 9.5px; outline: none;
+  width: 100%; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 32px 10px 10px; border-radius: 10px; color: #fff; font-size: 11px; outline: none;
 }
-.paste-icon{ position: absolute; right: 6px; color: var(--text-muted); font-size: 10px; cursor: pointer; }
-.utr-btn{ background: linear-gradient(90deg, #9d4edd, #ff007f); color: #fff; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 1000; font-size: 9.5px; cursor: pointer; }
-#utrStatusMsg{ font-size: 9px; margin-top: 4px; font-weight: 800; display: none; }
+.paste-icon{ position: absolute; right: 8px; color: var(--text-muted); font-size: 13px; cursor: pointer; }
+.utr-btn{ background: linear-gradient(90deg, #9d4edd, #ff007f); color: #fff; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 1000; font-size: 11px; cursor: pointer; }
+#utrStatusMsg{ font-size: 10.5px; margin-top: 6px; font-weight: 800; display: none; }
 
-/* TERMINAL LOADER MODAL */
+/* CLEAR INSTRUCTIONS BOX (NICHE LIKHA HUA) */
+.instructions-box{
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.instructions-box h3{
+  font-size: 14px;
+  color: var(--cyan);
+  margin-bottom: 10px;
+  font-weight: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.step-item{
+  font-size: 11.5px;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+}
+.step-num{
+  background: var(--primary);
+  color: #fff;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: bold; flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* TERMINAL MODAL */
 .terminal-modal{
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(15px);
@@ -434,92 +394,46 @@ body{
   display: none;
 }
 .terminal-box{
-  width: min(340px, 90%);
+  width: min(350px, 90%);
   background: #080c14; border: 1px solid var(--cyan);
-  border-radius: 14px; padding: 16px; box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
-  font-family: monospace; font-size: 11px; color: var(--success);
+  border-radius: 14px; padding: 18px; box-shadow: 0 0 35px rgba(0, 240, 255, 0.4);
+  font-family: monospace; font-size: 12px; color: var(--success);
 }
-.terminal-header{ display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; color: var(--cyan); font-weight: bold; }
-.terminal-log{ height: 75px; overflow-y: auto; display: flex; flex-direction: column; gap: 3px; }
+.terminal-header{ display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px; color: var(--cyan); font-weight: bold; }
+.terminal-log{ height: 85px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
 
-/* FEATURES GRID */
-.features-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 10px 6px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.feature-item{ font-size: 8px; font-weight: 900; color: var(--text-muted); }
-.feature-icon{ font-size: 14px; margin-bottom: 1px; display: block; }
-
-/* REVIEWS & FAQ */
-.reviews-grid{ display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 6px; }
-.review-card{ background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 8px 10px; border-radius: 10px; }
-.review-header{ display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
-.review-avatar{ width: 22px; height: 22px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: bold; color: #fff; }
-.review-name{ font-size: 9.5px; font-weight: 900; color: #fff; }
-.review-stars{ color: var(--yellow); font-size: 7.5px; }
-.review-text{ font-size: 9px; color: var(--text-muted); line-height: 1.2; }
-.section-link{ color: var(--cyan); font-size: 9.5px; text-decoration: none; font-weight: 800; cursor: pointer; }
-
-.faq-grid{ display: grid; grid-template-columns: 1fr; gap: 5px; margin-top: 6px; }
-.faq-box{
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-  padding: 7px 10px; border-radius: 8px; font-size: 9.5px; font-weight: 900; color: #fff;
-  display: flex; justify-content: space-between; align-items: center;
-}
-
-/* LIVE SOCIAL PROOF TOAST */
-.social-toast{
-  position: fixed; bottom: 70px; left: 12px;
-  background: rgba(10, 14, 26, 0.95); border: 1px solid var(--success);
-  padding: 8px 12px; border-radius: 10px; z-index: 1500;
-  display: flex; align-items: center; gap: 8px;
-  box-shadow: 0 5px 20px rgba(0,255,136,0.3);
-  transform: translateY(100px); opacity: 0; transition: all 0.4s ease;
-}
-.social-toast.show{ transform: translateY(0); opacity: 1; }
-.toast-icon{ font-size: 16px; }
-.toast-text{ font-size: 8.5px; font-weight: 800; color: #fff; }
-.toast-text span{ color: var(--success); display: block; font-size: 7.5px; }
-
-/* FLOATING TELEGRAM WIDGET */
+/* FLOATING TELEGRAM */
 .floating-tg{
-  position: fixed; bottom: 70px; right: 12px; width: 42px; height: 42px;
+  position: fixed; bottom: 75px; right: 14px; width: 48px; height: 48px;
   background: #0088cc; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 20px; box-shadow: 0 0 15px rgba(0,136,204,0.6); z-index: 1500; text-decoration: none;
+  color: #fff; font-size: 24px; box-shadow: 0 0 20px rgba(0,136,204,0.7); z-index: 1500; text-decoration: none;
   animation: pulseTG 2s infinite;
 }
 @keyframes pulseTG{
   0%{ box-shadow: 0 0 0 0 rgba(0,136,204,0.6); }
-  70%{ box-shadow: 0 0 0 12px rgba(0,136,204,0); }
+  70%{ box-shadow: 0 0 0 14px rgba(0,136,204,0); }
   100%{ box-shadow: 0 0 0 0 rgba(0,136,204,0); }
 }
 
+/* BOTTOM NAV */
 .bottom-nav{
   position: fixed; bottom: 0; left: 0; width: 100%;
-  background: rgba(3, 5, 8, 0.95); backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex; justify-content: space-around; align-items: center; padding: 5px 6px; z-index: 1600;
+  background: rgba(3, 5, 8, 0.96); backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; justify-content: space-around; align-items: center; padding: 8px 10px; z-index: 1600;
 }
-.nav-item{ text-align: center; color: var(--text-muted); text-decoration: none; font-size: 8px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 1px; }
-.nav-item span{ font-size: 14px; }
+.nav-item{ text-align: center; color: var(--text-muted); text-decoration: none; font-size: 9px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.nav-item span{ font-size: 16px; }
 .nav-item.active{ color: var(--cyan); }
 .nav-center-btn{
-  width: 38px; height: 38px; background: linear-gradient(135deg, var(--yellow), var(--accent));
+  width: 44px; height: 44px; background: linear-gradient(135deg, var(--yellow), var(--accent));
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 1000; color: #030508; box-shadow: 0 0 12px rgba(255, 193, 7, 0.6);
-  margin-top: -12px; border: 2.5px solid var(--bg-dark);
+  font-size: 18px; font-weight: 1000; color: #030508; box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+  margin-top: -16px; border: 3px solid var(--bg-dark);
 }
 
-footer{ text-align: center; font-size: 8.5px; color: var(--text-muted); font-weight: 700; margin-top: 6px; }
-.footer-tagline{ color: var(--cyan); font-weight: 1000; letter-spacing: 1.5px; margin-top: 2px; font-size: 7.5px; }
+footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weight: 700; margin-top: 10px; line-height: 1.4; }
+.footer-tagline{ color: var(--cyan); font-weight: 1000; letter-spacing: 2px; margin-top: 4px; font-size: 9px; }
 </style>
 </head>
 
@@ -540,7 +454,6 @@ footer{ text-align: center; font-size: 8.5px; color: var(--text-muted); font-wei
     </div>
     <div class="top-right-group">
       <div class="online-badge"><span></span> Online</div>
-      <div class="notif-btn">🔔<div class="notif-dot"></div></div>
     </div>
   </header>
 
@@ -551,9 +464,6 @@ footer{ text-align: center; font-size: 8.5px; color: var(--text-muted); font-wei
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <div class="side-text-left">PLAY • CLAIM • ENJOY</div>
-    <div class="side-text-right">GAMING IS NOT JUST A GAME IT'S A LIFESTYLE</div>
-
     <h1>Redeem Code Generator App</h1>
     <div class="trusted-tag">100% Trusted Bot • Payment Karo Aur Pao!</div>
     <p>🟢 <span id="liveUsersCount">1,482</span> Gamers Online Right Now</p>
@@ -565,7 +475,7 @@ footer{ text-align: center; font-size: 8.5px; color: var(--text-muted); font-wei
       <div class="quick-pill">🔒 Safe & Secure</div>
     </div>
 
-    <!-- FIXED 3-SEGMENT TIMER & SCARCITY -->
+    <!-- TIMER & SCARCITY -->
     <div class="urgency-grid">
       <div class="urgency-box">
         OFFER ENDS IN
@@ -574,79 +484,195 @@ footer{ text-align: center; font-size: 8.5px; color: var(--text-muted); font-wei
       </div>
       <div class="scarcity-box">
         Codes Left Today:
-        <span class="timer-val" style="color:var(--accent); font-size:10px; margin-top:3px;">Only 14 remaining!</span>
+        <span class="timer-val" style="color:var(--accent); font-size:11px; margin-top:4px;">Only 14 remaining!</span>
       </div>
     </div>
   </section>
 
-  <!-- MAIN GRID -->
-  <div class="grid">
+  <!-- PAYMENT SECTION -->
+  <div class="card">
+    <h2><span>💎 Scan & Pay / UPI</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹69 ONLY</span></h2>
+    <p class="muted">Scan QR Code or pay directly via PhonePe, GPay, Paytm or Any UPI App.</p>
 
-    <!-- PAYMENT SECTION -->
-    <div class="card">
-      <h2><span>💎 Scan & Pay / UPI</span> <span style="font-size:8px; background:rgba(255,0,127,0.15); color:var(--accent); padding:2px 5px; border-radius:6px;">₹69 ONLY</span></h2>
-      <p class="muted">Scan QR Code or Pay via UPI App</p>
-
-      <div class="payment-split">
-        <div class="scan-box-wrapper">
-          <div class="qr-container">
-            <div class="qr-scanner-line"></div>
-            <img src="IMG_20260911_222905.png" alt="QR Code">
-          </div>
-          <div class="upi-copy-box">
-            <code id="upiId">sunny999bot@nyes</code>
-            <button class="copy-btn" onclick="copyUpi()">COPY</button>
-          </div>
+    <div class="payment-split">
+      <div class="scan-box-wrapper">
+        <div class="qr-container">
+          <img src="IMG_20260911_222905.png" alt="QR Code">
         </div>
-
-        <div class="upi-apps-col">
-          <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🅿️ PhonePe</a>
-          <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🌐 GPay</a>
-          <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn"> Paytm</a>
+        <div class="upi-copy-box">
+          <code id="upiId">sunny999bot@nyes</code>
+          <button class="copy-btn" onclick="copyUpi()">COPY</button>
         </div>
       </div>
 
-      <div class="mini-sec-row">
-        <span>✔ Fast</span>
-        <span>✔ Secure</span>
-        <span>✔ Trusted</span>
-      </div>
-
-      <!-- UTR VERIFY BOX -->
-      <div class="utr-section">
-        <div class="utr-input-group">
-          <div class="utr-wrapper">
-            <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR...">
-            <span class="paste-icon" onclick="pasteUtr()" title="Paste">📋</span>
-          </div>
-          <button class="utr-btn" onclick="startTerminalLoader()">VERIFY</button>
-        </div>
-        <div id="utrStatusMsg"></div>
+      <div class="upi-apps-col">
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🅿️ PhonePe</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🌐 Google Pay</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn"> Paytm</a>
       </div>
     </div>
 
-    <!-- APP LOCKED CARD -->
-    <div class="app-locked-card">
-      <div class="lock-info">
-        <div class="lock-icon-box">🔒</div>
-        <div>
-          <div class="lock-title">APP LOCKED</div>
-          <div class="lock-sub">Complete Payment to Unlock</div>
-        </div>
-      </div>
-      <div class="lock-action-btn">LOCKED</div>
+    <div class="mini-sec-row">
+      <span>✔ 100% Secure</span>
+      <span>✔ Instant Verify</span>
+      <span>✔ Real Codes</span>
     </div>
 
+    <!-- UTR VERIFY BOX -->
+    <div class="utr-section">
+      <div class="utr-input-group">
+        <div class="utr-wrapper">
+          <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR number...">
+          <span class="paste-icon" onclick="pasteUtr()" title="Paste">📋</span>
+        </div>
+        <button class="utr-btn" onclick="startTerminalLoader()">VERIFY</button>
+      </div>
+      <div id="utrStatusMsg"></div>
+    </div>
   </div>
 
-  <!-- FEATURE ICONS ROW -->
-  <div class="features-grid">
-    <div class="feature-item"><span class="feature-icon">🚀</span>100% Working</div>
-    <div class="feature-item"><span class="feature-icon">⚡</span>Fast Process</div>
-    <div class="feature-item"><span class="feature-icon">🎮</span>All Games</div>
-    <div class="feature-item"><span class="feature-icon">👑</span>Limited Stock</div>
+  <!-- CLEAR STEP-BY-STEP INSTRUCTIONS (SAAF-SAAF LIKHA HUA) -->
+  <div class="instructions-box">
+    <h3>📖 App aur Redeem Code Kaise Milega? (Instructions)</h3>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div><strong>Payment Karein:</strong> Upar diye gaye QR Code ko scan karein ya PhonePe / GPay / Paytm button par click karke ₹69 ka payment karein. Aap UPI ID <code>sunny999bot@nyes</code> par bhi direct pay kar sakte hain.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div><strong>UTR Number Copy Karein:</strong> Payment successful hone ke baad aapko ek 12-digit ka UTR / Reference number milega. Use wahan se copy kar lein.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div><strong>Yahan Daalein:</strong> Upar diye gaye UTR box mein us 12-digit number ko paste karein aur <strong>VERIFY</strong> button par click karein.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div><strong>Code Paayein:</strong> Verify hote hi aap automatic Telegram Bot par chale jayenge jahan aapko turant aapka Free Fire / Redeem Code mil jayega!</div>
+    </div>
   </div>
 
-  <!-- FAN REVIEWS -->
-  <div class="card" style="margin-bottom: 10px;">
-   
+  <footer>
+    © 2026 Sunny 999 Bot Official. All Rights Reserved.<br>
+    <div class="footer-tagline">PLAY • CLAIM • ENJOY</div>
+  </footer>
+
+</div>
+
+<!-- TERMINAL MODAL -->
+<div class="terminal-modal" id="terminalModal">
+  <div class="terminal-box">
+    <div class="terminal-header">
+      <span>SECURE VERIFICATION SERVER</span>
+      <span style="color:var(--accent)">[ACTIVE]</span>
+    </div>
+    <div class="terminal-log" id="terminalLog">
+      <div>> Initializing secure gateway...</div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING TELEGRAM WIDGET -->
+<a href="https://t.me/Sunny999VerifyBot" target="_blank" class="floating-tg">✈️</a>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active"><span>🏠</span>Home</a>
+  <a href="#" class="nav-item"><span>🎁</span>Rewards</a>
+  <a href="#" class="nav-center-btn">S9</a>
+  <a href="#" class="nav-item"><span>❓</span>FAQ</a>
+  <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="nav-item"><span>💬</span>Contact</a>
+</nav>
+
+<script>
+/* COPY UPI */
+function copyUpi(){
+  const upi = document.getElementById("upiId").innerText;
+  navigator.clipboard.writeText(upi).then(()=>{
+    const btn = document.querySelector(".copy-btn");
+    btn.innerText = "COPIED ✓";
+    btn.style.background = "#00ff88";
+    btn.style.color = "#05070a";
+    setTimeout(()=>{
+      btn.innerText = "COPY";
+      btn.style.background = "var(--primary)";
+      btn.style.color = "#fff";
+    }, 1500);
+  });
+}
+
+function pasteUtr(){
+  navigator.clipboard.readText().then(text => {
+    document.getElementById("utrInput").value = text.trim();
+  }).catch(err => {
+    alert("Please paste UTR manually.");
+  });
+}
+
+/* TIMER LOGIC */
+let totalSeconds = 14 * 3600 + 59 * 60 + 45;
+
+function updateTimer() {
+  let h = Math.floor(totalSeconds / 3600);
+  let m = Math.floor((totalSeconds % 3600) / 60);
+  let s = totalSeconds % 60;
+  
+  const countdownEl = document.getElementById("countdown");
+  if(countdownEl) {
+    countdownEl.innerText = 
+      (h < 10 ? "0" + h : h) + " : " + 
+      (m < 10 ? "0" + m : m) + " : " + 
+      (s < 10 ? "0" + s : s);
+  }
+  
+  if(totalSeconds > 0) {
+    totalSeconds--;
+  } else {
+    totalSeconds = 15 * 3600;
+  }
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+
+/* TERMINAL LOADER */
+function startTerminalLoader(){
+  const val = document.getElementById("utrInput").value.trim();
+  const msg = document.getElementById("utrStatusMsg");
+  
+  if(val.length < 8){
+    msg.style.display = "block";
+    msg.style.color = "#ff007f";
+    msg.innerText = "❌ Please enter a valid 12-digit UTR number!";
+    return;
+  }
+
+  const modal = document.getElementById("terminalModal");
+  const log = document.getElementById("terminalLog");
+  modal.style.display = "flex";
+  
+  log.innerHTML = `<div>> Connecting to secure payment gateway...</div>`;
+  
+  setTimeout(() => {
+    log.innerHTML += `<div>> Verifying UTR: ${val} in database...</div>`;
+  }, 900);
+
+  setTimeout(() => {
+    log.innerHTML += `<div>> Match found! Generating Redeem Code...</div>`;
+    log.style.color = "var(--cyan)";
+  }, 1800);
+
+  setTimeout(() => {
+    log.innerHTML += `<div>> SUCCESS! Redirecting to Telegram bot...</div>`;
+    log.style.color = "var(--success)";
+  }, 2700);
+
+  setTimeout(() => {
+    modal.style.display = "none";
+    window.location.href = "https://t.me/Sunny999VerifyBot";
+  }, 3500);
+}
+</script>
+
+</body>
+</html>
