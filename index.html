@@ -3,204 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNNY 999 BOT</title>
+
+<title>SUNNY 999 BOT | REDEEM CODE GENERATOR APP</title>
 
 <style>
-*{box-sizing:border-box}
-body{
+*{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f6fff9;
-  color:#102018;
+  padding:0;
+  box-sizing:border-box;
 }
-body:before{
-  content:"";
-  position:fixed;
-  width:320px;
-  height:320px;
-  background:#20c878;
-  filter:blur(130px);
-  opacity:.18;
-  top:-100px;
-  left:-100px;
-  z-index:-1;
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%,#d9fff0 0%,transparent 30%),
+    radial-gradient(circle at 90% 30%,#dffff1 0%,transparent 30%),
+    linear-gradient(135deg,#f3fff9,#ffffff,#ecfff6);
+  color:#10251d;
+  min-height:100vh;
 }
+
 .container{
-  max-width:480px;
+  width:100%;
+  max-width:720px;
   margin:auto;
-  padding:18px 14px 35px;
+  padding:20px 15px 45px;
 }
+
+/* HEADER */
+
 .header{
   text-align:center;
-  margin:10px 0 18px;
+  padding:8px 0 22px;
 }
+
 .badge{
   display:inline-block;
-  background:#e5fff0;
-  color:#0a9b55;
-  border:1px solid #b9f3d1;
-  padding:7px 13px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:bold;
-}
-h1{
-  margin:10px 0 5px;
-  font-size:30px;
-}
-.subtitle{
-  color:#64736b;
-  font-size:14px;
-}
-.card{
-  background:rgba(255,255,255,.94);
-  border:1px solid #dceee4;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:14px;
-  box-shadow:0 10px 30px rgba(20,130,75,.08);
-}
-.price{
-  text-align:center;
-}
-.old{
-  color:#999;
-  text-decoration:line-through;
-  font-size:17px;
-}
-.new{
-  color:#079b50;
-  font-size:38px;
+  padding:11px 20px;
+  border-radius:50px;
+  border:1px solid #a5e9ce;
+  background:#effff8;
+  color:#00995a;
   font-weight:800;
-  margin:3px 0;
+  box-shadow:0 0 25px rgba(0,190,110,.15);
 }
-.offer{
-  font-size:13px;
-  color:#65736c;
+
+.header h1{
+  margin-top:18px;
+  font-size:42px;
+  letter-spacing:-1px;
 }
-.qrbox{
-  display:flex;
-  justify-content:center;
-  margin:15px 0;
-}
-.qrbox img{
-  width:210px;
-  height:210px;
-  object-fit:contain;
-  border:5px solid #fff;
-  border-radius:18px;
-  box-shadow:0 0 0 2px #24c979,0 0 30px rgba(36,201,121,.35);
-}
-.upi{
-  background:#f1fff7;
-  border:1px solid #cceedd;
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
-  font-weight:bold;
-  color:#087b43;
-  word-break:break-all;
-}
-button,a.btn{
-  width:100%;
-  border:0;
-  border-radius:13px;
-  padding:14px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  text-decoration:none;
-  display:block;
-  text-align:center;
-}
-.copy{
-  margin-top:9px;
-  background:#eafff2;
-  color:#078b49;
-}
-.telegram{
-  background:#159ee8;
-  color:white;
-  margin-top:10px;
-}
-.submit{
-  background:#0aa85a;
-  color:white;
-  margin-top:10px;
-}
-input{
-  width:100%;
-  padding:14px;
-  border:1px solid #cfe3d8;
-  border-radius:12px;
-  outline:none;
-  font-size:15px;
+
+.header p{
   margin-top:8px;
+  font-size:19px;
+  color:#61736b;
 }
-input:focus{
-  border-color:#13b866;
-  box-shadow:0 0 0 3px rgba(19,184,102,.1);
+
+/* CARDS */
+
+.card{
+  background:rgba(255,255,255,.95);
+  border:1px solid #d5ebe1;
+  border-radius:27px;
+  padding:25px 20px;
+  margin-top:18px;
+  box-shadow:
+    0 12px 35px rgba(0,120,75,.10);
 }
-.locked{
+
+.center{
   text-align:center;
-  background:#f5f7f6;
-  border:1px dashed #b9c8c0;
 }
-.lock{
-  font-size:30px;
+
+/* APP */
+
+.app-icon{
+  font-size:58px;
+  margin-bottom:10px;
 }
-.appbtn{
-  background:#aaa;
-  color:white;
-  margin-top:10px;
-  pointer-events:none;
-  opacity:.65;
+
+.card h2{
+  font-size:27px;
+  margin-bottom:10px;
 }
-.appbtn.unlocked{
-  background:#08a957;
-  pointer-events:auto;
-  opacity:1;
+
+.description{
+  color:#65756d;
+  line-height:1.6;
+  font-size:16px;
 }
-.status{
-  text-align:center;
-  margin-top:10px;
-  font-size:13px;
-  color:#68766f;
-}
-.steps{
+
+.features{
   display:grid;
   gap:10px;
+  margin-top:20px;
 }
+
+.feature{
+  padding:14px;
+  border-radius:16px;
+  background:#f0fff8;
+  border:1px solid #d7f1e5;
+  text-align:left;
+  font-weight:600;
+}
+
+/* PRICE */
+
+.price-card{
+  text-align:center;
+}
+
+.old-price{
+  font-size:22px;
+  color:#888;
+  text-decoration:line-through;
+}
+
+.price{
+  font-size:62px;
+  font-weight:900;
+  color:#00a85a;
+  margin:3px 0;
+}
+
+.offer{
+  color:#68766f;
+}
+
+/* PAYMENT */
+
+.payment-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.payment-title h2{
+  margin:0;
+}
+
+/* QR */
+
+.qr-box{
+  width:min(350px,100%);
+  margin:20px auto;
+  padding:10px;
+  border:3px solid #00c879;
+  border-radius:28px;
+  background:#fff;
+
+  box-shadow:
+    0 0 20px rgba(0,200,120,.35),
+    0 0 55px rgba(0,200,120,.16);
+}
+
+.qr-box img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:13px;
+}
+
+/* UPI */
+
+.upi-box{
+  text-align:center;
+  padding:16px;
+  border-radius:17px;
+  background:#effff8;
+  border:1px solid #c8eadc;
+  color:#00834d;
+  font-weight:800;
+  font-size:18px;
+  word-break:break-all;
+}
+
+/* BUTTONS */
+
+button,
+.button{
+  width:100%;
+  display:block;
+  border:none;
+  border-radius:18px;
+  padding:17px;
+  margin-top:13px;
+  font-size:17px;
+  font-weight:800;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.copy-button{
+  background:#e3fff1;
+  color:#008b52;
+}
+
+.telegram-button{
+  background:#12a8e8;
+  color:white;
+  box-shadow:0 8px 22px rgba(18,168,232,.20);
+}
+
+/* VERIFY */
+
+.verify-box{
+  margin-top:15px;
+  padding:16px;
+  border-radius:17px;
+  background:#f5faf7;
+  color:#53645c;
+  line-height:1.6;
+}
+
+/* LOCKED APP */
+
+.locked-card{
+  text-align:center;
+  border:2px solid #c9ebdc;
+  box-shadow:0 0 30px rgba(0,190,110,.12);
+}
+
+.locked-button{
+  background:#edf2ef;
+  color:#7b8781;
+  cursor:not-allowed;
+}
+
+/* STEPS */
+
 .step{
   display:flex;
-  gap:10px;
   align-items:flex-start;
+  gap:13px;
+  padding:12px 0;
+  line-height:1.5;
 }
-.num{
-  min-width:28px;
-  height:28px;
+
+.step-number{
+  min-width:33px;
+  height:33px;
   border-radius:50%;
-  background:#dffbea;
-  color:#078c49;
+  background:#00aa60;
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:bold;
+  font-weight:900;
 }
-.step b{
-  font-size:14px;
+
+/* FAQ */
+
+.faq{
+  padding:15px 0;
+  border-top:1px solid #e1ece7;
+  line-height:1.55;
 }
-.step span{
+
+.faq:first-of-type{
+  border-top:none;
+}
+
+.faq b{
   display:block;
-  color:#68766f;
-  font-size:12px;
-  margin-top:3px;
+  margin-bottom:5px;
 }
-footer{
+
+/* FOOTER */
+
+.footer{
   text-align:center;
-  color:#89958f;
-  font-size:11px;
-  margin-top:20px;
+  padding:30px 5px 5px;
+  color:#7b8781;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:520px){
+
+  .container{
+    padding:18px 13px 40px;
+  }
+
+  .header h1{
+    font-size:34px;
+  }
+
+  .header p{
+    font-size:17px;
+  }
+
+  .card{
+    padding:22px 16px;
+    border-radius:24px;
+  }
+
+  .price{
+    font-size:54px;
+  }
+
+  .qr-box{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -209,206 +319,390 @@ footer{
 
 <div class="container">
 
-  <div class="header">
-    <div class="badge">⚡ PREMIUM ACCESS</div>
-    <h1>SUNNY 999 BOT</h1>
-    <div class="subtitle">Premium access after payment verification</div>
+<!-- HEADER -->
+
+<header class="header">
+
+  <span class="badge">
+    ⚡ PREMIUM ACCESS
+  </span>
+
+  <h1>
+    SUNNY 999 BOT
+  </h1>
+
+  <p>
+    🎁 REDEEM CODE GENERATOR APP
+  </p>
+
+</header>
+
+
+<!-- APP INTRO -->
+
+<section class="card center">
+
+  <div class="app-icon">
+    🎁
   </div>
 
-  <div class="card price">
-    <div class="old">₹499</div>
-    <div class="new">₹69</div>
-    <div class="offer">Limited premium access offer</div>
+  <h2>
+    REDEEM CODE GENERATOR APP
+  </h2>
+
+  <p class="description">
+    SUNNY 999 BOT ka premium Redeem Code Generator App.
+    Payment verification complete hone ke baad premium
+    app access milega.
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      🎟️ Redeem Code Generator
+    </div>
+
+    <div class="feature">
+      ⚡ Fast & Simple Interface
+    </div>
+
+    <div class="feature">
+      🔐 Premium Access
+    </div>
+
+    <div class="feature">
+      📱 Mobile Friendly
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>💳 Make Payment</h3>
+</section>
 
-    <div class="qrbox">
-      <img src="qr.png" alt="Payment QR">
-    </div>
 
-    <div class="upi">
-      UPI: sunny999bot@nyes
-    </div>
+<!-- PRICE -->
 
-    <button class="copy" onclick="copyUPI()">
-      📋 Copy UPI ID
-    </button>
+<section class="card price-card">
 
-    <a class="btn telegram"
-       href="https://t.me/Sunny999VerifyBot"
-       target="_blank">
-      🤖 Verify Payment on Telegram
-    </a>
+  <div class="old-price">
+    ₹499
   </div>
 
-  <div class="card">
-    <h3>🔐 Submit UTR</h3>
-
-    <div style="font-size:13px;color:#68766f">
-      Payment karne ke baad Telegram bot par screenshot + UTR bhejo.
-      Approval ke baad yahan UTR enter karke app unlock kar sakte ho.
-    </div>
-
-    <input
-      id="utr"
-      type="text"
-      placeholder="Enter your UTR number"
-      autocomplete="off">
-
-    <button class="submit" onclick="checkPayment()">
-      🔎 Check Verification
-    </button>
-
-    <div id="status" class="status">
-      Payment verification pending
-    </div>
+  <div class="price">
+    ₹69
   </div>
 
-  <div class="card locked">
-    <div class="lock" id="lock">🔒</div>
-    <h3 id="appTitle">APP LOCKED</h3>
-
-    <div class="status" id="appStatus">
-      Payment approval ke baad app unlock hoga.
-    </div>
-
-    <a
-      id="appButton"
-      class="btn appbtn"
-      href="https://shorturl.at/bStBD"
-      target="_blank">
-      🔒 GET APP
-    </a>
+  <div class="offer">
+    Limited Premium Access Offer
   </div>
 
-  <div class="card">
-    <h3>⚙️ How It Works</h3>
+</section>
 
-    <div class="steps">
 
-      <div class="step">
-        <div class="num">1</div>
-        <div>
-          <b>Pay ₹69</b>
-          <span>QR ya UPI ID se payment karo.</span>
-        </div>
-      </div>
+<!-- PAYMENT -->
 
-      <div class="step">
-        <div class="num">2</div>
-        <div>
-          <b>Send Proof</b>
-          <span>Telegram bot par screenshot aur UTR bhejo.</span>
-        </div>
-      </div>
+<section class="card">
 
-      <div class="step">
-        <div class="num">3</div>
-        <div>
-          <b>Manual Verification</b>
-          <span>Payment manually check karke approve kiya jayega.</span>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="num">4</div>
-        <div>
-          <b>Get App</b>
-          <span>Approval ke baad app access unlock hoga.</span>
-        </div>
-      </div>
-
-    </div>
+  <div class="payment-title">
+    <span style="font-size:28px;">💳</span>
+    <h2>Make Payment</h2>
   </div>
 
-  <footer>
-    © 2026 SUNNY 999 BOT • Payment verification required
-  </footer>
+  <p class="description">
+    ₹69 payment apne UPI app se complete karo.
+  </p>
+
+
+  <!-- QR CODE -->
+
+  <div class="qr-box">
+
+    <!-- EXACT QR FILE NAME -->
+    <img
+      src="IMG_20260911_222905.png"
+      alt="Payment QR"
+    >
+
+  </div>
+
+
+  <!-- UPI -->
+
+  <div class="upi-box">
+    UPI: sunny999bot@nyes
+  </div>
+
+
+  <!-- COPY -->
+
+  <button
+    class="copy-button"
+    onclick="copyUPI()"
+  >
+    📋 Copy UPI ID
+  </button>
+
+
+  <!-- TELEGRAM -->
+
+  <a
+    class="button telegram-button"
+    href="https://t.me/Sunny999VerifyBot"
+    target="_blank"
+    rel="noopener"
+  >
+    🤖 Verify Payment on Telegram
+  </a>
+
+</section>
+
+
+<!-- VERIFICATION -->
+
+<section class="card">
+
+  <h2>
+    🔐 Payment Verification
+  </h2>
+
+  <p class="description">
+    Payment karne ke baad Telegram verification bot par
+    payment screenshot aur UTR / Transaction ID bhejo.
+  </p>
+
+  <div class="verify-box">
+
+    ⏳ <b>Verification Process</b>
+
+    <br><br>
+
+    Payment submit hone ke baad payment manually
+    verify kiya jayega.
+
+    <br><br>
+
+    Genuine payment approve hone ke baad
+    Telegram bot par app link milega.
+
+  </div>
+
+
+  <a
+    class="button telegram-button"
+    href="https://t.me/Sunny999VerifyBot"
+    target="_blank"
+    rel="noopener"
+  >
+    📤 Submit Payment for Verification
+  </a>
+
+</section>
+
+
+<!-- APP LOCK -->
+
+<section class="card locked-card">
+
+  <div style="font-size:50px;">
+    🔒
+  </div>
+
+  <h2>
+    Premium App
+  </h2>
+
+  <p class="description">
+    Payment approval ke bina premium app access locked rahega.
+  </p>
+
+  <button
+    class="locked-button"
+    disabled
+  >
+    🔒 APP LOCKED — VERIFY PAYMENT FIRST
+  </button>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="card">
+
+  <h2>
+    📋 How It Works
+  </h2>
+
+
+  <div class="step">
+
+    <div class="step-number">1</div>
+
+    <div>
+      ₹69 UPI payment complete karo.
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">2</div>
+
+    <div>
+      Telegram verification bot kholo.
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">3</div>
+
+    <div>
+      Payment screenshot bhejo.
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">4</div>
+
+    <div>
+      UTR / Transaction ID bhejo.
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">5</div>
+
+    <div>
+      Payment manually verify hone ka wait karo.
+    </div>
+
+  </div>
+
+
+  <div class="step">
+
+    <div class="step-number">6</div>
+
+    <div>
+      Approval ke baad Telegram par app link milega.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="card">
+
+  <h2>
+    ❓ FAQ
+  </h2>
+
+
+  <div class="faq">
+
+    <b>
+      Premium access kitne ka hai?
+    </b>
+
+    ₹69.
+
+  </div>
+
+
+  <div class="faq">
+
+    <b>
+      Payment ke baad kya karna hai?
+    </b>
+
+    Telegram verification bot par payment screenshot
+    aur UTR submit karna hai.
+
+  </div>
+
+
+  <div class="faq">
+
+    <b>
+      App link kab milega?
+    </b>
+
+    Genuine payment verify aur approve hone ke
+    baad Telegram bot app link bhejega.
+
+  </div>
+
+
+  <div class="faq">
+
+    <b>
+      Payment verify kaise hoga?
+    </b>
+
+    Payment manually check karke approval diya jayega.
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  © 2026 SUNNY 999 BOT
+
+  <br>
+
+  🎁 REDEEM CODE GENERATOR APP
+
+</footer>
 
 </div>
 
+
 <script>
 
-const API_URL = "https://sunny999bot.onrender.com";
-
 function copyUPI(){
-  navigator.clipboard.writeText("sunny999bot@nyes")
-    .then(()=>{
-      alert("UPI ID copied ✅");
-    })
-    .catch(()=>{
-      alert("UPI ID: sunny999bot@nyes");
-    });
-}
 
-async function checkPayment(){
+  const upi = "sunny999bot@nyes";
 
-  const utrInput = document.getElementById("utr");
-  const status = document.getElementById("status");
-  const utr = utrInput.value.trim();
+  if(
+    navigator.clipboard &&
+    window.isSecureContext
+  ){
 
-  if(!utr){
-    status.innerText = "⚠️ Pehle UTR number enter karo.";
-    return;
-  }
+    navigator.clipboard
+      .writeText(upi)
+      .then(function(){
 
-  status.innerText = "⏳ Verification check ho rahi hai...";
+        alert("UPI ID copied!");
 
-  try{
+      })
+      .catch(function(){
 
-    const response = await fetch(
-      API_URL + "/api/status?utr=" + encodeURIComponent(utr)
-    );
+        alert("UPI ID: " + upi);
 
-    if(!response.ok){
-      throw new Error("Server error");
-    }
+      });
 
-    const data = await response.json();
+  }else{
 
-    if(data.status === "approved"){
-
-      status.innerText = "✅ Payment approved!";
-
-      document.getElementById("lock").innerText = "🔓";
-      document.getElementById("appTitle").innerText = "APP UNLOCKED";
-      document.getElementById("appStatus").innerText =
-        "Payment successfully verified.";
-
-      const btn = document.getElementById("appButton");
-      btn.classList.add("unlocked");
-      btn.innerText = "🚀 GET APP";
-      btn.href =
-        API_URL + "/open-app?utr=" + encodeURIComponent(utr);
-
-    }
-    else if(data.status === "pending"){
-
-      status.innerText =
-        "🕐 Payment pending. Approval ka wait karo.";
-
-    }
-    else if(data.status === "rejected"){
-
-      status.innerText =
-        "❌ Payment rejected. Details check karke dobara submit karo.";
-
-    }
-    else{
-
-      status.innerText =
-        "❓ UTR nahi mila. Pehle Telegram bot par submit karo.";
-
-    }
-
-  }catch(error){
-
-    status.innerText =
-      "⚠️ Server se connection nahi ho raha. Thodi der baad try karo.";
+    alert("UPI ID: " + upi);
 
   }
+
 }
 
 </script>
