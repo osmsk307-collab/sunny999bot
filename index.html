@@ -7,12 +7,13 @@
 
 <style>
 :root{
-  --bg-dark: #05070a;
-  --card-bg: rgba(10, 15, 25, 0.90);
+  --bg-dark: #030508;
+  --card-bg: rgba(10, 14, 26, 0.95);
   --primary: #9d4edd;
   --cyan: #00f0ff;
   --accent: #ff007f;
   --success: #00ff88;
+  --yellow: #ffc107;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 }
@@ -23,15 +24,16 @@ body{
   font-family:'Segoe UI', system-ui, sans-serif;
   background: var(--bg-dark);
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(157, 78, 221, 0.22) 0, transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.15) 0, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.12) 0, transparent 50%);
+    radial-gradient(circle at 15% 10%, rgba(157, 78, 221, 0.25) 0, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(0, 240, 255, 0.2) 0, transparent 40%),
+    radial-gradient(circle at 50% 60%, rgba(255, 0, 127, 0.15) 0, transparent 50%);
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-bottom: 90px; /* Space for bottom navbar */
 }
 
-/* Cyber Grid Background Lines */
+/* Cyber Grid Background */
 body::before{
   content:"";
   position:fixed;
@@ -44,23 +46,7 @@ body::before{
 .container{
   width:min(1080px, 94%);
   margin:auto;
-  padding:20px 0 90px;
-}
-
-/* SERVER TELEMETRY TOP BAR */
-.telemetry-bar{
-  background: rgba(0, 240, 255, 0.05);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 6px 16px;
-  border-radius: 12px;
-  font-family: monospace;
-  font-size: 11px;
-  color: var(--cyan);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(0,240,255,0.08);
+  padding:15px 0 30px;
 }
 
 /* TOPBAR */
@@ -70,256 +56,228 @@ body::before{
   justify-content:space-between;
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  padding: 16px 26px;
-  border-radius: 22px;
-  margin-bottom: 22px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.7), inset 0 0 20px rgba(0,240,255,0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 12px 18px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
 
 .brand-box{
   display:flex;
   align-items:center;
-  gap:15px;
+  gap:12px;
 }
 
 .logo-badge{
-  width:50px;
-  height:50px;
-  border-radius:14px;
-  background:linear-gradient(135deg, var(--cyan), var(--primary), var(--accent));
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--yellow), var(--accent), var(--primary));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow: 0 0 22px rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.5);
+  font-weight: 1000;
+  font-size: 20px;
+  color: #05070a;
 }
-.logo-badge span{ font-size: 24px; }
 
 .brand-info h2{
-  font-size:16px;
+  font-size:15px;
   font-weight:1000;
-  background: linear-gradient(90deg, #fff, var(--cyan));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.insta-link-badge{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 800;
   color: #fff;
-  background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
-  padding: 4px 10px;
-  border-radius: 20px;
-  text-decoration: none;
-  margin-top: 3px;
-  box-shadow: 0 0 10px rgba(253, 29, 29, 0.4);
-  transition: transform 0.2s;
-}
-.insta-link-badge:hover{ transform: scale(1.05); }
-.insta-link-badge svg{ width: 11px; height: 11px; fill: #fff; }
-
-.status-group{
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 4px;
 }
 
-.online-status, .active-users-badge{
+.verified-tick{
+  color: var(--cyan);
+  font-size: 13px;
+}
+
+.insta-handle{
+  font-size: 11px;
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 700;
+  display: block;
+  margin-top: 1px;
+}
+
+.top-right-group{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.online-badge{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
   font-size:11px;
   font-weight:900;
-  padding: 6px 12px;
-  border-radius: 20px;
-}
-
-.online-status{
   color: var(--success);
   background: rgba(0, 255, 136, 0.12);
-  border: 1px solid rgba(0, 255, 136, 0.4);
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  padding: 5px 10px;
+  border-radius: 20px;
 }
-.online-status span{
-  width:7px; height:7px; background: var(--success); border-radius: 50%;
-  box-shadow: 0 0 8px var(--success); animation: pulseDot 1.5s infinite;
-}
-
-.active-users-badge{
-  color: var(--cyan);
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+.online-badge span{
+  width:6px; height:6px; background: var(--success); border-radius: 50%;
+  box-shadow: 0 0 8px var(--success);
 }
 
-@keyframes pulseDot{ 50%{opacity:0.2} }
+.menu-icon{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+  cursor: pointer;
+}
+.menu-icon span{ width: 18px; height: 2px; background: #fff; border-radius: 2px; }
 
 /* HERO SECTION */
 .hero{
   text-align:center;
-  padding:38px 20px;
+  padding: 24px 15px;
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(157, 78, 221, 0.35);
-  border-radius: 30px;
-  box-shadow: 0 25px 65px rgba(0,0,0,0.8), inset 0 0 25px rgba(157,78,221,0.12);
-  margin-bottom: 22px;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  margin-bottom: 16px;
   position: relative;
   overflow: hidden;
 }
 
 .hero h1{
-  font-size:clamp(26px, 5vw, 42px);
+  font-size:clamp(22px, 4.5vw, 36px);
   font-weight:1000;
   line-height:1.2;
   background: linear-gradient(90deg, var(--cyan), #fff, var(--accent));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
 }
 
-.hero p{
-  color: var(--text-muted);
-  font-size:13px;
-  max-width:600px;
-  margin:0 auto 14px;
-  font-weight: 600;
-}
-
-.hinglish-tag{
+.trusted-tag{
   display: inline-block;
   background: rgba(255, 0, 127, 0.15);
   color: #ff66b2;
   border: 1px solid rgba(255, 0, 127, 0.4);
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 20px;
-  font-size: 13px;
-  font-weight: 900;
-  margin-bottom: 16px;
-  box-shadow: 0 0 15px rgba(255,0,127,0.25);
-}
-
-/* TRUST METRICS ROW */
-.trust-metrics-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.trust-metric-pill{
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 10px;
-  border-radius: 14px;
   font-size: 12px;
   font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.hero p{
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+/* QUICK FEATURE PILLS */
+.quick-pills-row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.quick-pill{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 6px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 800;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  gap: 4px;
 }
 
-/* URGENCY & SCARCITY BAR */
-.urgency-flex{
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+/* URGENCY TIMERS */
+.urgency-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
-
 .urgency-box, .scarcity-box{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  padding: 8px 18px;
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 10px;
   border-radius: 14px;
-  font-size: 12px;
+  text-align: center;
+  font-size: 10px;
   font-weight: 900;
   color: var(--cyan);
 }
-
 .scarcity-box{
-  background: rgba(255, 0, 127, 0.08);
-  border-color: rgba(255, 0, 127, 0.3);
+  background: rgba(255, 0, 127, 0.06);
+  border-color: rgba(255, 0, 127, 0.25);
   color: var(--accent);
 }
-
-.timer{
-  background: var(--cyan);
-  color: #05070a;
-  padding: 3px 8px;
-  border-radius: 6px;
+.timer-val{
+  display: block;
   font-family: monospace;
-  font-size: 13px;
-  font-weight: 1000;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 2px;
 }
 
-/* GRID LAYOUT */
+/* MAIN GRID LAYOUT */
 .grid{
   display:grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap:22px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .card{
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border-radius: 28px;
-  padding: 26px;
+  border-radius: 24px;
+  padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
   position: relative;
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius: 28px;
-  padding: 1.5px;
-  background: linear-gradient(135deg, var(--cyan), var(--primary), var(--accent));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
 .card h2{
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 1000;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .muted{
   color: var(--text-muted);
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 11px;
 }
 
 /* PRICE BOX */
 .price-box{
-  margin: 15px 0;
-  padding: 16px;
+  margin: 12px 0;
+  padding: 12px;
   background: rgba(255,255,255,0.02);
-  border-radius: 18px;
+  border-radius: 14px;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.05);
 }
-
-.old-price{ text-decoration: line-through; color: var(--text-muted); font-size: 15px; }
+.old-price{ text-decoration: line-through; color: var(--text-muted); font-size: 13px; }
 .main-price{
-  font-size: 46px;
+  font-size: 38px;
   font-weight: 1000;
   background: linear-gradient(90deg, var(--cyan), var(--success));
   -webkit-background-clip: text;
@@ -328,73 +286,64 @@ body::before{
 }
 .offer-tag{
   display: inline-block;
-  background: rgba(0, 240, 255, 0.15);
+  background: rgba(0, 240, 255, 0.12);
   color: var(--cyan);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 11px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-size: 10px;
   font-weight: 900;
 }
 
-/* DIRECT UPI APPS */
-.upi-apps-label{
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
+/* UPI APPS */
 .upi-apps-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
-
 .upi-app-btn{
-  padding: 10px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
   text-align: center;
   text-decoration: none;
   transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
 }
-.upi-app-btn:hover{
-  background: rgba(0, 240, 255, 0.2);
-  border-color: var(--cyan);
-  transform: translateY(-2px);
+.upi-app-btn:hover{ background: rgba(0, 240, 255, 0.15); border-color: var(--cyan); }
+
+/* SECURITY BADGES MINI ROW */
+.mini-sec-row{
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 900;
+  color: var(--success);
+  margin-bottom: 12px;
 }
 
 /* QR CONTAINER */
 .qr-container{
-  width: 175px;
-  margin: 14px auto;
-  padding: 10px;
+  width: 155px;
+  margin: 10px auto;
+  padding: 8px;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
   position: relative;
   overflow: hidden;
   border: 2px solid var(--cyan);
 }
-
-.qr-container img{ width: 100%; display: block; border-radius: 8px; }
-
+.qr-container img{ width: 100%; display: block; border-radius: 6px; }
 .qr-scanner-line{
   position: absolute;
   top: 0; left: 0; width: 100%; height: 3px;
   background: var(--accent);
-  box-shadow: 0 0 12px var(--accent), 0 0 20px var(--cyan);
+  box-shadow: 0 0 10px var(--accent);
   animation: scanQR 2s infinite ease-in-out;
 }
 @keyframes scanQR{
@@ -402,161 +351,160 @@ body::before{
   50% { top: 92%; opacity: 1; }
 }
 
-/* UPI COPY BOX */
+/* UPI COPY & UTR */
 .upi-copy-box{
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(0,0,0,0.4); padding: 8px 12px;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 10px;
+}
+.upi-copy-box code{ flex: 1; font-size: 12px; font-weight: bold; color: var(--cyan); }
+.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 900; font-size: 10px; cursor: pointer; }
+
+.utr-input-group{ display: flex; gap: 6px; margin-top: 5px; }
+.utr-input{
+  flex: 1; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12);
+  padding: 7px 10px; border-radius: 8px; color: #fff; font-size: 11px; outline: none;
+}
+.utr-btn{ background: var(--cyan); color: #05070a; border: none; padding: 7px 12px; border-radius: 8px; font-weight: 1000; font-size: 10px; cursor: pointer; }
+#utrStatusMsg{ font-size: 10px; margin-top: 5px; font-weight: 800; display: none; }
+
+.btn{
+  display: block; width: 100%; padding: 13px; border-radius: 12px; border: none;
+  font-weight: 1000; font-size: 12px; text-align: center; text-decoration: none; cursor: pointer;
+  background: linear-gradient(90deg, #0088cc, #00aced); color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+  margin-top: 10px;
+}
+
+/* FEATURE ICONS ROW */
+.features-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  background: var(--card-bg);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 14px 10px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.feature-item{ font-size: 9px; font-weight: 900; color: var(--text-muted); }
+.feature-icon{ font-size: 18px; margin-bottom: 2px; display: block; }
+
+/* REVIEWS SECTION */
+.reviews-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  background: rgba(0,0,0,0.4);
-  padding: 10px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 12px;
+  margin-top: 10px;
 }
-.upi-copy-box code{ flex: 1; font-size: 13px; font-weight: bold; color: var(--cyan); }
-
-.copy-btn{
-  background: var(--primary); color: #fff; border: none;
-  padding: 7px 12px; border-radius: 9px; font-weight: 900; font-size: 11px; cursor: pointer;
-  transition: transform 0.2s;
-}
-.copy-btn:hover{transform: scale(1.05); background: var(--accent);}
-
-/* INTERACTIVE UTR TRACKER WIDGET */
-.utr-tracker-box{
-  background: rgba(255,255,255,0.02);
+.review-card{
+  background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
   padding: 12px;
   border-radius: 14px;
-  margin-bottom: 14px;
 }
-.utr-input-group{
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
-}
-.utr-input{
-  flex: 1;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 12px;
-  outline: none;
-}
-.utr-input:focus{ border-color: var(--cyan); }
-.utr-btn{
-  background: var(--cyan);
-  color: #05070a;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-weight: 1000;
-  font-size: 11px;
-  cursor: pointer;
-}
-#utrStatusMsg{ font-size: 11px; margin-top: 6px; font-weight: 800; display: none; }
+.review-header{ display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.review-avatar{ width: 28px; height: 28px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; color: #fff; }
+.review-name{ font-size: 11px; font-weight: 900; color: #fff; }
+.review-stars{ color: var(--yellow); font-size: 9px; }
+.review-text{ font-size: 10px; color: var(--text-muted); line-height: 1.3; }
 
-/* ACTION BUTTONS */
-.btn{
-  display: block; width: 100%; padding: 15px; border-radius: 14px; border: none;
-  font-weight: 1000; font-size: 14px; text-align: center; text-decoration: none; cursor: pointer;
-  transition: all 0.3s;
-}
-.btn-telegram{
-  background: linear-gradient(90deg, #0088cc, #00aced); color: #fff;
-  box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
-}
-.btn-telegram:hover{ transform: translateY(-2px); box-shadow: 0 15px 35px rgba(0, 136, 204, 0.6); }
+.section-link{ color: var(--cyan); font-size: 11px; text-decoration: none; font-weight: 800; cursor: pointer; }
 
-/* REVIEWS CARD */
-.reviews-box{ margin-top: 14px; }
-.review-item{
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 12px 14px;
-  border-radius: 14px;
-  margin-top: 8px;
+/* FAQ ACCORDION */
+.faq-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.faq-box{
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  padding: 10px; border-radius: 12px; font-size: 11px; font-weight: 900; color: #fff;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
 }
-.review-header{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
-.review-author{ font-size: 12px; font-weight: 900; color: #fff; }
-.review-stars{ color: #ffc107; font-size: 10px; }
-.review-text{ font-size: 11px; color: var(--text-muted); }
 
-/* ACCORDION FAQ */
-.faq-container{ margin-top: 15px; }
-.faq-item{
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  margin-top: 6px;
-  overflow: hidden;
-}
-.faq-q{
-  padding: 10px 14px;
-  font-size: 12px;
-  font-weight: 900;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-}
-.faq-a{
-  padding: 0 14px 10px 14px;
-  font-size: 11px;
-  color: var(--text-muted);
-  display: none;
-}
-.faq-item.active .faq-a{ display: block; }
-
-/* SECURITY STAMPS */
-.security-row{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 18px;
-}
-.security-badge{
-  background: rgba(0, 255, 136, 0.05);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  padding: 10px;
-  border-radius: 12px;
+/* OFFICIAL TRUST & COMMUNITY SECTION */
+.trust-section{
+  background: var(--card-bg);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 16px;
   text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+.trust-metrics-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+}
+.trust-pill{
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 10px;
+  border-radius: 14px;
   font-size: 11px;
+  font-weight: 1000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.trust-pill span{ font-size: 18px; }
+.security-badges-row{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 10px;
   font-weight: 900;
   color: var(--success);
+  margin-top: 10px;
 }
 
-/* FLOATING WIDGETS & TICKERS */
-.buyer-ticker{
-  position: fixed; left: 20px; bottom: 20px;
-  background: rgba(10, 15, 25, 0.95); backdrop-filter: blur(20px);
-  border: 1px solid var(--cyan); padding: 10px 16px; border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.35);
-  display: flex; align-items: center; gap: 10px; z-index: 999;
-  transform: translateY(120px); opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* STICKY BOTTOM APP NAVIGATION */
+.bottom-nav{
+  position: fixed;
+  bottom: 0; left: 0; width: 100%;
+  background: rgba(5, 7, 10, 0.95);
+  backdrop-filter: blur(25px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 10px;
+  z-index: 1000;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
 }
-.buyer-ticker.show{ transform: translateY(0); opacity: 1; }
-.buyer-ticker b{ color: var(--cyan); font-size: 12px; display: block; }
-.buyer-ticker small{ color: var(--text-muted); font-size: 10px; }
+.nav-item{
+  text-align: center; color: var(--text-muted); text-decoration: none; font-size: 9px; font-weight: 800;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.nav-item span{ font-size: 16px; }
+.nav-item.active{ color: var(--cyan); }
 
-.float-tg{
-  position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px;
-  background: #0088cc; border-radius: 50%; display: flex; align-items:center;
-  justify-content:center; font-size: 26px; color: #fff; box-shadow: 0 10px 25px rgba(0, 136, 204, 0.6);
-  z-index: 999; text-decoration: none; transition: transform 0.3s;
+.nav-center-btn{
+  width: 48px; height: 48px; background: linear-gradient(135deg, var(--yellow), var(--accent));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 1000; color: #030508; box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+  margin-top: -16px; border: 3px solid var(--bg-dark);
 }
-.float-tg:hover{ transform: scale(1.1); }
 
 footer{
-  text-align: center; margin-top: 35px; font-size: 11px; color: var(--text-muted); font-weight: 700;
+  text-align: center; font-size: 10px; color: var(--text-muted); font-weight: 700;
+  margin-top: 10px;
+}
+.footer-tagline{
+  color: var(--cyan); font-weight: 1000; letter-spacing: 2px; margin-top: 4px; font-size: 9px;
 }
 
 @media(max-width: 768px){
   .grid{ grid-template-columns: 1fr; }
   .trust-metrics-grid{ grid-template-columns: 1fr; }
-  .security-row{ grid-template-columns: 1fr; }
+  .reviews-grid, .faq-grid{ grid-template-columns: 1fr; }
+  .quick-pills-row{ grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -565,72 +513,89 @@ footer{
 
 <div class="container">
 
-  <!-- SERVER TELEMETRY BAR -->
-  <div class="telev-bar telemetry-bar">
-    <span>[ GATEWAY: ONLINE • SSL: 256-BIT ]</span>
-    <span>PING: 14ms | UPTIME: 99.9%</span>
-  </div>
-
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="brand-box">
-      <div class="logo-badge"><span>🎁</span></div>
+      <div class="logo-badge">S9</div>
       <div class="brand-info">
-        <h2>Sunny 999 Bot</h2>
-        <a href="https://www.instagram.com/sunny999bot?stkn=cDBmdHBnaDlycWUx" target="_blank" class="insta-link-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          @sunny999bot
-        </a>
+        <h2>Sunny 999 Bot <span class="verified-tick">✔</span></h2>
+        <a href="https://www.instagram.com/sunny999bot" target="_blank" class="insta-handle">@sunny999bot ↗</a>
       </div>
     </div>
-    <div class="status-group">
-      <div class="active-users-badge">🔥 342 Active</div>
-      <div class="online-status"><span></span> Online</div>
+    <div class="top-right-group">
+      <div class="online-badge"><span></span> Online</div>
+      <div class="menu-icon"><span></span><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH TRUST PILLARS -->
+  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Redeem Code Generator App</h1>
-    <p>Unlock elite digital app access instantly through our automated secure telegram verification system.</p>
-    <div class="hinglish-tag">🔥 100% Trusted Bot • Payment karo aur sirf 2 minute mein code pao!</div>
-    
-    <!-- TRUST PILLARS -->
-    <div class="trust-metrics-grid">
-      <div class="trust-metric-pill">📱 50K+ App Downloads</div>
-      <div class="trust-metric-pill">🛡️ 50K+ Trusted Users</div>
-      <div class="trust-metric-pill">🔥 120K+ Instagram Family</div>
+    <div class="trusted-tag">100% Trusted Bot</div>
+    <p>Payment karo aur pao!</p>
+
+    <!-- QUICK PILLS -->
+    <div class="quick-pills-row">
+      <div class="quick-pill">🔥 Free Fire</div>
+      <div class="quick-pill">🎁 Daily Codes</div>
+      <div class="quick-pill">⚡ Instant Access</div>
+      <div class="quick-pill">🔒 Safe & Secure</div>
     </div>
 
-    <div class="urgency-flex">
-      <div class="urgency-box">⚡ OFFER ENDS: <span class="timer" id="countdown">14:59</span></div>
-      <div class="scarcity-box">⚡ Codes Left Today: Only 14 remaining!</div>
+    <!-- URGENCY & SCARCITY TIMERS -->
+    <div class="urgency-grid">
+      <div class="urgency-box">
+        OFFER ENDS IN
+        <span class="timer-val" id="countdown">14 : 59</span>
+      </div>
+      <div class="scarcity-box">
+        Codes Left Today:
+        <span class="timer-val" style="color:var(--accent);">Only 14 remaining!</span>
+      </div>
     </div>
   </section>
 
-  <!-- MAIN GRID -->
+  <!-- MAIN PAYMENT & INFO GRID -->
   <div class="grid">
 
     <!-- PAYMENT CARD -->
     <div class="card">
-      <h2>💎 Instant Access Pass</h2>
-      <p class="muted">Pay via UPI & verify UTR on Telegram bot.</p>
+      <h2><span>💎 Instant Access Pass</span> <span style="font-size:10px; background:rgba(255,0,127,0.15); color:var(--accent); padding:2px 8px; border-radius:10px;">85% OFF TODAY</span></h2>
+      <p class="muted">Pay using any UPI App</p>
 
       <div class="price-box">
         <div class="old-price">₹499</div>
         <div class="main-price">₹69</div>
-        <span class="offer-tag">⚡ 85% OFF TODAY</span>
       </div>
 
-      <!-- DIRECT UPI APPS -->
-      <div class="upi-apps-label">Quick 1-Click Pay:</div>
       <div class="upi-apps-grid">
-        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🟢 PhonePe</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🔵 GPay</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🟣 Paytm</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">PhonePe</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">GPay</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">Paytm</a>
       </div>
 
-      <!-- QR CONTAINER WITH LASER SCANNING -->
+      <div class="mini-sec-row">
+        <span>✔ 100% Secure</span>
+        <span>✔ Instant Process</span>
+        <span>✔ Trusted by Gamers</span>
+      </div>
+
+      <div class="utr-input-group">
+        <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR...">
+        <button class="utr-btn" onclick="checkUtr()">VERIFY</button>
+      </div>
+      <div id="utrStatusMsg"></div>
+
+      <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="btn">
+        ✈️ SEND UTR & GET CODE ON TELEGRAM
+      </a>
+    </div>
+
+    <!-- SCAN & PAY CARD -->
+    <div class="card" style="text-align: center;">
+      <h2>Scan & Pay</h2>
+      <p class="muted">Scan QR or copy UPI ID</p>
+
       <div class="qr-container">
         <div class="qr-scanner-line"></div>
         <img src="IMG_20260911_222905.png" alt="QR Code">
@@ -640,71 +605,100 @@ footer{
         <code id="upiId">sunny999bot@nyes</code>
         <button class="copy-btn" onclick="copyUpi()">COPY</button>
       </div>
-
-      <!-- INTERACTIVE UTR CHECKER WIDGET -->
-      <div class="utr-tracker-box">
-        <span style="font-size:11px; font-weight:900; color:var(--text-muted);">🔍 CHECK PAYMENT STATUS:</span>
-        <div class="utr-input-group">
-          <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR ID">
-          <button class="utr-btn" onclick="checkUtr()">VERIFY</button>
-        </div>
-        <div id="utrStatusMsg"></div>
-      </div>
-
-      <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="btn btn-telegram">
-        ✈️ SEND UTR & GET CODE ON TELEGRAM
-      </a>
-    </div>
-
-    <!-- REVIEWS & FAQ CARD -->
-    <div class="card">
-      <h2>⭐ Fan Reviews & FAQ</h2>
-      <p class="muted">Verified feedback and quick answers for buyers.</p>
-
-      <div class="reviews-box">
-        <div class="review-item">
-          <div class="review-header">
-            <span class="review-author">Aman Verma</span>
-            <span class="review-stars">★★★★★</span>
-          </div>
-          <div class="review-text">"Bhai code mil gaya, main sunny ka big fan hu! Ekdum mast working app hai 🔥"</div>
-        </div>
-
-        <div class="review-item">
-          <div class="review-header">
-            <span class="review-author">Rahul Sharma</span>
-            <span class="review-stars">★★★★★</span>
-          </div>
-          <div class="review-text">"Sirf 2 minute lage, UTR bhejte hi instant app access mil gaya. Trusted!"</div>
-        </div>
-      </div>
-
-      <!-- ACCORDION FAQ -->
-      <div class="faq-container">
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span>❓ Code kitne der mein milega?</span><span>+</span></div>
-          <div class="faq-a">Payment karne ke baad jaise hi aap Telegram verification bot par UTR bhejte hain, 2 minute ke andar code mil jata hai.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-q"><span>❓ Kya yeh 100% working hai?</span><span>+</span></div>
-          <div class="faq-a">Haan bilkul! 50K+ trusted users aur hamari 120K+ Instagram family iska proof hai.</div>
-        </div>
-      </div>
-
-      <!-- SECURITY STAMPS -->
-      <div class="security-row">
-        <div class="security-badge">🔒 256-Bit SSL Gateway</div>
-        <div class="security-badge">🤖 Telegram API Verified</div>
-      </div>
     </div>
 
   </div>
 
+  <!-- FEATURE ICONS ROW -->
+  <div class="features-grid">
+    <div class="feature-item"><span class="feature-icon">🚀</span>Fast Delivery</div>
+    <div class="feature-item"><span class="feature-icon">🛡️</span>100% Working</div>
+    <div class="feature-item"><span class="feature-icon">🎮</span>For All Players</div>
+    <div class="feature-item"><span class="feature-icon">👑</span>Limited Stock</div>
+  </div>
+
+  <!-- FAN REVIEWS SECTION -->
+  <div class="card" style="margin-bottom: 16px;">
+    <h2>⭐ Fan Reviews <a class="section-link">View More →</a></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Aman Verma</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="review-text">"Bhai code mil gaya, fan hu! Fast service ❤️"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:var(--accent);">P</div>
+          <div>
+            <div class="review-name">Priya Sharma</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="review-text">"Trusted bot hai, code working hai!"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:var(--cyan); color:#030508;">R</div>
+          <div>
+            <div class="review-name">Rohit Yadav</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="review-text">"Best service ever Highly recommended! 🔥"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="card" style="margin-bottom: 16px;">
+    <h2>Frequently Asked Questions <a class="section-link">View All →</a></h2>
+    <div class="faq-grid">
+      <div class="faq-box">Code kitne der mein milega? <span>⌄</span></div>
+      <div class="faq-box">Payment kaise karna hai? <span>⌄</span></div>
+      <div class="faq-box">Agar code na mile to kya kare? <span>⌄</span></div>
+    </div>
+  </div>
+
+  <!-- OFFICIAL TRUST & COMMUNITY -->
+  <section class="trust-section">
+    <h2 style="font-size:16px; font-weight:1000; color:#fff; text-align:center;">👑 OFFICIAL TRUST & COMMUNITY</h2>
+    <div class="trust-metrics-grid">
+      <div class="trust-pill"><span>📱</span> 50K+ <small>Downloads</small></div>
+      <div class="trust-pill"><span>🛡️</span> 50K+ <small>Trusted Users</small></div>
+      <div class="trust-pill"><span>🔥</span> 120K+ <small>Instagram Family</small></div>
+    </div>
+    <div class="security-badges-row">
+      <div>🔒 256-Bit SSL Secure</div>
+      <div>🤖 Telegram Verified</div>
+      <div>🎧 24/7 Support</div>
+      <div>❤️ 100% Genuine Service</div>
+    </div>
+  </section>
+
   <footer>
-    © 2026 Redeem Code App • Powered by Sunny 999 Bot Official
+    © 2026 Sunny 999 Bot Official<br>All Rights Reserved.
+    <div class="footer-tagline">PLAY • CLAIM • ENJOY</div>
   </footer>
 
 </div>
 
-<!-- FLOATING TELEGRAM BUTTON -->
-<a href="https://t.me/Sunny999VerifyBot" target="_blank" class="float-tg" title="Verify on Telegram">
+<!-- STICKY BOTTOM NAVIGATION BAR -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active"><span>🏠</span>Home</a>
+  <a href="#" class="nav-item"><span>⭐</span>Reviews</a>
+  <a href="#" class="nav-item"><span>📖</span>How to Use</a>
+  <a href="#" class="nav-center-btn">S9</a>
+  <a href="#" class="nav-item"><span>❓</span>FAQ</a>
+  <a href="#" class="nav-item"><span>💬</span>Contact</a>
+  <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="nav-item"><span>✈️</span>Telegram</a>
+</nav>
+
+<script>
+function copyUpi(){
+  const upi = document.getElementById("upiId").innerText;
+  navigator.c
