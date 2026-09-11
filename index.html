@@ -3,551 +3,1080 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SUNNY 999 BOT - VIP Access</title>
+<title>SUNNY 999 BOT - REDEEM CODE GENERATOR APP</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
   background:
-    radial-gradient(circle at 15% 10%,#06495a 0,transparent 30%),
-    radial-gradient(circle at 90% 30%,#064b36 0,transparent 30%),
-    linear-gradient(135deg,#01151d,#00271d,#031b16);
+    radial-gradient(circle at top,#063f36 0%,#021c19 38%,#010908 100%);
   color:#fff;
   min-height:100vh;
 }
 
-header{
-  padding:22px 18px;
-  border-bottom:1px solid rgba(0,255,190,.18);
-}
-
-.header{
-  max-width:720px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.logo{
-  width:65px;
-  height:65px;
-  border-radius:18px;
-  border:1px solid #00e9bd;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  background:linear-gradient(145deg,#064558,#02251d);
-  box-shadow:0 0 25px rgba(0,255,190,.18);
-}
-
-.header h1{
-  font-size:25px;
-  margin-bottom:7px;
-}
-
-.vip{
-  display:inline-block;
-  padding:7px 13px;
-  border:1px solid #00bd91;
-  border-radius:20px;
-  color:#00f2bd;
-  font-size:11px;
-  letter-spacing:2px;
-  font-weight:bold;
-}
-
-.demo{
-  margin-left:auto;
-  padding:7px 12px;
-  border:1px solid #00b993;
-  border-radius:20px;
-  font-size:10px;
-  color:#00e8b5;
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(0,255,190,.04),transparent 40%),
+    linear-gradient(300deg,rgba(0,255,190,.03),transparent 50%);
 }
 
 .container{
-  max-width:720px;
-  margin:25px auto;
-  padding:0 15px;
+  width:min(1100px,92%);
+  margin:auto;
 }
 
-.card{
-  background:rgba(0,24,20,.86);
-  border:1px solid rgba(0,255,190,.3);
-  border-radius:28px;
-  padding:30px 22px;
-  box-shadow:0 20px 70px rgba(0,0,0,.35);
+header{
+  padding:20px 0;
+  position:relative;
+  z-index:2;
 }
 
-.center{
-  text-align:center;
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.small-title{
-  color:#00f2ba;
-  font-weight:bold;
-  letter-spacing:4px;
-  font-size:14px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  letter-spacing:.8px;
+}
+
+.logo-icon{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#00ffc3,#087d69);
+  color:#001b16;
+  font-size:22px;
+  box-shadow:0 0 25px rgba(0,255,195,.25);
+}
+
+.badge{
+  border:1px solid rgba(0,255,195,.35);
+  background:rgba(0,255,195,.08);
+  padding:8px 13px;
+  border-radius:30px;
+  color:#7fffe4;
+  font-size:12px;
+  font-weight:800;
 }
 
 .hero{
-  font-size:43px;
-  line-height:1.08;
-  font-weight:800;
-  margin:24px 0;
+  text-align:center;
+  padding:50px 0 30px;
 }
 
-.description{
-  color:#9cc8bf;
-  font-size:17px;
-  line-height:1.5;
+.hero-tag{
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:30px;
+  background:rgba(0,255,195,.08);
+  border:1px solid rgba(0,255,195,.28);
+  color:#72ffe2;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(35px,7vw,72px);
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:-2px;
+}
+
+.gradient{
+  background:linear-gradient(90deg,#fff,#6dffe5,#00dca8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:700px;
+  margin:20px auto;
+  color:#a8c7c1;
+  line-height:1.7;
+  font-size:15px;
+}
+
+.main-card{
+  background:rgba(3,30,26,.78);
+  border:1px solid rgba(0,255,195,.18);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+  backdrop-filter:blur(20px);
 }
 
 .offer{
-  margin-top:28px;
-  padding:25px 18px;
-  border-radius:20px;
-  border:1px solid #00c89d;
-  background:rgba(0,100,80,.16);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:stretch;
 }
 
-.offer h2{
-  color:#00edc0;
-  font-size:23px;
-  margin-bottom:10px;
+@media(max-width:750px){
+  .offer{
+    grid-template-columns:1fr;
+  }
 }
 
-.offer p{
-  font-size:17px;
-  font-weight:bold;
+.price-box{
+  border:1px solid rgba(0,255,195,.18);
+  background:linear-gradient(145deg,rgba(0,255,195,.08),rgba(0,0,0,.15));
+  border-radius:22px;
+  padding:28px;
 }
 
-.trust{
-  margin-top:20px;
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.trust span{
-  padding:9px 13px;
-  border:1px solid rgba(0,255,190,.28);
-  border-radius:20px;
-  color:#bdebe2;
+.small-title{
+  color:#7fffe4;
   font-size:12px;
-}
-
-.action{
-  margin-top:25px;
-  padding:22px;
-  border-radius:20px;
-  border:1px solid rgba(0,255,190,.35);
-}
-
-.action h3{
-  margin-bottom:15px;
-  font-size:18px;
-}
-
-.btn{
-  display:block;
-  width:100%;
-  padding:18px;
-  margin-top:12px;
-  border-radius:15px;
-  text-decoration:none;
-  text-align:center;
-  font-size:18px;
-  font-weight:bold;
-  border:none;
-  cursor:pointer;
-}
-
-.open-app{
-  background:#08e5cc;
-  color:#00201a;
-}
-
-.buy-demo{
-  background:#073c35;
-  color:#00efbf;
-  border:1px solid #00bb94;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
 
 .price{
-  margin-top:25px;
-  padding:27px 15px;
-  text-align:center;
-  border:1px solid rgba(0,255,190,.28);
-  border-radius:20px;
+  margin:12px 0;
+  font-size:62px;
+  line-height:1;
+  font-weight:1000;
 }
 
-.old-price{
-  color:#809690;
+.price span{
+  font-size:18px;
+  color:#91aaa5;
   text-decoration:line-through;
-  font-size:21px;
+  margin-left:8px;
 }
 
-.price-now{
-  color:#00f59d;
-  font-size:75px;
-  font-weight:800;
-  margin:3px 0;
+.price-note{
+  color:#a7c4be;
+  font-size:14px;
+  line-height:1.6;
 }
 
-.offer-label{
-  color:#bde8df;
-  font-weight:bold;
+.features{
+  margin-top:24px;
+  display:grid;
+  gap:11px;
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#d8eeea;
   font-size:14px;
 }
 
-.timer{
-  display:inline-block;
-  margin-top:16px;
-  padding:8px 14px;
-  border-radius:20px;
-  border:1px solid #008c70;
-  color:#c7ddd8;
+.check{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(0,255,195,.12);
+  color:#00ffc3;
   font-size:12px;
+}
+
+.payment{
+  border:1px solid rgba(0,255,195,.18);
+  background:rgba(0,0,0,.15);
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+}
+
+.payment h2{
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.payment p{
+  color:#94afa9;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.qr{
+  width:230px;
+  height:230px;
+  object-fit:contain;
+  background:#fff;
+  padding:10px;
+  border-radius:18px;
+  margin:20px auto;
+  display:block;
+  cursor:pointer;
+  box-shadow:0 0 35px rgba(0,255,195,.13);
+}
+
+.upi{
+  background:rgba(0,255,195,.07);
+  border:1px solid rgba(0,255,195,.16);
+  border-radius:14px;
+  padding:13px;
+  margin:10px 0;
+}
+
+.upi-label{
+  display:block;
+  font-size:11px;
+  color:#76938d;
+  margin-bottom:4px;
+}
+
+.upi-id{
+  font-weight:900;
+  color:#76ffe3;
+  word-break:break-all;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  padding:15px 18px;
+  border-radius:14px;
+  font-weight:900;
+  cursor:pointer;
+  font-size:14px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.primary{
+  background:linear-gradient(90deg,#00ffc3,#00c99a);
+  color:#00251e;
+  box-shadow:0 10px 30px rgba(0,255,195,.18);
+}
+
+.secondary{
+  margin-top:10px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:#dff8f3;
+}
+
+.copy-msg{
+  height:18px;
+  margin-top:7px;
+  font-size:11px;
+  color:#70ffdf;
+}
+
+.notice{
+  margin-top:16px;
+  padding:13px;
+  border-radius:13px;
+  background:rgba(255,190,70,.06);
+  border:1px solid rgba(255,190,70,.15);
+  color:#cdbf99;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.section{
+  margin-top:28px;
+}
+
+.section-title{
+  text-align:center;
+  font-size:27px;
+  margin-bottom:18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+@media(max-width:750px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+.info-card{
+  padding:21px;
+  border-radius:19px;
+  background:rgba(3,30,26,.65);
+  border:1px solid rgba(0,255,195,.13);
+}
+
+.info-card .icon{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.info-card h3{
+  font-size:16px;
+  margin-bottom:7px;
+}
+
+.info-card p{
+  color:#91aaa5;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.timer{
+  text-align:center;
+  margin:22px 0 0;
+  padding:18px;
+  border-radius:18px;
+  background:linear-gradient(90deg,rgba(0,255,195,.08),rgba(0,255,195,.03));
+  border:1px solid rgba(0,255,195,.14);
+}
+
+.timer small{
+  color:#8ca9a3;
+  display:block;
+  margin-bottom:8px;
+}
+
+#countdown{
+  font-size:25px;
+  font-weight:1000;
+  color:#6fffe1;
+}
+
+.activity{
+  position:relative;
+  overflow:hidden;
+}
+
+.activity-list{
+  display:grid;
+  gap:10px;
+}
+
+.activity-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.activity-icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(0,255,195,.1);
+}
+
+.activity-item strong{
+  display:block;
+  font-size:13px;
+}
+
+.activity-item span{
+  display:block;
+  margin-top:3px;
+  color:#819d97;
+  font-size:11px;
+}
+
+.faq{
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:15px 0;
+}
+
+.faq summary{
+  cursor:pointer;
+  font-weight:800;
+  font-size:14px;
+}
+
+.faq p{
+  padding-top:10px;
+  color:#8fa9a3;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .app-box{
-  margin-top:25px;
-  padding:25px 18px;
-  border-radius:19px;
-  border:1px solid rgba(0,255,190,.28);
   text-align:center;
+  padding:30px 20px;
+  border-radius:23px;
+  background:
+    radial-gradient(circle at top,rgba(0,255,195,.13),transparent 60%),
+    rgba(3,30,26,.8);
+  border:1px solid rgba(0,255,195,.18);
 }
 
 .app-box h2{
-  color:#00f1ba;
+  font-size:26px;
   margin-bottom:10px;
 }
 
-.demo-area{
-  display:none;
-  margin-top:22px;
-  padding:22px;
-  border-radius:18px;
-  background:#021914;
-  border:1px solid #00dcb0;
-  text-align:center;
-}
-
-.demo-code{
-  margin-top:15px;
-  padding:20px;
-  background:#fff;
-  color:#111;
-  border-radius:13px;
-  font-size:19px;
-  font-weight:bold;
-}
-
-.branding{
-  margin-top:28px;
-  padding:25px;
-  text-align:center;
-  border-top:1px solid rgba(0,255,190,.18);
-}
-
-.brand-name{
-  font-size:27px;
-  font-weight:800;
-  color:#00efbd;
-  letter-spacing:2px;
-}
-
-.brand-sub{
-  color:#9abcb5;
+.app-box p{
+  color:#91aaa5;
   font-size:13px;
-  margin-top:8px;
+  margin-bottom:18px;
 }
 
-.copyright{
-  color:#708f89;
-  font-size:12px;
-  margin-top:15px;
+.app-btn{
+  display:inline-block;
+  text-decoration:none;
+  background:linear-gradient(90deg,#00ffc3,#00b98d);
+  color:#00231d;
+  font-weight:1000;
+  padding:14px 25px;
+  border-radius:14px;
 }
 
 footer{
   text-align:center;
-  padding:25px 15px 35px;
-  color:#6d8a84;
+  padding:35px 0 28px;
+  color:#66817b;
   font-size:11px;
+  line-height:1.8;
 }
 
-@media(max-width:600px){
+.footer-brand{
+  color:#75ffe2;
+  font-size:14px;
+  font-weight:1000;
+  margin-bottom:5px;
+}
 
-  .header h1{
-    font-size:21px;
-  }
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,120px);
+  opacity:0;
+  z-index:999;
+  padding:13px 17px;
+  border-radius:14px;
+  background:#062b25;
+  border:1px solid rgba(0,255,195,.3);
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  transition:.35s;
+  font-size:12px;
+}
 
-  .logo{
-    width:58px;
-    height:58px;
-  }
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1;
+}
 
-  .hero{
-    font-size:36px;
-  }
+.qr-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:rgba(0,0,0,.88);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
-  .card{
-    padding:25px 17px;
-  }
+.qr-modal img{
+  max-width:min(500px,90vw);
+  max-height:80vh;
+  background:#fff;
+  padding:12px;
+  border-radius:20px;
+}
 
-  .price-now{
-    font-size:65px;
-  }
+.qr-modal.show{
+  display:flex;
+}
 
-  .demo{
-    display:none;
-  }
+.close{
+  position:absolute;
+  top:20px;
+  right:25px;
+  font-size:30px;
+  cursor:pointer;
 }
 </style>
 </head>
 
-
 <body>
 
 <header>
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-icon">🎁</div>
+      <div>
+        <div>SUNNY 999 BOT</div>
+        <small style="color:#718d87;font-size:9px;">REDEEM CODE GENERATOR APP</small>
+      </div>
+    </div>
 
-<div class="header">
-
-  <div class="logo">
-    🎁
+    <div class="badge">● PREMIUM ACCESS</div>
   </div>
-
-  <div>
-    <h1>SUNNY 999 BOT</h1>
-    <span class="vip">ONLY VIP ACCESS</span>
-  </div>
-
-  <div class="demo">
-    DEMO
-  </div>
-
-</div>
-
 </header>
 
+<main class="container">
 
-<div class="container">
+<section class="hero">
+  <div class="hero-tag">⚡ LIMITED PREMIUM ACCESS</div>
 
-<div class="card">
-
-
-<div class="center">
-
-  <div class="small-title">
-    VIP ACCESS
-  </div>
-
-  <div class="hero">
-    ONLY VIP MEMBERS<br>
-    CAN USE THIS APP
-  </div>
-
-  <div class="description">
-    Access your redeem-code application from the button below.
-  </div>
-
-</div>
-
-
-<div class="offer center">
-
-  <h2>
-    REDEEM CODE APP — VIP ACCESS
-  </h2>
+  <h1>
+    <span class="gradient">REDEEM CODE</span><br>
+    GENERATOR APP
+  </h1>
 
   <p>
-    Special VIP access
+    Get premium access to SUNNY 999 BOT and unlock the complete
+    Redeem Code Generator experience.
   </p>
+</section>
 
-</div>
+<section class="main-card">
 
+  <div class="offer">
 
-<div class="trust">
+    <div class="price-box">
+      <div class="small-title">PREMIUM VIP ACCESS</div>
 
-  <span>✓ Trusted</span>
-  <span>✓ Secure</span>
-  <span>✓ VIP Access</span>
+      <div class="price">
+        ₹69 <span>₹499</span>
+      </div>
 
-</div>
+      <div class="price-note">
+        One-time access offer. Complete the payment using the QR/UPI
+        shown on this page.
+      </div>
 
+      <div class="features">
+        <div class="feature">
+          <div class="check">✓</div>
+          Premium VIP Access
+        </div>
 
-<div class="action">
+        <div class="feature">
+          <div class="check">✓</div>
+          Redeem Code Generator App
+        </div>
 
-  <h3 class="center">
-    👇 ACCESS YOUR APP 👇
-  </h3>
+        <div class="feature">
+          <div class="check">✓</div>
+          Fast & Premium Experience
+        </div>
 
+        <div class="feature">
+          <div class="check">✓</div>
+          Support Available
+        </div>
+      </div>
 
-  <!-- APNE ACTUAL APP LINK KO YAHAN LAGAO -->
-
-  <a
-    href="YOUR-APP-LINK-HERE"
-    target="_blank"
-    class="btn open-app">
-    🚀 OPEN APP
-  </a>
-
-
-  <button
-    class="btn buy-demo"
-    onclick="showDemo()">
-    🛒 BUY / VIEW DEMO
-  </button>
-
-</div>
-
-
-<div class="price">
-
-  <div class="small-title">
-    SPECIAL OFFER
-  </div>
-
-  <div class="old-price">
-    ₹499
-  </div>
-
-  <div class="price-now">
-    ₹59
-  </div>
-
-  <div class="offer-label">
-    SPECIAL VIP OFFER
-  </div>
-
-  <div class="timer">
-    ● SESSION REFRESHES IN:
-    <span id="timer">30:00</span>
-  </div>
-
-</div>
+      <div class="timer">
+        <small>OFFER TIMER</small>
+        <div id="countdown">14:59</div>
+      </div>
+    </div>
 
 
-<div class="app-box">
+    <div class="payment">
 
-  <h2>
-    FREE REDEEM CODE APP
-  </h2>
+      <h2>💳 Pay ₹69</h2>
 
-  <div class="description">
-    Open the app using the button above.
-  </div>
+      <p>
+        Scan the QR code with your UPI app
+        or copy the UPI ID below.
+      </p>
 
-  <a
-    href="YOUR-APP-LINK-HERE"
-    target="_blank"
-    class="btn open-app">
-    🔗 OPEN APP LINK
-  </a>
+      <!--
+      IMPORTANT:
+      Apna QR image "qr.png" naam se isi folder me upload karo.
+      -->
 
-</div>
+      <img
+        src="qr.png"
+        class="qr"
+        id="qrImage"
+        alt="SUNNY 999 BOT Payment QR"
+      >
 
+      <div class="upi">
+        <span class="upi-label">UPI ID</span>
+        <span class="upi-id">sunny999bot@nyes</span>
+      </div>
 
-<div id="demoArea" class="demo-area">
+      <button class="btn primary" onclick="copyUPI()">
+        📋 COPY UPI ID
+      </button>
 
-  <h2>
-    VIP DEMO
-  </h2>
+      <div class="copy-msg" id="copyMsg"></div>
 
-  <div class="demo-code">
+      <button class="btn secondary" onclick="openQR()">
+        🔍 VIEW QR FULLSCREEN
+      </button>
 
-    SAMPLE REDEEM CODE
+      <div class="notice">
+        After successful payment, access should be released only after
+        payment confirmation from the authorized payment system.
+      </div>
 
-    <br><br>
-
-    DEMO-ONLY-0000
-
-    <br><br>
-
-    ⚠️ DEMO — NO REAL PAYMENT
+    </div>
 
   </div>
 
-</div>
+
+  <!-- ACTIVITY / NOTIFICATION SECTION -->
+
+  <section class="section activity">
+
+    <h2 class="section-title">
+      🔔 Latest Activity
+    </h2>
+
+    <div class="activity-list">
+
+      <div class="activity-item">
+        <div class="activity-icon">⚡</div>
+        <div>
+          <strong>Premium Access Available</strong>
+          <span>SUNNY 999 BOT • ₹69 VIP Access</span>
+        </div>
+      </div>
+
+      <div class="activity-item">
+        <div class="activity-icon">🎁</div>
+        <div>
+          <strong>Redeem Code Generator</strong>
+          <span>Premium app access is available now</span>
+        </div>
+      </div>
+
+      <div class="activity-item">
+        <div class="activity-icon">🔥</div>
+        <div>
+          <strong>Limited Offer</strong>
+          <span>Premium access currently available for ₹69</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
 
 
-<div class="branding">
+  <!-- BENEFITS -->
 
-  <div class="brand-name">
-    SUNNY 999 BOT
-  </div>
+  <section class="section">
 
-  <div class="brand-sub">
-    VIP Redeem Code App
-  </div>
+    <h2 class="section-title">Why Choose SUNNY 999 BOT?</h2>
 
-  <div class="copyright">
-    Copyright © 2026 by Sunny
-  </div>
+    <div class="grid">
 
-</div>
+      <div class="info-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Experience</h3>
+        <p>
+          Clean and simple premium interface designed for quick access.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">🔐</div>
+        <h3>Premium Access</h3>
+        <p>
+          Access the premium section after authorized payment confirmation.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">🎁</div>
+        <h3>Redeem Codes</h3>
+        <p>
+          Dedicated Redeem Code Generator App experience.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
 
 
-</div>
-</div>
+  <!-- HOW IT WORKS -->
+
+  <section class="section">
+
+    <h2 class="section-title">How It Works</h2>
+
+    <div class="grid">
+
+      <div class="info-card">
+        <div class="icon">01</div>
+        <h3>Scan QR</h3>
+        <p>Scan the payment QR using your preferred UPI app.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">02</div>
+        <h3>Pay ₹69</h3>
+        <p>Complete the displayed payment amount.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="icon">03</div>
+        <h3>Get Access</h3>
+        <p>
+          Access is released after genuine payment confirmation.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- APP -->
+
+  <section class="section">
+
+    <div class="app-box">
+
+      <h2>🚀 REDEEM CODE GENERATOR APP</h2>
+
+      <p>
+        Your app access link will appear here after confirmed payment.
+      </p>
+
+      <!-- Replace this URL with your REAL app link -->
+      <a
+        class="app-btn"
+        href="YOUR-ACTUAL-APP-LINK"
+        target="_blank"
+        rel="noopener"
+      >
+        OPEN APP
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+
+  <section class="section">
+
+    <h2 class="section-title">FAQ</h2>
+
+    <details class="faq">
+      <summary>What is the price?</summary>
+      <p>
+        Premium VIP Access is currently displayed at ₹69.
+      </p>
+    </details>
+
+    <details class="faq">
+      <summary>Which UPI ID should I use?</summary>
+      <p>
+        The UPI ID displayed on this page is sunny999bot@nyes.
+      </p>
+    </details>
+
+    <details class="faq">
+      <summary>Where is the QR code?</summary>
+      <p>
+        The payment QR is shown inside the payment section.
+      </p>
+    </details>
+
+    <details class="faq">
+      <summary>When do I get app access?</summary>
+      <p>
+        App access should be provided only after the payment system
+        confirms the transaction.
+      </p>
+    </details>
+
+    <details class="faq">
+      <summary>Can payment verification be done only with GitHub Pages?</summary>
+      <p>
+        No. Secure automatic payment verification requires a real
+        payment gateway/backend webhook. A static webpage cannot
+        independently verify a UPI QR payment.
+      </p>
+    </details>
+
+  </section>
+
+
+  <!-- SUPPORT -->
+
+  <section class="section">
+
+    <div class="info-card" style="text-align:center;">
+
+      <div class="icon">💬</div>
+
+      <h3>Need Help?</h3>
+
+      <p>
+        For payment or access issues, contact the official support
+        channel associated with SUNNY 999 BOT.
+      </p>
+
+      <br>
+
+      <a
+        href="#"
+        class="app-btn"
+        onclick="supportAlert();return false;"
+      >
+        CONTACT SUPPORT
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- TERMS -->
+
+  <section class="section">
+
+    <h2 class="section-title">Terms & Privacy</h2>
+
+    <div class="grid">
+
+      <div class="info-card">
+        <h3>Terms</h3>
+        <p>
+          Use the service only for its intended purpose. Do not
+          misuse or attempt to bypass payment verification.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Privacy</h3>
+        <p>
+          Do not enter unnecessary personal information on this page.
+          Payment information is handled by the applicable payment
+          provider.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Refund</h3>
+        <p>
+          Refund requests should be handled according to the
+          applicable purchase/refund policy.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</section>
+
+</main>
 
 
 <footer>
 
-  © 2026 SUNNY 999 BOT • Demo interface
+  <div class="footer-brand">
+    SUNNY 999 BOT
+  </div>
+
+  REDEEM CODE GENERATOR APP
+
+  <br>
+
+  Premium VIP Access
+
+  <br><br>
+
+  Copyright © 2026–27 by Sunny
 
 </footer>
 
 
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+  UPI ID copied successfully!
+</div>
+
+
+<!-- QR MODAL -->
+
+<div class="qr-modal" id="qrModal" onclick="closeQR(event)">
+
+  <div class="close">×</div>
+
+  <img
+    src="qr.png"
+    alt="Payment QR"
+  >
+
+</div>
+
+
 <script>
 
-function showDemo(){
+/* =========================
+   COPY UPI
+========================= */
 
-  const box = document.getElementById("demoArea");
+function copyUPI(){
 
-  box.style.display = "block";
+  const upi = "sunny999bot@nyes";
 
-  box.scrollIntoView({
-    behavior:"smooth",
-    block:"center"
+  navigator.clipboard.writeText(upi).then(function(){
+
+    document.getElementById("copyMsg").innerText =
+      "✓ UPI ID copied";
+
+    const toast = document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+      toast.classList.remove("show");
+    },2200);
+
+  }).catch(function(){
+
+    document.getElementById("copyMsg").innerText =
+      "UPI ID: " + upi;
+
   });
 
 }
 
 
-let seconds = 1800;
+/* =========================
+   QR MODAL
+========================= */
 
-setInterval(function(){
+function openQR(){
 
-  seconds--;
+  document
+    .getElementById("qrModal")
+    .classList.add("show");
 
-  if(seconds < 0){
-    seconds = 1800;
+}
+
+function closeQR(event){
+
+  if(
+    event.target.id === "qrModal" ||
+    event.target.classList.contains("close")
+  ){
+
+    document
+      .getElementById("qrModal")
+      .classList.remove("show");
+
   }
 
-  let minutes =
-    String(Math.floor(seconds / 60))
-    .padStart(2,"0");
+}
 
-  let sec =
-    String(seconds % 60)
-    .padStart(2,"0");
+document
+  .getElementById("qrImage")
+  .addEventListener("click",openQR);
 
-  document.getElementById("timer").innerText =
-    minutes + ":" + sec;
 
-},1000);
+/* =========================
+   OFFER TIMER
+========================= */
+
+let totalSeconds = 14 * 60 + 59;
+
+function updateTimer(){
+
+  let minutes = Math.floor(totalSeconds / 60);
+
+  let seconds = totalSeconds % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  document.getElementById("countdown").innerText =
+    minutes + ":" + seconds;
+
+  if(totalSeconds > 0){
+    totalSeconds--;
+  }else{
+    totalSeconds = 14 * 60 + 59;
+  }
+
+}
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+/* =========================
+   SUPPORT
+========================= */
+
+function supportAlert(){
+
+  alert(
+    "Please add your official support link/contact here."
+  );
+
+}
+
+
+/* =========================
+   PAYMENT SUCCESS HOOK
+   =========================
+
+   IMPORTANT:
+   This function must be called by your
+   REAL payment gateway/backend after
+   confirmed payment.
+
+   Do NOT call it from a normal button
+   to pretend payment was successful.
+*/
+
+function paymentConfirmed(){
+
+  const appLink = "YOUR-ACTUAL-APP-LINK";
+
+  if(appLink !== "YOUR-ACTUAL-APP-LINK"){
+
+    window.location.href = appLink;
+
+  }else{
+
+    alert(
+      "Payment confirmed. Please configure your real app link."
+    );
+
+  }
+
+}
 
 </script>
 
