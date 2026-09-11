@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redeem Code App | Sunny 999 Bot Official</title>
+<title>Redeem Code Generator App | Sunny 999 Bot Official</title>
 
 <style>
 :root{
   --bg-dark: #05070a;
-  --card-bg: rgba(13, 18, 28, 0.85);
+  --card-bg: rgba(10, 15, 25, 0.90);
   --primary: #9d4edd;
   --cyan: #00f0ff;
   --accent: #ff007f;
@@ -23,195 +23,269 @@ body{
   font-family:'Segoe UI', system-ui, sans-serif;
   background: var(--bg-dark);
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(157, 78, 221, 0.18) 0, transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.12) 0, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.1) 0, transparent 50%);
+    radial-gradient(circle at 10% 10%, rgba(157, 78, 221, 0.22) 0, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.15) 0, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.12) 0, transparent 50%);
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Cyber Grid Background */
+/* Cyber Grid Background Lines */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 35px 35px;
+  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
   z-index: -1;
 }
 
 .container{
-  width:min(1000px, 94%);
+  width:min(1080px, 94%);
   margin:auto;
-  padding:30px 0 80px;
+  padding:20px 0 90px;
 }
 
-/* ELITE CAPSULE TOPBAR */
+/* SERVER TELEMETRY TOP BAR */
+.telemetry-bar{
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--cyan);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(0,240,255,0.08);
+}
+
+/* TOPBAR */
 .topbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 14px 24px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 16px 26px;
   border-radius: 22px;
-  margin-bottom: 25px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(0,240,255,0.05);
+  margin-bottom: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7), inset 0 0 20px rgba(0,240,255,0.08);
 }
 
 .brand-box{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:15px;
 }
 
-.logo{
-  width:48px;
-  height:48px;
+.logo-badge{
+  width:50px;
+  height:50px;
   border-radius:14px;
   background:linear-gradient(135deg, var(--cyan), var(--primary), var(--accent));
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:24px;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.6);
 }
+.logo-badge span{ font-size: 24px; }
 
-.brand-name{
-  font-size:18px;
+.brand-info h2{
+  font-size:16px;
   font-weight:1000;
-  letter-spacing:-0.5px;
   background: linear-gradient(90deg, #fff, var(--cyan));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.badge-group{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  margin-top:3px;
-}
-
-.insta-badge{
-  font-size:11px;
-  font-weight:800;
-  color:#fff;
-  background:linear-gradient(90deg, var(--primary), var(--accent));
-  padding:4px 12px;
-  border-radius:20px;
-  text-decoration:none;
-  box-shadow: 0 0 12px rgba(255,0,127,0.4);
+.insta-link-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-top: 3px;
+  box-shadow: 0 0 10px rgba(253, 29, 29, 0.4);
   transition: transform 0.2s;
 }
-.insta-badge:hover{transform:scale(1.05);}
+.insta-link-badge:hover{ transform: scale(1.05); }
+.insta-link-badge svg{ width: 11px; height: 11px; fill: #fff; }
 
-.online-status{
+.status-group{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.online-status, .active-users-badge{
   display:flex;
   align-items:center;
   gap:6px;
   font-size:11px;
-  font-weight:800;
-  color: var(--success);
-  background: rgba(0, 255, 136, 0.1);
+  font-weight:900;
   padding: 6px 12px;
   border-radius: 20px;
+}
+
+.online-status{
+  color: var(--success);
+  background: rgba(0, 255, 136, 0.12);
   border: 1px solid rgba(0, 255, 136, 0.4);
-  box-shadow: 0 0 15px rgba(0,255,136,0.2);
 }
 .online-status span{
-  width:7px;
-  height:7px;
-  background: var(--success);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--success);
-  animation: pulseDot 1.5s infinite;
+  width:7px; height:7px; background: var(--success); border-radius: 50%;
+  box-shadow: 0 0 8px var(--success); animation: pulseDot 1.5s infinite;
 }
+
+.active-users-badge{
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
 @keyframes pulseDot{ 50%{opacity:0.2} }
 
 /* HERO SECTION */
 .hero{
   text-align:center;
-  padding:40px 20px;
+  padding:38px 20px;
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(157, 78, 221, 0.3);
+  border: 1px solid rgba(157, 78, 221, 0.35);
   border-radius: 30px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.7), inset 0 0 20px rgba(157,78,221,0.1);
-  position:relative;
-  overflow:hidden;
+  box-shadow: 0 25px 65px rgba(0,0,0,0.8), inset 0 0 25px rgba(157,78,221,0.12);
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero h1{
-  font-size:clamp(28px, 5vw, 46px);
+  font-size:clamp(26px, 5vw, 42px);
   font-weight:1000;
   line-height:1.2;
   background: linear-gradient(90deg, var(--cyan), #fff, var(--accent));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .hero p{
   color: var(--text-muted);
-  font-size:14px;
+  font-size:13px;
   max-width:600px;
-  margin:0 auto 22px;
+  margin:0 auto 14px;
+  font-weight: 600;
 }
 
-/* LIVE TIMER & URGENCY BOX */
-.urgency-box{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  background: rgba(255, 0, 127, 0.12);
+.hinglish-tag{
+  display: inline-block;
+  background: rgba(255, 0, 127, 0.15);
+  color: #ff66b2;
   border: 1px solid rgba(255, 0, 127, 0.4);
-  padding: 10px 22px;
-  border-radius: 16px;
+  padding: 6px 16px;
+  border-radius: 20px;
   font-size: 13px;
   font-weight: 900;
-  color: #ff66b2;
-  box-shadow: 0 0 20px rgba(255,0,127,0.2);
+  margin-bottom: 16px;
+  box-shadow: 0 0 15px rgba(255,0,127,0.25);
+}
+
+/* TRUST METRICS ROW */
+.trust-metrics-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trust-metric-pill{
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* URGENCY & SCARCITY BAR */
+.urgency-flex{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.urgency-box, .scarcity-box{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 8px 18px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--cyan);
+}
+
+.scarcity-box{
+  background: rgba(255, 0, 127, 0.08);
+  border-color: rgba(255, 0, 127, 0.3);
+  color: var(--accent);
 }
 
 .timer{
-  background: var(--accent);
-  color: #fff;
-  padding: 5px 12px;
-  border-radius: 8px;
+  background: var(--cyan);
+  color: #05070a;
+  padding: 3px 8px;
+  border-radius: 6px;
   font-family: monospace;
-  font-size: 14px;
-  box-shadow: 0 0 12px rgba(255,0,127,0.6);
+  font-size: 13px;
+  font-weight: 1000;
 }
 
 /* GRID LAYOUT */
 .grid{
   display:grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap:24px;
-  margin-top:25px;
+  gap:22px;
 }
 
 .card{
   background: var(--card-bg);
   backdrop-filter: blur(25px);
-  border-radius: 30px;
-  padding: 28px;
+  border-radius: 28px;
+  padding: 26px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 45px rgba(0,0,0,0.6);
   position: relative;
 }
 
-/* Holographic Neon Border on Cards */
 .card::before{
   content:"";
   position:absolute;
   inset:-1px;
-  border-radius: 30px;
+  border-radius: 28px;
   padding: 1.5px;
   background: linear-gradient(135deg, var(--cyan), var(--primary), var(--accent));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -221,75 +295,66 @@ body::before{
 }
 
 .card h2{
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 1000;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   color: #fff;
 }
 
 .muted{
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
 /* PRICE BOX */
 .price-box{
-  margin: 18px 0;
-  padding: 18px;
+  margin: 15px 0;
+  padding: 16px;
   background: rgba(255,255,255,0.02);
-  border-radius: 20px;
+  border-radius: 18px;
   text-align: center;
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-.old-price{
-  text-decoration: line-through;
-  color: var(--text-muted);
-  font-size: 16px;
-}
-
+.old-price{ text-decoration: line-through; color: var(--text-muted); font-size: 15px; }
 .main-price{
-  font-size: 50px;
+  font-size: 46px;
   font-weight: 1000;
   background: linear-gradient(90deg, var(--cyan), var(--success));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 2px 0;
 }
-
 .offer-tag{
   display: inline-block;
   background: rgba(0, 240, 255, 0.15);
   color: var(--cyan);
   border: 1px solid rgba(0, 240, 255, 0.35);
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 900;
-  letter-spacing: 0.5px;
-  box-shadow: 0 0 12px rgba(0,240,255,0.2);
 }
 
-/* DIRECT UPI APPS BUTTONS */
+/* DIRECT UPI APPS */
 .upi-apps-label{
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .upi-apps-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .upi-app-btn{
-  padding: 11px;
+  padding: 10px;
   border-radius: 12px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
@@ -302,43 +367,34 @@ body::before{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
 }
 .upi-app-btn:hover{
   background: rgba(0, 240, 255, 0.2);
   border-color: var(--cyan);
   transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0,240,255,0.3);
 }
 
-/* QR CONTAINER WITH CYBER LASER SCANNER LIGHTING */
+/* QR CONTAINER */
 .qr-container{
-  width: 200px;
-  margin: 15px auto;
-  padding: 12px;
+  width: 175px;
+  margin: 14px auto;
+  padding: 10px;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 35px rgba(0, 240, 255, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
   position: relative;
   overflow: hidden;
   border: 2px solid var(--cyan);
 }
 
-.qr-container img{
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-}
+.qr-container img{ width: 100%; display: block; border-radius: 8px; }
 
-/* Glowing Laser Scan Line */
 .qr-scanner-line{
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
+  top: 0; left: 0; width: 100%; height: 3px;
   background: var(--accent);
-  box-shadow: 0 0 15px var(--accent), 0 0 25px var(--cyan);
+  box-shadow: 0 0 12px var(--accent), 0 0 20px var(--cyan);
   animation: scanQR 2s infinite ease-in-out;
 }
 @keyframes scanQR{
@@ -346,225 +402,161 @@ body::before{
   50% { top: 92%; opacity: 1; }
 }
 
-/* UPI ID COPY */
+/* UPI COPY BOX */
 .upi-copy-box{
   display: flex;
   align-items: center;
   gap: 10px;
   background: rgba(0,0,0,0.4);
   padding: 10px 14px;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
-
-.upi-copy-box code{
-  flex: 1;
-  font-size: 13px;
-  font-weight: bold;
-  color: var(--cyan);
-}
+.upi-copy-box code{ flex: 1; font-size: 13px; font-weight: bold; color: var(--cyan); }
 
 .copy-btn{
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-weight: 900;
-  font-size: 12px;
-  cursor: pointer;
+  background: var(--primary); color: #fff; border: none;
+  padding: 7px 12px; border-radius: 9px; font-weight: 900; font-size: 11px; cursor: pointer;
   transition: transform 0.2s;
-  box-shadow: 0 0 12px rgba(157,78,221,0.4);
 }
 .copy-btn:hover{transform: scale(1.05); background: var(--accent);}
 
+/* INTERACTIVE UTR TRACKER WIDGET */
+.utr-tracker-box{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+.utr-input-group{
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+.utr-input{
+  flex: 1;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+}
+.utr-input:focus{ border-color: var(--cyan); }
+.utr-btn{
+  background: var(--cyan);
+  color: #05070a;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 1000;
+  font-size: 11px;
+  cursor: pointer;
+}
+#utrStatusMsg{ font-size: 11px; margin-top: 6px; font-weight: 800; display: none; }
+
 /* ACTION BUTTONS */
 .btn{
-  display: block;
-  width: 100%;
-  padding: 16px;
-  border-radius: 16px;
-  border: none;
-  font-weight: 1000;
-  font-size: 15px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
+  display: block; width: 100%; padding: 15px; border-radius: 14px; border: none;
+  font-weight: 1000; font-size: 14px; text-align: center; text-decoration: none; cursor: pointer;
   transition: all 0.3s;
 }
-
 .btn-telegram{
-  background: linear-gradient(90deg, #0088cc, #00aced);
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(0, 136, 204, 0.5);
+  background: linear-gradient(90deg, #0088cc, #00aced); color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
 }
-.btn-telegram:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(0, 136, 204, 0.7);
-}
+.btn-telegram:hover{ transform: translateY(-2px); box-shadow: 0 15px 35px rgba(0, 136, 204, 0.6); }
 
-/* LOCKED CARD */
-.locked-card{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding: 40px 20px;
-}
-
-.lock-shield{
-  width: 78px;
-  height: 78px;
+/* REVIEWS CARD */
+.reviews-box{ margin-top: 14px; }
+.review-item{
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 24px;
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  font-size: 32px;
-  margin-bottom: 20px;
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin-top: 8px;
 }
+.review-header{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+.review-author{ font-size: 12px; font-weight: 900; color: #fff; }
+.review-stars{ color: #ffc107; font-size: 10px; }
+.review-text{ font-size: 11px; color: var(--text-muted); }
 
-.btn-locked{
-  background: rgba(255,255,255,0.04);
-  color: var(--text-muted);
-  border: 1px solid rgba(255,255,255,0.08);
-  cursor: not-allowed;
-  margin-top: 20px;
+/* ACCORDION FAQ */
+.faq-container{ margin-top: 15px; }
+.faq-item{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  margin-top: 6px;
+  overflow: hidden;
 }
-
-/* TRUST BADGES ROW */
-.trust-row{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 25px;
-}
-
-.trust-badge{
-  background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 16px;
-  border-radius: 18px;
-  text-align: center;
+.faq-q{
+  padding: 10px 14px;
   font-size: 12px;
   font-weight: 900;
   color: #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* LIVE BUYERS TICKER POPUP */
-.buyer-ticker{
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  background: rgba(13, 18, 28, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--cyan);
-  padding: 12px 18px;
-  border-radius: 16px;
-  box-shadow: 0 10px 35px rgba(0, 240, 255, 0.3);
+  cursor: pointer;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 999;
-  transform: translateY(120px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  justify-content: space-between;
 }
-.buyer-ticker.show{
-  transform: translateY(0);
-  opacity: 1;
-}
-.buyer-ticker b{
-  color: var(--cyan);
-  font-size: 13px;
-  display: block;
-}
-.buyer-ticker small{
-  color: var(--text-muted);
+.faq-a{
+  padding: 0 14px 10px 14px;
   font-size: 11px;
+  color: var(--text-muted);
+  display: none;
+}
+.faq-item.active .faq-a{ display: block; }
+
+/* SECURITY STAMPS */
+.security-row{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+.security-badge{
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--success);
 }
 
-/* FLOATING TELEGRAM BUTTON */
+/* FLOATING WIDGETS & TICKERS */
+.buyer-ticker{
+  position: fixed; left: 20px; bottom: 20px;
+  background: rgba(10, 15, 25, 0.95); backdrop-filter: blur(20px);
+  border: 1px solid var(--cyan); padding: 10px 16px; border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.35);
+  display: flex; align-items: center; gap: 10px; z-index: 999;
+  transform: translateY(120px); opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.buyer-ticker.show{ transform: translateY(0); opacity: 1; }
+.buyer-ticker b{ color: var(--cyan); font-size: 12px; display: block; }
+.buyer-ticker small{ color: var(--text-muted); font-size: 10px; }
+
 .float-tg{
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 60px;
-  height: 60px;
-  background: #0088cc;
-  border-radius: 50%;
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  font-size: 28px;
-  color: #fff;
-  box-shadow: 0 10px 30px rgba(0, 136, 204, 0.6);
-  z-index: 999;
-  text-decoration: none;
-  transition: transform 0.3s;
+  position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px;
+  background: #0088cc; border-radius: 50%; display: flex; align-items:center;
+  justify-content:center; font-size: 26px; color: #fff; box-shadow: 0 10px 25px rgba(0, 136, 204, 0.6);
+  z-index: 999; text-decoration: none; transition: transform 0.3s;
 }
 .float-tg:hover{ transform: scale(1.1); }
 
-/* STEPS & FAQ */
-.steps-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 25px;
-}
-.step-box{
-  background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 22px;
-  border-radius: 22px;
-}
-.step-num{
-  width: 34px;
-  height: 34px;
-  background: linear-gradient(135deg, var(--cyan), var(--primary));
-  color: #fff;
-  font-weight: 1000;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-  box-shadow: 0 0 12px rgba(0,240,255,0.4);
-}
-.step-box h3{ font-size: 15px; margin-bottom: 6px; color: #fff; font-weight: 900; }
-
-.faq-card{
-  margin-top: 25px;
-}
-details{
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 14px 18px;
-  border-radius: 14px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-summary{ font-weight: 900; font-size: 13px; outline: none; color: #fff; }
-details p{ margin-top: 8px; font-size: 12px; color: var(--text-muted); }
-
 footer{
-  text-align: center;
-  margin-top: 40px;
-  font-size: 12px;
-  color: var(--text-muted);
-  font-weight: 700;
+  text-align: center; margin-top: 35px; font-size: 11px; color: var(--text-muted); font-weight: 700;
 }
 
 @media(max-width: 768px){
   .grid{ grid-template-columns: 1fr; }
-  .trust-row{ grid-template-columns: 1fr; }
-  .steps-grid{ grid-template-columns: 1fr; }
-  .upi-apps-grid{ grid-template-columns: 1fr; }
+  .trust-metrics-grid{ grid-template-columns: 1fr; }
+  .security-row{ grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -573,29 +565,46 @@ footer{
 
 <div class="container">
 
+  <!-- SERVER TELEMETRY BAR -->
+  <div class="telev-bar telemetry-bar">
+    <span>[ GATEWAY: ONLINE • SSL: 256-BIT ]</span>
+    <span>PING: 14ms | UPTIME: 99.9%</span>
+  </div>
+
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="brand-box">
-      <div class="logo">🎁</div>
-      <div>
-        <div class="brand-name">Redeem Code App</div>
-        <div class="badge-group">
-          <a href="https://www.instagram.com/sunny999bot?stkn=cDBmdHBnaDlycWUx" target="_blank" class="insta-badge">⚡ 120K+ Insta Family</a>
-        </div>
+      <div class="logo-badge"><span>🎁</span></div>
+      <div class="brand-info">
+        <h2>Sunny 999 Bot</h2>
+        <a href="https://www.instagram.com/sunny999bot?stkn=cDBmdHBnaDlycWUx" target="_blank" class="insta-link-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @sunny999bot
+        </a>
       </div>
     </div>
-    <div class="online-status">
-      <span></span> Bot Online
+    <div class="status-group">
+      <div class="active-users-badge">🔥 342 Active</div>
+      <div class="online-status"><span></span> Online</div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO SECTION WITH TRUST PILLARS -->
   <section class="hero">
-    <h1>Redeem Code Generator</h1>
-    <p>Unlock elite digital app access instantly through our automated secure verification system.</p>
+    <h1>Redeem Code Generator App</h1>
+    <p>Unlock elite digital app access instantly through our automated secure telegram verification system.</p>
+    <div class="hinglish-tag">🔥 100% Trusted Bot • Payment karo aur sirf 2 minute mein code pao!</div>
     
-    <div class="urgency-box">
-      🔥 LIMITED OFFER ENDS IN: <span class="timer" id="countdown">14:59</span>
+    <!-- TRUST PILLARS -->
+    <div class="trust-metrics-grid">
+      <div class="trust-metric-pill">📱 50K+ App Downloads</div>
+      <div class="trust-metric-pill">🛡️ 50K+ Trusted Users</div>
+      <div class="trust-metric-pill">🔥 120K+ Instagram Family</div>
+    </div>
+
+    <div class="urgency-flex">
+      <div class="urgency-box">⚡ OFFER ENDS: <span class="timer" id="countdown">14:59</span></div>
+      <div class="scarcity-box">⚡ Codes Left Today: Only 14 remaining!</div>
     </div>
   </section>
 
@@ -604,8 +613,8 @@ footer{
 
     <!-- PAYMENT CARD -->
     <div class="card">
-      <h2>💎 Premium Access</h2>
-      <p class="muted">Pay via UPI & send your payment screenshot + UTR to verify.</p>
+      <h2>💎 Instant Access Pass</h2>
+      <p class="muted">Pay via UPI & verify UTR on Telegram bot.</p>
 
       <div class="price-box">
         <div class="old-price">₹499</div>
@@ -617,11 +626,11 @@ footer{
       <div class="upi-apps-label">Quick 1-Click Pay:</div>
       <div class="upi-apps-grid">
         <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🟢 PhonePe</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🔵 GooglePay</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🔵 GPay</a>
         <a href="upi://pay?pa=sunny999bot@nyes&am=69&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🟣 Paytm</a>
       </div>
 
-      <!-- QR CONTAINER WITH LASER SCAN LIGHTING -->
+      <!-- QR CONTAINER WITH LASER SCANNING -->
       <div class="qr-container">
         <div class="qr-scanner-line"></div>
         <img src="IMG_20260911_222905.png" alt="QR Code">
@@ -632,67 +641,63 @@ footer{
         <button class="copy-btn" onclick="copyUpi()">COPY</button>
       </div>
 
+      <!-- INTERACTIVE UTR CHECKER WIDGET -->
+      <div class="utr-tracker-box">
+        <span style="font-size:11px; font-weight:900; color:var(--text-muted);">🔍 CHECK PAYMENT STATUS:</span>
+        <div class="utr-input-group">
+          <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR ID">
+          <button class="utr-btn" onclick="checkUtr()">VERIFY</button>
+        </div>
+        <div id="utrStatusMsg"></div>
+      </div>
+
       <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="btn btn-telegram">
-        ✈️ VERIFY PAYMENT & UTR ON TELEGRAM
+        ✈️ SEND UTR & GET CODE ON TELEGRAM
       </a>
     </div>
 
-    <!-- LOCKED APP CARD -->
-    <div class="card locked-card">
-      <div class="lock-shield">🔒</div>
-      <h2>App Access Locked</h2>
-      <p class="muted" style="margin-top:8px">
-        Complete your payment and send the screenshot + UTR to the official Telegram verification bot to unlock instant app access.
-      </p>
+    <!-- REVIEWS & FAQ CARD -->
+    <div class="card">
+      <h2>⭐ Fan Reviews & FAQ</h2>
+      <p class="muted">Verified feedback and quick answers for buyers.</p>
 
-      <button class="btn btn-locked" disabled>
-        🔒 APP LOCKED (VERIFICATION REQUIRED)
-      </button>
+      <div class="reviews-box">
+        <div class="review-item">
+          <div class="review-header">
+            <span class="review-author">Aman Verma</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <div class="review-text">"Bhai code mil gaya, main sunny ka big fan hu! Ekdum mast working app hai 🔥"</div>
+        </div>
 
-      <p class="muted" style="margin-top:15px; font-size:12px;">
-        🤖 Official Bot: <b>@Sunny999VerifyBot</b>
-      </p>
+        <div class="review-item">
+          <div class="review-header">
+            <span class="review-author">Rahul Sharma</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <div class="review-text">"Sirf 2 minute lage, UTR bhejte hi instant app access mil gaya. Trusted!"</div>
+        </div>
+      </div>
+
+      <!-- ACCORDION FAQ -->
+      <div class="faq-container">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>❓ Code kitne der mein milega?</span><span>+</span></div>
+          <div class="faq-a">Payment karne ke baad jaise hi aap Telegram verification bot par UTR bhejte hain, 2 minute ke andar code mil jata hai.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q"><span>❓ Kya yeh 100% working hai?</span><span>+</span></div>
+          <div class="faq-a">Haan bilkul! 50K+ trusted users aur hamari 120K+ Instagram family iska proof hai.</div>
+        </div>
+      </div>
+
+      <!-- SECURITY STAMPS -->
+      <div class="security-row">
+        <div class="security-badge">🔒 256-Bit SSL Gateway</div>
+        <div class="security-badge">🤖 Telegram API Verified</div>
+      </div>
     </div>
 
-  </div>
-
-  <!-- TRUST BADGES -->
-  <div class="trust-row">
-    <div class="trust-badge">🛡️ 100% Secure UPI Transfer</div>
-    <div class="trust-badge">⚡ Instant Bot Verification</div>
-    <div class="trust-badge">⭐ 120K+ Trusted Family</div>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <div class="steps-grid">
-    <div class="step-box">
-      <div class="step-num">1</div>
-      <h3>Pay ₹69</h3>
-      <p class="muted">Scan QR or use UPI ID to make payment.</p>
-    </div>
-    <div class="step-box">
-      <div class="step-num">2</div>
-      <h3>Send Proof + UTR</h3>
-      <p class="muted">Forward screenshot and UTR number to Telegram Bot.</p>
-    </div>
-    <div class="step-box">
-      <div class="step-num">3</div>
-      <h3>Get App Link</h3>
-      <p class="muted">Bot verifies manually and unlocks your app instantly.</p>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="card faq-card">
-    <h2>❓ Frequently Asked Questions</h2>
-    <details>
-      <summary>Payment ke baad code kaise milega?</summary>
-      <p>Payment screenshot aur UTR number official Telegram bot par bhejna hoga, wahan se turant approval mil jayega.</p>
-    </details>
-    <details>
-      <summary>Kya UTR dena zaroori hai?</summary>
-      <p>Haan, payment screenshot ke sath UTR verification ke liye zaroori hai.</p>
-    </details>
   </div>
 
   <footer>
@@ -702,69 +707,4 @@ footer{
 </div>
 
 <!-- FLOATING TELEGRAM BUTTON -->
-<a href="https://t.me/Sunny999VerifyBot" target="_blank" class="float-tg" title="Verify on Telegram">✈️</a>
-
-<!-- LIVE BUYER POPUP TICKER -->
-<div class="buyer-ticker" id="buyerTicker">
-  <div style="font-size:20px;">⚡</div>
-  <div>
-    <b id="buyerText">Aman from Delhi</b>
-    <small id="buyerSub">Verified payment & unlocked app 1 min ago</small>
-  </div>
-</div>
-
-<script>
-// Copy UPI Function
-function copyUpi(){
-  const upi = document.getElementById("upiId").innerText;
-  navigator.clipboard.writeText(upi).then(()=>{
-    const btn = document.querySelector(".copy-btn");
-    btn.innerText = "COPIED ✓";
-    btn.style.background = "#00ff88";
-    btn.style.color = "#07090e";
-    setTimeout(()=>{
-      btn.innerText = "COPY";
-      btn.style.background = "var(--primary)";
-      btn.style.color = "#fff";
-    }, 1500);
-  });
-}
-
-// Countdown Timer
-let time = 14 * 60 + 59;
-setInterval(() => {
-  let m = Math.floor(time / 60);
-  let s = time % 60;
-  document.getElementById("countdown").innerText = 
-    (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-  if(time > 0) time--;
-}, 1000);
-
-// Live Recent Buyers Notification Loop
-const buyers = [
-  ["Rahul from Mumbai", "Unlocked app 2 mins ago"],
-  ["Aman from Delhi", "Verified payment via Telegram"],
-  ["Vikram from Jaipur", "Got access instantly"],
-  ["Deepak from Patna", "Verified UTR & unlocked app"]
-];
-
-let bIndex = 0;
-function showBuyerTicker(){
-  const ticker = document.getElementById("buyerTicker");
-  document.getElementById("buyerText").innerText = buyers[bIndex][0];
-  document.getElementById("buyerSub").innerText = buyers[bIndex][1];
-  
-  ticker.classList.add("show");
-  setTimeout(() => {
-    ticker.classList.remove("show");
-  }, 4500);
-  
-  bIndex = (bIndex + 1) % buyers.length;
-}
-
-setTimeout(showBuyerTicker, 3000);
-setInterval(showBuyerTicker, 9000);
-</script>
-
-</body>
-</html>
+<a href="https://t.me/Sunny999VerifyBot" target="_blank" class="float-tg" title="Verify on Telegram">
