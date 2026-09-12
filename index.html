@@ -309,23 +309,17 @@ body{
   justify-content: space-between;
 }
 
-.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 10px; }
+.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 12px; }
 
-/* PAYMENT SECTION */
-.payment-split{
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 10px;
-  align-items: center;
-  margin-top: 10px;
-}
+/* BIG CENTERED QR SECTION */
 .scan-box-wrapper{
   text-align: center;
   background: rgba(0,0,0,0.4);
-  padding: 10px;
+  padding: 14px;
   border-radius: 14px;
   border: 1px solid rgba(0, 240, 255, 0.25);
-  position: relative;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .amount-banner-scanner{
@@ -333,55 +327,30 @@ body{
   color: #fff;
   font-size: 11px;
   font-weight: 1000;
-  padding: 4px 8px;
+  padding: 5px 12px;
   border-radius: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: inline-block;
   box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
 }
 
 .qr-container{
-  width: 110px;
-  margin: 4px auto;
-  padding: 6px;
+  width: 170px;
+  margin: 6px auto;
+  padding: 8px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-  position: relative;
-  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
-.qr-container img{ width: 100%; display: block; border-radius: 4px; }
+.qr-container img{ width: 100%; display: block; border-radius: 6px; }
 
 .upi-copy-box{
   display: flex; align-items: center; gap: 6px;
-  background: rgba(0,0,0,0.6); padding: 6px 8px;
-  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 6px;
+  background: rgba(0,0,0,0.6); padding: 8px 10px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px;
 }
-.upi-copy-box code{ flex: 1; font-size: 10px; font-weight: bold; color: var(--cyan); }
-.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
-
-.upi-apps-col{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.upi-app-btn{
-  padding: 9px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
-  font-size: 10.5px;
-  font-weight: 900;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: 0.2s;
-}
-.upi-app-btn:hover{ background: rgba(0, 240, 255, 0.2); border-color: var(--cyan); }
+.upi-copy-box code{ flex: 1; font-size: 11px; font-weight: bold; color: var(--cyan); }
+.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 5px 10px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
 
 .mini-sec-row{
   display: flex;
@@ -389,7 +358,7 @@ body{
   font-size: 10px;
   font-weight: 900;
   color: var(--success);
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 /* APP LOCKED CARD */
@@ -429,7 +398,7 @@ body{
 
 /* UTR VERIFY */
 .utr-section{
-  margin-top: 12px;
+  margin-top: 14px;
   background: rgba(0,0,0,0.4);
   padding: 12px;
   border-radius: 14px;
@@ -558,7 +527,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <h3>📖 App aur Redeem Code Kaise Milega? (Steps)</h3>
     <div class="step-item">
       <div class="step-num">1</div>
-      <div><strong>Payment Karein:</strong> QR Code scan karein ya PhonePe / GPay / Paytm button dabakar exactly <strong>₹41</strong> pay karein. UPI ID: <code>sunny999bot@nyes</code></div>
+      <div><strong>Payment Karein:</strong> QR Code ka screenshot lein ya scan karein aur exactly <strong>₹41</strong> pay karein. UPI ID: <code>sunny999bot@nyes</code></div>
     </div>
     <div class="step-item">
       <div class="step-num">2</div>
@@ -574,28 +543,19 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </div>
 
-  <!-- PAYMENT SECTION -->
+  <!-- PAYMENT SECTION - BIG CENTERED QR -->
   <div class="card">
-    <h2><span>💎 Scan & Pay / UPI</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
-    <p class="muted">Scan QR or pay via PhonePe, GPay, Paytm, or Other UPI Apps.</p>
+    <h2><span>💎 Scan & Pay / QR Code</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
+    <p class="muted">Take a screenshot of the QR code or scan it directly from your UPI app gallery.</p>
 
-    <div class="payment-split">
-      <div class="scan-box-wrapper">
-        <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
-        <div class="qr-container">
-          <img src="IMG_20260911_222905.png" alt="QR Code">
-        </div>
-        <div class="upi-copy-box">
-          <code id="upiId">sunny999bot@nyes</code>
-          <button class="copy-btn" id="copyUpiBtn">COPY</button>
-        </div>
+    <div class="scan-box-wrapper">
+      <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
+      <div class="qr-container">
+        <img src="IMG_20260911_222905.png" alt="QR Code">
       </div>
-
-      <div class="upi-apps-col">
-        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🅿️ PhonePe (₹41)</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🌐 Google Pay (₹41)</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn"> Paytm (₹41)</a>
-        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">⚡ Other UPI Apps</a>
+      <div class="upi-copy-box">
+        <code id="upiId">sunny999bot@nyes</code>
+        <button class="copy-btn" id="copyUpiBtn">COPY</button>
       </div>
     </div>
 
@@ -717,95 +677,4 @@ document.addEventListener("DOMContentLoaded", function() {
   /* 3. COPY & PASTE HANDLERS */
   const copyBtn = document.getElementById("copyUpiBtn");
   if(copyBtn) {
-    copyBtn.addEventListener("click", () => {
-      const upi = document.getElementById("upiId").innerText;
-      navigator.clipboard.writeText(upi).then(() => {
-        copyBtn.innerText = "COPIED ✓";
-        copyBtn.style.background = "#00ff88";
-        copyBtn.style.color = "#05070a";
-        setTimeout(() => {
-          copyBtn.innerText = "COPY";
-          copyBtn.style.background = "var(--primary)";
-          copyBtn.style.color = "#fff";
-        }, 1500);
-      });
-    });
-  }
-
-  const pasteBtn = document.getElementById("pasteUtrBtn");
-  if(pasteBtn) {
-    pasteBtn.addEventListener("click", () => {
-      navigator.clipboard.readText().then(text => {
-        document.getElementById("utrInput").value = text.trim();
-      }).catch(err => {
-        alert("Please paste UTR manually.");
-      });
-    });
-  }
-
-  /* 4. VERIFY & TERMINAL FLOW */
-  const verifyBtn = document.getElementById("verifyBtn");
-  if(verifyBtn) {
-    verifyBtn.addEventListener("click", () => {
-      const val = document.getElementById("utrInput").value.trim();
-      const msg = document.getElementById("utrStatusMsg");
-      
-      if(val.length < 8){
-        msg.style.display = "block";
-        msg.style.color = "#ff007f";
-        msg.innerText = "❌ Please enter a valid 12-digit UTR number!";
-        return;
-      }
-
-      msg.style.display = "none";
-      const modal = document.getElementById("terminalModal");
-      const log = document.getElementById("terminalLog");
-      const manualBtn = document.getElementById("manualTgBtn");
-      
-      modal.style.display = "flex";
-      manualBtn.style.display = "none";
-      
-      log.innerHTML = `<div>> Connecting to secure payment gateway...</div>`;
-      
-      setTimeout(() => {
-        log.innerHTML += `<div>> Verifying UTR: ${val} for ₹41 payment...</div>`;
-      }, 900);
-
-      setTimeout(() => {
-        log.innerHTML += `<div>> Match found! Unlocking app & generating code...</div>`;
-        log.style.color = "var(--cyan)";
-      }, 1800);
-
-      setTimeout(() => {
-        log.innerHTML += `<div>> SUCCESS! Redirecting to Telegram bot...</div>`;
-        log.style.color = "var(--success)";
-        
-        // Unlock card visuals
-        const lockCard = document.getElementById("appLockedCard");
-        lockCard.style.background = "rgba(0, 255, 136, 0.05)";
-        lockCard.style.borderColor = "rgba(0, 255, 136, 0.35)";
-        lockCard.querySelector(".lock-icon-box").innerText = "🔓";
-        lockCard.querySelector("h3").innerText = "APP UNLOCKED!";
-        lockCard.querySelector("h3").style.color = "var(--success)";
-        lockCard.querySelector("p").innerText = "Payment verified successfully. Enjoy your code!";
-        
-        const badge = document.getElementById("lockBadgeText");
-        badge.innerText = "UNLOCKED ✓";
-        badge.style.background = "rgba(0, 255, 136, 0.2)";
-        badge.style.color = "var(--success)";
-        badge.style.borderColor = "rgba(0, 255, 136, 0.4)";
-        
-        manualBtn.style.display = "block";
-      }, 2700);
-
-      setTimeout(() => {
-        window.location.href = "https://t.me/Sunny999VerifyBot";
-      }, 3800);
-    });
-  }
-
-});
-</script>
-
-</body>
-</html>
+   
