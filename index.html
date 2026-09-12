@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNNY 999 BOT</title>
+
+<title>SUNNY 999 BOT | Premium Access</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
   background:#05070d;
   color:#fff;
-  font-family:Arial,sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 .wrap{
@@ -29,96 +32,162 @@ body{
 }
 
 .logo{
-  font-weight:900;
   font-size:20px;
+  font-weight:900;
 }
 
 .online{
-  font-size:11px;
   color:#42ff9b;
+  font-size:12px;
+  font-weight:700;
 }
 
-.hero,.card{
+.hero,
+.card{
   background:linear-gradient(145deg,#0d1220,#080b13);
   border:1px solid #20283b;
-  border-radius:20px;
+  border-radius:22px;
   padding:20px;
   margin-top:14px;
-  box-shadow:0 10px 30px #0006;
+  box-shadow:0 12px 35px #0008;
 }
 
 .badge{
   display:inline-block;
-  border:1px solid #35e7ff55;
-  background:#35e7ff12;
-  color:#6eeeff;
+  padding:8px 13px;
   border-radius:999px;
-  padding:7px 11px;
+  border:1px solid #35e7ff;
+  color:#67efff;
+  background:#35e7ff12;
   font-size:11px;
-  font-weight:700;
+  font-weight:800;
 }
 
 h1{
-  font-size:34px;
-  line-height:1.05;
-  margin:16px 0 8px;
+  font-size:36px;
+  line-height:1.03;
+  margin:17px 0 9px;
 }
 
 .sub{
   color:#9ba7bd;
   font-size:14px;
+  line-height:1.5;
 }
 
 .plans{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin-top:18px;
+  margin-top:20px;
 }
 
 .plan{
-  border:1px solid #27324a;
-  border-radius:16px;
-  padding:16px;
+  position:relative;
+  background:#090e18;
+  border:1px solid #29344b;
+  border-radius:17px;
+  padding:17px;
   cursor:pointer;
-  background:#0a0f1b;
+  transition:.2s;
 }
 
 .plan.active{
-  border-color:#56e9ff;
-  box-shadow:0 0 20px #56e9ff22;
+  border-color:#55eaff;
+  box-shadow:0 0 22px #55eaff22;
+}
+
+.plan:hover{
+  transform:translateY(-2px);
+}
+
+.plan-tag{
+  font-size:9px;
+  color:#6f819e;
+  font-weight:800;
+  letter-spacing:1px;
 }
 
 .price{
   font-size:28px;
   font-weight:900;
+  margin-top:6px;
 }
 
 .label{
+  color:#b7c2d4;
   font-size:12px;
-  color:#aeb9ca;
-  margin-top:5px;
+  margin-top:6px;
 }
 
-button{
-  width:100%;
-  border:0;
-  border-radius:14px;
-  padding:14px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.primary{
+.popular{
+  position:absolute;
+  right:8px;
+  top:8px;
+  padding:4px 7px;
+  border-radius:8px;
   background:#55eaff;
   color:#031016;
+  font-size:8px;
+  font-weight:900;
+}
+
+.stock{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:16px;
+  padding:12px;
+  border-radius:13px;
+  background:#0b111d;
+  border:1px solid #202b40;
+}
+
+.stock-left{
+  font-size:12px;
+  color:#aeb9ca;
+}
+
+.stock-right{
+  color:#55eaff;
+  font-weight:900;
+  font-size:12px;
+}
+
+.stock-dot{
+  display:inline-block;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#42ff9b;
+  margin-right:5px;
+}
+
+.features{
+  display:grid;
+  gap:9px;
   margin-top:14px;
 }
 
-.copy{
-  background:#141b2b;
-  color:#fff;
-  margin-top:8px;
+.feature{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px;
+  border-radius:12px;
+  background:#0a101b;
+  border:1px solid #1d2738;
+  font-size:12px;
+  color:#cbd4e3;
+}
+
+.icon{
+  font-size:16px;
+}
+
+h2{
+  margin:0 0 6px;
+  font-size:25px;
 }
 
 .qr{
@@ -127,9 +196,9 @@ button{
   height:220px;
   object-fit:contain;
   background:#fff;
-  border-radius:16px;
+  border-radius:17px;
   padding:8px;
-  margin:12px auto;
+  margin:15px auto;
 }
 
 .row{
@@ -142,51 +211,124 @@ button{
   flex:1;
   background:#101726;
   border:1px solid #27324a;
-  border-radius:12px;
-  padding:12px;
+  border-radius:13px;
+  padding:13px;
   font-size:13px;
   word-break:break-all;
 }
 
+button{
+  border:0;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.copy{
+  background:#141d30;
+  color:#fff;
+  border-radius:13px;
+  padding:13px 15px;
+}
+
 input{
   width:100%;
-  padding:14px;
-  border-radius:13px;
-  border:1px solid #27324a;
+  padding:15px;
+  margin-top:13px;
+  border-radius:14px;
+  border:1px solid #29354d;
   background:#080d17;
   color:#fff;
   outline:none;
-  margin-top:12px;
+  font-size:14px;
+}
+
+input:focus{
+  border-color:#55eaff;
+}
+
+.primary{
+  width:100%;
+  margin-top:13px;
+  padding:15px;
+  border-radius:14px;
+  background:#55eaff;
+  color:#031016;
+  font-size:14px;
+  box-shadow:0 0 22px #55eaff20;
 }
 
 .note{
-  font-size:11px;
-  color:#8895aa;
   margin-top:9px;
+  color:#7f8da4;
+  font-size:11px;
   line-height:1.5;
 }
 
+.steps{
+  margin-top:5px;
+}
+
 .step{
-  padding:11px 0;
-  border-bottom:1px solid #1c2434;
-  font-size:13px;
+  display:flex;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #1d2636;
   color:#cbd4e3;
+  font-size:13px;
 }
 
 .step:last-child{
-  border:0;
+  border-bottom:0;
+}
+
+.step-num{
+  min-width:27px;
+  height:27px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:#101b2d;
+  color:#55eaff;
+  font-weight:900;
+  font-size:11px;
+}
+
+.timer-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  border-radius:14px;
+  background:#0a101b;
+  border:1px solid #202b40;
+}
+
+.timer{
+  color:#55eaff;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.support{
+  text-align:center;
+  margin-top:15px;
+}
+
+.support button{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  background:#101a2b;
+  color:#fff;
+  border:1px solid #26344d;
 }
 
 .footer{
   text-align:center;
-  color:#6f7b90;
-  font-size:11px;
-  padding:22px 0;
-}
-
-.timer{
-  font-weight:900;
-  color:#55eaff;
+  color:#65738b;
+  font-size:10px;
+  padding:24px 0 12px;
 }
 </style>
 </head>
@@ -195,38 +337,83 @@ input{
 
 <div class="wrap">
 
+  <!-- TOP -->
   <div class="top">
     <div class="logo">SUNNY 999 BOT</div>
     <div class="online">● ONLINE</div>
   </div>
 
+
+  <!-- HERO -->
   <section class="hero">
 
-    <span class="badge">PREMIUM ACCESS</span>
+    <span class="badge">
+      ✦ PREMIUM ACCESS
+    </span>
 
     <h1>
-      CC PHOTO<br>
-      AVAILABLE
+      FREE FIRE<br>
+      PREMIUM CARDS
     </h1>
 
     <div class="sub">
-      Choose your CC Photo plan and complete payment.
+      Choose your preferred card and continue with the secure order process.
     </div>
 
+
+    <!-- PLANS -->
     <div class="plans">
 
-      <div class="plan active" data-plan="999">
-        <div class="price">₹999</div>
-        <div class="label">
-          CC Photo (20,000)
+      <div class="plan active" data-plan="1999">
+
+        <div class="popular">
+          POPULAR
         </div>
+
+        <div class="plan-tag">
+          PREMIUM CARD
+        </div>
+
+        <div class="price">
+          ₹1999
+        </div>
+
+        <div class="label">
+          💎 FREE FIRE DIAMOND CARD
+        </div>
+
       </div>
 
-      <div class="plan" data-plan="1999">
-        <div class="price">₹1999</div>
-        <div class="label">
-          CC Photo (1 LAKH)
+
+      <div class="plan" data-plan="999">
+
+        <div class="plan-tag">
+          PREMIUM CARD
         </div>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <div class="label">
+          🪙 FREE FIRE GOLD CARD
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- STOCK -->
+    <div class="stock">
+
+      <div class="stock-left">
+        <span class="stock-dot"></span>
+        Availability
+      </div>
+
+      <div class="stock-right">
+        LIMITED AVAILABILITY
       </div>
 
     </div>
@@ -234,34 +421,85 @@ input{
   </section>
 
 
+  <!-- PREMIUM FEATURES -->
   <section class="card">
 
-    <h2 style="margin:0 0 6px">
+    <h2>
+      Premium Benefits
+    </h2>
+
+    <div class="sub">
+      Simple and clear order experience.
+    </div>
+
+
+    <div class="features">
+
+      <div class="feature">
+        <span class="icon">⚡</span>
+        <span>
+          Fast order processing
+        </span>
+      </div>
+
+
+      <div class="feature">
+        <span class="icon">🔐</span>
+        <span>
+          Secure payment process
+        </span>
+      </div>
+
+
+      <div class="feature">
+        <span class="icon">✅</span>
+        <span>
+          Manual order verification
+        </span>
+      </div>
+
+
+      <div class="feature">
+        <span class="icon">📲</span>
+        <span>
+          Telegram support
+        </span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PAYMENT -->
+  <section class="card">
+
+    <h2>
       Payment
     </h2>
 
     <div class="sub">
       Selected plan:
-      <b id="selectedPlan">₹999</b>
+      <b id="selectedPlan">₹1999</b>
     </div>
 
-    <!-- QR IMAGE -->
+
     <img
       class="qr"
       src="IMG_20260911_222905.png"
       alt="Payment QR"
     >
 
+
     <div class="row">
 
-      <div class="upi" id="upi">
+      <div class="upi">
         sunny999bot@nyes
       </div>
 
       <button
         class="copy"
         id="copyBtn"
-        style="width:auto;padding:12px 14px"
       >
         COPY
       </button>
@@ -271,6 +509,7 @@ input{
 
     <input
       id="utr"
+      type="text"
       inputmode="numeric"
       maxlength="12"
       placeholder="Enter 12-digit UTR"
@@ -286,53 +525,93 @@ input{
 
 
     <div class="note">
-      Payment ke baad apna 12-digit UTR enter karke
-      Telegram verification bot par jao.
-      Verification Telegram bot par hogi.
+      Payment complete karne ke baad 12-digit UTR enter karo.
+      Verification Telegram bot par complete hogi.
     </div>
 
   </section>
 
 
+  <!-- HOW IT WORKS -->
   <section class="card">
 
-    <h2 style="margin:0 0 8px">
+    <h2>
       How It Works
     </h2>
 
-    <div class="step">
-      01 — Plan select karo
-    </div>
+    <div class="steps">
 
-    <div class="step">
-      02 — QR/UPI se payment karo
-    </div>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          Plan select karo
+        </div>
+      </div>
 
-    <div class="step">
-      03 — 12-digit UTR enter karo
-    </div>
 
-    <div class="step">
-      04 — Telegram par verification complete karo
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          Payment complete karo
+        </div>
+      </div>
+
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          12-digit UTR enter karo
+        </div>
+      </div>
+
+
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          Telegram verification complete karo
+        </div>
+      </div>
+
     </div>
 
   </section>
 
 
+  <!-- TIMER -->
   <section class="card">
 
-    <div style="display:flex;justify-content:space-between">
-      <span>Offer timer</span>
-      <span class="timer" id="timer">
+    <div class="timer-box">
+
+      <span>
+        Today's Offer
+      </span>
+
+      <span
+        class="timer"
+        id="timer"
+      >
         23:59:59
       </span>
+
     </div>
+
+  </section>
+
+
+  <!-- SUPPORT -->
+  <section class="card support">
+
+    <button
+      onclick="openTelegram()"
+    >
+      📲 TELEGRAM SUPPORT
+    </button>
 
   </section>
 
 
   <div class="footer">
-    SUNNY 999 BOT • Secure verification via Telegram
+    SUNNY 999 BOT • PREMIUM ACCESS
   </div>
 
 </div>
@@ -344,23 +623,33 @@ const UPI_ID = "sunny999bot@nyes";
 
 const TELEGRAM_BOT = "Sunny999VerifyBot";
 
-let selectedPlan = "999";
+let selectedPlan = "1999";
 
 
+// ==========================
 // PLAN SELECT
-document.querySelectorAll(".plan").forEach(plan => {
+// ==========================
+
+document
+.querySelectorAll(".plan")
+.forEach(plan => {
 
   plan.addEventListener("click", () => {
 
     document
-      .querySelectorAll(".plan")
-      .forEach(p => p.classList.remove("active"));
+    .querySelectorAll(".plan")
+    .forEach(p => {
+      p.classList.remove("active");
+    });
 
     plan.classList.add("active");
 
-    selectedPlan = plan.dataset.plan;
+    selectedPlan =
+      plan.dataset.plan;
 
-    document.getElementById("selectedPlan").textContent =
+    document
+    .getElementById("selectedPlan")
+    .textContent =
       "₹" + selectedPlan;
 
   });
@@ -368,51 +657,81 @@ document.querySelectorAll(".plan").forEach(plan => {
 });
 
 
+// ==========================
 // COPY UPI
-document.getElementById("copyBtn").onclick = async () => {
+// ==========================
+
+document
+.getElementById("copyBtn")
+.addEventListener("click", async () => {
 
   try {
 
-    await navigator.clipboard.writeText(UPI_ID);
+    await navigator
+    .clipboard
+    .writeText(UPI_ID);
 
-    const button = document.getElementById("copyBtn");
+    const btn =
+      document.getElementById("copyBtn");
 
-    button.textContent = "COPIED ✓";
+    btn.textContent =
+      "COPIED ✓";
 
     setTimeout(() => {
-      button.textContent = "COPY";
-    },1400);
 
-  } catch(e) {
+      btn.textContent =
+        "COPY";
 
-    alert("UPI ID: " + UPI_ID);
+    },1500);
+
+  } catch {
+
+    alert(
+      "UPI ID: " + UPI_ID
+    );
 
   }
-
-};
-
-
-// UTR ONLY NUMBERS
-const utr = document.getElementById("utr");
-
-utr.addEventListener("input", () => {
-
-  utr.value =
-    utr.value
-      .replace(/\D/g,"")
-      .slice(0,12);
 
 });
 
 
-// TELEGRAM VERIFY
-document.getElementById("verify").onclick = () => {
+// ==========================
+// UTR INPUT
+// ==========================
 
-  const value = utr.value.trim();
+const utr =
+  document.getElementById("utr");
+
+utr.addEventListener(
+  "input",
+  () => {
+
+    utr.value =
+      utr.value
+      .replace(/\D/g,"")
+      .slice(0,12);
+
+  }
+);
+
+
+// ==========================
+// TELEGRAM VERIFY
+// ==========================
+
+document
+.getElementById("verify")
+.addEventListener("click", () => {
+
+  const value =
+    utr.value.trim();
+
 
   if(value.length !== 12){
 
-    alert("Please enter exactly 12 digits UTR.");
+    alert(
+      "Please enter exactly 12 digits UTR."
+    );
 
     utr.focus();
 
@@ -434,40 +753,89 @@ document.getElementById("verify").onclick = () => {
     "?start=" +
     encodeURIComponent(payload);
 
-};
+});
 
 
-// DAILY TIMER
-function updateTimer(){
+// ==========================
+// TELEGRAM SUPPORT
+// ==========================
 
-  const now = new Date();
+function openTelegram(){
 
-  const end = new Date(now);
-
-  end.setHours(23,59,59,999);
-
-  const ms = Math.max(0,end-now);
-
-  const h =
-    String(Math.floor(ms / 3600000))
-    .padStart(2,"0");
-
-  const m =
-    String(Math.floor((ms % 3600000) / 60000))
-    .padStart(2,"0");
-
-  const s =
-    String(Math.floor((ms % 60000) / 1000))
-    .padStart(2,"0");
-
-  document.getElementById("timer").textContent =
-    `${h}:${m}:${s}`;
+  window.location.href =
+    "https://t.me/" +
+    TELEGRAM_BOT;
 
 }
 
+
+// ==========================
+// DAILY TIMER
+// ==========================
+
+function updateTimer(){
+
+  const now =
+    new Date();
+
+  const end =
+    new Date(now);
+
+  end.setHours(
+    23,
+    59,
+    59,
+    999
+  );
+
+
+  const ms =
+    Math.max(
+      0,
+      end - now
+    );
+
+
+  const h =
+    String(
+      Math.floor(
+        ms / 3600000
+      )
+    ).padStart(2,"0");
+
+
+  const m =
+    String(
+      Math.floor(
+        (ms % 3600000) /
+        60000
+      )
+    ).padStart(2,"0");
+
+
+  const s =
+    String(
+      Math.floor(
+        (ms % 60000) /
+        1000
+      )
+    ).padStart(2,"0");
+
+
+  document
+  .getElementById("timer")
+  .textContent =
+    h + ":" + m + ":" + s;
+
+}
+
+
 updateTimer();
 
-setInterval(updateTimer,1000);
+setInterval(
+  updateTimer,
+  1000
+);
 
 </script>
 
