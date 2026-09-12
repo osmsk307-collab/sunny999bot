@@ -7,48 +7,49 @@
 
 <style>
 :root{
-  --bg-dark:#030508;
-  --card-bg:rgba(10,14,26,.96);
-  --primary:#9d4edd;
-  --cyan:#00f0ff;
-  --accent:#ff007f;
-  --success:#00ff88;
-  --yellow:#ffc107;
-  --text-main:#f8fafc;
-  --text-muted:#94a3b8;
+  --bg-dark: #030508;
+  --card-bg: rgba(10, 14, 26, 0.96);
+  --primary: #9d4edd;
+  --cyan: #00f0ff;
+  --accent: #ff007f;
+  --success: #00ff88;
+  --yellow: #ffc107;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:'Segoe UI',system-ui,sans-serif;
-  background:var(--bg-dark);
-  background-image:
-    radial-gradient(circle at 15% 10%,rgba(157,78,221,.25) 0,transparent 40%),
-    radial-gradient(circle at 85% 20%,rgba(0,240,255,.2) 0,transparent 40%),
-    radial-gradient(circle at 50% 60%,rgba(255,0,127,.15) 0,transparent 50%);
-  color:var(--text-main);
-  min-height:100vh;
-  padding-bottom:90px;
+  font-family:'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(157, 78, 221, 0.25) 0, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(0, 240, 255, 0.2) 0, transparent 40%),
+    radial-gradient(circle at 50% 60%, rgba(255, 0, 127, 0.15) 0, transparent 50%);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding-bottom: 90px;
 }
 
 .container{
-  width:min(480px,100%);
+  width:min(480px, 100%);
   margin:auto;
   padding:12px 14px 24px;
 }
 
+/* TOPBAR */
 .topbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:var(--card-bg);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(0,240,255,.3);
-  padding:12px 14px;
-  border-radius:16px;
-  margin-bottom:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,.6);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 12px 14px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 
 .brand-box{
@@ -58,574 +59,410 @@ body{
 }
 
 .menu-icon{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.15);
-  width:36px;
-  height:36px;
-  border-radius:10px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
 }
-
-.menu-icon span{
-  width:16px;
-  height:2px;
-  background:#fff;
-  border-radius:2px;
-}
+.menu-icon span{ width: 16px; height: 2px; background: #fff; border-radius: 2px; }
 
 .logo-badge{
   width:40px;
   height:40px;
   border-radius:12px;
-  background:linear-gradient(135deg,var(--yellow),var(--accent),var(--primary));
+  background:linear-gradient(135deg, var(--yellow), var(--accent), var(--primary));
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 0 15px rgba(255,193,7,.4);
-  font-weight:1000;
-  font-size:18px;
-  color:#05070a;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+  font-weight: 1000;
+  font-size: 18px;
+  color: #05070a;
 }
 
 .brand-info h2{
-  font-size:14px;
-  font-weight:1000;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  gap:4px;
+  font-size: 14px;
+  font-weight: 1000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.verified-tick{
-  color:var(--cyan);
-  font-size:12px;
-}
+.verified-tick{ color: var(--cyan); font-size: 12px; }
 
 .insta-handle{
-  font-size:11px;
-  color:var(--cyan);
-  text-decoration:none;
-  font-weight:700;
-  display:block;
-  margin-top:1px;
+  font-size: 11px;
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 700;
+  display: block;
+  margin-top: 1px;
 }
 
 .sub-tagline{
-  font-size:9px;
-  color:var(--text-muted);
-  font-weight:700;
-  letter-spacing:.5px;
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .online-badge{
   display:flex;
   align-items:center;
   gap:4px;
-  font-size:10px;
+  font-size: 10px;
   font-weight:900;
-  color:var(--success);
-  background:rgba(0,255,136,.1);
-  border:1px solid rgba(0,255,136,.3);
-  padding:4px 8px;
-  border-radius:14px;
+  color: var(--success);
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 4px 8px;
+  border-radius: 14px;
 }
-
 .online-badge span{
-  width:6px;
-  height:6px;
-  background:var(--success);
-  border-radius:50%;
-  box-shadow:0 0 8px var(--success);
+  width:6px; height:6px; background: var(--success); border-radius: 50%;
+  box-shadow: 0 0 8px var(--success);
 }
 
 .trusted-lakh-badge{
-  background:linear-gradient(135deg,var(--yellow),#ff9800);
-  color:#05070a;
-  font-size:10px;
-  font-weight:1000;
-  padding:5px 12px;
-  border-radius:12px;
-  box-shadow:0 0 12px rgba(255,193,7,.4);
-  text-align:center;
-  margin-bottom:12px;
-  display:inline-block;
+  background: linear-gradient(135deg, var(--yellow), #ff9800);
+  color: #05070a;
+  font-size: 10px;
+  font-weight: 1000;
+  padding: 5px 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255,193,7,0.4);
+  text-align: center;
+  margin-bottom: 12px;
+  display: inline-block;
 }
 
+/* LIVE TICKER */
 .live-ticker{
-  background:rgba(0,240,255,.05);
-  border:1px solid rgba(0,240,255,.25);
-  border-radius:12px;
-  padding:8px 12px;
-  margin-bottom:12px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:10.5px;
-  font-weight:800;
-  color:var(--cyan);
-  overflow:hidden;
-  white-space:nowrap;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--cyan);
+  overflow: hidden;
+  white-space: nowrap;
 }
+.live-dot{ width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: blinkLive 1s infinite; flex-shrink: 0; }
+@keyframes blinkLive{ 0%{ opacity: 1; } 50%{ opacity: 0.3; } 100%{ opacity: 1; } }
 
-.live-dot{
-  width:8px;
-  height:8px;
-  background:var(--accent);
-  border-radius:50%;
-  animation:blinkLive 1s infinite;
-  flex-shrink:0;
-}
-
-@keyframes blinkLive{
-  0%{opacity:1}
-  50%{opacity:.3}
-  100%{opacity:1}
-}
-
+/* HERO SECTION */
 .hero{
-  text-align:center;
-  padding:18px 14px 16px;
-  background:var(--card-bg);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(157,78,221,.4);
-  border-radius:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,.7);
-  margin-bottom:14px;
+  text-align: center;
+  padding: 18px 14px 16px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(157, 78, 221, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  margin-bottom: 14px;
 }
 
 .hero h1{
-  font-size:clamp(18px,5vw,24px);
-  font-weight:1000;
-  line-height:1.25;
-  background:linear-gradient(90deg,var(--cyan),#fff,var(--accent));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:6px;
-  text-transform:uppercase;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 1000;
+  line-height: 1.25;
+  background: linear-gradient(90deg, var(--cyan), #fff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .trusted-tag{
-  display:inline-block;
-  background:rgba(255,0,127,.15);
-  color:#ff66b2;
-  border:1px solid rgba(255,0,127,.4);
-  padding:4px 12px;
-  border-radius:14px;
-  font-size:11px;
-  font-weight:900;
-  margin-bottom:8px;
+  display: inline-block;
+  background: rgba(255, 0, 127, 0.15);
+  color: #ff66b2;
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 8px;
 }
 
 .hero p{
-  color:var(--text-muted);
-  font-size:11px;
-  margin-bottom:12px;
-  font-weight:600;
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .quick-pills-row{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:6px;
-  margin-bottom:12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
 }
-
 .quick-pill{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.1);
-  padding:6px 4px;
-  border-radius:8px;
-  font-size:9px;
-  font-weight:800;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:3px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 4px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
 }
 
 .urgency-grid{
-  display:grid;
-  grid-template-columns:1.3fr .9fr;
-  gap:8px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 8px;
 }
-
-.urgency-box,.scarcity-box{
-  background:rgba(0,240,255,.05);
-  border:1px solid rgba(0,240,255,.25);
-  padding:10px 8px;
-  border-radius:12px;
-  text-align:center;
-  font-size:10px;
-  font-weight:900;
-  color:var(--cyan);
+.urgency-box, .scarcity-box{
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 10px 8px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--cyan);
 }
-
 .scarcity-box{
-  background:rgba(255,0,127,.05);
-  border-color:rgba(255,0,127,.25);
-  color:var(--accent);
+  background: rgba(255, 0, 127, 0.05);
+  border-color: rgba(255, 0, 127, 0.25);
+  color: var(--accent);
 }
-
 .timer-val{
-  display:block;
-  font-family:monospace;
-  font-size:15px;
-  color:#fff;
-  margin-top:4px;
-  letter-spacing:.5px;
+  display: block;
+  font-family: monospace;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
 }
-
 .timer-labels{
-  display:flex;
-  justify-content:space-around;
-  font-size:7.5px;
-  color:var(--text-muted);
-  font-weight:800;
-  margin-top:2px;
+  display: flex; justify-content: space-around; font-size: 7.5px; color: var(--text-muted); font-weight: 800; margin-top: 2px;
 }
 
+/* INSTRUCTIONS BOX */
 .instructions-box{
-  background:rgba(0,240,255,.06);
-  border:1px solid rgba(0,240,255,.3);
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
-
 .instructions-box h3{
-  font-size:13px;
-  color:var(--cyan);
-  margin-bottom:10px;
-  font-weight:1000;
-  display:flex;
-  align-items:center;
-  gap:6px;
+  font-size: 13px;
+  color: var(--cyan);
+  margin-bottom: 10px;
+  font-weight: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-
 .step-item{
-  font-size:11px;
-  color:#e2e8f0;
-  margin-bottom:8px;
-  line-height:1.45;
-  font-weight:700;
-  display:flex;
-  gap:8px;
+  font-size: 11px;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+  line-height: 1.45;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
 }
-
 .step-num{
-  background:var(--primary);
-  color:#fff;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:10px;
-  font-weight:bold;
-  flex-shrink:0;
-  margin-top:1px;
+  background: var(--primary);
+  color: #fff;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: bold; flex-shrink: 0;
+  margin-top: 1px;
 }
 
+/* CARD SECTION */
 .card{
-  background:var(--card-bg);
-  backdrop-filter:blur(20px);
-  border-radius:18px;
-  padding:16px;
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
-  margin-bottom:14px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 14px;
 }
 
 .card h2{
-  font-size:15px;
-  font-weight:1000;
-  margin-bottom:4px;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  font-size: 15px;
+  font-weight: 1000;
+  margin-bottom: 4px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.muted{
-  color:var(--text-muted);
-  font-size:11px;
-  margin-bottom:12px;
-}
+.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 12px; }
 
+/* BIG CENTERED QR SECTION */
 .scan-box-wrapper{
-  text-align:center;
-  background:rgba(0,0,0,.4);
-  padding:14px;
-  border-radius:14px;
-  border:1px solid rgba(0,240,255,.25);
-  max-width:280px;
-  margin:0 auto;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .amount-banner-scanner{
-  background:linear-gradient(135deg,var(--accent),var(--primary));
-  color:#fff;
-  font-size:11px;
-  font-weight:1000;
-  padding:5px 12px;
-  border-radius:8px;
-  margin-bottom:8px;
-  display:inline-block;
-  box-shadow:0 0 10px rgba(255,0,127,.5);
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 1000;
+  padding: 5px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
 }
 
 .qr-container{
-  width:170px;
-  margin:6px auto;
-  padding:8px;
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 0 20px rgba(0,240,255,.4);
+  width: 170px;
+  margin: 6px auto;
+  padding: 8px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
-
-.qr-container img{
-  width:100%;
-  display:block;
-  border-radius:6px;
-}
+.qr-container img{ width: 100%; display: block; border-radius: 6px; }
 
 .upi-copy-box{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  background:rgba(0,0,0,.6);
-  padding:8px 10px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,.1);
-  margin-top:10px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(0,0,0,0.6); padding: 8px 10px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px;
 }
-
-.upi-copy-box code{
-  flex:1;
-  font-size:11px;
-  font-weight:bold;
-  color:var(--cyan);
-}
-
-.copy-btn{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:5px 10px;
-  border-radius:6px;
-  font-weight:900;
-  font-size:10px;
-  cursor:pointer;
-}
+.upi-copy-box code{ flex: 1; font-size: 11px; font-weight: bold; color: var(--cyan); }
+.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 5px 10px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
 
 .mini-sec-row{
-  display:flex;
-  justify-content:space-around;
-  font-size:10px;
-  font-weight:900;
-  color:var(--success);
-  margin-top:12px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--success);
+  margin-top: 12px;
 }
 
+/* APP LOCKED CARD */
 .app-locked-card{
-  background:rgba(255,0,127,.05);
-  border:1px solid rgba(255,0,127,.35);
-  border-radius:16px;
-  padding:14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  background: rgba(255, 0, 127, 0.05);
+  border: 1px solid rgba(255, 0, 127, 0.35);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
-
 .app-locked-info{
-  display:flex;
-  align-items:center;
-  gap:10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-
 .lock-icon-box{
-  width:38px;
-  height:38px;
-  background:rgba(255,0,127,.15);
-  border:1px solid rgba(255,0,127,.4);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
+  width: 38px; height: 38px;
+  background: rgba(255, 0, 127, 0.15);
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
 }
-
 .locked-badge{
-  background:rgba(255,0,127,.2);
-  color:var(--accent);
-  font-size:10px;
-  font-weight:1000;
-  padding:5px 12px;
-  border-radius:10px;
-  border:1px solid rgba(255,0,127,.4);
+  background: rgba(255, 0, 127, 0.2);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 1000;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 127, 0.4);
 }
 
+/* UTR VERIFY */
 .utr-section{
-  margin-top:14px;
-  background:rgba(0,0,0,.4);
-  padding:12px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.08);
+  margin-top: 14px;
+  background: rgba(0,0,0,0.4);
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
-
-.utr-input-group{
-  display:flex;
-  gap:6px;
-  align-items:center;
-}
-
-.utr-wrapper{
-  flex:1;
-  position:relative;
-  display:flex;
-  align-items:center;
-}
-
+.utr-input-group{ display: flex; gap: 6px; align-items: center; }
+.utr-wrapper{ flex: 1; position: relative; display: flex; align-items: center; }
 .utr-input{
-  width:100%;
-  background:rgba(0,0,0,.7);
-  border:1px solid rgba(255,255,255,.2);
-  padding:10px 32px 10px 10px;
-  border-radius:10px;
-  color:#fff;
-  font-size:11px;
-  outline:none;
+  width: 100%; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 32px 10px 10px; border-radius: 10px; color: #fff; font-size: 11px; outline: none;
+}
+.paste-icon{ position: absolute; right: 8px; color: var(--text-muted); font-size: 13px; cursor: pointer; }
+.utr-btn{ background: linear-gradient(90deg, #9d4edd, #ff007f); color: #fff; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 1000; font-size: 11px; cursor: pointer; }
+#utrStatusMsg{ font-size: 10.5px; margin-top: 6px; font-weight: 800; display: none; }
+
+/* TERMINAL MODAL */
+.terminal-modal{
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(15px);
+  align-items: center; justify-content: center; z-index: 2000;
+  display: none;
+}
+.terminal-box{
+  width: min(350px, 90%);
+  background: #080c14; border: 1px solid var(--cyan);
+  border-radius: 14px; padding: 18px; box-shadow: 0 0 35px rgba(0, 240, 255, 0.4);
+  font-family: monospace; font-size: 12px; color: var(--success);
+}
+.terminal-header{ display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px; color: var(--cyan); font-weight: bold; }
+.terminal-log{ height: 85px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+
+/* MANUAL TELEGRAM BUTTON */
+.manual-tg-btn{
+  display: none; width: 100%; margin-top: 12px; padding: 10px;
+  background: #0088cc; color: #fff; text-align: center; border-radius: 8px;
+  font-weight: bold; text-decoration: none; font-size: 11px;
 }
 
-.utr-input:focus{
-  border-color:var(--cyan);
-  box-shadow:0 0 10px rgba(0,240,255,.15);
-}
-
-.paste-icon{
-  position:absolute;
-  right:8px;
-  color:var(--text-muted);
-  font-size:13px;
-  cursor:pointer;
-}
-
-.utr-btn{
-  background:linear-gradient(90deg,#9d4edd,#ff007f);
-  color:#fff;
-  border:none;
-  padding:10px 16px;
-  border-radius:10px;
-  font-weight:1000;
-  font-size:11px;
-  cursor:pointer;
-}
-
-.utr-btn:active{
-  transform:scale(.97);
-}
-
-#utrStatusMsg{
-  font-size:10.5px;
-  margin-top:6px;
-  font-weight:800;
-  display:none;
-}
-
+/* FLOATING TELEGRAM */
 .floating-tg{
-  position:fixed;
-  bottom:75px;
-  right:14px;
-  width:48px;
-  height:48px;
-  background:#0088cc;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:24px;
-  box-shadow:0 0 20px rgba(0,136,204,.7);
-  z-index:1500;
-  text-decoration:none;
+  position: fixed; bottom: 75px; right: 14px; width: 48px; height: 48px;
+  background: #0088cc; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 24px; box-shadow: 0 0 20px rgba(0,136,204,0.7); z-index: 1500; text-decoration: none;
 }
 
+/* BOTTOM NAV */
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:rgba(3,5,8,.96);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,.12);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  padding:8px 10px;
-  z-index:1600;
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  background: rgba(3, 5, 8, 0.96); backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; justify-content: space-around; align-items: center; padding: 8px 10px; z-index: 1600;
 }
-
-.nav-item{
-  text-align:center;
-  color:var(--text-muted);
-  text-decoration:none;
-  font-size:9px;
-  font-weight:800;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:2px;
-}
-
-.nav-item span{
-  font-size:16px;
-}
-
-.nav-item.active{
-  color:var(--cyan);
-}
-
+.nav-item{ text-align: center; color: var(--text-muted); text-decoration: none; font-size: 9px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.nav-item span{ font-size: 16px; }
+.nav-item.active{ color: var(--cyan); }
 .nav-center-btn{
-  width:44px;
-  height:44px;
-  background:linear-gradient(135deg,var(--yellow),var(--accent));
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  font-weight:1000;
-  color:#030508;
-  box-shadow:0 0 15px rgba(255,193,7,.7);
-  margin-top:-16px;
-  border:3px solid var(--bg-dark);
+  width: 44px; height: 44px; background: linear-gradient(135deg, var(--yellow), var(--accent));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 1000; color: #030508; box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+  margin-top: -16px; border: 3px solid var(--bg-dark);
 }
 
-footer{
-  text-align:center;
-  font-size:10px;
-  color:var(--text-muted);
-  font-weight:700;
-  margin-top:10px;
-  line-height:1.4;
-}
-
-.footer-tagline{
-  color:var(--cyan);
-  font-weight:1000;
-  letter-spacing:2px;
-  margin-top:4px;
-  font-size:9px;
-}
+footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weight: 700; margin-top: 10px; line-height: 1.4; }
+.footer-tagline{ color: var(--cyan); font-weight: 1000; letter-spacing: 2px; margin-top: 4px; font-size: 9px; }
 </style>
 </head>
 
@@ -633,418 +470,210 @@ footer{
 
 <div class="container">
 
-<header class="topbar">
-  <div class="brand-box">
-    <div class="menu-icon">
-      <span></span><span></span><span></span>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand-box">
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+      <div class="logo-badge">S9</div>
+      <div class="brand-info">
+        <h2>SUNNY 999 BOT <span class="verified-tick">✔</span></h2>
+        <a href="https://www.instagram.com/sunny999bot" target="_blank" class="insta-handle">@sunny999bot ↗</a>
+        <div class="sub-tagline">Play • Claim • Enjoy</div>
+      </div>
+    </div>
+    <div class="online-badge"><span></span> Online</div>
+  </header>
+
+  <!-- TRUSTED BADGE -->
+  <div style="text-align: center;">
+    <div class="trusted-lakh-badge">👑 TRUSTED LAKH+ PLAYERS</div>
+  </div>
+
+  <!-- LIVE FEED -->
+  <div class="live-ticker">
+    <div class="live-dot"></div>
+    <div id="liveFeedText">🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)</div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Redeem Code Generator App</h1>
+    <div class="trusted-tag">100% Trusted Bot • Payment Karo Aur Pao!</div>
+    <p>🟢 <span id="liveUsersCount">1,482</span> Gamers Online Right Now</p>
+
+    <div class="quick-pills-row">
+      <div class="quick-pill">🔥 Free Fire</div>
+      <div class="quick-pill">🎁 Daily Rewards</div>
+      <div class="quick-pill">⚡ Instant Access</div>
+      <div class="quick-pill">🔒 Safe & Secure</div>
     </div>
 
-    <div class="logo-badge">S9</div>
+    <!-- TIMER -->
+    <div class="urgency-grid">
+      <div class="urgency-box">
+        OFFER ENDS IN
+        <span class="timer-val" id="countdown">14 : 58 : 52</span>
+        <div class="timer-labels"><span>HOURS</span><span>MINUTES</span><span>SECONDS</span></div>
+      </div>
+      <div class="scarcity-box">
+        Codes Left Today:
+        <span class="timer-val" style="color:var(--accent); font-size:11px; margin-top:4px;">Only 14 remaining!</span>
+      </div>
+    </div>
+  </section>
 
-    <div class="brand-info">
-      <h2>SUNNY 999 BOT <span class="verified-tick">✔</span></h2>
-      <a href="https://www.instagram.com/sunny999bot"
-         target="_blank"
-         class="insta-handle">@sunny999bot ↗</a>
-      <div class="sub-tagline">Play • Claim • Enjoy</div>
+  <!-- INSTRUCTIONS BOX -->
+  <div class="instructions-box">
+    <h3>📖 App aur Redeem Code Kaise Milega? (Steps)</h3>
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div><strong>Payment Karein:</strong> QR Code ka screenshot lein ya scan karein aur exactly <strong>₹41</strong> pay karein. UPI ID: <code>sunny999bot@nyes</code></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div><strong>UTR Copy Karein:</strong> Payment hone ke baad 12-digit ka UTR/Reference number copy kar lein.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div><strong>Verify Karein:</strong> Niche UTR box mein number daal kar <strong>VERIFY</strong> button dabayein.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div><strong>Code Paayein:</strong> App unlock ho jayegi aur turant Telegram Bot par Redeem Code mil jayega!</div>
     </div>
   </div>
 
-  <div class="online-badge">
-    <span></span> Online
-  </div>
-</header>
+  <!-- PAYMENT SECTION -->
+  <div class="card">
+    <h2><span>💎 Scan & Pay / QR Code</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
+    <p class="muted">Take a screenshot of the QR code or scan it directly from your UPI app gallery.</p>
 
-<div style="text-align:center;">
-  <div class="trusted-lakh-badge">👑 TRUSTED LAKH+ PLAYERS</div>
-</div>
-
-<div class="live-ticker">
-  <div class="live-dot"></div>
-  <div id="liveFeedText">
-    🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)
-  </div>
-</div>
-
-<section class="hero">
-
-  <h1>Redeem Code Generator App</h1>
-
-  <div class="trusted-tag">
-    100% Trusted Bot • Payment Karo Aur Pao!
-  </div>
-
-  <p>
-    🟢 <span id="liveUsersCount">1,482</span> Gamers Online Right Now
-  </p>
-
-  <div class="quick-pills-row">
-    <div class="quick-pill">🔥 Free Fire</div>
-    <div class="quick-pill">🎁 Daily Rewards</div>
-    <div class="quick-pill">⚡ Instant Access</div>
-    <div class="quick-pill">🔒 Safe & Secure</div>
-  </div>
-
-  <div class="urgency-grid">
-
-    <div class="urgency-box">
-      OFFER ENDS IN
-      <span class="timer-val" id="countdown">23 : 59 : 59</span>
-      <div class="timer-labels">
-        <span>HOURS</span>
-        <span>MINUTES</span>
-        <span>SECONDS</span>
+    <div class="scan-box-wrapper">
+      <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
+      <div class="qr-container">
+        <img src="IMG_20260911_222905.png" alt="QR Code">
+      </div>
+      <div class="upi-copy-box">
+        <code id="upiId">sunny999bot@nyes</code>
+        <button class="copy-btn" id="copyUpiBtn">COPY</button>
       </div>
     </div>
 
-    <div class="scarcity-box">
-      Codes Left Today:
-      <span class="timer-val"
-            style="color:var(--accent);font-size:11px;margin-top:4px;">
-        Only 14 remaining!
-      </span>
+    <div class="mini-sec-row">
+      <span>✔ 100% Secure</span>
+      <span>✔ Instant Verify</span>
+      <span>✔ Real Codes</span>
     </div>
 
-  </div>
-
-</section>
-
-<div class="instructions-box">
-
-  <h3>📖 App aur Redeem Code Kaise Milega? (Steps)</h3>
-
-  <div class="step-item">
-    <div class="step-num">1</div>
-    <div>
-      <strong>Payment Karein:</strong>
-      QR Code ka screenshot lein ya scan karein aur exactly
-      <strong>₹41</strong> pay karein.
-      UPI ID: <code>sunny999bot@nyes</code>
-    </div>
-  </div>
-
-  <div class="step-item">
-    <div class="step-num">2</div>
-    <div>
-      <strong>UTR Copy Karein:</strong>
-      Payment hone ke baad 12-digit ka UTR/Reference number copy kar lein.
-    </div>
-  </div>
-
-  <div class="step-item">
-    <div class="step-num">3</div>
-    <div>
-      <strong>Verify Karein:</strong>
-      Niche UTR box mein number daal kar
-      <strong>VERIFY</strong> button dabayein.
-    </div>
-  </div>
-
-  <div class="step-item">
-    <div class="step-num">4</div>
-    <div>
-      <strong>Code Paayein:</strong>
-      Telegram Bot payment verify karega aur verification complete hone ke baad
-      Redeem Code/App access provide karega.
-    </div>
-  </div>
-
-</div>
-
-<div class="card">
-
-  <h2>
-    <span>💎 Scan & Pay / QR Code</span>
-    <span style="font-size:10px;background:rgba(255,0,127,.2);color:var(--accent);padding:3px 8px;border-radius:8px;">
-      ₹41 ONLY
-    </span>
-  </h2>
-
-  <p class="muted">
-    Take a screenshot of the QR code or scan it directly from your UPI app gallery.
-  </p>
-
-  <div class="scan-box-wrapper">
-
-    <div class="amount-banner-scanner">
-      PAY ₹41 ONLY
-    </div>
-
-    <div class="qr-container">
-      <img src="IMG_20260911_222905.png"
-           alt="QR Code"
-           onerror="this.src='https://via.placeholder.com/170?text=QR+Code+Missing'">
-    </div>
-
-    <div class="upi-copy-box">
-      <code id="upiId">sunny999bot@nyes</code>
-      <button class="copy-btn" id="copyUpiBtn">COPY</button>
-    </div>
-
-  </div>
-
-  <div class="mini-sec-row">
-    <span>✔ 100% Secure</span>
-    <span>✔ Instant Verify</span>
-    <span>✔ Real Codes</span>
-  </div>
-
-  <div class="utr-section">
-
-    <div class="utr-input-group">
-
-      <div class="utr-wrapper">
-        <input
-          type="text"
-          id="utrInput"
-          class="utr-input"
-          placeholder="Enter 12-digit UTR number..."
-          inputmode="numeric"
-          autocomplete="off"
-          maxlength="12"
-        >
-
-        <span
-          class="paste-icon"
-          id="pasteUtrBtn"
-          title="Paste">
-          📋
-        </span>
+    <!-- UTR VERIFY BOX -->
+    <div class="utr-section">
+      <div class="utr-input-group">
+        <div class="utr-wrapper">
+          <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR number...">
+          <span class="paste-icon" id="pasteUtrBtn" title="Paste">📋</span>
+        </div>
+        <button class="utr-btn" id="verifyBtn">VERIFY</button>
       </div>
-
-      <button class="utr-btn" id="verifyBtn">
-        VERIFY
-      </button>
-
+      <div id="utrStatusMsg"></div>
     </div>
-
-    <div id="utrStatusMsg"></div>
-
   </div>
+
+  <!-- APP LOCKED SECTION -->
+  <div class="app-locked-card" id="appLockedCard">
+    <div class="app-locked-info">
+      <div class="lock-icon-box">🔒</div>
+      <div>
+        <h3 style="font-size:12px; color:var(--accent); font-weight:1000;">APP LOCKED</h3>
+        <p style="font-size:10px; color:var(--text-muted); font-weight:700; margin-top:2px;">Complete ₹41 Payment & Verify UTR to Unlock Code</p>
+      </div>
+    </div>
+    <div class="locked-badge" id="lockBadgeText">LOCKED</div>
+  </div>
+
+  <footer>
+    © 2026 Sunny 999 Bot Official. All Rights Reserved.<br>
+    <div class="footer-tagline">PLAY • CLAIM • ENJOY</div>
+  </footer>
 
 </div>
 
-<div class="app-locked-card" id="appLockedCard">
-
-  <div class="app-locked-info">
-
-    <div class="lock-icon-box">
-      🔒
+<!-- TERMINAL MODAL -->
+<div class="terminal-modal" id="terminalModal">
+  <div class="terminal-box">
+    <div class="terminal-header">
+      <span>SECURE VERIFICATION SERVER</span>
+      <span style="color:var(--accent)">[ACTIVE]</span>
     </div>
-
-    <div>
-      <h3 style="font-size:12px;color:var(--accent);font-weight:1000;">
-        APP LOCKED
-      </h3>
-
-      <p style="font-size:10px;color:var(--text-muted);font-weight:700;margin-top:2px;">
-        Complete ₹41 Payment & Verify UTR to Unlock Code
-      </p>
+    <div class="terminal-log" id="terminalLog">
+      <div>> Initializing secure gateway...</div>
     </div>
-
+    <a href="https://t.me/Sunny999VerifyBot" id="manualTgBtn" class="manual-tg-btn" target="_blank">OPEN TELEGRAM BOT NOW ➔</a>
   </div>
-
-  <div class="locked-badge" id="lockBadgeText">
-    LOCKED
-  </div>
-
 </div>
 
-<footer>
-  © 2026 Sunny 999 Bot Official. All Rights Reserved.<br>
-  <div class="footer-tagline">
-    PLAY • CLAIM • ENJOY
-  </div>
-</footer>
+<!-- FLOATING TELEGRAM -->
+<a href="https://t.me/Sunny999VerifyBot" target="_blank" class="floating-tg">✈️</a>
 
-</div>
-
-<a href="https://t.me/Sunny999VerifyBot"
-   target="_blank"
-   class="floating-tg">
-  ✈️
-</a>
-
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-
-  <a href="#" class="nav-item active">
-    <span>🏠</span>Home
-  </a>
-
-  <a href="#" class="nav-item">
-    <span>🎁</span>Rewards
-  </a>
-
-  <a href="#" class="nav-center-btn">
-    S9
-  </a>
-
-  <a href="#" class="nav-item">
-    <span>❓</span>FAQ
-  </a>
-
-  <a href="https://t.me/Sunny999VerifyBot"
-     target="_blank"
-     class="nav-item">
-    <span>💬</span>Contact
-  </a>
-
+  <a href="#" class="nav-item active"><span>🏠</span>Home</a>
+  <a href="#" class="nav-item"><span>🎁</span>Rewards</a>
+  <a href="#" class="nav-center-btn">S9</a>
+  <a href="#" class="nav-item"><span>❓</span>FAQ</a>
+  <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="nav-item"><span>💬</span>Contact</a>
 </nav>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-
-  /* ================================
-     1. DAILY TIMER FIX
-     ================================ */
-
+// Safe execution window load
+window.addEventListener("load", function() {
+  
+  /* 1. TIMER LOGIC (SAFE & INDEPENDENT) */
+  let totalSeconds = 14 * 3600 + 58 * 60 + 52;
   const countdownEl = document.getElementById("countdown");
 
-  function updateTimer(){
-
-    const now = new Date();
-
-    // Next midnight
-    const nextMidnight = new Date(now);
-
-    nextMidnight.setHours(24, 0, 0, 0);
-
-    let diff = Math.floor(
-      (nextMidnight.getTime() - now.getTime()) / 1000
-    );
-
-    if(diff < 0){
-      diff = 0;
+  function updateTimer() {
+    let h = Math.floor(totalSeconds / 3600);
+    let m = Math.floor((totalSeconds % 3600) / 60);
+    let s = totalSeconds % 60;
+    
+    if(countdownEl) {
+      countdownEl.innerText = 
+        (h < 10 ? "0" + h : h) + " : " + 
+        (m < 10 ? "0" + m : m) + " : " + 
+        (s < 10 ? "0" + s : s);
     }
-
-    const h = Math.floor(diff / 3600);
-    const m = Math.floor((diff % 3600) / 60);
-    const s = diff % 60;
-
-    if(countdownEl){
-      countdownEl.textContent =
-        String(h).padStart(2,"0") + " : " +
-        String(m).padStart(2,"0") + " : " +
-        String(s).padStart(2,"0");
+    
+    if(totalSeconds > 0) {
+      totalSeconds--;
+    } else {
+      totalSeconds = 15 * 3600;
     }
   }
 
   updateTimer();
   setInterval(updateTimer, 1000);
 
+  /* 2. LIVE TICKER ROTATION */
+  const feedMessages = [
+    "🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)",
+    "⚡ Aman from Mumbai paid ₹41 and received 1000 Diamonds!",
+    "💎 Karan successfully unlocked the app & claimed reward code!",
+    "🚀 Vicky verified UTR #4892... got instant code on Telegram!",
+    "🔥 Sahil just claimed Free Fire elite pass code right now!"
+  ];
+  let feedIndex = 0;
+  const feedEl = document.getElementById("liveFeedText");
 
-  /* ================================
-     2. COPY UPI
-     ================================ */
+  setInterval(() => {
+    feedIndex = (feedIndex + 1) % feedMessages.length;
+    if(feedEl) {
+      feedEl.style.opacity = 0;
+      setTimeout(() => {
+        feedEl.innerText = feedMessages[feedIndex];
+        feedEl.style.opacity = 1;
+      }, 300);
+    }
+  }, 4000);
 
-  const copyUpiBtn = document.getElementById("copyUpiBtn");
-  const upiId = document.getElementById("upiId");
-
-  if(copyUpiBtn && upiId){
-
-    copyUpiBtn.addEventListener("click", async function(){
-
-      try{
-
-        await navigator.clipboard.writeText(
-          upiId.textContent.trim()
-        );
-
-        const oldText = copyUpiBtn.textContent;
-
-        copyUpiBtn.textContent = "COPIED";
-
-        setTimeout(function(){
-          copyUpiBtn.textContent = oldText;
-        },1500);
-
-      }catch(error){
-
-        const range = document.createRange();
-        range.selectNodeContents(upiId);
-
-        const selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-
-        try{
-          document.execCommand("copy");
-          selection.removeAllRanges();
-
-          copyUpiBtn.textContent = "COPIED";
-
-          setTimeout(function(){
-            copyUpiBtn.textContent = "COPY";
-          },1500);
-
-        }catch(e){
-          alert("UPI ID: " + upiId.textContent.trim());
-        }
-      }
-
-    });
-  }
-
-
-  /* ================================
-     3. UTR INPUT
-     ================================ */
-
-  const utrInput = document.getElementById("utrInput");
-
-  if(utrInput){
-
-    utrInput.addEventListener("input", function(){
-
-      // Only numbers
-      this.value = this.value
-        .replace(/\D/g,"")
-        .slice(0,12);
-
-    });
-
-  }
-
-
-  /* ================================
-     4. PASTE UTR
-     ================================ */
-
-  const pasteUtrBtn = document.getElementById("pasteUtrBtn");
-
-  if(pasteUtrBtn && utrInput){
-
-    pasteUtrBtn.addEventListener("click", async function(){
-
-      try{
-
-        const text = await navigator.clipboard.readText();
-
-        utrInput.value = text
-          .replace(/\D/g,"")
-          .slice(0,12);
-
-        utrInput.focus();
-
-      }catch(error){
-
-        utrInput.focus();
-
-      }
-
-    });
-
-  }
-
-
-  /* ================================
-     5. VERIFY → TELEGRAM BOT
-     ================================ */
-
-  const verifyBtn = document.getElementById("verifyBtn");
-  const utrStatusMsg = document.getElementById("utrStatusMsg");
-
-  const TELEGRAM_BOT =
-    "https://t.me/Sunny999VerifyBot";
-
- 
+  /* 3. SAFE COPY & PASTE HANDLERS (NO CRASHES) */
+  const copyBtn = document.getElementBy
