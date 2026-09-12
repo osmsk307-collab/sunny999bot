@@ -13,8 +13,8 @@ const ACTIVATION_SITE = "https://osmsk307-collab.github.io/free-fire-card/";
 const UPI_ID = "sunny999bot@nyes";
 
 const PLANS = {
-  "999": "CC Photo (20,000)",
-  "1999": "CC Photo (1 LAKH)"
+  "999": "FREE FIRE GOLD CARD",
+  "1999": "FREE FIRE DIAMOND CARD"
 };
 
 const DB_FILE = path.join(__dirname, "payments.json");
@@ -39,7 +39,9 @@ if (!ADMIN_CHAT_ID) {
 
 function loadPayments() {
   try {
-    return JSON.parse(fs.readFileSync(DB_FILE, "utf8"));
+    return JSON.parse(
+      fs.readFileSync(DB_FILE, "utf8")
+    );
   } catch {
     return [];
   }
@@ -54,7 +56,7 @@ function savePayments(data) {
 
 
 // =========================
-// UNIQUE 10-DIGIT CODE
+// UNIQUE 10 DIGIT CODE
 // =========================
 
 function generateActivationCode(payments) {
@@ -62,6 +64,7 @@ function generateActivationCode(payments) {
   let code;
 
   do {
+
     code =
       Math.floor(
         1000000000 +
@@ -83,15 +86,22 @@ function generateActivationCode(payments) {
 // =========================
 
 function telegram(method, data) {
+
   return new Promise((resolve, reject) => {
 
     const req = https.request(
+
       {
         hostname: "api.telegram.org",
-        path: `/bot${BOT_TOKEN}/${method}`,
+
+        path:
+          `/bot${BOT_TOKEN}/${method}`,
+
         method: "POST",
+
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type":
+            "application/json"
         }
       },
 
@@ -99,41 +109,56 @@ function telegram(method, data) {
 
         let body = "";
 
-        res.on("data", chunk => {
-          body += chunk;
-        });
+        res.on(
+          "data",
+          chunk => {
+            body += chunk;
+          }
+        );
 
-        res.on("end", () => {
+        res.on(
+          "end",
+          () => {
 
-          try {
-            const result = JSON.parse(body);
+            try {
 
-            if (!result.ok) {
+              const result =
+                JSON.parse(body);
+
+              if (!result.ok) {
+
+                reject(
+                  new Error(
+                    result.description ||
+                    "Telegram API error"
+                  )
+                );
+
+                return;
+              }
+
+              resolve(result);
+
+            } catch {
+
               reject(
                 new Error(
-                  result.description ||
-                  "Telegram API error"
+                  "Invalid Telegram response"
                 )
               );
-              return;
+
             }
 
-            resolve(result);
-
-          } catch {
-            reject(
-              new Error(
-                "Invalid Telegram response"
-              )
-            );
           }
-
-        });
+        );
 
       }
     );
 
-    req.on("error", reject);
+    req.on(
+      "error",
+      reject
+    );
 
     req.write(
       JSON.stringify(data)
@@ -142,6 +167,7 @@ function telegram(method, data) {
     req.end();
 
   });
+
 }
 
 
@@ -184,7 +210,7 @@ async function handleStart(message) {
       : "";
 
 
-  // Website se aaya hua payload
+  // Website verification payload
   if (payload.startsWith("cc")) {
 
     const match =
@@ -195,9 +221,12 @@ async function handleStart(message) {
     if (!match) {
 
       await sendMessage(
+
         chatId,
+
         "Invalid verification link.\n\n" +
         "Please website se VERIFY ON TELEGRAM button use karo."
+
       );
 
       return;
@@ -213,16 +242,20 @@ async function handleStart(message) {
 
     pendingUsers[chatId] = {
 
-      chatId: chatId,
+      chatId:
+        chatId,
 
-      plan: plan,
+      plan:
+        plan,
 
       planName:
         PLANS[plan],
 
-      utr: utr,
+      utr:
+        utr,
 
-      screenshot: null
+      screenshot:
+        null
 
     };
 
@@ -255,7 +288,7 @@ async function handleStart(message) {
   }
 
 
-  // Normal /start
+  // Normal start
   await sendMessage(
 
     chatId,
@@ -264,9 +297,9 @@ async function handleStart(message) {
 
     "Available Plans:\n\n" +
 
-    "₹999 — CC Photo (20,000)\n" +
+    "₹999 — FREE FIRE GOLD CARD\n" +
 
-    "₹1999 — CC Photo (1 LAKH)\n\n" +
+    "₹1999 — FREE FIRE DIAMOND CARD\n\n" +
 
     "Payment ke baad website se " +
     "VERIFY ON TELEGRAM button use karo."
@@ -384,10 +417,12 @@ async function handlePhoto(message) {
 
   payments.push(payment);
 
-  savePayments(payments);
+  savePayments(
+    payments
+  );
 
 
-  // Admin verification request
+  // Admin verification
   await telegram(
 
     "sendPhoto",
@@ -474,6 +509,10 @@ async function handlePhoto(message) {
     user.plan +
     "\n" +
 
+    "Card: " +
+    user.planName +
+    "\n" +
+
     "UTR: " +
     user.utr +
     "\n\n" +
@@ -488,7 +527,7 @@ async function handlePhoto(message) {
 
 
 // =========================
-// CALLBACK
+// CALLBACK BUTTON
 // =========================
 
 async function handleCallback(callback) {
@@ -574,6 +613,7 @@ async function handleCallback(callback) {
   }
 
 
+  // Already processed
   if (
     payment.status !==
     "PENDING"
@@ -608,7 +648,6 @@ async function handleCallback(callback) {
 
   if (action === "approve") {
 
-    // Generate unique 10 digit code
     const activationCode =
       generateActivationCode(
         payments
@@ -633,7 +672,7 @@ async function handleCallback(callback) {
     );
 
 
-    // User ko code + activation site
+    // User message
     await sendMessage(
 
       payment.chatId,
@@ -644,22 +683,23 @@ async function handleCallback(callback) {
       payment.plan +
       "\n" +
 
+      "Card: " +
       payment.planName +
       "\n\n" +
 
-      "🔐 YOUR ACTIVATION CODE\n" +
+      "🔐 YOUR ACTIVATION CODE\n\n" +
 
       activationCode +
       "\n\n" +
 
       "⚠️ Is 10-digit code ko save/copy karke rakho.\n\n" +
 
-      "🌐 ACTIVATION WEBSITE\n" +
+      "🌐 ACTIVATION WEBSITE\n\n" +
 
       ACTIVATION_SITE +
       "\n\n" +
 
-      "Website open karo aur apna activation process continue karo."
+      "Website open karo aur activation process continue karo."
 
     );
 
@@ -682,6 +722,7 @@ async function handleCallback(callback) {
     );
 
 
+    // Update admin message
     if (
       callback.message &&
       callback.message.message_id
@@ -707,7 +748,7 @@ async function handleCallback(callback) {
             payment.plan +
             "\n" +
 
-            "Package: " +
+            "Card: " +
             payment.planName +
             "\n\n" +
 
@@ -755,6 +796,10 @@ async function handleCallback(callback) {
       payment.chatId,
 
       "❌ PAYMENT REJECTED\n\n" +
+
+      "Card: " +
+      payment.planName +
+      "\n\n" +
 
       "UTR: " +
       payment.utr +
@@ -809,7 +854,7 @@ async function handleCallback(callback) {
             payment.plan +
             "\n" +
 
-            "Package: " +
+            "Card: " +
             payment.planName +
             "\n\n" +
 
@@ -839,6 +884,7 @@ async function handleUpdate(update) {
 
   try {
 
+    // Callback
     if (
       update.callback_query
     ) {
@@ -955,6 +1001,7 @@ async function handleUpdate(update) {
     }
 
 
+    // Other text
     if (
       message.text
     ) {
@@ -966,8 +1013,11 @@ async function handleUpdate(update) {
         "Payment verification ke liye:\n\n" +
 
         "1. Website se plan select karo\n" +
+
         "2. Payment complete karo\n" +
+
         "3. VERIFY ON TELEGRAM dabao\n" +
+
         "4. Payment screenshot bhejo"
 
       );
@@ -1088,10 +1138,8 @@ const server =
             200,
 
             {
-
               "Content-Type":
                 "text/html; charset=utf-8"
-
             }
 
           );
@@ -1101,7 +1149,6 @@ const server =
           );
 
           return;
-
         }
 
       }
@@ -1116,10 +1163,8 @@ const server =
           200,
 
           {
-
             "Content-Type":
               "application/json"
-
           }
 
         );
