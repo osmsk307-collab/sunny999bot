@@ -38,7 +38,6 @@ body{
   padding:12px 14px 24px;
 }
 
-/* TOPBAR */
 .topbar{
   display:flex;
   align-items:center;
@@ -138,7 +137,6 @@ body{
   display: inline-block;
 }
 
-/* LIVE TICKER */
 .live-ticker{
   background: rgba(0, 240, 255, 0.05);
   border: 1px solid rgba(0, 240, 255, 0.25);
@@ -157,7 +155,6 @@ body{
 .live-dot{ width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: blinkLive 1s infinite; flex-shrink: 0; }
 @keyframes blinkLive{ 0%{ opacity: 1; } 50%{ opacity: 0.3; } 100%{ opacity: 1; } }
 
-/* HERO SECTION */
 .hero{
   text-align: center;
   padding: 18px 14px 16px;
@@ -251,7 +248,6 @@ body{
   display: flex; justify-content: space-around; font-size: 7.5px; color: var(--text-muted); font-weight: 800; margin-top: 2px;
 }
 
-/* INSTRUCTIONS BOX */
 .instructions-box{
   background: rgba(0, 240, 255, 0.06);
   border: 1px solid rgba(0, 240, 255, 0.3);
@@ -288,7 +284,6 @@ body{
   margin-top: 1px;
 }
 
-/* CARD SECTION */
 .card{
   background: var(--card-bg);
   backdrop-filter: blur(20px);
@@ -311,7 +306,6 @@ body{
 
 .muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 12px; }
 
-/* BIG CENTERED QR SECTION */
 .scan-box-wrapper{
   text-align: center;
   background: rgba(0,0,0,0.4);
@@ -361,7 +355,6 @@ body{
   margin-top: 12px;
 }
 
-/* APP LOCKED CARD */
 .app-locked-card{
   background: rgba(255, 0, 127, 0.05);
   border: 1px solid rgba(255, 0, 127, 0.35);
@@ -396,7 +389,6 @@ body{
   border: 1px solid rgba(255, 0, 127, 0.4);
 }
 
-/* UTR VERIFY */
 .utr-section{
   margin-top: 14px;
   background: rgba(0,0,0,0.4);
@@ -414,7 +406,6 @@ body{
 .utr-btn{ background: linear-gradient(90deg, #9d4edd, #ff007f); color: #fff; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 1000; font-size: 11px; cursor: pointer; }
 #utrStatusMsg{ font-size: 10.5px; margin-top: 6px; font-weight: 800; display: none; }
 
-/* TERMINAL MODAL */
 .terminal-modal{
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(15px);
@@ -430,21 +421,18 @@ body{
 .terminal-header{ display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px; color: var(--cyan); font-weight: bold; }
 .terminal-log{ height: 85px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
 
-/* MANUAL TELEGRAM BUTTON */
 .manual-tg-btn{
   display: none; width: 100%; margin-top: 12px; padding: 10px;
   background: #0088cc; color: #fff; text-align: center; border-radius: 8px;
   font-weight: bold; text-decoration: none; font-size: 11px;
 }
 
-/* FLOATING TELEGRAM */
 .floating-tg{
   position: fixed; bottom: 75px; right: 14px; width: 48px; height: 48px;
   background: #0088cc; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 24px; box-shadow: 0 0 20px rgba(0,136,204,0.7); z-index: 1500; text-decoration: none;
 }
 
-/* BOTTOM NAV */
 .bottom-nav{
   position: fixed; bottom: 0; left: 0; width: 100%;
   background: rgba(3, 5, 8, 0.96); backdrop-filter: blur(20px);
@@ -469,8 +457,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
 <body>
 
 <div class="container">
-
-  <!-- TOPBAR -->
   <header class="topbar">
     <div class="brand-box">
       <div class="menu-icon"><span></span><span></span><span></span></div>
@@ -484,18 +470,15 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <div class="online-badge"><span></span> Online</div>
   </header>
 
-  <!-- TRUSTED BADGE -->
   <div style="text-align: center;">
     <div class="trusted-lakh-badge">👑 TRUSTED LAKH+ PLAYERS</div>
   </div>
 
-  <!-- LIVE FEED -->
   <div class="live-ticker">
     <div class="live-dot"></div>
     <div id="liveFeedText">🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)</div>
   </div>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Redeem Code Generator App</h1>
     <div class="trusted-tag">100% Trusted Bot • Payment Karo Aur Pao!</div>
@@ -508,7 +491,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
       <div class="quick-pill">🔒 Safe & Secure</div>
     </div>
 
-    <!-- TIMER -->
     <div class="urgency-grid">
       <div class="urgency-box">
         OFFER ENDS IN
@@ -522,7 +504,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </section>
 
-  <!-- INSTRUCTIONS BOX -->
   <div class="instructions-box">
     <h3>📖 App aur Redeem Code Kaise Milega? (Steps)</h3>
     <div class="step-item">
@@ -543,7 +524,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </div>
 
-  <!-- PAYMENT SECTION -->
   <div class="card">
     <h2><span>💎 Scan & Pay / QR Code</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
     <p class="muted">Take a screenshot of the QR code or scan it directly from your UPI app gallery.</p>
@@ -551,7 +531,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <div class="scan-box-wrapper">
       <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
       <div class="qr-container">
-        <img src="IMG_20260911_222905.png" alt="QR Code">
+        <img src="IMG_20260911_222905.png" alt="QR Code" onerror="this.src='https://via.placeholder.com/170?text=QR+Code+Missing'">
       </div>
       <div class="upi-copy-box">
         <code id="upiId">sunny999bot@nyes</code>
@@ -565,7 +545,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
       <span>✔ Real Codes</span>
     </div>
 
-    <!-- UTR VERIFY BOX -->
     <div class="utr-section">
       <div class="utr-input-group">
         <div class="utr-wrapper">
@@ -578,7 +557,6 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </div>
 
-  <!-- APP LOCKED SECTION -->
   <div class="app-locked-card" id="appLockedCard">
     <div class="app-locked-info">
       <div class="lock-icon-box">🔒</div>
@@ -594,10 +572,8 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     © 2026 Sunny 999 Bot Official. All Rights Reserved.<br>
     <div class="footer-tagline">PLAY • CLAIM • ENJOY</div>
   </footer>
-
 </div>
 
-<!-- TERMINAL MODAL -->
 <div class="terminal-modal" id="terminalModal">
   <div class="terminal-box">
     <div class="terminal-header">
@@ -611,10 +587,8 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
   </div>
 </div>
 
-<!-- FLOATING TELEGRAM -->
 <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="floating-tg">✈️</a>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <a href="#" class="nav-item active"><span>🏠</span>Home</a>
   <a href="#" class="nav-item"><span>🎁</span>Rewards</a>
@@ -623,57 +597,66 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
   <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="nav-item"><span>💬</span>Contact</a>
 </nav>
 
+<!-- SAFE DEBUG SCRIPT -->
 <script>
-// Safe execution window load
-window.addEventListener("load", function() {
-  
-  /* 1. TIMER LOGIC (SAFE & INDEPENDENT) */
-  let totalSeconds = 14 * 3600 + 58 * 60 + 52;
-  const countdownEl = document.getElementById("countdown");
+  // Debug check: Agar ye alert aaye, toh samajh le script chal rahi hai
+  alert("App Loaded Successfully!");
 
-  function updateTimer() {
-    let h = Math.floor(totalSeconds / 3600);
-    let m = Math.floor((totalSeconds % 3600) / 60);
-    let s = totalSeconds % 60;
-    
-    if(countdownEl) {
-      countdownEl.innerText = 
-        (h < 10 ? "0" + h : h) + " : " + 
-        (m < 10 ? "0" + m : m) + " : " + 
-        (s < 10 ? "0" + s : s);
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. TIMER LOGIC
+    let totalSeconds = 14 * 3600 + 58 * 60 + 52;
+    const countdownEl = document.getElementById("countdown");
+
+    function updateTimer() {
+      let h = Math.floor(totalSeconds / 3600);
+      let m = Math.floor((totalSeconds % 3600) / 60);
+      let s = totalSeconds % 60;
+      
+      if(countdownEl) {
+        countdownEl.innerText = 
+          (h < 10 ? "0" + h : h) + " : " + 
+          (m < 10 ? "0" + m : m) + " : " + 
+          (s < 10 ? "0" + s : s);
+      }
+      
+      if(totalSeconds > 0) {
+        totalSeconds--;
+      } else {
+        totalSeconds = 15 * 3600;
+      }
     }
-    
-    if(totalSeconds > 0) {
-      totalSeconds--;
-    } else {
-      totalSeconds = 15 * 3600;
-    }
-  }
 
-  updateTimer();
-  setInterval(updateTimer, 1000);
+    updateTimer();
+    setInterval(updateTimer, 1000);
 
-  /* 2. LIVE TICKER ROTATION */
-  const feedMessages = [
-    "🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)",
-    "⚡ Aman from Mumbai paid ₹41 and received 1000 Diamonds!",
-    "💎 Karan successfully unlocked the app & claimed reward code!",
-    "🚀 Vicky verified UTR #4892... got instant code on Telegram!",
-    "🔥 Sahil just claimed Free Fire elite pass code right now!"
-  ];
-  let feedIndex = 0;
-  const feedEl = document.getElementById("liveFeedText");
+    // 2. LIVE TICKER ROTATION
+    const feedMessages = [
+      "🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)",
+      "⚡ Aman from Mumbai paid ₹41 and received 1000 Diamonds!",
+      "💎 Karan successfully unlocked the app & claimed reward code!",
+      "🚀 Vicky verified UTR #4892... got instant code on Telegram!",
+      "🔥 Sahil just claimed Free Fire elite pass code right now!"
+    ];
+    let feedIndex = 0;
+    const feedEl = document.getElementById("liveFeedText");
 
-  setInterval(() => {
-    feedIndex = (feedIndex + 1) % feedMessages.length;
-    if(feedEl) {
-      feedEl.style.opacity = 0;
-      setTimeout(() => {
-        feedEl.innerText = feedMessages[feedIndex];
-        feedEl.style.opacity = 1;
-      }, 300);
-    }
-  }, 4000);
+    setInterval(() => {
+      feedIndex = (feedIndex + 1) % feedMessages.length;
+      if(feedEl) {
+        feedEl.style.opacity = 0;
+        setTimeout(() => {
+          feedEl.innerText = feedMessages[feedIndex];
+          feedEl.style.opacity = 1;
+        }, 300);
+      }
+    }, 4000);
 
-  /* 3. SAFE COPY & PASTE HANDLERS (NO CRASHES) */
-  const copyBtn = document.getElementBy
+    // 3. COPY & PASTE HANDLERS
+    const copyBtn = document.getElementById("copyUpiBtn");
+    if(copyBtn) {
+      copyBtn.onclick = function() {
+        const upi = document.getElementById("upiId").innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(upi).then(() => {
+            copyBtn.innerText = "COPIED ✓";
+ 
