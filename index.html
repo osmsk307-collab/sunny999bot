@@ -543,7 +543,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </div>
 
-  <!-- PAYMENT SECTION - BIG CENTERED QR -->
+  <!-- PAYMENT SECTION -->
   <div class="card">
     <h2><span>💎 Scan & Pay / QR Code</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
     <p class="muted">Take a screenshot of the QR code or scan it directly from your UPI app gallery.</p>
@@ -624,9 +624,10 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
 </nav>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+// Safe execution window load
+window.addEventListener("load", function() {
   
-  /* 1. TIMER LOGIC */
+  /* 1. TIMER LOGIC (SAFE & INDEPENDENT) */
   let totalSeconds = 14 * 3600 + 58 * 60 + 52;
   const countdownEl = document.getElementById("countdown");
 
@@ -674,7 +675,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }, 4000);
 
-  /* 3. COPY & PASTE HANDLERS */
-  const copyBtn = document.getElementById("copyUpiBtn");
-  if(copyBtn) {
-   
+  /* 3. SAFE COPY & PASTE HANDLERS (NO CRASHES) */
+  const copyBtn = document.getElementBy
