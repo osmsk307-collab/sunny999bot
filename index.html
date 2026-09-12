@@ -38,6 +38,7 @@ body{
   padding:12px 14px 24px;
 }
 
+/* TOPBAR */
 .topbar{
   display:flex;
   align-items:center;
@@ -63,6 +64,7 @@ body{
   width: 36px; height: 36px;
   border-radius: 10px;
   display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+  cursor: pointer;
 }
 .menu-icon span{ width: 16px; height: 2px; background: #fff; border-radius: 2px; }
 
@@ -137,6 +139,7 @@ body{
   display: inline-block;
 }
 
+/* LIVE TICKER / REAL FEED */
 .live-ticker{
   background: rgba(0, 240, 255, 0.05);
   border: 1px solid rgba(0, 240, 255, 0.25);
@@ -154,7 +157,9 @@ body{
 }
 .live-dot{ width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: blinkLive 1s infinite; flex-shrink: 0; }
 @keyframes blinkLive{ 0%{ opacity: 1; } 50%{ opacity: 0.3; } 100%{ opacity: 1; } }
+.ticker-text{ display: inline-block; animation: scrollText 12s linear infinite; }
 
+/* HERO SECTION */
 .hero{
   text-align: center;
   padding: 18px 14px 16px;
@@ -248,6 +253,7 @@ body{
   display: flex; justify-content: space-around; font-size: 7.5px; color: var(--text-muted); font-weight: 800; margin-top: 2px;
 }
 
+/* INSTRUCTIONS BOX */
 .instructions-box{
   background: rgba(0, 240, 255, 0.06);
   border: 1px solid rgba(0, 240, 255, 0.3);
@@ -284,6 +290,7 @@ body{
   margin-top: 1px;
 }
 
+/* CARD SECTION */
 .card{
   background: var(--card-bg);
   backdrop-filter: blur(20px);
@@ -304,47 +311,86 @@ body{
   justify-content: space-between;
 }
 
-.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 12px; }
+.muted{ color: var(--text-muted); font-size: 11px; margin-bottom: 10px; }
 
+/* PAYMENT SECTION */
+.payment-split{
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
 .scan-box-wrapper{
   text-align: center;
   background: rgba(0,0,0,0.4);
-  padding: 14px;
+  padding: 10px;
   border-radius: 14px;
   border: 1px solid rgba(0, 240, 255, 0.25);
-  max-width: 280px;
-  margin: 0 auto;
+  position: relative;
 }
 
+/* HIGHLIGHTED AMOUNT NEAR SCANNER */
 .amount-banner-scanner{
   background: linear-gradient(135deg, var(--accent), var(--primary));
   color: #fff;
   font-size: 11px;
   font-weight: 1000;
-  padding: 5px 12px;
+  padding: 4px 8px;
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: inline-block;
   box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+  animation: pulseAmount 1.5s infinite;
+}
+@keyframes pulseAmount{
+  0%{ transform: scale(1); }
+  50%{ transform: scale(1.05); }
+  100%{ transform: scale(1); }
 }
 
 .qr-container{
-  width: 170px;
-  margin: 6px auto;
-  padding: 8px;
+  width: 110px;
+  margin: 4px auto;
+  padding: 6px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+  position: relative;
+  overflow: hidden;
 }
-.qr-container img{ width: 100%; display: block; border-radius: 6px; }
+.qr-container img{ width: 100%; display: block; border-radius: 4px; }
 
 .upi-copy-box{
   display: flex; align-items: center; gap: 6px;
-  background: rgba(0,0,0,0.6); padding: 8px 10px;
-  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px;
+  background: rgba(0,0,0,0.6); padding: 6px 8px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 6px;
 }
-.upi-copy-box code{ flex: 1; font-size: 11px; font-weight: bold; color: var(--cyan); }
-.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 5px 10px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
+.upi-copy-box code{ flex: 1; font-size: 10px; font-weight: bold; color: var(--cyan); }
+.copy-btn{ background: var(--primary); color: #fff; border: none; padding: 4px 8px; border-radius: 6px; font-weight: 900; font-size: 10px; cursor: pointer; }
+
+.upi-apps-col{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.upi-app-btn{
+  padding: 9px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s;
+}
+.upi-app-btn:hover{ background: rgba(0, 240, 255, 0.2); border-color: var(--cyan); }
 
 .mini-sec-row{
   display: flex;
@@ -352,9 +398,10 @@ body{
   font-size: 10px;
   font-weight: 900;
   color: var(--success);
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
+/* APP LOCKED CARD */
 .app-locked-card{
   background: rgba(255, 0, 127, 0.05);
   border: 1px solid rgba(255, 0, 127, 0.35);
@@ -389,8 +436,9 @@ body{
   border: 1px solid rgba(255, 0, 127, 0.4);
 }
 
+/* UTR VERIFY */
 .utr-section{
-  margin-top: 14px;
+  margin-top: 12px;
   background: rgba(0,0,0,0.4);
   padding: 12px;
   border-radius: 14px;
@@ -406,10 +454,11 @@ body{
 .utr-btn{ background: linear-gradient(90deg, #9d4edd, #ff007f); color: #fff; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 1000; font-size: 11px; cursor: pointer; }
 #utrStatusMsg{ font-size: 10.5px; margin-top: 6px; font-weight: 800; display: none; }
 
+/* TERMINAL MODAL */
 .terminal-modal{
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(3, 5, 8, 0.9); backdrop-filter: blur(15px);
-  align-items: center; justify-content: center; z-index: 2000;
+  display: flex; align-items: center; justify-content: center; z-index: 2000;
   display: none;
 }
 .terminal-box{
@@ -419,20 +468,22 @@ body{
   font-family: monospace; font-size: 12px; color: var(--success);
 }
 .terminal-header{ display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 8px; color: var(--cyan); font-weight: bold; }
-.terminal-log{ height: 85px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.terminal-log{ height: 85px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
 
-.manual-tg-btn{
-  display: none; width: 100%; margin-top: 12px; padding: 10px;
-  background: #0088cc; color: #fff; text-align: center; border-radius: 8px;
-  font-weight: bold; text-decoration: none; font-size: 11px;
-}
-
+/* FLOATING TELEGRAM */
 .floating-tg{
   position: fixed; bottom: 75px; right: 14px; width: 48px; height: 48px;
   background: #0088cc; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 24px; box-shadow: 0 0 20px rgba(0,136,204,0.7); z-index: 1500; text-decoration: none;
+  animation: pulseTG 2s infinite;
+}
+@keyframes pulseTG{
+  0%{ box-shadow: 0 0 0 0 rgba(0,136,204,0.6); }
+  70%{ box-shadow: 0 0 0 14px rgba(0,136,204,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(0,136,204,0); }
 }
 
+/* BOTTOM NAV */
 .bottom-nav{
   position: fixed; bottom: 0; left: 0; width: 100%;
   background: rgba(3, 5, 8, 0.96); backdrop-filter: blur(20px);
@@ -457,6 +508,8 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
 <body>
 
 <div class="container">
+
+  <!-- TOPBAR -->
   <header class="topbar">
     <div class="brand-box">
       <div class="menu-icon"><span></span><span></span><span></span></div>
@@ -470,15 +523,18 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <div class="online-badge"><span></span> Online</div>
   </header>
 
+  <!-- TRUSTED BADGE -->
   <div style="text-align: center;">
     <div class="trusted-lakh-badge">👑 TRUSTED LAKH+ PLAYERS</div>
   </div>
 
+  <!-- LIVE REAL-TIME FEED TICKER -->
   <div class="live-ticker">
     <div class="live-dot"></div>
     <div id="liveFeedText">🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)</div>
   </div>
 
+  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Redeem Code Generator App</h1>
     <div class="trusted-tag">100% Trusted Bot • Payment Karo Aur Pao!</div>
@@ -491,6 +547,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
       <div class="quick-pill">🔒 Safe & Secure</div>
     </div>
 
+    <!-- TIMER & SCARCITY -->
     <div class="urgency-grid">
       <div class="urgency-box">
         OFFER ENDS IN
@@ -504,11 +561,12 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </section>
 
+  <!-- INSTRUCTIONS BOX -->
   <div class="instructions-box">
     <h3>📖 App aur Redeem Code Kaise Milega? (Steps)</h3>
     <div class="step-item">
       <div class="step-num">1</div>
-      <div><strong>Payment Karein:</strong> QR Code ka screenshot lein ya scan karein aur exactly <strong>₹41</strong> pay karein. UPI ID: <code>sunny999bot@nyes</code></div>
+      <div><strong>Payment Karein:</strong> QR Code scan karein ya PhonePe / GPay / Paytm / Other UPI button dabakar exactly <strong>₹41</strong> pay karein. UPI ID: <code>sunny999bot@nyes</code></div>
     </div>
     <div class="step-item">
       <div class="step-num">2</div>
@@ -524,18 +582,28 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     </div>
   </div>
 
+  <!-- PAYMENT SECTION WITH EXPLICIT ₹41 NEAR SCANNER -->
   <div class="card">
-    <h2><span>💎 Scan & Pay / QR Code</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
-    <p class="muted">Take a screenshot of the QR code or scan it directly from your UPI app gallery.</p>
+    <h2><span>💎 Scan & Pay / UPI</span> <span style="font-size:10px; background:rgba(255,0,127,0.2); color:var(--accent); padding:3px 8px; border-radius:8px;">₹41 ONLY</span></h2>
+    <p class="muted">Scan QR or pay via PhonePe, GPay, Paytm, or Other UPI Apps.</p>
 
-    <div class="scan-box-wrapper">
-      <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
-      <div class="qr-container">
-        <img src="IMG_20260911_222905.png" alt="QR Code" onerror="this.src='https://via.placeholder.com/170?text=QR+Code+Missing'">
+    <div class="payment-split">
+      <div class="scan-box-wrapper">
+        <div class="amount-banner-scanner">PAY ₹41 ONLY</div>
+        <div class="qr-container">
+          <img src="IMG_20260911_222905.png" alt="QR Code">
+        </div>
+        <div class="upi-copy-box">
+          <code id="upiId">sunny999bot@nyes</code>
+          <button class="copy-btn" onclick="copyUpi()">COPY</button>
+        </div>
       </div>
-      <div class="upi-copy-box">
-        <code id="upiId">sunny999bot@nyes</code>
-        <button class="copy-btn" id="copyUpiBtn">COPY</button>
+
+      <div class="upi-apps-col">
+        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🅿️ PhonePe (₹41)</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">🌐 Google Pay (₹41)</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn"> Paytm (₹41)</a>
+        <a href="upi://pay?pa=sunny999bot@nyes&am=41&pn=Sunny999Bot&cu=INR" class="upi-app-btn">⚡ Other UPI Apps</a>
       </div>
     </div>
 
@@ -545,18 +613,20 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
       <span>✔ Real Codes</span>
     </div>
 
+    <!-- UTR VERIFY BOX -->
     <div class="utr-section">
       <div class="utr-input-group">
         <div class="utr-wrapper">
           <input type="text" id="utrInput" class="utr-input" placeholder="Enter 12-digit UTR number...">
-          <span class="paste-icon" id="pasteUtrBtn" title="Paste">📋</span>
+          <span class="paste-icon" onclick="pasteUtr()" title="Paste">📋</span>
         </div>
-        <button class="utr-btn" id="verifyBtn">VERIFY</button>
+        <button class="utr-btn" onclick="startTerminalLoader()">VERIFY</button>
       </div>
       <div id="utrStatusMsg"></div>
     </div>
   </div>
 
+  <!-- APP LOCKED SECTION -->
   <div class="app-locked-card" id="appLockedCard">
     <div class="app-locked-info">
       <div class="lock-icon-box">🔒</div>
@@ -572,8 +642,10 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     © 2026 Sunny 999 Bot Official. All Rights Reserved.<br>
     <div class="footer-tagline">PLAY • CLAIM • ENJOY</div>
   </footer>
+
 </div>
 
+<!-- TERMINAL MODAL -->
 <div class="terminal-modal" id="terminalModal">
   <div class="terminal-box">
     <div class="terminal-header">
@@ -583,12 +655,13 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
     <div class="terminal-log" id="terminalLog">
       <div>> Initializing secure gateway...</div>
     </div>
-    <a href="https://t.me/Sunny999VerifyBot" id="manualTgBtn" class="manual-tg-btn" target="_blank">OPEN TELEGRAM BOT NOW ➔</a>
   </div>
 </div>
 
+<!-- FLOATING TELEGRAM -->
 <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="floating-tg">✈️</a>
 
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <a href="#" class="nav-item active"><span>🏠</span>Home</a>
   <a href="#" class="nav-item"><span>🎁</span>Rewards</a>
@@ -597,66 +670,7 @@ footer{ text-align: center; font-size: 10px; color: var(--text-muted); font-weig
   <a href="https://t.me/Sunny999VerifyBot" target="_blank" class="nav-item"><span>💬</span>Contact</a>
 </nav>
 
-<!-- SAFE DEBUG SCRIPT -->
 <script>
-  // Debug check: Agar ye alert aaye, toh samajh le script chal rahi hai
-  alert("App Loaded Successfully!");
-
-  document.addEventListener("DOMContentLoaded", function() {
-    // 1. TIMER LOGIC
-    let totalSeconds = 14 * 3600 + 58 * 60 + 52;
-    const countdownEl = document.getElementById("countdown");
-
-    function updateTimer() {
-      let h = Math.floor(totalSeconds / 3600);
-      let m = Math.floor((totalSeconds % 3600) / 60);
-      let s = totalSeconds % 60;
-      
-      if(countdownEl) {
-        countdownEl.innerText = 
-          (h < 10 ? "0" + h : h) + " : " + 
-          (m < 10 ? "0" + m : m) + " : " + 
-          (s < 10 ? "0" + s : s);
-      }
-      
-      if(totalSeconds > 0) {
-        totalSeconds--;
-      } else {
-        totalSeconds = 15 * 3600;
-      }
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
-    // 2. LIVE TICKER ROTATION
-    const feedMessages = [
-      "🔥 Rahul from Delhi just generated Free Fire Redeem Code (UTR Verified)",
-      "⚡ Aman from Mumbai paid ₹41 and received 1000 Diamonds!",
-      "💎 Karan successfully unlocked the app & claimed reward code!",
-      "🚀 Vicky verified UTR #4892... got instant code on Telegram!",
-      "🔥 Sahil just claimed Free Fire elite pass code right now!"
-    ];
-    let feedIndex = 0;
-    const feedEl = document.getElementById("liveFeedText");
-
-    setInterval(() => {
-      feedIndex = (feedIndex + 1) % feedMessages.length;
-      if(feedEl) {
-        feedEl.style.opacity = 0;
-        setTimeout(() => {
-          feedEl.innerText = feedMessages[feedIndex];
-          feedEl.style.opacity = 1;
-        }, 300);
-      }
-    }, 4000);
-
-    // 3. COPY & PASTE HANDLERS
-    const copyBtn = document.getElementById("copyUpiBtn");
-    if(copyBtn) {
-      copyBtn.onclick = function() {
-        const upi = document.getElementById("upiId").innerText;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(upi).then(() => {
-            copyBtn.innerText = "COPIED ✓";
- 
+/* DYNAMIC LIVE FEED TICKER */
+const feedMessages = [
+  "🔥 Rahul from Delhi just generated Free Fire Redeem Code (UT
