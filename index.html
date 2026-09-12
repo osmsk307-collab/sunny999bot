@@ -6,421 +6,197 @@
 <title>SUNNY 999 BOT</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,Helvetica,sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 
 body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 50% -10%,#252525 0,#0b0b0b 42%,#050505 100%);
-  color:#fff;
+min-height:100vh;
+background:radial-gradient(circle at 50% -10%,#252525 0,#0b0b0b 42%,#050505 100%);
+color:#fff
 }
 
-.container{
-  width:100%;
-  max-width:480px;
-  margin:auto;
-  padding:14px;
-  padding-bottom:90px;
-}
+.container{width:100%;max-width:480px;margin:auto;padding:14px;padding-bottom:90px}
 
-/* TOP */
 .topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 4px 18px;
+display:flex;align-items:center;justify-content:space-between;
+padding:14px 4px 18px
 }
 
-.logo{
-  font-size:21px;
-  font-weight:900;
-  letter-spacing:.5px;
-}
+.logo{font-size:21px;font-weight:900;letter-spacing:.5px}
+.logo span{color:#00e5ff}
 
-.logo span{
-  color:#00e5ff;
-}
+.status{display:flex;align-items:center;gap:7px;font-size:11px;color:#aaa}
+.dot{width:8px;height:8px;background:#00ff8c;border-radius:50%;box-shadow:0 0 12px #00ff8c}
 
-.status{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  font-size:11px;
-  color:#aaa;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  background:#00ff8c;
-  border-radius:50%;
-  box-shadow:0 0 12px #00ff8c;
-}
-
-/* HERO */
 .hero{
-  border:1px solid #242424;
-  border-radius:24px;
-  padding:24px 18px;
-  background:linear-gradient(145deg,#151515,#0c0c0c);
-  box-shadow:0 15px 45px rgba(0,0,0,.45);
+border:1px solid #242424;border-radius:24px;padding:24px 18px;
+background:linear-gradient(145deg,#151515,#0c0c0c);
+box-shadow:0 15px 45px rgba(0,0,0,.45)
 }
 
 .badge{
-  display:inline-flex;
-  padding:7px 11px;
-  border-radius:30px;
-  background:#102a2f;
-  color:#00e5ff;
-  border:1px solid #164e57;
-  font-size:10px;
-  font-weight:bold;
-  margin-bottom:15px;
+display:inline-flex;padding:7px 11px;border-radius:30px;
+background:#102a2f;color:#00e5ff;border:1px solid #164e57;
+font-size:10px;font-weight:bold;margin-bottom:15px
 }
 
-.hero h1{
-  font-size:32px;
-  line-height:1.05;
-  margin-bottom:10px;
-}
+.hero h1{font-size:32px;line-height:1.05;margin-bottom:10px}
+.hero h1 span{color:#00e5ff}
+.hero p{color:#999;font-size:13px;line-height:1.5}
 
-.hero h1 span{
-  color:#00e5ff;
-}
-
-.hero p{
-  color:#999;
-  font-size:13px;
-  line-height:1.5;
-}
-
-/* PLAN */
 .section-title{
-  margin:25px 3px 12px;
-  font-size:13px;
-  color:#aaa;
-  font-weight:bold;
-  letter-spacing:.5px;
+margin:25px 3px 12px;font-size:13px;color:#aaa;
+font-weight:bold;letter-spacing:.5px
 }
 
-.plans{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.available{
+color:#00ff9d;
+font-size:12px;
+font-weight:900;
+letter-spacing:1.5px;
+margin-top:4px
 }
+
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
 .plan{
-  position:relative;
-  padding:18px 14px;
-  border:1px solid #292929;
-  border-radius:20px;
-  background:linear-gradient(145deg,#151515,#0c0c0c);
-  cursor:pointer;
-  transition:.2s;
+position:relative;padding:18px 14px;border:1px solid #292929;
+border-radius:20px;background:linear-gradient(145deg,#151515,#0c0c0c);
+cursor:pointer;transition:.2s
 }
 
 .plan.active{
-  border-color:#00e5ff;
-  box-shadow:0 0 25px rgba(0,229,255,.12);
-  transform:translateY(-2px);
+border-color:#00e5ff;
+box-shadow:0 0 25px rgba(0,229,255,.12);
+transform:translateY(-2px)
 }
 
-.plan .tag{
-  font-size:9px;
-  color:#888;
-  text-transform:uppercase;
-}
+.plan .tag{font-size:9px;color:#888;text-transform:uppercase}
 
-.plan h2{
-  font-size:28px;
-  margin:8px 0;
-}
+.plan h2{font-size:28px;margin:8px 0}
 
-.plan h2 small{
-  font-size:14px;
-  color:#999;
-}
+.plan-name{color:#00e5ff;font-size:12px;font-weight:bold}
 
-.plan-name{
-  color:#00e5ff;
-  font-size:12px;
-  font-weight:bold;
-}
+.plan.active .plan-name{color:#00ff9d}
 
 .tick{
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:19px;
-  height:19px;
-  border:1px solid #444;
-  border-radius:50%;
+position:absolute;top:12px;right:12px;width:19px;height:19px;
+border:1px solid #444;border-radius:50%
 }
 
 .plan.active .tick{
-  background:#00e5ff;
-  border-color:#00e5ff;
-  box-shadow:0 0 12px #00e5ff;
+background:#00e5ff;border-color:#00e5ff;
+box-shadow:0 0 12px #00e5ff
 }
 
-/* PAYMENT */
 .payment{
-  margin-top:16px;
-  padding:20px;
-  border-radius:22px;
-  border:1px solid #252525;
-  background:#0d0d0d;
+margin-top:16px;padding:20px;border-radius:22px;
+border:1px solid #252525;background:#0d0d0d
 }
 
 .pay-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:16px;
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:16px
 }
 
-.pay-head strong{
-  font-size:15px;
-}
-
-.price{
-  color:#00ff9d;
-  font-size:21px;
-  font-weight:900;
-}
+.pay-head strong{font-size:15px}
+.price{color:#00ff9d;font-size:21px;font-weight:900}
 
 .qr-wrap{
-  width:210px;
-  height:210px;
-  margin:8px auto 18px;
-  padding:8px;
-  background:#fff;
-  border-radius:18px;
+width:210px;height:210px;margin:8px auto 18px;padding:8px;
+background:#fff;border-radius:18px
 }
 
-.qr-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  border-radius:10px;
-}
+.qr-wrap img{width:100%;height:100%;object-fit:contain;border-radius:10px}
 
 .upi{
-  background:#151515;
-  border:1px solid #282828;
-  border-radius:13px;
-  padding:13px;
-  text-align:center;
-  margin-bottom:14px;
+background:#151515;border:1px solid #282828;border-radius:13px;
+padding:13px;text-align:center;margin-bottom:14px
 }
 
-.upi small{
-  display:block;
-  color:#777;
-  font-size:9px;
-  margin-bottom:5px;
-}
-
-.upi b{
-  color:#fff;
-  font-size:13px;
-  word-break:break-all;
-}
+.upi small{display:block;color:#777;font-size:9px;margin-bottom:5px}
+.upi b{color:#fff;font-size:13px;word-break:break-all}
 
 .copy{
-  display:block;
-  width:100%;
-  margin-top:8px;
-  border:0;
-  background:#202020;
-  color:#00e5ff;
-  padding:8px;
-  border-radius:9px;
-  font-size:11px;
-  cursor:pointer;
+display:block;width:100%;margin-top:8px;border:0;background:#202020;
+color:#00e5ff;padding:8px;border-radius:9px;font-size:11px;cursor:pointer
 }
 
-/* UTR */
-.utr-box{
-  margin-top:14px;
-}
-
-.utr-box label{
-  display:block;
-  font-size:10px;
-  color:#888;
-  margin-bottom:7px;
-}
+.utr-box{margin-top:14px}
+.utr-box label{display:block;font-size:10px;color:#888;margin-bottom:7px}
 
 .utr{
-  width:100%;
-  height:48px;
-  background:#111;
-  color:#fff;
-  border:1px solid #292929;
-  outline:none;
-  border-radius:13px;
-  padding:0 14px;
-  font-size:14px;
+width:100%;height:48px;background:#111;color:#fff;
+border:1px solid #292929;outline:none;border-radius:13px;
+padding:0 14px;font-size:14px
 }
 
 .utr:focus{
-  border-color:#00e5ff;
-  box-shadow:0 0 18px rgba(0,229,255,.08);
+border-color:#00e5ff;
+box-shadow:0 0 18px rgba(0,229,255,.08)
 }
 
 .verify{
-  width:100%;
-  height:49px;
-  margin-top:10px;
-  border:0;
-  border-radius:13px;
-  background:linear-gradient(90deg,#00e5ff,#00ff9d);
-  color:#001011;
-  font-weight:900;
-  font-size:13px;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(0,229,255,.12);
-}
-
-.verify:active{
-  transform:scale(.98);
+width:100%;height:49px;margin-top:10px;border:0;border-radius:13px;
+background:linear-gradient(90deg,#00e5ff,#00ff9d);
+color:#001011;font-weight:900;font-size:13px;cursor:pointer;
+box-shadow:0 8px 25px rgba(0,229,255,.12)
 }
 
 .note{
-  text-align:center;
-  color:#666;
-  font-size:9px;
-  margin-top:10px;
-  line-height:1.5;
+text-align:center;color:#666;font-size:9px;margin-top:10px;line-height:1.5
 }
 
-/* STEPS */
-.steps{
-  margin-top:16px;
-  display:grid;
-  gap:9px;
-}
+.steps{margin-top:16px;display:grid;gap:9px}
 
 .step{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:12px;
-  border:1px solid #202020;
-  background:#0d0d0d;
-  border-radius:14px;
+display:flex;align-items:center;gap:11px;padding:12px;
+border:1px solid #202020;background:#0d0d0d;border-radius:14px
 }
 
 .num{
-  min-width:27px;
-  height:27px;
-  display:grid;
-  place-items:center;
-  border-radius:9px;
-  background:#151515;
-  color:#00e5ff;
-  font-size:11px;
-  font-weight:bold;
+min-width:27px;height:27px;display:grid;place-items:center;
+border-radius:9px;background:#151515;color:#00e5ff;
+font-size:11px;font-weight:bold
 }
 
-.step div:last-child{
-  font-size:11px;
-  color:#aaa;
-}
+.step div:last-child{font-size:11px;color:#aaa}
 
-/* APP */
 .locked{
-  margin-top:16px;
-  border:1px solid #202020;
-  background:#0b0b0b;
-  border-radius:18px;
-  padding:16px;
-  text-align:center;
+margin-top:16px;border:1px solid #202020;background:#0b0b0b;
+border-radius:18px;padding:16px;text-align:center
 }
 
-.lock-icon{
-  font-size:25px;
-  margin-bottom:7px;
-}
+.lock-icon{font-size:25px;margin-bottom:7px}
+.locked b{font-size:13px}
+.locked p{color:#666;font-size:10px;margin-top:5px}
 
-.locked b{
-  font-size:13px;
-}
-
-.locked p{
-  color:#666;
-  font-size:10px;
-  margin-top:5px;
-}
-
-/* TELEGRAM */
 .telegram{
-  position:fixed;
-  right:18px;
-  bottom:76px;
-  width:49px;
-  height:49px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#168de2;
-  color:#fff;
-  text-decoration:none;
-  font-size:21px;
-  box-shadow:0 8px 25px rgba(0,0,0,.45);
-  z-index:20;
+position:fixed;right:18px;bottom:76px;width:49px;height:49px;
+display:grid;place-items:center;border-radius:50%;
+background:#168de2;color:#fff;text-decoration:none;font-size:21px;
+box-shadow:0 8px 25px rgba(0,0,0,.45);z-index:20
 }
 
-/* NAV */
 .bottom{
-  position:fixed;
-  left:50%;
-  bottom:0;
-  transform:translateX(-50%);
-  width:100%;
-  max-width:480px;
-  padding:10px 15px;
-  background:rgba(5,5,5,.94);
-  backdrop-filter:blur(12px);
-  border-top:1px solid #1c1c1c;
-  display:flex;
-  justify-content:center;
-  z-index:10;
+position:fixed;left:50%;bottom:0;transform:translateX(-50%);
+width:100%;max-width:480px;padding:10px 15px;
+background:rgba(5,5,5,.94);backdrop-filter:blur(12px);
+border-top:1px solid #1c1c1c;display:flex;justify-content:center;z-index:10
 }
 
-.bottom span{
-  color:#666;
-  font-size:10px;
-}
+.bottom span{color:#666;font-size:10px}
 
-/* TOAST */
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:135px;
-  transform:translateX(-50%) translateY(20px);
-  background:#171717;
-  border:1px solid #303030;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:12px;
-  font-size:11px;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  z-index:50;
-  white-space:nowrap;
+position:fixed;left:50%;bottom:135px;
+transform:translateX(-50%) translateY(20px);
+background:#171717;border:1px solid #303030;color:#fff;
+padding:11px 16px;border-radius:12px;font-size:11px;
+opacity:0;pointer-events:none;transition:.25s;z-index:50;white-space:nowrap
 }
 
 .toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
+opacity:1;
+transform:translateX(-50%) translateY(0)
 }
 </style>
 </head>
@@ -429,125 +205,130 @@ body{
 
 <div class="container">
 
-  <div class="topbar">
-    <div class="logo">SUNNY <span>999 BOT</span></div>
-    <div class="status">
-      <i class="dot"></i>
-      ONLINE
-    </div>
+<div class="topbar">
+  <div class="logo">SUNNY <span>999 BOT</span></div>
+  <div class="status"><i class="dot"></i> ONLINE</div>
+</div>
+
+<section class="hero">
+  <div class="badge">✓ SECURE VERIFICATION</div>
+
+  <div class="available">CC PHOTO AVAILABLE</div>
+
+  <h1>Choose Your<br><span>CC Photo</span></h1>
+
+  <p>
+    Select a plan, complete the payment and submit your UTR.
+    Verification is handled through Telegram.
+  </p>
+</section>
+
+<div class="section-title">SELECT PLAN</div>
+
+<div class="plans">
+
+  <div class="plan active" data-price="999" onclick="selectPlan(this)">
+    <div class="tag">PLAN 01</div>
+    <h2>₹999</h2>
+    <div class="plan-name">CC Photo (20,000)</div>
+    <div class="tick"></div>
   </div>
 
-  <section class="hero">
-    <div class="badge">✓ SECURE VERIFICATION</div>
-    <h1>Choose Your<br><span>CC Photo</span></h1>
-    <p>
-      Select a plan, complete the payment and submit your UTR.
-      Verification is handled through Telegram.
-    </p>
-  </section>
-
-  <div class="section-title">SELECT PLAN</div>
-
-  <div class="plans">
-
-    <div class="plan active" data-price="999" onclick="selectPlan(this)">
-      <div class="tag">PLAN 01</div>
-      <h2>₹999</h2>
-      <div class="plan-name">CC Photo</div>
-      <div class="tick"></div>
-    </div>
-
-    <div class="plan" data-price="3999" onclick="selectPlan(this)">
-      <div class="tag">PLAN 02</div>
-      <h2>₹3999</h2>
-      <div class="plan-name">CC Photo</div>
-      <div class="tick"></div>
-    </div>
-
-  </div>
-
-  <section class="payment">
-
-    <div class="pay-head">
-      <strong>Payment</strong>
-      <div class="price" id="selectedPrice">₹999</div>
-    </div>
-
-    <div class="qr-wrap">
-      <img src="IMG_20260911_222905.png" alt="Payment QR">
-    </div>
-
-    <div class="upi">
-      <small>PAY USING UPI</small>
-      <b id="upiText">sunny999bot@nyes</b>
-      <button class="copy" onclick="copyUPI()">COPY UPI ID</button>
-    </div>
-
-    <div class="utr-box">
-      <label>PAYMENT UTR / TRANSACTION ID</label>
-      <input
-        class="utr"
-        id="utr"
-        type="text"
-        inputmode="numeric"
-        maxlength="12"
-        placeholder="Enter 12 digit UTR"
-        autocomplete="off"
-      >
-
-      <button class="verify" onclick="verifyPayment()">
-        VERIFY ON TELEGRAM →
-      </button>
-
-      <div class="note">
-        Payment ke baad UTR enter karke Telegram verification bot par jao.
-        Final verification Telegram bot/admin ke through hogi.
-      </div>
-    </div>
-
-  </section>
-
-  <div class="section-title">HOW IT WORKS</div>
-
-  <div class="steps">
-    <div class="step">
-      <div class="num">01</div>
-      <div>Apna CC Photo plan select karo.</div>
-    </div>
-
-    <div class="step">
-      <div class="num">02</div>
-      <div>Selected amount ka payment QR/UPI se karo.</div>
-    </div>
-
-    <div class="step">
-      <div class="num">03</div>
-      <div>12 digit UTR enter karke Telegram par verification bhejo.</div>
-    </div>
-
-    <div class="step">
-      <div class="num">04</div>
-      <div>Verification complete hone ke baad next step Telegram par milega.</div>
-    </div>
-  </div>
-
-  <div class="locked">
-    <div class="lock-icon">🔒</div>
-    <b>ACCESS LOCKED</b>
-    <p>Verification complete hone tak access locked rahega.</p>
+  <div class="plan" data-price="3999" onclick="selectPlan(this)">
+    <div class="tag">PLAN 02</div>
+    <h2>₹3999</h2>
+    <div class="plan-name">CC PHOTO (1 LAKH)</div>
+    <div class="tick"></div>
   </div>
 
 </div>
 
+<section class="payment">
+
+<div class="pay-head">
+  <strong>Payment</strong>
+  <div class="price" id="selectedPrice">₹999</div>
+</div>
+
+<div class="qr-wrap">
+  <img src="IMG_20260911_222905.png" alt="Payment QR">
+</div>
+
+<div class="upi">
+  <small>PAY USING UPI</small>
+  <b id="upiText">sunny999bot@nyes</b>
+  <button class="copy" onclick="copyUPI()">COPY UPI ID</button>
+</div>
+
+<div class="utr-box">
+
+<label>PAYMENT UTR / TRANSACTION ID</label>
+
+<input
+  class="utr"
+  id="utr"
+  type="text"
+  inputmode="numeric"
+  maxlength="12"
+  placeholder="Enter 12 digit UTR"
+  autocomplete="off"
+>
+
+<button class="verify" onclick="verifyPayment()">
+  VERIFY ON TELEGRAM →
+</button>
+
+<div class="note">
+Payment ke baad UTR enter karke Telegram verification bot par jao.
+Final verification Telegram bot/admin ke through hogi.
+</div>
+
+</div>
+</section>
+
+<div class="section-title">HOW IT WORKS</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="num">01</div>
+<div>Apna CC Photo plan select karo.</div>
+</div>
+
+<div class="step">
+<div class="num">02</div>
+<div>Selected amount ka payment QR/UPI se karo.</div>
+</div>
+
+<div class="step">
+<div class="num">03</div>
+<div>12 digit UTR enter karke Telegram par verification bhejo.</div>
+</div>
+
+<div class="step">
+<div class="num">04</div>
+<div>Verification complete hone ke baad next step Telegram par milega.</div>
+</div>
+
+</div>
+
+<div class="locked">
+<div class="lock-icon">🔒</div>
+<b>ACCESS LOCKED</b>
+<p>Verification complete hone tak access locked rahega.</p>
+</div>
+
+</div>
+
 <a
-  class="telegram"
-  href="https://t.me/Sunny999VerifyBot"
-  target="_blank"
-  aria-label="Telegram"
+class="telegram"
+href="https://t.me/Sunny999VerifyBot"
+target="_blank"
+aria-label="Telegram"
 >➤</a>
 
 <div class="bottom">
-  <span>© SUNNY 999 BOT • PAYMENT VERIFICATION</span>
+<span>© SUNNY 999 BOT • PAYMENT VERIFICATION</span>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -559,6 +340,7 @@ const TELEGRAM_BOT = "Sunny999VerifyBot";
 let selectedPlan = "999";
 
 function selectPlan(el){
+
   document.querySelectorAll(".plan").forEach(p=>{
     p.classList.remove("active");
   });
@@ -572,6 +354,7 @@ function selectPlan(el){
 }
 
 function showToast(message){
+
   const toast = document.getElementById("toast");
 
   toast.textContent = message;
@@ -583,33 +366,33 @@ function showToast(message){
 }
 
 function copyUPI(){
+
   navigator.clipboard.writeText(UPI_ID)
-    .then(()=>{
-      showToast("UPI ID copied ✓");
-    })
-    .catch(()=>{
-      showToast("UPI ID: " + UPI_ID);
-    });
+  .then(()=>{
+    showToast("UPI ID copied ✓");
+  })
+  .catch(()=>{
+    showToast("UPI ID: " + UPI_ID);
+  });
 }
 
 document.getElementById("utr").addEventListener("input",function(){
+
   this.value = this.value.replace(/\D/g,"").slice(0,12);
+
 });
 
 function verifyPayment(){
 
-  const utr = document.getElementById("utr").value.trim();
+  const utr =
+    document.getElementById("utr").value.trim();
 
   if(utr.length !== 12){
+
     showToast("12 digit UTR enter karo");
     return;
-  }
 
-  /*
-    Telegram bot ko plan + UTR bheja ja raha hai.
-    Example:
-    /start cc999_123456789012
-  */
+  }
 
   const payload =
     "cc" + selectedPlan + "_" + utr;
