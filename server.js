@@ -13,8 +13,8 @@ const ACTIVATION_SITE = "https://osmsk307-collab.github.io/free-fire-card/";
 const UPI_ID = "sunny999bot@nyes";
 
 const PLANS = {
-  "999": "FREE FIRE GOLD CARD",
-  "1999": "FREE FIRE DIAMOND CARD"
+  "999": "FREE FIRE DIAMOND CARD",
+  "499": "FREE FIRE GOLD CARD"
 };
 
 const DB_FILE = path.join(__dirname, "payments.json");
@@ -210,12 +210,15 @@ async function handleStart(message) {
       : "";
 
 
-  // Website verification payload
+  // =========================
+  // WEBSITE VERIFICATION
+  // =========================
+
   if (payload.startsWith("cc")) {
 
     const match =
       payload.match(
-        /^cc(999|1999)_(\d{12})$/
+        /^cc(999|499)_(\d{12})$/
       );
 
     if (!match) {
@@ -238,6 +241,67 @@ async function handleStart(message) {
 
     const utr =
       match[2];
+
+
+    const payments =
+      loadPayments();
+
+
+    // =========================
+    // DUPLICATE UTR CHECK
+    // =========================
+
+    const duplicate =
+      payments.find(
+        p => p.utr === utr
+      );
+
+
+    if (duplicate) {
+
+      let statusText =
+        "already verification mein hai.";
+
+      if (
+        duplicate.status ===
+        "APPROVED"
+      ) {
+
+        statusText =
+          "already APPROVED hai.";
+
+      }
+
+      if (
+        duplicate.status ===
+        "REJECTED"
+      ) {
+
+        statusText =
+          "already REJECTED hai.";
+
+      }
+
+
+      await sendMessage(
+
+        chatId,
+
+        "⚠️ THIS UTR IS ALREADY USED\n\n" +
+
+        "UTR: " +
+        utr +
+        "\n\n" +
+
+        statusText +
+        "\n\n" +
+
+        "Same UTR ko dobara submit nahi kiya ja sakta."
+
+      );
+
+      return;
+    }
 
 
     pendingUsers[chatId] = {
@@ -288,7 +352,10 @@ async function handleStart(message) {
   }
 
 
-  // Normal start
+  // =========================
+  // NORMAL START
+  // =========================
+
   await sendMessage(
 
     chatId,
@@ -297,9 +364,9 @@ async function handleStart(message) {
 
     "Available Plans:\n\n" +
 
-    "₹999 — FREE FIRE GOLD CARD\n" +
+    "₹999 — FREE FIRE DIAMOND CARD\n" +
 
-    "₹1999 — FREE FIRE DIAMOND CARD\n\n" +
+    "₹499 — FREE FIRE GOLD CARD\n\n" +
 
     "Payment ke baad website se " +
     "VERIFY ON TELEGRAM button use karo."
@@ -352,13 +419,13 @@ async function handlePhoto(message) {
     loadPayments();
 
 
+  // =========================
+  // DUPLICATE UTR PROTECTION
+  // =========================
+
   const existing =
     payments.find(
-
-      p =>
-        p.utr === user.utr &&
-        p.status === "PENDING"
-
+      p => p.utr === user.utr
     );
 
 
@@ -368,14 +435,25 @@ async function handlePhoto(message) {
 
       chatId,
 
-      "Ye UTR already verification mein hai.\n\n" +
-      "Please admin approval ka wait karo."
+      "⚠️ Ye UTR already submit ho chuka hai.\n\n" +
+
+      "UTR: " +
+      user.utr +
+      "\n\n" +
+
+      "Same UTR se duplicate verification request nahi banegi."
 
     );
+
+    delete pendingUsers[chatId];
 
     return;
   }
 
+
+  // =========================
+  // CREATE PAYMENT
+  // =========================
 
   const payment = {
 
@@ -409,6 +487,12 @@ async function handlePhoto(message) {
     status:
       "PENDING",
 
+    activationCode:
+      null,
+
+    codeUsed:
+      false,
+
     createdAt:
       new Date().toISOString()
 
@@ -422,7 +506,10 @@ async function handlePhoto(message) {
   );
 
 
-  // Admin verification
+  // =========================
+  // ADMIN VERIFICATION
+  // =========================
+
   await telegram(
 
     "sendPhoto",
@@ -523,6 +610,9 @@ async function handlePhoto(message) {
 
   );
 
+
+  delete pendingUsers[chatId];
+
 }
 
 
@@ -539,7 +629,10 @@ async function handleCallback(callback) {
     String(callback.from.id);
 
 
-  // Admin only
+  // =========================
+  // ADMIN ONLY
+  // =========================
+
   if (
     adminId !==
     String(ADMIN_CHAT_ID)
@@ -613,7 +706,10 @@ async function handleCallback(callback) {
   }
 
 
-  // Already processed
+  // =========================
+  // ALREADY PROCESSED
+  // =========================
+
   if (
     payment.status !==
     "PENDING"
@@ -642,9 +738,9 @@ async function handleCallback(callback) {
   }
 
 
-  // =====================
+  // =========================
   // APPROVE
-  // =====================
+  // =========================
 
   if (action === "approve") {
 
@@ -672,12 +768,27 @@ async function handleCallback(callback) {
     );
 
 
-    // User message
+    // =========================
+    // USER APPROVAL MESSAGE
+    // =========================
+
     await sendMessage(
 
       payment.chatId,
 
       "✅ PAYMENT APPROVED\n\n" +
+
+      "🌐 CC ACTIVATION WEBSITE\n\n" +
+
+      ACTIVATION_SITE +
+      "\n\n" +
+
+      "👆 Is website par jaakar apna CC activate karo.\n\n" +
+
+      "Required payment complete karne ke baad hi " +
+      "activation process continue hoga.\n\n" +
+
+      "━━━━━━━━━━━━━━━━━━\n\n" +
 
       "Plan: ₹" +
       payment.plan +
@@ -694,17 +805,15 @@ async function handleCallback(callback) {
 
       "⚠️ Is 10-digit code ko save/copy karke rakho.\n\n" +
 
-      "🌐 ACTIVATION WEBSITE\n\n" +
-
-      ACTIVATION_SITE +
-      "\n\n" +
-
       "Website open karo aur activation process continue karo."
 
     );
 
 
-    // Admin confirmation
+    // =========================
+    // ADMIN CONFIRMATION
+    // =========================
+
     await telegram(
 
       "answerCallbackQuery",
@@ -715,14 +824,17 @@ async function handleCallback(callback) {
           callback.id,
 
         text:
-          "Payment approved + code generated ✅"
+          "Payment approved + unique code generated ✅"
 
       }
 
     );
 
 
-    // Update admin message
+    // =========================
+    // UPDATE ADMIN MESSAGE
+    // =========================
+
     if (
       callback.message &&
       callback.message.message_id
@@ -773,9 +885,9 @@ async function handleCallback(callback) {
   }
 
 
-  // =====================
+  // =========================
   // REJECT
-  // =====================
+  // =========================
 
   if (action === "reject") {
 
@@ -884,7 +996,10 @@ async function handleUpdate(update) {
 
   try {
 
-    // Callback
+    // =========================
+    // CALLBACK
+    // =========================
+
     if (
       update.callback_query
     ) {
@@ -904,7 +1019,10 @@ async function handleUpdate(update) {
       return;
 
 
-    // /id
+    // =========================
+    // /ID
+    // =========================
+
     if (
       message.text &&
       message.text.trim() === "/id"
@@ -923,7 +1041,10 @@ async function handleUpdate(update) {
     }
 
 
-    // /start
+    // =========================
+    // /START
+    // =========================
+
     if (
       message.text &&
       message.text.startsWith(
@@ -939,7 +1060,10 @@ async function handleUpdate(update) {
     }
 
 
-    // Photo
+    // =========================
+    // PHOTO
+    // =========================
+
     if (
       message.photo
     ) {
@@ -952,7 +1076,10 @@ async function handleUpdate(update) {
     }
 
 
-    // Manual UTR
+    // =========================
+    // MANUAL UTR
+    // =========================
+
     if (
       message.text &&
       /^\d{12}$/.test(
@@ -969,8 +1096,37 @@ async function handleUpdate(update) {
 
       if (user) {
 
-        user.utr =
+        const newUtr =
           message.text.trim();
+
+        const payments =
+          loadPayments();
+
+
+        const duplicate =
+          payments.find(
+            p => p.utr === newUtr
+          );
+
+
+        if (duplicate) {
+
+          await sendMessage(
+
+            chatId,
+
+            "⚠️ Ye UTR already used hai.\n\n" +
+
+            "Same UTR ko dobara submit nahi kiya ja sakta."
+
+          );
+
+          return;
+        }
+
+
+        user.utr =
+          newUtr;
 
 
         await sendMessage(
@@ -1001,7 +1157,10 @@ async function handleUpdate(update) {
     }
 
 
-    // Other text
+    // =========================
+    // OTHER TEXT
+    // =========================
+
     if (
       message.text
     ) {
