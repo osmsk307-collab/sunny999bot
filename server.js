@@ -2,6 +2,7 @@ const https = require("https");
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
@@ -13,13 +14,25 @@ const ACTIVATION_SITE = "https://osmsk307-collab.github.io/free-fire-card/";
 const UPI_ID = "sunny999bot@nyes";
 
 const PLANS = {
+  "499": "FREE FIRE GOLD CARD",
   "999": "FREE FIRE DIAMOND CARD",
-  "499": "FREE FIRE GOLD CARD"
+  "4999": "FREE FIRE 8 PRIME CARD"
 };
 
 const DB_FILE = path.join(__dirname, "payments.json");
 
 let offset = 0;
+
+/*
+  Per-user active verification state.
+
+  WAITING_SCREENSHOT
+  = UTR received, waiting for exactly one screenshot.
+
+  PENDING
+  = screenshot received and sent to admin.
+*/
+
 let pendingUsers = {};
 
 if (!BOT_TOKEN) {
@@ -39,19 +52,40 @@ if (!ADMIN_CHAT_ID) {
 
 function loadPayments() {
   try {
-    return JSON.parse(
-      fs.readFileSync(DB_FILE, "utf8")
+    if (!fs.existsSync(DB_FILE)) {
+      return [];
+    }
+
+    const data = fs.readFileSync(
+      DB_FILE,
+      "utf8"
     );
-  } catch {
+
+    const parsed = JSON.parse(data);
+
+    return Array.isArray(parsed)
+      ? parsed
+      : [];
+
+  } catch (error) {
+
+    console.error(
+      "Database load error:",
+      error.message
+    );
+
     return [];
   }
 }
 
+
 function savePayments(data) {
+
   fs.writeFileSync(
     DB_FILE,
     JSON.stringify(data, null, 2)
   );
+
 }
 
 
@@ -66,9 +100,9 @@ function generateActivationCode(payments) {
   do {
 
     code =
-      Math.floor(
-        1000000000 +
-        Math.random() * 9000000000
+      crypto.randomInt(
+        1000000000,
+        10000000000
       ).toString();
 
   } while (
@@ -153,6 +187,7 @@ function telegram(method, data) {
         );
 
       }
+
     );
 
     req.on(
@@ -202,7 +237,7 @@ async function handleStart(message) {
     message.text || "";
 
   const parts =
-    text.split(" ");
+    text.trim().split(/\s+/);
 
   const payload =
     parts.length > 1
@@ -214,12 +249,21 @@ async function handleStart(message) {
   // WEBSITE VERIFICATION
   // =========================
 
-  if (payload.startsWith("cc")) {
+  if (payload) {
+
+    /*
+      Website payload format:
+
+      SUNNY999BOT_499_12345678
+      SUNNY999BOT_999_123456789012
+      SUNNY999BOT_4999_123456789012
+    */
 
     const match =
       payload.match(
-        /^cc(999|499)_(\d{12})$/
+        /^SUNNY999BOT_(499|999|4999)_(\d{8,12})$/
       );
+
 
     if (!match) {
 
@@ -227,8 +271,10 @@ async function handleStart(message) {
 
         chatId,
 
-        "Invalid verification link.\n\n" +
-        "Please website se VERIFY ON TELEGRAM button use karo."
+        "❌ Invalid verification link.\n\n" +
+
+        "Please website se " +
+        "VERIFY ON TELEGRAM button use karo."
 
       );
 
@@ -243,6 +289,67 @@ async function handleStart(message) {
       match[2];
 
 
+    // =========================
+    // ACTIVE REQUEST LOCK
+    // =========================
+
+    const active =
+      pendingUsers[chatId];
+
+
+    if (active) {
+
+      if (
+        active.status ===
+        "WAITING_SCREENSHOT"
+      ) {
+
+        await sendMessage(
+
+          chatId,
+
+          "⚠️ Aapki verification request already active hai.\n\n" +
+
+          "UTR: " +
+          active.utr +
+          "\n\n" +
+
+          "Ab sirf isi request ka " +
+          "ONE genuine payment screenshot bhejo.\n\n" +
+
+          "Nayi verification request start nahi ki ja sakti."
+
+        );
+
+        return;
+      }
+
+
+      if (
+        active.status ===
+        "PENDING"
+      ) {
+
+        await sendMessage(
+
+          chatId,
+
+          "⏳ Aapki payment verification already admin review mein hai.\n\n" +
+
+          "UTR: " +
+          active.utr +
+          "\n\n" +
+
+          "Please admin verification complete hone ka wait karo."
+
+        );
+
+        return;
+      }
+
+    }
+
+
     const payments =
       loadPayments();
 
@@ -253,7 +360,9 @@ async function handleStart(message) {
 
     const duplicate =
       payments.find(
-        p => p.utr === utr
+        p =>
+          String(p.utr) ===
+          String(utr)
       );
 
 
@@ -304,6 +413,10 @@ async function handleStart(message) {
     }
 
 
+    // =========================
+    // CREATE ACTIVE REQUEST
+    // =========================
+
     pendingUsers[chatId] = {
 
       chatId:
@@ -319,7 +432,13 @@ async function handleStart(message) {
         utr,
 
       screenshot:
-        null
+        null,
+
+      status:
+        "WAITING_SCREENSHOT",
+
+      createdAt:
+        new Date().toISOString()
 
     };
 
@@ -331,7 +450,7 @@ async function handleStart(message) {
       "SUNNY 999 BOT\n\n" +
 
       "Selected Plan: ₹" +
-      plan +
+      Number(plan).toLocaleString("en-IN") +
       "\n" +
 
       PLANS[plan] +
@@ -341,7 +460,10 @@ async function handleStart(message) {
       utr +
       "\n\n" +
 
-      "Ab payment ka SCREENSHOT bhejo.\n\n" +
+      "Ab payment ka ONE GENUINE SCREENSHOT bhejo.\n\n" +
+
+      "⚠️ Ek verification request mein " +
+      "sirf ONE UTR aur ONE screenshot allowed hai.\n\n" +
 
       "Screenshot receive hone ke baad " +
       "verification request admin ko bheji jayegi."
@@ -364,9 +486,10 @@ async function handleStart(message) {
 
     "Available Plans:\n\n" +
 
-    "₹999 — FREE FIRE DIAMOND CARD\n" +
+    "₹499 — FREE FIRE GOLD CARD\n" +
 
-    "₹499 — FREE FIRE GOLD CARD\n\n" +
+    "₹999 — FREE FIRE DIAMOND CARD\n" +
+    "₹4,999 — FREE FIRE 8 PRIME CARD\n\n" +
 
     "Payment ke baad website se " +
     "VERIFY ON TELEGRAM button use karo."
@@ -389,6 +512,10 @@ async function handlePhoto(message) {
     pendingUsers[chatId];
 
 
+  // =========================
+  // NO ACTIVE REQUEST
+  // =========================
+
   if (!user) {
 
     await sendMessage(
@@ -404,28 +531,90 @@ async function handlePhoto(message) {
   }
 
 
+  // =========================
+  // SCREENSHOT ALREADY SENT
+  // =========================
+
+  if (
+    user.status ===
+    "PENDING"
+  ) {
+
+    await sendMessage(
+
+      chatId,
+
+      "⛔ Screenshot already receive ho chuka hai.\n\n" +
+
+      "Ek verification request mein " +
+      "sirf ONE screenshot allowed hai.\n\n" +
+
+      "Please admin verification ka wait karo."
+
+    );
+
+    return;
+  }
+
+
+  if (
+    user.status !==
+    "WAITING_SCREENSHOT"
+  ) {
+
+    await sendMessage(
+
+      chatId,
+
+      "⚠️ Verification request active nahi hai.\n\n" +
+      "Website se dobara VERIFY ON TELEGRAM start karo."
+
+    );
+
+    return;
+  }
+
+
+  // =========================
+  // GET BEST PHOTO
+  // =========================
+
   const photos =
-    message.photo;
+    message.photo || [];
+
+
+  if (!photos.length) {
+
+    await sendMessage(
+
+      chatId,
+
+      "❌ Screenshot receive nahi hua.\n\n" +
+      "Please ek genuine payment screenshot bhejo."
+
+    );
+
+    return;
+  }
+
 
   const photo =
     photos[photos.length - 1];
 
 
-  user.screenshot =
-    photo.file_id;
-
+  // =========================
+  // FINAL UTR DUPLICATE CHECK
+  // =========================
 
   const payments =
     loadPayments();
 
 
-  // =========================
-  // DUPLICATE UTR PROTECTION
-  // =========================
-
   const existing =
     payments.find(
-      p => p.utr === user.utr
+      p =>
+        String(p.utr) ===
+        String(user.utr)
     );
 
 
@@ -452,6 +641,17 @@ async function handlePhoto(message) {
 
 
   // =========================
+  // LOCK REQUEST
+  // =========================
+
+  user.screenshot =
+    photo.file_id;
+
+  user.status =
+    "PENDING";
+
+
+  // =========================
   // CREATE PAYMENT
   // =========================
 
@@ -464,10 +664,16 @@ async function handlePhoto(message) {
       chatId,
 
     username:
-      message.from.username || "",
+      message.from &&
+      message.from.username
+        ? message.from.username
+        : "",
 
     firstName:
-      message.from.first_name || "",
+      message.from &&
+      message.from.first_name
+        ? message.from.first_name
+        : "",
 
     plan:
       user.plan,
@@ -499,92 +705,160 @@ async function handlePhoto(message) {
   };
 
 
-  payments.push(payment);
-
-  savePayments(
-    payments
+  payments.push(
+    payment
   );
+
+
+  try {
+
+    savePayments(
+      payments
+    );
+
+  } catch (error) {
+
+    user.status =
+      "WAITING_SCREENSHOT";
+
+    user.screenshot =
+      null;
+
+    await sendMessage(
+
+      chatId,
+
+      "❌ Verification save nahi ho saki.\n\n" +
+      "Please thodi der baad try karo."
+
+    );
+
+    console.error(
+      "Payment save error:",
+      error.message
+    );
+
+    return;
+  }
 
 
   // =========================
   // ADMIN VERIFICATION
   // =========================
 
-  await telegram(
+  try {
 
-    "sendPhoto",
+    await telegram(
 
-    {
+      "sendPhoto",
 
-      chat_id:
-        ADMIN_CHAT_ID,
+      {
 
-      photo:
-        user.screenshot,
+        chat_id:
+          ADMIN_CHAT_ID,
 
-      caption:
+        photo:
+          user.screenshot,
 
-        "🔔 NEW PAYMENT VERIFICATION\n\n" +
+        caption:
 
-        "Plan: ₹" +
-        user.plan +
-        "\n" +
+          "🔔 NEW PAYMENT VERIFICATION\n\n" +
 
-        "Package: " +
-        user.planName +
-        "\n\n" +
+          "Plan: ₹" +
+          Number(user.plan).toLocaleString("en-IN") +
+          "\n" +
 
-        "UTR: " +
-        user.utr +
-        "\n\n" +
+          "Package: " +
+          user.planName +
+          "\n\n" +
 
-        "User ID: " +
-        chatId +
-        "\n" +
+          "UTR: " +
+          user.utr +
+          "\n\n" +
 
-        "Username: @" +
-        (
-          message.from.username ||
-          "N/A"
-        ) +
-        "\n\n" +
+          "User ID: " +
+          chatId +
+          "\n" +
 
-        "Status: PENDING",
+          "Username: @" +
+          (
+            message.from &&
+            message.from.username
+              ? message.from.username
+              : "N/A"
+          ) +
+          "\n\n" +
 
-      reply_markup: {
+          "Status: PENDING",
 
-        inline_keyboard: [
+        reply_markup: {
 
-          [
+          inline_keyboard: [
 
-            {
-              text:
-                "✅ APPROVE",
+            [
 
-              callback_data:
-                "approve_" +
-                payment.id
-            },
+              {
+                text:
+                  "✅ APPROVE",
 
-            {
-              text:
-                "❌ REJECT",
+                callback_data:
+                  "approve_" +
+                  payment.id
+              },
 
-              callback_data:
-                "reject_" +
-                payment.id
-            }
+              {
+                text:
+                  "❌ REJECT",
+
+                callback_data:
+                  "reject_" +
+                  payment.id
+              }
+
+            ]
 
           ]
 
-        ]
+        }
 
       }
 
-    }
+    );
 
-  );
+  } catch (error) {
 
+    /*
+      Admin notification failed.
+      Keep payment in database as PENDING
+      so the request is not lost.
+    */
+
+    console.error(
+      "Admin notification error:",
+      error.message
+    );
+
+
+    await sendMessage(
+
+      chatId,
+
+      "⚠️ Payment screenshot receive ho gaya hai, " +
+      "lekin admin notification mein temporary problem aayi hai.\n\n" +
+
+      "Aapki request database mein PENDING hai.\n" +
+
+      "Dobara screenshot bhejne ki zarurat nahi hai."
+
+    );
+
+    return;
+  }
+
+
+  // =========================
+  // USER CONFIRMATION
+  // =========================
 
   await sendMessage(
 
@@ -593,7 +867,7 @@ async function handlePhoto(message) {
     "✅ Payment screenshot received.\n\n" +
 
     "Plan: ₹" +
-    user.plan +
+    Number(user.plan).toLocaleString("en-IN") +
     "\n" +
 
     "Card: " +
@@ -606,12 +880,11 @@ async function handlePhoto(message) {
 
     "Verification request admin ko bhej di gayi hai.\n\n" +
 
+    "⚠️ Is request mein ab koi doosra screenshot ya UTR accept nahi hoga.\n\n" +
+
     "Approval ke baad access details milengi."
 
   );
-
-
-  delete pendingUsers[chatId];
 
 }
 
@@ -791,7 +1064,7 @@ async function handleCallback(callback) {
       "━━━━━━━━━━━━━━━━━━\n\n" +
 
       "Plan: ₹" +
-      payment.plan +
+      Number(payment.plan).toLocaleString("en-IN") +
       "\n" +
 
       "Card: " +
@@ -808,6 +1081,15 @@ async function handleCallback(callback) {
       "Website open karo aur activation process continue karo."
 
     );
+
+
+    // =========================
+    // REMOVE ACTIVE REQUEST
+    // =========================
+
+    delete pendingUsers[
+      payment.chatId
+    ];
 
 
     // =========================
@@ -857,7 +1139,7 @@ async function handleCallback(callback) {
             "✅ PAYMENT APPROVED\n\n" +
 
             "Plan: ₹" +
-            payment.plan +
+            Number(payment.plan).toLocaleString("en-IN") +
             "\n" +
 
             "Card: " +
@@ -924,6 +1206,15 @@ async function handleCallback(callback) {
     );
 
 
+    // =========================
+    // REMOVE ACTIVE REQUEST
+    // =========================
+
+    delete pendingUsers[
+      payment.chatId
+    ];
+
+
     await telegram(
 
       "answerCallbackQuery",
@@ -940,6 +1231,10 @@ async function handleCallback(callback) {
 
     );
 
+
+    // =========================
+    // UPDATE ADMIN MESSAGE
+    // =========================
 
     if (
       callback.message &&
@@ -963,7 +1258,7 @@ async function handleCallback(callback) {
             "❌ PAYMENT REJECTED\n\n" +
 
             "Plan: ₹" +
-            payment.plan +
+            Number(payment.plan).toLocaleString("en-IN") +
             "\n" +
 
             "Card: " +
@@ -1078,304 +1373,4 @@ async function handleUpdate(update) {
 
     // =========================
     // MANUAL UTR
-    // =========================
-
-    if (
-      message.text &&
-      /^\d{12}$/.test(
-        message.text.trim()
-      )
-    ) {
-
-      const chatId =
-        message.chat.id;
-
-      const user =
-        pendingUsers[chatId];
-
-
-      if (user) {
-
-        const newUtr =
-          message.text.trim();
-
-        const payments =
-          loadPayments();
-
-
-        const duplicate =
-          payments.find(
-            p => p.utr === newUtr
-          );
-
-
-        if (duplicate) {
-
-          await sendMessage(
-
-            chatId,
-
-            "⚠️ Ye UTR already used hai.\n\n" +
-
-            "Same UTR ko dobara submit nahi kiya ja sakta."
-
-          );
-
-          return;
-        }
-
-
-        user.utr =
-          newUtr;
-
-
-        await sendMessage(
-
-          chatId,
-
-          "UTR saved: " +
-          user.utr +
-          "\n\n" +
-
-          "Ab payment screenshot bhejo."
-
-        );
-
-      } else {
-
-        await sendMessage(
-
-          chatId,
-
-          "Pehle website se verification start karo."
-
-        );
-
-      }
-
-      return;
-    }
-
-
-    // =========================
-    // OTHER TEXT
-    // =========================
-
-    if (
-      message.text
-    ) {
-
-      await sendMessage(
-
-        message.chat.id,
-
-        "Payment verification ke liye:\n\n" +
-
-        "1. Website se plan select karo\n" +
-
-        "2. Payment complete karo\n" +
-
-        "3. VERIFY ON TELEGRAM dabao\n" +
-
-        "4. Payment screenshot bhejo"
-
-      );
-
-    }
-
-  } catch (error) {
-
-    console.error(
-      "Update error:",
-      error.message
-    );
-
-  }
-
-}
-
-
-// =========================
-// BOT LOOP
-// =========================
-
-async function poll() {
-
-  try {
-
-    const result =
-      await telegram(
-
-        "getUpdates",
-
-        {
-
-          offset:
-            offset,
-
-          timeout:
-            30
-
-        }
-
-      );
-
-
-    if (
-      result.result &&
-      result.result.length
-    ) {
-
-      for (
-        const update
-        of result.result
-      ) {
-
-        offset =
-          update.update_id + 1;
-
-        await handleUpdate(
-          update
-        );
-
-      }
-
-    }
-
-  } catch (error) {
-
-    console.error(
-      "Polling error:",
-      error.message
-    );
-
-    await new Promise(
-      resolve =>
-        setTimeout(
-          resolve,
-          3000
-        )
-    );
-
-  }
-
-
-  setImmediate(
-    poll
-  );
-
-}
-
-
-// =========================
-// WEB SERVER
-// =========================
-
-const server =
-  http.createServer(
-
-    (req, res) => {
-
-      if (
-        req.url === "/" ||
-        req.url === "/index.html"
-      ) {
-
-        const file =
-          path.join(
-            __dirname,
-            "index.html"
-          );
-
-
-        if (
-          fs.existsSync(file)
-        ) {
-
-          res.writeHead(
-
-            200,
-
-            {
-              "Content-Type":
-                "text/html; charset=utf-8"
-            }
-
-          );
-
-          res.end(
-            fs.readFileSync(file)
-          );
-
-          return;
-        }
-
-      }
-
-
-      if (
-        req.url === "/health"
-      ) {
-
-        res.writeHead(
-
-          200,
-
-          {
-            "Content-Type":
-              "application/json"
-          }
-
-        );
-
-        res.end(
-
-          JSON.stringify({
-
-            status:
-              "ok",
-
-            bot:
-              "running"
-
-          })
-
-        );
-
-        return;
-      }
-
-
-      res.writeHead(
-        404
-      );
-
-      res.end(
-        "Not Found"
-      );
-
-    }
-
-  );
-
-
-server.listen(
-
-  PORT,
-
-  () => {
-
-    console.log(
-      "Server running on port " +
-      PORT
-    );
-
-    console.log(
-      "SUNNY 999 BOT started"
-    );
-
-    poll();
-
-  }
-
-);
+    // ========================
