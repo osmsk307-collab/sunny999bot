@@ -10,8 +10,15 @@ const ADMIN_CHAT_ID = process.env.ADMIN_CHAT_ID;
 const PORT = process.env.PORT || 3000;
 
 const APP_LINK = "https://shorturl.at/bStBD";
-const ACTIVATION_SITE = "https://osmsk307-collab.github.io/free-fire-card/";
+const ACTIVATION_SITE =
+  "https://osmsk307-collab.github.io/free-fire-card/";
+
 const UPI_ID = "sunny999bot@nyes";
+
+
+// =========================
+// PLANS
+// =========================
 
 const PLANS = {
   "499": "FREE FIRE GOLD CARD",
@@ -19,15 +26,20 @@ const PLANS = {
   "4999": "FREE FIRE 8 PRIME CARD"
 };
 
-const DB_FILE = path.join(__dirname, "payments.json");
+
+const DB_FILE =
+  path.join(__dirname, "payments.json");
 
 let offset = 0;
 
-/*
-  Per-user active verification state.
 
+// =========================
+// ACTIVE USER REQUESTS
+// =========================
+
+/*
   WAITING_SCREENSHOT
-  = UTR received, waiting for exactly one screenshot.
+  = UTR received, screenshot pending.
 
   PENDING
   = screenshot received and sent to admin.
@@ -35,13 +47,23 @@ let offset = 0;
 
 let pendingUsers = {};
 
+
+// =========================
+// ENV CHECK
+// =========================
+
 if (!BOT_TOKEN) {
+
   console.error("BOT_TOKEN missing");
+
   process.exit(1);
 }
 
+
 if (!ADMIN_CHAT_ID) {
+
   console.error("ADMIN_CHAT_ID missing");
+
   process.exit(1);
 }
 
@@ -51,17 +73,24 @@ if (!ADMIN_CHAT_ID) {
 // =========================
 
 function loadPayments() {
+
   try {
+
     if (!fs.existsSync(DB_FILE)) {
       return [];
     }
 
-    const data = fs.readFileSync(
-      DB_FILE,
-      "utf8"
-    );
 
-    const parsed = JSON.parse(data);
+    const data =
+      fs.readFileSync(
+        DB_FILE,
+        "utf8"
+      );
+
+
+    const parsed =
+      JSON.parse(data);
+
 
     return Array.isArray(parsed)
       ? parsed
@@ -83,14 +112,18 @@ function savePayments(data) {
 
   fs.writeFileSync(
     DB_FILE,
-    JSON.stringify(data, null, 2)
+    JSON.stringify(
+      data,
+      null,
+      2
+    )
   );
 
 }
 
 
 // =========================
-// UNIQUE 10 DIGIT CODE
+// ACTIVATION CODE
 // =========================
 
 function generateActivationCode(payments) {
@@ -107,9 +140,11 @@ function generateActivationCode(payments) {
 
   } while (
     payments.some(
-      p => p.activationCode === code
+      p =>
+        p.activationCode === code
     )
   );
+
 
   return code;
 }
@@ -121,87 +156,101 @@ function generateActivationCode(payments) {
 
 function telegram(method, data) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise(
+    (resolve, reject) => {
 
-    const req = https.request(
+      const req =
+        https.request(
 
-      {
-        hostname: "api.telegram.org",
+          {
+            hostname:
+              "api.telegram.org",
 
-        path:
-          `/bot${BOT_TOKEN}/${method}`,
+            path:
+              `/bot${BOT_TOKEN}/${method}`,
 
-        method: "POST",
+            method:
+              "POST",
 
-        headers: {
-          "Content-Type":
-            "application/json"
-        }
-      },
-
-      res => {
-
-        let body = "";
-
-        res.on(
-          "data",
-          chunk => {
-            body += chunk;
-          }
-        );
-
-        res.on(
-          "end",
-          () => {
-
-            try {
-
-              const result =
-                JSON.parse(body);
-
-              if (!result.ok) {
-
-                reject(
-                  new Error(
-                    result.description ||
-                    "Telegram API error"
-                  )
-                );
-
-                return;
-              }
-
-              resolve(result);
-
-            } catch {
-
-              reject(
-                new Error(
-                  "Invalid Telegram response"
-                )
-              );
-
+            headers: {
+              "Content-Type":
+                "application/json"
             }
+          },
+
+          res => {
+
+            let body = "";
+
+
+            res.on(
+              "data",
+              chunk => {
+
+                body += chunk;
+
+              }
+            );
+
+
+            res.on(
+              "end",
+              () => {
+
+                try {
+
+                  const result =
+                    JSON.parse(body);
+
+
+                  if (!result.ok) {
+
+                    reject(
+                      new Error(
+                        result.description ||
+                        "Telegram API error"
+                      )
+                    );
+
+                    return;
+                  }
+
+
+                  resolve(result);
+
+                } catch (error) {
+
+                  reject(
+                    new Error(
+                      "Invalid Telegram response"
+                    )
+                  );
+
+                }
+
+              }
+            );
 
           }
+
         );
 
-      }
 
-    );
+      req.on(
+        "error",
+        reject
+      );
 
-    req.on(
-      "error",
-      reject
-    );
 
-    req.write(
-      JSON.stringify(data)
-    );
+      req.write(
+        JSON.stringify(data)
+      );
 
-    req.end();
 
-  });
+      req.end();
+
+    }
+  );
 
 }
 
@@ -225,7 +274,7 @@ async function sendMessage(
 
 
 // =========================
-// START COMMAND
+// /START
 // =========================
 
 async function handleStart(message) {
@@ -236,8 +285,10 @@ async function handleStart(message) {
   const text =
     message.text || "";
 
+
   const parts =
     text.trim().split(/\s+/);
+
 
   const payload =
     parts.length > 1
@@ -252,12 +303,13 @@ async function handleStart(message) {
   if (payload) {
 
     /*
-      Website payload format:
+      Website payload:
 
       SUNNY999BOT_499_12345678
       SUNNY999BOT_999_123456789012
       SUNNY999BOT_4999_123456789012
     */
+
 
     const match =
       payload.match(
@@ -290,7 +342,7 @@ async function handleStart(message) {
 
 
     // =========================
-    // ACTIVE REQUEST LOCK
+    // ACTIVE REQUEST CHECK
     // =========================
 
     const active =
@@ -355,7 +407,7 @@ async function handleStart(message) {
 
 
     // =========================
-    // DUPLICATE UTR CHECK
+    // DUPLICATE UTR
     // =========================
 
     const duplicate =
@@ -371,6 +423,7 @@ async function handleStart(message) {
       let statusText =
         "already verification mein hai.";
 
+
       if (
         duplicate.status ===
         "APPROVED"
@@ -380,6 +433,7 @@ async function handleStart(message) {
           "already APPROVED hai.";
 
       }
+
 
       if (
         duplicate.status ===
@@ -414,7 +468,7 @@ async function handleStart(message) {
 
 
     // =========================
-    // CREATE ACTIVE REQUEST
+    // CREATE REQUEST
     // =========================
 
     pendingUsers[chatId] = {
@@ -470,31 +524,34 @@ async function handleStart(message) {
 
     );
 
-    return;
   }
 
+  else {
 
-  // =========================
-  // NORMAL START
-  // =========================
+    // =========================
+    // NORMAL START
+    // =========================
 
-  await sendMessage(
+    await sendMessage(
 
-    chatId,
+      chatId,
 
-    "WELCOME TO SUNNY 999 BOT\n\n" +
+      "WELCOME TO SUNNY 999 BOT\n\n" +
 
-    "Available Plans:\n\n" +
+      "Available Plans:\n\n" +
 
-    "₹499 — FREE FIRE GOLD CARD\n" +
+      "₹499 — FREE FIRE GOLD CARD\n" +
 
-    "₹999 — FREE FIRE DIAMOND CARD\n" +
-    "₹4,999 — FREE FIRE 8 PRIME CARD\n\n" +
+      "₹999 — FREE FIRE DIAMOND CARD\n" +
 
-    "Payment ke baad website se " +
-    "VERIFY ON TELEGRAM button use karo."
+      "₹4,999 — FREE FIRE 8 PRIME CARD\n\n" +
 
-  );
+      "Payment ke baad website se " +
+      "VERIFY ON TELEGRAM button use karo."
+
+    );
+
+  }
 
 }
 
@@ -507,6 +564,7 @@ async function handlePhoto(message) {
 
   const chatId =
     message.chat.id;
+
 
   const user =
     pendingUsers[chatId];
@@ -532,7 +590,7 @@ async function handlePhoto(message) {
 
 
   // =========================
-  // SCREENSHOT ALREADY SENT
+  // ALREADY PENDING
   // =========================
 
   if (
@@ -567,6 +625,7 @@ async function handlePhoto(message) {
       chatId,
 
       "⚠️ Verification request active nahi hai.\n\n" +
+
       "Website se dobara VERIFY ON TELEGRAM start karo."
 
     );
@@ -576,7 +635,7 @@ async function handlePhoto(message) {
 
 
   // =========================
-  // GET BEST PHOTO
+  // GET PHOTO
   // =========================
 
   const photos =
@@ -590,6 +649,7 @@ async function handlePhoto(message) {
       chatId,
 
       "❌ Screenshot receive nahi hua.\n\n" +
+
       "Please ek genuine payment screenshot bhejo."
 
     );
@@ -603,7 +663,7 @@ async function handlePhoto(message) {
 
 
   // =========================
-  // FINAL UTR DUPLICATE CHECK
+  // FINAL DUPLICATE CHECK
   // =========================
 
   const payments =
@@ -634,6 +694,7 @@ async function handlePhoto(message) {
 
     );
 
+
     delete pendingUsers[chatId];
 
     return;
@@ -647,12 +708,13 @@ async function handlePhoto(message) {
   user.screenshot =
     photo.file_id;
 
+
   user.status =
     "PENDING";
 
 
   // =========================
-  // CREATE PAYMENT
+  // PAYMENT RECORD
   // =========================
 
   const payment = {
@@ -710,6 +772,10 @@ async function handlePhoto(message) {
   );
 
 
+  // =========================
+  // SAVE PAYMENT
+  // =========================
+
   try {
 
     savePayments(
@@ -724,14 +790,17 @@ async function handlePhoto(message) {
     user.screenshot =
       null;
 
+
     await sendMessage(
 
       chatId,
 
       "❌ Verification save nahi ho saki.\n\n" +
+
       "Please thodi der baad try karo."
 
     );
+
 
     console.error(
       "Payment save error:",
@@ -743,7 +812,7 @@ async function handlePhoto(message) {
 
 
   // =========================
-  // ADMIN VERIFICATION
+  // SEND TO ADMIN
   // =========================
 
   try {
@@ -827,12 +896,6 @@ async function handlePhoto(message) {
 
   } catch (error) {
 
-    /*
-      Admin notification failed.
-      Keep payment in database as PENDING
-      so the request is not lost.
-    */
-
     console.error(
       "Admin notification error:",
       error.message
@@ -844,9 +907,10 @@ async function handlePhoto(message) {
       chatId,
 
       "⚠️ Payment screenshot receive ho gaya hai, " +
+
       "lekin admin notification mein temporary problem aayi hai.\n\n" +
 
-      "Aapki request database mein PENDING hai.\n" +
+      "Aapki request database mein PENDING hai.\n\n" +
 
       "Dobara screenshot bhejne ki zarurat nahi hai."
 
@@ -890,13 +954,14 @@ async function handlePhoto(message) {
 
 
 // =========================
-// CALLBACK BUTTON
+// ADMIN CALLBACK
 // =========================
 
 async function handleCallback(callback) {
 
   const data =
     callback.data || "";
+
 
   const adminId =
     String(callback.from.id);
@@ -937,8 +1002,10 @@ async function handleCallback(callback) {
   const parts =
     data.split("_");
 
+
   const action =
     parts[0];
+
 
   const paymentId =
     parts.slice(1).join("_");
@@ -950,7 +1017,9 @@ async function handleCallback(callback) {
 
   const payment =
     payments.find(
-      p => p.id === paymentId
+      p =>
+        p.id ===
+        paymentId
     );
 
 
@@ -1015,7 +1084,10 @@ async function handleCallback(callback) {
   // APPROVE
   // =========================
 
-  if (action === "approve") {
+  if (
+    action ===
+    "approve"
+  ) {
 
     const activationCode =
       generateActivationCode(
@@ -1026,11 +1098,14 @@ async function handleCallback(callback) {
     payment.status =
       "APPROVED";
 
+
     payment.activationCode =
       activationCode;
 
+
     payment.codeUsed =
       false;
+
 
     payment.approvedAt =
       new Date().toISOString();
@@ -1042,7 +1117,7 @@ async function handleCallback(callback) {
 
 
     // =========================
-    // USER APPROVAL MESSAGE
+    // USER APPROVAL
     // =========================
 
     await sendMessage(
@@ -1093,7 +1168,7 @@ async function handleCallback(callback) {
 
 
     // =========================
-    // ADMIN CONFIRMATION
+    // ADMIN CALLBACK
     // =========================
 
     await telegram(
@@ -1122,46 +1197,58 @@ async function handleCallback(callback) {
       callback.message.message_id
     ) {
 
-      await telegram(
+      try {
 
-        "editMessageCaption",
+        await telegram(
 
-        {
+          "editMessageCaption",
 
-          chat_id:
-            callback.message.chat.id,
+          {
 
-          message_id:
-            callback.message.message_id,
+            chat_id:
+              callback.message.chat.id,
 
-          caption:
+            message_id:
+              callback.message.message_id,
 
-            "✅ PAYMENT APPROVED\n\n" +
+            caption:
 
-            "Plan: ₹" +
-            Number(payment.plan).toLocaleString("en-IN") +
-            "\n" +
+              "✅ PAYMENT APPROVED\n\n" +
 
-            "Card: " +
-            payment.planName +
-            "\n\n" +
+              "Plan: ₹" +
+              Number(payment.plan).toLocaleString("en-IN") +
+              "\n" +
 
-            "UTR: " +
-            payment.utr +
-            "\n\n" +
+              "Card: " +
+              payment.planName +
+              "\n\n" +
 
-            "User ID: " +
-            payment.chatId +
-            "\n\n" +
+              "UTR: " +
+              payment.utr +
+              "\n\n" +
 
-            "Activation Code: " +
-            activationCode
+              "User ID: " +
+              payment.chatId +
+              "\n\n" +
 
-        }
+              "Activation Code: " +
+              activationCode
 
-      );
+          }
+
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Admin caption update error:",
+          error.message
+        );
+
+      }
 
     }
+
 
     return;
   }
@@ -1171,10 +1258,14 @@ async function handleCallback(callback) {
   // REJECT
   // =========================
 
-  if (action === "reject") {
+  if (
+    action ===
+    "reject"
+  ) {
 
     payment.status =
       "REJECTED";
+
 
     payment.rejectedAt =
       new Date().toISOString();
@@ -1241,40 +1332,51 @@ async function handleCallback(callback) {
       callback.message.message_id
     ) {
 
-      await telegram(
+      try {
 
-        "editMessageCaption",
+        await telegram(
 
-        {
+          "editMessageCaption",
 
-          chat_id:
-            callback.message.chat.id,
+          {
 
-          message_id:
-            callback.message.message_id,
+            chat_id:
+              callback.message.chat.id,
 
-          caption:
+            message_id:
+              callback.message.message_id,
 
-            "❌ PAYMENT REJECTED\n\n" +
+            caption:
 
-            "Plan: ₹" +
-            Number(payment.plan).toLocaleString("en-IN") +
-            "\n" +
+              "❌ PAYMENT REJECTED\n\n" +
 
-            "Card: " +
-            payment.planName +
-            "\n\n" +
+              "Plan: ₹" +
+              Number(payment.plan).toLocaleString("en-IN") +
+              "\n" +
 
-            "UTR: " +
-            payment.utr +
-            "\n\n" +
+              "Card: " +
+              payment.planName +
+              "\n\n" +
 
-            "User ID: " +
-            payment.chatId
+              "UTR: " +
+              payment.utr +
+              "\n\n" +
 
-        }
+              "User ID: " +
+              payment.chatId
 
-      );
+          }
+
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Admin caption update error:",
+          error.message
+        );
+
+      }
 
     }
 
@@ -1308,69 +1410,4 @@ async function handleUpdate(update) {
 
 
     const message =
-      update.message;
-
-    if (!message)
-      return;
-
-
-    // =========================
-    // /ID
-    // =========================
-
-    if (
-      message.text &&
-      message.text.trim() === "/id"
-    ) {
-
-      await sendMessage(
-
-        message.chat.id,
-
-        "Your Telegram Chat ID:\n\n" +
-        message.chat.id
-
-      );
-
-      return;
-    }
-
-
-    // =========================
-    // /START
-    // =========================
-
-    if (
-      message.text &&
-      message.text.startsWith(
-        "/start"
-      )
-    ) {
-
-      await handleStart(
-        message
-      );
-
-      return;
-    }
-
-
-    // =========================
-    // PHOTO
-    // =========================
-
-    if (
-      message.photo
-    ) {
-
-      await handlePhoto(
-        message
-      );
-
-      return;
-    }
-
-
-    // =========================
-    // MANUAL UTR
-    // ========================
+      updat
