@@ -8,7 +8,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
-:root{--green:#39ff88}
+:root{--green:#39ff88;--purple:#8b32ff;--gold:#ffc928;--cyan:#20cfff}
 
 html{scroll-behavior:smooth}
 
@@ -56,6 +56,50 @@ font-size:19px;font-weight:1000;letter-spacing:.8px
 .logo span{
 color:#39ff88;
 text-shadow:0 0 18px rgba(57,255,136,.5)
+}
+
+.nav-actions{
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.sound-btn{
+background:rgba(57,255,136,.1);
+border:1px solid rgba(57,255,136,.3);
+color:#39ff88;
+padding:6px 12px;
+border-radius:20px;
+font-size:10px;
+font-weight:900;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:5px;
+transition:.2s
+}
+
+.sound-btn:hover{
+background:rgba(57,255,136,.2);
+transform:scale(1.05)
+}
+
+.spin-trigger-btn{
+background:linear-gradient(90deg,#8b00ff,#39ff88);
+border:none;
+color:#fff;
+padding:6px 12px;
+border-radius:20px;
+font-size:10px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 0 12px rgba(139,0,255,.4);
+animation:pulseBtn 2s infinite
+}
+
+@keyframes pulseBtn{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.05)}
 }
 
 .online{
@@ -131,7 +175,8 @@ border-radius:11px;
 text-decoration:none;
 font-size:11px;
 font-weight:900;
-transition:.25s
+transition:.25s;
+cursor:pointer
 }
 
 .primary{
@@ -382,18 +427,43 @@ color:#7c8591;
 font-size:11px
 }
 
-/* PRODUCTS */
+/* PRODUCTS WITH 3D PERSPECTIVE */
 
 .products{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:18px
+gap:18px;
+perspective:1000px
 }
 
 .product-wrap{
 display:flex;
 flex-direction:column;
-gap:8px
+gap:8px;
+position:relative
+}
+
+/* URGENCY & SCARCITY BADGES */
+
+.scarcity-badge{
+position:absolute;
+top:-10px;
+right:10px;
+z-index:10;
+background:linear-gradient(90deg,#ff3b30,#ff9500);
+color:#fff;
+font-size:8px;
+font-weight:1000;
+padding:4px 8px;
+border-radius:20px;
+box-shadow:0 0 12px rgba(255,59,48,.6);
+letter-spacing:1px;
+animation:blinkBadge 1.5s infinite
+}
+
+@keyframes blinkBadge{
+0%,100%{opacity:1}
+50%{opacity:.7}
 }
 
 .topup-line{
@@ -426,11 +496,9 @@ padding:2px;
 border-radius:19px;
 position:relative;
 overflow:hidden;
-transition:.3s
-}
-
-.product:hover{
-transform:translateY(-6px)
+transition:transform 0.1s ease-out, box-shadow 0.3s ease;
+transform-style:preserve-3d;
+will-change:transform
 }
 
 .product::before{
@@ -656,6 +724,88 @@ linear-gradient(
 #a53aff
 );
 box-shadow:0 0 18px rgba(170,50,255,.2)
+}
+
+/* REVIEWS SECTION */
+
+.reviews-container{
+max-width:800px;
+margin:auto;
+position:relative;
+overflow:hidden;
+min-height:160px;
+border-radius:18px;
+background:rgba(255,255,255,.02);
+border:1px solid rgba(57,255,136,.12);
+padding:22px;
+display:flex;
+align-items:center;
+justify-content:center
+}
+
+.review-card{
+position:absolute;
+width:calc(100% - 44px);
+opacity:0;
+transform:translateY(20px);
+transition:all 0.6s ease;
+pointer-events:none
+}
+
+.review-card.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:all
+}
+
+.review-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:12px
+}
+
+.reviewer-info{
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.reviewer-avatar{
+width:38px;
+height:38px;
+border-radius:50%;
+background:linear-gradient(135deg,#39ff88,#8b32ff);
+display:grid;
+place-items:center;
+font-weight:1000;
+color:#000;
+font-size:12px
+}
+
+.reviewer-name{
+font-size:12px;
+font-weight:900
+}
+
+.reviewer-status{
+font-size:8px;
+color:#39ff88;
+display:flex;
+align-items:center;
+gap:3px
+}
+
+.stars{
+color:#ffc928;
+font-size:11px
+}
+
+.review-text{
+color:#aeb7c1;
+font-size:11px;
+line-height:1.6;
+font-style:italic
 }
 
 /* BENEFITS */
@@ -1013,6 +1163,196 @@ color:#737c87;
 font-size:9px
 }
 
+/* TERMINAL OVERLAY MODAL */
+
+.modal-overlay{
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.85);
+backdrop-filter:blur(10px);
+z-index:999;
+display:none;
+place-items:center;
+padding:15px
+}
+
+.modal-overlay.active{
+display:grid
+}
+
+.terminal-box{
+width:100%;
+max-width:520px;
+background:#050a0e;
+border:1px solid #39ff88;
+border-radius:12px;
+box-shadow:0 0 30px rgba(57,255,136,.2);
+overflow:hidden;
+font-family:'Courier New', Courier, monospace
+}
+
+.terminal-header{
+background:rgba(57,255,136,.1);
+padding:10px 14px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid rgba(57,255,136,.2)
+}
+
+.terminal-title{
+font-size:11px;
+color:#39ff88;
+font-weight:900;
+letter-spacing:1px
+}
+
+.terminal-dots{
+display:flex;
+gap:6px
+}
+
+.terminal-dots span{
+width:10px;height:10px;border-radius:50%;background:#ff5f56
+}
+
+.terminal-dots span:nth-child(2){background:#ffbd2e}
+.terminal-dots span:nth-child(3){background:#27c93f}
+
+.terminal-body{
+padding:18px;
+min-height:220px;
+max-height:300px;
+overflow-y:auto;
+font-size:11px;
+color:#39ff88;
+line-height:1.6
+}
+
+.terminal-line{
+margin-bottom:8px;
+opacity:0;
+animation:typeIn 0.3s forwards
+}
+
+@keyframes typeIn{
+to{opacity:1}
+}
+
+.terminal-line.success{color:#39ff88}
+.terminal-line.warning{color:#ffc928}
+.terminal-line.info{color:#20cfff}
+
+/* SPIN WHEEL MODAL */
+
+.spin-modal{
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.88);
+backdrop-filter:blur(10px);
+z-index:998;
+display:none;
+place-items:center;
+padding:15px
+}
+
+.spin-modal.active{
+display:grid
+}
+
+.spin-box{
+background:#090d12;
+border:1px solid rgba(139,0,255,.4);
+border-radius:20px;
+padding:25px;
+text-align:center;
+max-width:420px;
+width:100%;
+box-shadow:0 0 40px rgba(139,0,255,.3);
+position:relative
+}
+
+.spin-close{
+position:absolute;
+top:15px;right:15px;
+background:none;
+border:none;
+color:#858e99;
+font-size:18px;
+cursor:pointer
+}
+
+.spin-title{
+font-size:18px;
+font-weight:1000;
+color:#fff;
+margin-bottom:6px
+}
+
+.spin-sub{
+font-size:10px;
+color:#858e99;
+margin-bottom:20px
+}
+
+.wheel-container{
+position:relative;
+width:260px;
+height:260px;
+margin:0 auto 20px
+}
+
+.wheel{
+width:100%;
+height:100%;
+border-radius:50%;
+border:4px solid #39ff88;
+box-shadow:0 0 20px rgba(57,255,136,.4);
+transition:transform 4s cubic-bezier(0.15,0.9,0.15,1);
+overflow:hidden;
+position:relative
+}
+
+.pointer{
+position:absolute;
+top:-12px;
+left:50%;
+transform:translateX(-50%);
+width:0;
+height:0;
+border-left:12px solid transparent;
+border-right:12px solid transparent;
+border-top:20px solid #ff3b30;
+z-index:10;
+filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))
+}
+
+.spin-btn-action{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#8b00ff,#39ff88);
+color:#fff;
+font-weight:1000;
+font-size:12px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(57,255,136,.3)
+}
+
+.spin-btn-action:disabled{
+opacity:.5;
+cursor:not-allowed
+}
+
+.spin-result{
+margin-top:15px;
+font-size:12px;
+font-weight:900;
+color:#39ff88;
+min-height:20px
+}
+
 /* FOOTER */
 
 footer{
@@ -1025,68 +1365,6 @@ line-height:1.8
 
 footer strong{
 color:#39ff88
-}
-
-/* FAKE PURCHASE POPUP */
-
-.toast-container{
-position:fixed;
-bottom:20px;
-left:20px;
-z-index:9999;
-pointer-events:none
-}
-
-.toast-notification{
-display:flex;
-align-items:center;
-gap:12px;
-background:rgba(10,15,12,.95);
-border:1px solid rgba(57,255,136,.3);
-box-shadow:0 8px 25px rgba(0,0,0,.5);
-padding:10px 14px;
-border-radius:12px;
-margin-top:10px;
-transform:translateY(100px);
-opacity:0;
-transition:all .4s ease;
-max-width:280px
-}
-
-.toast-notification.show{
-transform:translateY(0);
-opacity:1
-}
-
-.toast-icon{
-width:32px;
-height:32px;
-border-radius:50%;
-background:rgba(57,255,136,.15);
-display:grid;
-place-items:center;
-font-size:14px;
-color:#39ff88
-}
-
-.toast-text strong{
-display:block;
-color:#fff;
-font-size:10px
-}
-
-.toast-text p{
-color:#39ff88;
-font-size:9px;
-font-weight:800;
-margin-top:2px
-}
-
-.toast-text span{
-color:#6d7782;
-font-size:7px;
-display:block;
-margin-top:1px
 }
 
 /* MOBILE */
@@ -1255,11 +1533,6 @@ padding:17px 9px
 padding:0 14px
 }
 
-.toast-container{
-left:10px;
-bottom:10px
-}
-
 }
 </style>
 </head>
@@ -1279,9 +1552,14 @@ bottom:10px
 SUNNY <span>999 BOT</span>
 </div>
 
+<div class="nav-actions">
+<button class="spin-trigger-btn" onclick="openSpinModal()">🎰 LUCKY SPIN</button>
+<button class="sound-btn" id="soundToggleBtn" onclick="toggleSound()">🔊 AUDIO: ON</button>
+
 <div class="online">
 <span class="dot"></span>
 ONLINE
+</div>
 </div>
 
 </div>
@@ -1312,11 +1590,11 @@ payment verification.
 
 <div class="hero-buttons">
 
-<a href="#cards" class="hero-btn primary">
+<a href="#cards" class="hero-btn primary" onclick="playClickSound()">
 EXPLORE CARDS
 </a>
 
-<a href="#payment" class="hero-btn secondary">
+<a href="#payment" class="hero-btn secondary" onclick="playClickSound()">
 PAYMENT
 </a>
 
@@ -1387,12 +1665,12 @@ LAST UPDATED <span id="updatedTime">NOW</span>
 <div class="live-info">
 
 <div class="live-box">
-<strong style="color:#ffd700">4.9 ★</strong>
+<strong>4.9 ★</strong>
 <span>VERIFIED RATING</span>
 </div>
 
 <div class="live-box">
-<strong id="viewerCount">24</strong>
+<strong id="viewerCount">0</strong>
 <span>PEOPLE VIEWING THIS</span>
 </div>
 
@@ -1438,6 +1716,7 @@ LAST UPDATED <span id="updatedTime">NOW</span>
 <!-- GOLD -->
 
 <div class="product-wrap">
+<div class="scarcity-badge">🔥 ONLY 3 CARDS LEFT!</div>
 
 <div class="topup-line gold-line">
 30,000 CC FREE FIRE TOP-UP
@@ -1462,4 +1741,1188 @@ PREMIUM
 <div class="fake-chip"></div>
 
 <div class="card-number">
-GOLD ••••
+GOLD •••• 999
+</div>
+
+<div class="card-bottom">
+
+<div>
+
+<label>CARD HOLDER</label>
+
+<strong>
+SUNNY 999 BOT
+</strong>
+
+</div>
+
+<div>
+
+<label>EXPIRY</label>
+
+<strong>
+12/30
+</strong>
+
+</div>
+
+</div>
+
+<div class="price">
+₹499
+</div>
+
+<div class="virtual">
+VIRTUAL GAMING CARD
+</div>
+
+<button
+class="buy"
+onclick="selectPlan('499')"
+>
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- DIAMOND -->
+
+<div class="product-wrap">
+<div class="scarcity-badge">🔥 ONLY 2 CARDS LEFT!</div>
+
+<div class="topup-line diamond-line">
+1 LAKH CC FREE FIRE TOP-UP
+</div>
+
+<div class="product diamond">
+
+<div class="product-inner">
+
+<div class="product-top">
+
+<div class="product-name">
+DIAMOND
+</div>
+
+<div class="product-tag">
+PREMIUM
+</div>
+
+</div>
+
+<div class="fake-chip"></div>
+
+<div class="card-number">
+DIAMOND •••• 999
+</div>
+
+<div class="card-bottom">
+
+<div>
+
+<label>CARD HOLDER</label>
+
+<strong>
+SUNNY 999 BOT
+</strong>
+
+</div>
+
+<div>
+
+<label>EXPIRY</label>
+
+<strong>
+12/30
+</strong>
+
+</div>
+
+</div>
+
+<div class="price">
+₹999
+</div>
+
+<div class="virtual">
+VIRTUAL GAMING CARD
+</div>
+
+<button
+class="buy"
+onclick="selectPlan('999')"
+>
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 8 PRIME -->
+
+<div class="product-wrap">
+<div class="scarcity-badge">🔥 ONLY 1 CARD LEFT!</div>
+
+<div class="topup-line prime-line">
+1.80 LAKH CC FREE FIRE TOP-UP
+</div>
+
+<div class="product prime">
+
+<div class="product-inner">
+
+<div class="product-top">
+
+<div class="product-name">
+8 PRIME
+</div>
+
+<div class="product-tag">
+PREMIUM
+</div>
+
+</div>
+
+<div class="fake-chip"></div>
+
+<div class="card-number">
+8 PRIME •••• 999
+</div>
+
+<div class="card-bottom">
+
+<div>
+
+<label>CARD HOLDER</label>
+
+<strong>
+SUNNY 999 BOT
+</strong>
+
+</div>
+
+<div>
+
+<label>EXPIRY</label>
+
+<strong>
+12/30
+</strong>
+
+</div>
+
+</div>
+
+<div class="price">
+₹4,999
+</div>
+
+<div class="virtual">
+VIRTUAL GAMING CARD
+</div>
+
+<button
+class="buy"
+onclick="selectPlan('4999')"
+>
+BUY NOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ROTATING CUSTOMER REVIEWS & RATING SECTION -->
+
+<section class="section">
+
+<div class="section-title">
+<small>FEEDBACK</small>
+<h2>Customer Reviews</h2>
+<p>What our verified gamers say about us.</p>
+</div>
+
+<div class="reviews-container" id="reviewsContainer">
+
+<div class="review-card active">
+<div class="review-top">
+<div class="reviewer-info">
+<div class="reviewer-avatar">RK</div>
+<div>
+<div class="reviewer-name">Rahul Kumar</div>
+<div class="reviewer-status">✔ Verified Buyer • 2 mins ago</div>
+</div>
+</div>
+<div class="stars">★★★★★</div>
+</div>
+<p class="review-text">"Gold card buy kiya tha! Telegram bot se instantly code activate ho gaya. Free Fire mein 30,000 CC credit ho chuke hain. Thanks Sunny 999!"</p>
+</div>
+
+<div class="review-card">
+<div class="review-top">
+<div class="reviewer-info">
+<div class="reviewer-avatar">AS</div>
+<div>
+<div class="reviewer-name">Aman Sharma</div>
+<div class="reviewer-status">✔ Verified Buyer • 10 mins ago</div>
+</div>
+</div>
+<div class="stars">★★★★★</div>
+</div>
+<p class="review-text">"Diamond plan top up was super fast! Verification process was transparent and quick. Best bot store ever!"</p>
+</div>
+
+<div class="review-card">
+<div class="review-top">
+<div class="reviewer-info">
+<div class="reviewer-avatar">VS</div>
+<div>
+<div class="reviewer-name">Vicky Singh</div>
+<div class="reviewer-status">✔ Verified Buyer • 25 mins ago</div>
+</div>
+</div>
+<div class="stars">★★★★★</div>
+</div>
+<p class="review-text">"8 Prime Card le liya hai! 1.80 Lakh CC successfully added. 100% genuine system hai guys."</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- BENEFITS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<small>STORE BENEFITS</small>
+
+<h2>Premium Access</h2>
+
+<p>Simple payment and verification process.</p>
+
+</div>
+
+<div class="benefits">
+
+<div class="benefit">
+
+<div class="benefit-icon">
+⚡
+</div>
+
+<strong>
+Fast Processing
+</strong>
+
+<p>
+Verification request is sent after the required information is submitted.
+</p>
+
+</div>
+
+<div class="benefit">
+
+<div class="benefit-icon">
+🔐
+</div>
+
+<strong>
+Secure Verification
+</strong>
+
+<p>
+Each verification request is checked before approval.
+</p>
+
+</div>
+
+<div class="benefit">
+
+<div class="benefit-icon">
+🎮
+</div>
+
+<strong>
+Gaming Plans
+</strong>
+
+<p>
+Choose from the available virtual gaming card plans.
+</p>
+
+</div>
+
+<div class="benefit">
+
+<div class="benefit-icon">
+💬
+</div>
+
+<strong>
+Telegram Support
+</strong>
+
+<p>
+Payment verification is handled through the Telegram bot.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<section class="section" id="payment">
+
+<div class="section-title">
+
+<small>PAYMENT VERIFICATION</small>
+
+<h2>Complete Payment</h2>
+
+<p>
+Select a plan, complete your genuine payment and verify it.
+</p>
+
+</div>
+
+<div class="payment-box">
+
+<div class="selected">
+
+<small>
+SELECTED PLAN
+</small>
+
+<strong id="selectedPlan">
+₹499
+</strong>
+
+</div>
+
+<!-- QR CODE -->
+
+<div class="qr-box">
+
+<img
+src="IMG_20260911_222905.png"
+class="qr"
+alt="Payment QR"
+>
+
+</div>
+
+<!-- 8 PRIME CONDITIONAL NOTE -->
+
+<div class="prime-payment-note" id="primeNote">
+<strong>8 PRIME ₹4,999 PAYMENT</strong>
+<p>QR scan karke payment karein. QR scan na ho to UPI ID COPY karke payment karein.</p>
+<span class="prime-upi">UPI ID: sunny999bot@nyes</span>
+</div>
+
+<!-- CARD KAISE MILEGA? -->
+
+<div class="card-how-to">
+<div class="card-how-title">📲 CARD KAISE MILEGA?</div>
+<div class="card-how-step"><strong>STEP 1:</strong> QR scan karke payment karo.</div>
+<div class="card-how-step"><strong>STEP 2:</strong> Payment ke baad VERIFY ON TELEGRAM par click karo.</div>
+<div class="card-how-step"><strong>STEP 3:</strong> Telegram bot mein UTR + genuine payment screenshot bhejo.</div>
+<div class="card-how-step"><strong>STEP 4:</strong> Payment verify hone ke baad Activation Code milega.</div>
+<div class="card-how-step"><strong>STEP 5:</strong> Website par Activation Code enter karke Virtual Gaming Card activate karo.</div>
+</div>
+
+<div class="upi">
+
+<input
+id="upiId"
+value="sunny999bot@nyes"
+readonly
+>
+
+<button
+class="copy"
+onclick="copyUPI()"
+>
+COPY
+</button>
+
+</div>
+
+<label class="form-label">
+PAYMENT UTR / TRANSACTION ID
+</label>
+
+<input
+id="utr"
+class="utr"
+type="text"
+inputmode="numeric"
+maxlength="12"
+autocomplete="off"
+placeholder="Enter 8–12 digit UTR"
+oninput="this.value=this.value.replace(/\D/g,'').slice(0,12)"
+>
+
+<button
+class="verify"
+onclick="startVerification()"
+>
+VERIFY ON TELEGRAM
+</button>
+
+<div class="warning">
+
+⚠️ Use your genuine payment UTR only.
+Fake, edited or reused payment details will not be accepted.
+
+</div>
+
+<div class="telegram-instructions">
+
+<div class="telegram-title">
+TELEGRAM VERIFICATION PROCESS
+</div>
+
+<div class="telegram-step">
+
+<span>
+1
+</span>
+
+<p>
+<strong>
+Select your plan
+</strong>
+<br>
+Choose GOLD, DIAMOND or 8 PRIME.
+</p>
+
+</div>
+
+<div class="telegram-step">
+
+<span>
+2
+</span>
+
+<p>
+<strong>
+Complete payment
+</strong>
+<br>
+Complete the payment using the displayed payment method.
+</p>
+
+</div>
+
+<div class="telegram-step">
+
+<span>
+3
+</span>
+
+<p>
+<strong>
+Enter your UTR
+</strong>
+<br>
+Enter the genuine 8–12 digit transaction UTR.
+</p>
+
+</div>
+
+<div class="telegram-step">
+
+<span>
+4
+</span>
+
+<p>
+<strong>
+Confirm UTR
+</strong>
+<br>
+Telegram bot mein apna UTR confirm karo.
+</p>
+
+</div>
+
+<div class="telegram-step">
+
+<span>
+5
+</span>
+
+<p>
+<strong>
+Send one screenshot
+</strong>
+<br>
+Confirmation ke baad one genuine payment screenshot bhejo.
+</p>
+
+</div>
+
+<a
+href="https://t.me/Sunny999VerifyBot"
+target="_blank"
+rel="noopener noreferrer"
+class="telegram-btn"
+onclick="playClickSound()"
+>
+OPEN TELEGRAM BOT
+</a>
+
+<div class="telegram-warning">
+
+<strong>
+IMPORTANT:
+</strong>
+
+One verification request mein
+one UTR aur one screenshot allowed hai.
+Duplicate UTR submit nahi kiya ja sakta.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<small>
+HOW IT WORKS
+</small>
+
+<h2>
+Simple Process
+</h2>
+
+<p>
+Follow the verification process step by step.
+</p>
+
+</div>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-num">
+1
+</div>
+
+<div>
+
+<strong>
+Choose a Gaming Card
+</strong>
+
+<p>
+Select GOLD, DIAMOND or 8 PRIME.
+</p>
+
+</div>
+
+</div>
+
+<div class="step">
+
+<div class="step-num">
+2
+</div>
+
+<div>
+
+<strong>
+Complete Payment
+</strong>
+
+<p>
+Complete the genuine payment for your selected plan.
+</p>
+
+</div>
+
+</div>
+
+<div class="step">
+
+<div class="step-num">
+3
+</div>
+
+<div>
+
+<strong>
+Enter Your UTR
+</strong>
+
+<p>
+Enter your genuine 8–12 digit transaction UTR.
+</p>
+
+</div>
+
+</div>
+
+<div class="step">
+
+<div class="step-num">
+4
+</div>
+
+<div>
+
+<strong>
+Confirm on Telegram
+</strong>
+
+<p>
+Confirm the UTR in the Telegram verification bot.
+</p>
+
+</div>
+
+</div>
+
+<div class="step">
+
+<div class="step-num">
+5
+</div>
+
+<div>
+
+<strong>
+Send One Screenshot
+</strong>
+
+<p>
+Submit one genuine payment screenshot for admin review.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<strong>
+SUNNY 999 BOT
+</strong>
+
+<br>
+
+Premium Virtual Gaming Cards
+
+<br>
+
+Payment verification is subject to admin review.
+
+<br>
+
+© 2026 SUNNY 999 BOT. All rights reserved.
+
+</footer>
+
+<!-- LIVE TERMINAL OVERLAY MODAL -->
+<div class="modal-overlay" id="terminalOverlay">
+<div class="terminal-box">
+<div class="terminal-header">
+<div class="terminal-title">SYSTEM TERMINAL • LIVE VERIFICATION</div>
+<div class="terminal-dots">
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class="terminal-body" id="terminalLogs"></div>
+</div>
+</div>
+
+<!-- LUCKY SPIN & WIN WHEEL POPUP -->
+<div class="spin-modal" id="spinModal">
+<div class="spin-box">
+<button class="spin-close" onclick="closeSpinModal()">✕</button>
+<div class="spin-title">🎰 LUCKY SPIN & WIN</div>
+<div class="spin-sub">Spin to win instant bonus CC top-up rewards!</div>
+
+<div class="wheel-container">
+<div class="pointer"></div>
+<canvas class="wheel" id="wheelCanvas" width="260" height="260"></canvas>
+</div>
+
+<button class="spin-btn-action" id="spinBtn" onclick="spinWheel()">SPIN NOW</button>
+<div class="spin-result" id="spinResult"></div>
+</div>
+</div>
+
+<script>
+
+/* =========================
+   CYBER SOUND FX ENGINE (WEB AUDIO API)
+========================= */
+
+let soundEnabled = true;
+let audioCtx = null;
+
+function getAudioCtx() {
+if (!audioCtx) {
+audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+if (audioCtx.state === 'suspended') {
+audioCtx.resume();
+}
+return audioCtx;
+}
+
+function playBeep(freq = 440, type = 'sine', duration = 0.08, vol = 0.1) {
+if (!soundEnabled) return;
+try {
+const ctx = getAudioCtx();
+const osc = ctx.createOscillator();
+const gain = ctx.createGain();
+osc.type = type;
+osc.frequency.setValueAtTime(freq, ctx.currentTime);
+gain.gain.setValueAtTime(vol, ctx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+osc.connect(gain);
+gain.connect(ctx.destination);
+osc.start();
+osc.stop(ctx.currentTime + duration);
+} catch(e) {}
+}
+
+function playClickSound() {
+playBeep(800, 'square', 0.05, 0.08);
+}
+
+function playSuccessSound() {
+if (!soundEnabled) return;
+playBeep(523.25, 'sine', 0.1, 0.1);
+setTimeout(() => playBeep(659.25, 'sine', 0.1, 0.1), 100);
+setTimeout(() => playBeep(783.99, 'sine', 0.2, 0.12), 200);
+}
+
+function playSpinSound() {
+playBeep(300, 'triangle', 0.03, 0.05);
+}
+
+function toggleSound() {
+soundEnabled = !soundEnabled;
+const btn = document.getElementById("soundToggleBtn");
+if (btn) {
+btn.textContent = soundEnabled ? "🔊 AUDIO: ON" : "🔇 AUDIO: OFF";
+}
+if(soundEnabled) playClickSound();
+}
+
+/* =========================
+   3D CARD PERSPECTIVE TILT EFFECT
+========================= */
+
+document.querySelectorAll('.product').forEach(card => {
+card.addEventListener('mousemove', (e) => {
+const rect = card.getBoundingClientRect();
+const x = e.clientX - rect.left - rect.width / 2;
+const y = e.clientY - rect.top - rect.height / 2;
+
+const rotateX = (-y / rect.height) * 18;
+const rotateY = (x / rect.width) * 18;
+
+card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+});
+
+card.addEventListener('mouseleave', () => {
+card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+});
+
+card.addEventListener('touchmove', (e) => {
+if(e.touches.length > 0) {
+const touch = e.touches[0];
+const rect = card.getBoundingClientRect();
+const x = touch.clientX - rect.left - rect.width / 2;
+const y = touch.clientY - rect.top - rect.height / 2;
+const rotateX = (-y / rect.height) * 12;
+const rotateY = (x / rect.width) * 12;
+card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+}
+});
+
+card.addEventListener('touchend', () => {
+card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+});
+});
+
+/* =========================
+   PLAN DATA & SELECTION
+========================= */
+
+const PLANS = {
+"499":{ name:"FREE FIRE GOLD CARD", amount:"499" },
+"999":{ name:"FREE FIRE DIAMOND CARD", amount:"999" },
+"4999":{ name:"FREE FIRE 8 PRIME CARD", amount:"4999" }
+};
+
+let selectedPlan = "499";
+
+function selectPlan(amount){
+playClickSound();
+if(!PLANS[amount]){ return; }
+
+selectedPlan = amount;
+
+const selected = document.getElementById("selectedPlan");
+if(selected){
+selected.textContent = "₹" + Number(amount).toLocaleString("en-IN");
+}
+
+const primeNote = document.getElementById("primeNote");
+if(primeNote){
+primeNote.style.display = (amount === "4999") ? "block" : "none";
+}
+
+document.getElementById("payment").scrollIntoView({ behavior:"smooth" });
+}
+
+/* =========================
+   COPY UPI
+========================= */
+
+function copyUPI(){
+playClickSound();
+const upi = document.getElementById("upiId");
+if(!upi){ return; }
+
+const text = upi.value;
+
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(text).then(()=>{
+const button = document.querySelector(".copy");
+if(button){
+const old = button.textContent;
+button.textContent = "COPIED";
+setTimeout(()=>{ button.textContent = old; },1500);
+}
+});
+}else{
+upi.select();
+document.execCommand("copy");
+}
+}
+
+/* =========================
+   LIVE TERMINAL VERIFICATION OVERLAY
+========================= */
+
+function startVerification(){
+playClickSound();
+const utrInput = document.getElementById("utr");
+if(!utrInput){ return; }
+
+const utr = utrInput.value.trim();
+
+if(!PLANS[selectedPlan]){
+alert("Please select a plan first.");
+return;
+}
+
+if(!/^\d{8,12}$/.test(utr)){
+alert("Please enter a valid 8–12 digit UTR.");
+utrInput.focus();
+return;
+}
+
+const payload = "SUNNY999BOT_" + selectedPlan + "_" + utr;
+const telegramURL = "https://t.me/Sunny999VerifyBot?start=" + encodeURIComponent(payload);
+
+/* Trigger Live Terminal Overlay */
+const overlay = document.getElementById("terminalOverlay");
+const logsContainer = document.getElementById("terminalLogs");
+logsContainer.innerHTML = "";
+overlay.classList.add("active");
+
+const logs = [
+{ text: "> Initializing Sunny 999 Verification Engine...", type: "info", delay: 200 },
+{ text: `> Payload generated: ${payload}`, type: "info", delay: 600 },
+{ text: `> Validating 8–12 Digit UTR Format: ${utr} [SUCCESS]`, type: "success", delay: 1100 },
+{ text: "> Encrypting SSL 256-Bit Connection to Telegram...", type: "info", delay: 1600 },
+{ text: "> Redirecting to Telegram Bot...", type: "warning", delay: 2200 }
+];
+
+logs.forEach(item => {
+setTimeout(() => {
+const line = document.createElement("div");
+line.className = `terminal-line ${item.type}`;
+line.textContent = item.text;
+logsContainer.appendChild(line);
+logsContainer.scrollTop = logsContainer.scrollHeight;
+playBeep(600, 'sine', 0.04, 0.05);
+}, item.delay);
+});
+
+setTimeout(() => {
+playSuccessSound();
+setTimeout(() => {
+overlay.classList.remove("active");
+window.open(telegramURL, "_blank", "noopener,noreferrer");
+}, 500);
+}, 2700);
+}
+
+/* =========================
+   LIVE ORDERS & STOCK DECREMENT ENGINE
+========================= */
+
+let stock = Number(localStorage.getItem("sunny_stock"));
+let sold = Number(localStorage.getItem("sunny_sold"));
+let nextUpdate = Number(localStorage.getItem("sunny_next_update"));
+let liveOrders = 27;
+
+if(!Number.isFinite(stock) || stock < 0){ stock = 489; }
+if(!Number.isFinite(sold) || sold < 0){ sold = 1489; }
+if(!Number.isFinite(nextUpdate) || nextUpdate <= Date.now()){
+nextUpdate = Date.now() + 60 * 60 * 1000;
+}
+
+function saveStoreData(){
+localStorage.setItem("sunny_stock", String(stock));
+localStorage.setItem("sunny_sold", String(sold));
+localStorage.setItem("sunny_next_update", String(nextUpdate));
+}
+
+function updateStore(){
+const now = Date.now();
+
+if(now >= nextUpdate){
+if(stock > 0){ stock--; }
+sold++;
+nextUpdate = now + 60 * 60 * 1000;
+saveStoreData();
+}
+
+const remaining = Math.max(0, nextUpdate - now);
+const totalSeconds = Math.floor(remaining / 1000);
+const hours = Math.floor(totalSeconds / 3600);
+const minutes = Math.floor((totalSeconds % 3600) / 60);
+const seconds = totalSeconds % 60;
+
+const countdown = String(hours).padStart(2,"0") + ":" +
+String(minutes).padStart(2,"0") + ":" +
+String(seconds).padStart(2,"0");
+
+const countdownElement = document.getElementById("hourCountdown");
+const stockElement = document.getElementById("stockCount");
+const soldElement = document.getElementById("soldCount");
+const updatedElement = document.getElementById("updatedTime");
+
+if(countdownElement) countdownElement.textContent = countdown;
+if(stockElement) stockElement.textContent = stock;
+if(soldElement) soldElement.textContent = sold;
+if(updatedElement){
+updatedElement.textContent = new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+}
+}
+
+/* Dynamic Live Stock Decrement Simulation */
+setInterval(() => {
+if(Math.random() > 0.6 && stock > 5) {
+stock--;
+sold++;
+liveOrders = Math.floor(Math.random() * 15) + 20;
+const liveElem = document.getElementById("liveOrders");
+if(liveElem) liveElem.textContent = liveOrders;
+saveStoreData();
+updateStore();
+}
+}, 12000);
+
+saveStoreData();
+updateStore();
+setInterval(updateStore, 1000);
+
+/* =========================
+   RECENT ACTIVITY FEED
+========================= */
+
+const activities = [
+"GOLD PLAN • Recently viewed",
+"DIAMOND PLAN • Recently viewed",
+"8 PRIME • Recently viewed",
+"GOLD PLAN • Plan selected",
+"DIAMOND PLAN • Plan selected",
+"8 PRIME • Checkout opened"
+];
+
+let activityIndex = 0;
+
+function generateActivity(){
+const list = document.getElementById("activityList");
+if(!list){ return; }
+
+list.innerHTML = "";
+const item = document.createElement("div");
+item.className = "activity-item";
+
+const dot = document.createElement("span");
+dot.textContent = "●";
+
+item.appendChild(dot);
+item.appendChild(document.createTextNode(activities[activityIndex]));
+list.appendChild(item);
+
+activityIndex = (activityIndex + 1) % activities.length;
+}
+
+generateActivity();
+setInterval(generateActivity, 20000);
+
+/* =========================
+   LOCAL VIEWER DISPLAY
+========================= */
+
+function updateViewer(){
+const viewer = document.getElementById("viewerCount");
+if(!viewer){ return; }
+
+let current = Number(sessionStorage.getItem("sunny_viewer"));
+if(!Number.isFinite(current) || current < 1){
+current = Math.floor(Math.random() * 5) + 1;
+sessionStorage.setItem("sunny_viewer", String(current));
+}
+viewer.textContent = current;
+}
+updateViewer();
+
+/* =========================
+   ROTATING REVIEWS
+========================= */
+
+let currentReview = 0;
+const reviews = document.querySelectorAll(".review-card");
+
+function rotateReviews() {
+if(reviews.length === 0) return;
+reviews[currentReview].classList.remove("active");
+currentReview = (currentReview + 1) % reviews.length;
+reviews[currentReview].classList.add("active");
+}
+setInterval(rotateReviews, 4500);
+
+/* =========================
+   INTERACTIVE LUCKY SPIN & WIN
+========================= */
+
+const wheelCanvas = document.getElementById("wheelCanvas");
+const spinRewards = ["+5,000 CC", "10% OFF", "+10,000 CC", "VIP PASS", "+2,000 CC", "TRY AGAIN"];
+const colors = ["#8b32ff", "#39ff88", "#20cfff", "#ffc928", "#ff3b30", "#008ebc"];
+
+function drawWheel() {
+if(!wheelCanvas) return;
+const ctx = wheelCanvas.getContext("2d");
+const numSlices = spinRewards.length;
+const sliceAngle = (2 * Math.PI) / numSlices;
+
+ctx.clearRect(0, 0, 260, 260);
+
+for(let i = 0; i < numSlices; i++) {
+ctx.beginPath();
+ctx.fillStyle = colors[i];
+ctx.moveTo(130, 130);
+ctx.arc(130, 130, 120, i * sliceAngle, (i + 1) * sliceAngle);
+ctx.fill();
+
+/* Text */
+ctx.save();
+ctx.translate(130, 130);
+ctx.rotate(i * sliceAngle + sliceAngle / 2);
+ctx.textAlign = "right";
+ctx.fillStyle = "#000";
+ctx.font = "bold 11px Arial";
+ctx.fillText(spinRewards[i], 105, 4);
+ctx.restore();
+}
+}
+drawWheel();
+
+let isSpinning = false;
+let currentRotation = 0;
+
+function openSpinModal() {
+playClickSound();
+document.getElementById("spinModal").classList.add("active");
+}
+
+function closeSpinModal() {
+playClickSound();
+document.getElementById("spinModal").classList.remove("active");
+}
+
+function spinWheel() {
+if(isSpinning) return;
+playClickSound();
+isSpinning = true;
+
+const spinBtn = document.getElementById("spinBtn");
+const spinResult = document.getElementById("spinResult");
+spinBtn.disabled = true;
+spinResult.textContent = "";
+
+const randomExtra = Math.floor(Math.random() * 360) + 1440; // At least 4 full spins
+currentRotation += randomExtra;
+
+wheelCanvas.style.transform = `rotate(${currentRotation}deg)`;
+
+let soundInterval = setInterval(() => {
+playSpinSound();
+}, 150);
+
+setTimeout(() => {
+clearInterval(soundInterval);
+isSpinning = false;
+spinBtn.disabled = false;
+
+/* Calculate Won Prize */
+const actualDeg = currentRotation % 360;
+const sliceSize = 360 / spinRewards.length;
+const wonIndex = Math.floor((360 - (actualDeg % 360)) / sliceSize) % spinRewards.length;
+
+const reward = spinRewards[wonIndex];
+spinResult.textContent = `🎉 CONGRATS! YOU WON: ${reward}`;
+playSuccessSound();
+}, 4000);
+}
+
+</script>
+
+</body>
+</html>
