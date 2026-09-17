@@ -6,20 +6,11 @@
 <title>SUNNY 999 BOT | Premium Gaming Cards</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-:root{
---green:#39ff88;
---dark:#030507;
-}
+:root{--green:#39ff88}
 
-html{
-scroll-behavior:smooth
-}
+html{scroll-behavior:smooth}
 
 body{
 font-family:Arial,Helvetica,sans-serif;
@@ -31,488 +22,217 @@ radial-gradient(circle at 90% 30%,rgba(120,0,255,.13),transparent 30%),
 overflow-x:hidden
 }
 
-/* BACKGROUND */
-
 .bg-orb{
-position:fixed;
-width:260px;
-height:260px;
-border-radius:50%;
-filter:blur(90px);
-opacity:.13;
-pointer-events:none;
-z-index:-1;
+position:fixed;width:260px;height:260px;border-radius:50%;
+filter:blur(90px);opacity:.13;pointer-events:none;z-index:-1;
 animation:float 8s ease-in-out infinite
 }
+.orb1{background:#00ff77;left:-120px;top:25%}
+.orb2{background:#8b00ff;right:-120px;top:55%;animation-delay:2s}
 
-.orb1{
-background:#00ff77;
-left:-120px;
-top:25%
-}
-
-.orb2{
-background:#8b00ff;
-right:-120px;
-top:55%;
-animation-delay:2s
-}
-
-@keyframes float{
-50%{
-transform:translateY(-40px) scale(1.08)
-}
-}
-
+@keyframes float{50%{transform:translateY(-40px) scale(1.08)}}
 
 /* HEADER */
 
 header{
-position:sticky;
-top:0;
-z-index:100;
+position:sticky;top:0;z-index:100;
 backdrop-filter:blur(18px);
 background:rgba(3,5,7,.88);
 border-bottom:1px solid rgba(255,255,255,.07)
 }
 
 .nav{
-max-width:1100px;
-margin:auto;
-padding:14px 18px;
-display:flex;
-align-items:center;
-justify-content:space-between
+max-width:1100px;margin:auto;padding:14px 18px;
+display:flex;align-items:center;justify-content:space-between
 }
 
-.logo{
-font-size:19px;
-font-weight:1000;
-letter-spacing:.8px
-}
-
-.logo span{
-color:var(--green);
-text-shadow:0 0 18px rgba(57,255,136,.5)
-}
+.logo{font-size:19px;font-weight:1000;letter-spacing:.8px}
+.logo span{color:#39ff88;text-shadow:0 0 18px rgba(57,255,136,.5)}
 
 .online{
-display:flex;
-align-items:center;
-gap:7px;
-padding:7px 11px;
-border-radius:30px;
-border:1px solid rgba(57,255,136,.22);
-background:rgba(57,255,136,.05);
-color:#aeb7c1;
-font-size:10px
+display:flex;align-items:center;gap:7px;padding:7px 11px;
+border-radius:30px;border:1px solid rgba(57,255,136,.22);
+background:rgba(57,255,136,.05);color:#aeb7c1;font-size:10px
 }
 
 .dot{
-width:7px;
-height:7px;
-border-radius:50%;
-background:var(--green);
-box-shadow:0 0 12px var(--green)
+width:7px;height:7px;border-radius:50%;background:#39ff88;
+box-shadow:0 0 12px #39ff88
 }
-
 
 /* HERO */
 
 .hero{
-max-width:1100px;
-min-height:400px;
-margin:auto;
-padding:55px 18px 25px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center
+max-width:1100px;min-height:400px;margin:auto;
+padding:55px 18px 25px;display:flex;align-items:center;
+justify-content:center;text-align:center
 }
 
-.hero-content{
-max-width:800px
-}
+.hero-content{max-width:800px}
 
 .badge{
-display:inline-block;
-padding:8px 13px;
-border-radius:50px;
+display:inline-block;padding:8px 13px;border-radius:50px;
 border:1px solid rgba(57,255,136,.25);
-background:rgba(57,255,136,.05);
-color:#7dffa9;
-font-size:9px;
-font-weight:900;
-letter-spacing:1.5px;
-margin-bottom:18px
+background:rgba(57,255,136,.05);color:#7dffa9;
+font-size:9px;font-weight:900;letter-spacing:1.5px;margin-bottom:18px
 }
 
 .hero h1{
-font-size:clamp(40px,8vw,78px);
-line-height:.96;
-letter-spacing:-4px;
-font-weight:1000
+font-size:clamp(40px,8vw,78px);line-height:.96;
+letter-spacing:-4px;font-weight:1000
 }
 
-.green{
-color:var(--green);
-text-shadow:0 0 28px rgba(57,255,136,.3)
-}
+.green{color:#39ff88;text-shadow:0 0 28px rgba(57,255,136,.3)}
 
 .purple{
 background:linear-gradient(90deg,#fff,#d29aff,#8b32ff);
--webkit-background-clip:text;
-color:transparent
+-webkit-background-clip:text;color:transparent
 }
 
 .hero p{
-max-width:620px;
-margin:20px auto;
-color:#969faa;
-font-size:13px;
-line-height:1.7
+max-width:620px;margin:20px auto;color:#969faa;
+font-size:13px;line-height:1.7
 }
 
 .hero-buttons{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap
+display:flex;justify-content:center;gap:10px;flex-wrap:wrap
 }
 
 .hero-btn{
-padding:12px 20px;
-border-radius:11px;
-text-decoration:none;
-font-size:11px;
-font-weight:900;
-transition:.25s
+padding:12px 20px;border-radius:11px;text-decoration:none;
+font-size:11px;font-weight:900;transition:.25s
 }
 
 .primary{
-color:#001408;
-background:var(--green);
+color:#001408;background:#39ff88;
 box-shadow:0 0 25px rgba(57,255,136,.2)
 }
 
 .secondary{
-color:#fff;
-background:#0a0d12;
-border:1px solid #252a32
+color:#fff;background:#0a0d12;border:1px solid #252a32
 }
 
-.hero-btn:hover{
-transform:translateY(-3px)
-}
-
+.hero-btn:hover{transform:translateY(-3px)}
 
 /* STORE STATUS */
 
 .store-status{
-max-width:900px;
-margin:5px auto 0;
-padding:0 18px;
-text-align:center
+max-width:900px;margin:5px auto 28px;padding:0 18px;text-align:center
 }
 
 .status-header{
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:8px 14px;
-border-radius:30px;
-background:rgba(57,255,136,.045);
-border:1px solid rgba(57,255,136,.16);
-color:#65ff9f;
-font-size:9px;
-font-weight:1000;
-letter-spacing:1.7px
+display:inline-flex;align-items:center;gap:8px;padding:8px 14px;
+border-radius:30px;background:rgba(57,255,136,.045);
+border:1px solid rgba(57,255,136,.16);color:#65ff9f;
+font-size:9px;font-weight:1000;letter-spacing:1.7px
 }
 
 .status-live-dot{
-width:7px;
-height:7px;
-border-radius:50%;
-background:var(--green);
-box-shadow:
-0 0 8px var(--green),
-0 0 18px rgba(57,255,136,.6);
+width:7px;height:7px;border-radius:50%;background:#39ff88;
+box-shadow:0 0 8px #39ff88,0 0 18px rgba(57,255,136,.6);
 animation:statusPulse 1.4s infinite
 }
 
 @keyframes statusPulse{
-50%{
-opacity:.35;
-transform:scale(.75)
-}
+50%{opacity:.35;transform:scale(.75)}
 }
 
 .status-grid{
-margin-top:12px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px
+margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:9px
 }
 
 .status-card{
-min-height:94px;
-padding:13px 9px;
-border-radius:15px;
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,.045),
-rgba(255,255,255,.015)
-);
+min-height:94px;padding:13px 9px;border-radius:15px;
+background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
 border:1px solid rgba(255,255,255,.075);
-box-shadow:
-inset 0 1px 0 rgba(255,255,255,.035),
-0 10px 30px rgba(0,0,0,.15);
+box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 10px 30px rgba(0,0,0,.15);
 transition:.25s
 }
 
 .status-card:hover{
-transform:translateY(-3px);
-border-color:rgba(57,255,136,.2)
+transform:translateY(-3px);border-color:rgba(57,255,136,.2)
 }
 
-.status-icon{
-font-size:17px;
-margin-bottom:5px
-}
-
-.status-value{
-font-size:22px;
-line-height:1;
-font-weight:1000
-}
+.status-icon{font-size:17px;margin-bottom:5px}
+.status-value{font-size:22px;line-height:1;font-weight:1000}
 
 .status-label{
-margin-top:7px;
-color:#737c88;
-font-size:7px;
-font-weight:900;
-letter-spacing:1.2px
+margin-top:7px;color:#737c88;font-size:7px;
+font-weight:900;letter-spacing:1.2px
 }
 
-.countdown-card{
-border-color:rgba(57,255,136,.12)
-}
+.countdown-card{border-color:rgba(57,255,136,.12)}
 
 .countdown-card .status-value{
-color:var(--green);
-font-size:18px;
+color:#39ff88;font-size:18px;
 text-shadow:0 0 18px rgba(57,255,136,.25)
 }
 
-.updated{
-margin-top:10px;
-color:#5f6874;
-font-size:7px;
-letter-spacing:1px
-}
-
-
-/* RECENT ACTIVITY */
-
-.activity-feed{
-width:calc(100% - 36px);
-max-width:900px;
-margin:12px auto 28px;
-padding:14px;
-border-radius:15px;
-background:rgba(7,11,13,.94);
-border:1px solid rgba(57,255,136,.10);
-box-shadow:0 10px 30px rgba(0,0,0,.25)
-}
-
-.activity-title{
-color:var(--green);
-font-size:9px;
-font-weight:1000;
-letter-spacing:1.2px;
-margin-bottom:9px;
-text-align:left
-}
-
-.activity-item{
-padding:9px 0;
-border-top:1px solid rgba(255,255,255,.05);
-color:#858e99;
-font-size:8px;
-line-height:1.5;
-text-align:left
-}
-
-.activity-item span{
-color:var(--green);
-margin-right:5px
-}
-
-
-/* LIVE INFO */
-
-.live-info{
-width:calc(100% - 36px);
-max-width:900px;
-margin:0 auto 30px;
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px
-}
-
-.info-card{
-padding:13px;
-border-radius:13px;
-background:rgba(255,255,255,.025);
-border:1px solid rgba(255,255,255,.06);
-text-align:center
-}
-
-.info-card strong{
-display:block;
-font-size:17px;
-font-weight:1000
-}
-
-.info-card span{
-display:block;
-margin-top:5px;
-color:#737c87;
-font-size:7px;
-letter-spacing:1px
-}
-
+.updated{margin-top:10px;color:#5f6874;font-size:7px;letter-spacing:1px}
 
 /* STATS */
 
 .stats{
-max-width:700px;
-margin:0 auto 40px;
-padding:0 18px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px
+max-width:700px;margin:0 auto 40px;padding:0 18px;
+display:grid;grid-template-columns:repeat(3,1fr);gap:10px
 }
 
 .stat{
-padding:13px 8px;
-text-align:center;
-border-radius:13px;
+padding:13px 8px;text-align:center;border-radius:13px;
 background:rgba(255,255,255,.025);
 border:1px solid rgba(255,255,255,.06)
 }
 
-.stat strong{
-display:block;
-font-size:18px
-}
-
+.stat strong{display:block;font-size:18px}
 .stat span{
-display:block;
-margin-top:4px;
-color:#737c88;
-font-size:8px;
-text-transform:uppercase;
-letter-spacing:1px
+display:block;margin-top:4px;color:#737c88;font-size:8px;
+text-transform:uppercase;letter-spacing:1px
 }
-
 
 /* SECTION */
 
-.section{
-max-width:1100px;
-margin:auto;
-padding:48px 18px
-}
+.section{max-width:1100px;margin:auto;padding:48px 18px}
 
-.section-title{
-text-align:center;
-margin-bottom:30px
-}
+.section-title{text-align:center;margin-bottom:30px}
 
 .section-title small{
-color:var(--green);
-font-size:9px;
-font-weight:900;
-letter-spacing:2px
+color:#39ff88;font-size:9px;font-weight:900;letter-spacing:2px
 }
 
 .section-title h2{
-margin-top:8px;
-font-size:clamp(28px,5vw,43px);
-font-weight:1000
+margin-top:8px;font-size:clamp(28px,5vw,43px);font-weight:1000
 }
 
-.section-title p{
-margin-top:8px;
-color:#7c8591;
-font-size:11px
-}
-
+.section-title p{margin-top:8px;color:#7c8591;font-size:11px}
 
 /* PRODUCTS */
 
 .products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px
 }
 
-.product-wrap{
-display:flex;
-flex-direction:column;
-gap:8px
-}
+.product-wrap{display:flex;flex-direction:column;gap:8px}
 
 .topup-line{
-text-align:center;
-font-size:9px;
-font-weight:1000;
-letter-spacing:1.1px;
-text-transform:uppercase
+text-align:center;font-size:9px;font-weight:1000;
+letter-spacing:1.1px;text-transform:uppercase
 }
 
-.gold-line{
-color:#ffd447;
-text-shadow:0 0 14px rgba(255,190,0,.45)
-}
-
-.diamond-line{
-color:#51eaff;
-text-shadow:0 0 14px rgba(0,210,255,.4)
-}
-
-.prime-line{
-color:#cf8cff;
-text-shadow:0 0 14px rgba(160,0,255,.4)
-}
+.gold-line{color:#ffd447;text-shadow:0 0 14px rgba(255,190,0,.45)}
+.diamond-line{color:#51eaff;text-shadow:0 0 14px rgba(0,210,255,.4)}
+.prime-line{color:#cf8cff;text-shadow:0 0 14px rgba(160,0,255,.4)}
 
 .product{
-width:100%;
-aspect-ratio:1.586 / 1;
-padding:2px;
-border-radius:19px;
-position:relative;
-overflow:hidden;
-transition:.3s
+width:100%;aspect-ratio:1.586 / 1;padding:2px;
+border-radius:19px;position:relative;overflow:hidden;transition:.3s
 }
 
-.product:hover{
-transform:translateY(-6px)
-}
+.product:hover{transform:translateY(-6px)}
 
 .product::before{
-content:"";
-position:absolute;
-width:170%;
-height:55px;
-left:-160%;
-top:45%;
-transform:rotate(-30deg);
-background:rgba(255,255,255,.12);
-filter:blur(18px);
-animation:shine 6s linear infinite
+content:"";position:absolute;width:170%;height:55px;left:-160%;top:45%;
+transform:rotate(-30deg);background:rgba(255,255,255,.12);
+filter:blur(18px);animation:shine 6s linear infinite
 }
 
 @keyframes shine{
@@ -520,178 +240,92 @@ animation:shine 6s linear infinite
 100%{left:170%}
 }
 
-
 /* CARD COLORS */
 
 .gold{
-background:linear-gradient(
-135deg,
-#fff4a2 0%,
-#ffc928 18%,
-#9b5c00 43%,
-#ffe879 67%,
-#b87500 100%
-);
+background:linear-gradient(135deg,#fff4a2 0%,#ffc928 18%,#9b5c00 43%,#ffe879 67%,#b87500 100%);
 box-shadow:0 0 28px rgba(255,184,0,.20)
 }
 
 .gold .product-inner{
-background:linear-gradient(
-145deg,
-#171208,
-#513508 52%,
-#171007
-)
+background:linear-gradient(145deg,#171208,#513508 52%,#171007)
 }
 
 .diamond{
-background:linear-gradient(
-135deg,
-#d8fbff 0%,
-#27ddff 18%,
-#006c9b 45%,
-#8df5ff 70%,
-#008ebc 100%
-);
+background:linear-gradient(135deg,#d8fbff 0%,#27ddff 18%,#006c9b 45%,#8df5ff 70%,#008ebc 100%);
 box-shadow:0 0 28px rgba(0,210,255,.20)
 }
 
 .diamond .product-inner{
-background:linear-gradient(
-145deg,
-#07151a,
-#06394d 52%,
-#061116
-)
+background:linear-gradient(145deg,#07151a,#06394d 52%,#061116)
 }
 
 .prime{
-background:linear-gradient(
-135deg,
-#efc7ff 0%,
-#a83cff 18%,
-#4c087d 46%,
-#d994ff 70%,
-#7110ae 100%
-);
+background:linear-gradient(135deg,#efc7ff 0%,#a83cff 18%,#4c087d 46%,#d994ff 70%,#7110ae 100%);
 box-shadow:0 0 28px rgba(168,60,255,.23)
 }
 
 .prime .product-inner{
-background:linear-gradient(
-145deg,
-#11081a,
-#3f1061 52%,
-#100618
-)
+background:linear-gradient(145deg,#11081a,#3f1061 52%,#100618)
 }
-
 
 /* CARD INNER */
 
 .product-inner{
-width:100%;
-height:100%;
-padding:18px;
-border-radius:17px;
-position:relative;
-z-index:2;
-overflow:hidden
+width:100%;height:100%;padding:18px;border-radius:17px;
+position:relative;z-index:2;overflow:hidden
 }
 
 .product-top{
-display:flex;
-align-items:center;
-justify-content:space-between
+display:flex;align-items:center;justify-content:space-between
 }
 
-.product-name{
-font-size:11px;
-font-weight:1000;
-letter-spacing:2px
-}
+.product-name{font-size:11px;font-weight:1000;letter-spacing:2px}
 
 .product-tag{
-padding:5px 8px;
-border-radius:20px;
+padding:5px 8px;border-radius:20px;
 background:rgba(255,255,255,.09);
 border:1px solid rgba(255,255,255,.13);
-font-size:8px;
-font-weight:900
+font-size:8px;font-weight:900
 }
 
 .fake-chip{
-width:36px;
-height:25px;
-margin-top:18px;
-border-radius:7px;
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.82),
-rgba(255,255,255,.13)
-);
+width:36px;height:25px;margin-top:18px;border-radius:7px;
+background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,255,255,.13));
 border:1px solid rgba(255,255,255,.45);
 box-shadow:inset 0 0 9px rgba(0,0,0,.28)
 }
 
 .card-number{
-margin-top:10px;
-font-size:12px;
-font-weight:800;
-letter-spacing:2.5px;
-color:rgba(255,255,255,.87)
+margin-top:10px;font-size:12px;font-weight:800;
+letter-spacing:2.5px;color:rgba(255,255,255,.87)
 }
 
 .card-bottom{
-display:flex;
-justify-content:space-between;
-margin-top:10px
+display:flex;justify-content:space-between;margin-top:10px
 }
 
 .card-bottom label{
-display:block;
-color:#858d97;
-font-size:6px;
-letter-spacing:1px
+display:block;color:#858d97;font-size:6px;letter-spacing:1px
 }
 
 .card-bottom strong{
-display:block;
-margin-top:3px;
-font-size:8px
+display:block;margin-top:3px;font-size:8px
 }
 
-.price{
-margin-top:9px;
-font-size:23px;
-font-weight:1000
-}
+.price{margin-top:9px;font-size:23px;font-weight:1000}
 
 .virtual{
-margin-top:2px;
-color:#9da5b0;
-font-size:6.5px;
-font-weight:800;
-letter-spacing:1.5px
+margin-top:2px;color:#9da5b0;font-size:6.5px;
+font-weight:800;letter-spacing:1.5px
 }
 
 .buy{
-width:100%;
-margin-top:7px;
-padding:8px;
-border:0;
-border-radius:9px;
-color:#070707;
-font-size:9px;
-font-weight:1000;
-cursor:pointer;
-transition:.2s
+width:100%;margin-top:7px;padding:8px;border:0;border-radius:9px;
+color:#070707;font-size:9px;font-weight:1000;cursor:pointer;transition:.2s
 }
 
-.buy:hover{
-transform:scale(1.02)
-}
+.buy:hover{transform:scale(1.02)}
 
 .gold .buy{
 background:linear-gradient(90deg,#ffe36b,#ffb000);
@@ -708,480 +342,263 @@ background:linear-gradient(90deg,#edb5ff,#a53aff);
 box-shadow:0 0 18px rgba(170,50,255,.2)
 }
 
-
 /* BENEFITS */
 
 .benefits{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
+display:grid;grid-template-columns:repeat(4,1fr);gap:12px
 }
 
 .benefit{
-padding:20px 14px;
-text-align:center;
-border-radius:15px;
+padding:20px 14px;text-align:center;border-radius:15px;
 background:rgba(255,255,255,.025);
 border:1px solid rgba(255,255,255,.06)
 }
 
-.benefit-icon{
-font-size:23px;
-margin-bottom:9px
-}
-
-.benefit strong{
-display:block;
-font-size:11px
-}
+.benefit-icon{font-size:23px;margin-bottom:9px}
+.benefit strong{display:block;font-size:11px}
 
 .benefit p{
-margin-top:6px;
-color:#747d89;
-font-size:9px;
-line-height:1.5
+margin-top:6px;color:#747d89;font-size:9px;line-height:1.5
 }
-
 
 /* PAYMENT */
 
 .payment-box{
-max-width:560px;
-margin:auto;
-padding:23px;
-border-radius:20px;
+max-width:560px;margin:auto;padding:23px;border-radius:20px;
 background:linear-gradient(145deg,#0b1010,#080b0f);
 border:1px solid rgba(57,255,136,.13);
 box-shadow:0 0 40px rgba(57,255,136,.04)
 }
 
 .selected{
-padding:12px;
-text-align:center;
-border-radius:11px;
+padding:12px;text-align:center;border-radius:11px;
 background:rgba(57,255,136,.05);
 border:1px solid rgba(57,255,136,.13)
 }
 
-.selected small{
-display:block;
-color:#737c87;
-font-size:8px
-}
+.selected small{display:block;color:#737c87;font-size:8px}
 
 .selected strong{
-display:block;
-margin-top:3px;
-color:var(--green);
-font-size:20px
+display:block;margin-top:3px;color:#39ff88;font-size:20px
 }
 
-.qr-box{
-text-align:center;
-padding:15px
-}
+.qr-box{text-align:center;padding:15px}
 
 .qr{
-width:165px;
-height:165px;
-object-fit:contain;
-padding:7px;
-background:#fff;
-border-radius:13px
+width:165px;height:165px;object-fit:contain;padding:7px;
+background:#fff;border-radius:13px
 }
 
-.upi{
-display:flex;
-gap:7px;
-margin-top:12px
-}
+.upi{display:flex;gap:7px;margin-top:12px}
 
 .upi input{
-flex:1;
-min-width:0;
-padding:12px;
-border-radius:9px;
-border:1px solid #252b32;
-background:#05070a;
-color:#fff;
-font-size:11px;
-outline:none
+flex:1;min-width:0;padding:12px;border-radius:9px;
+border:1px solid #252b32;background:#05070a;color:#fff;
+font-size:11px;outline:none
 }
 
 .copy{
-border:0;
-padding:0 13px;
-border-radius:9px;
-background:var(--green);
-color:#001208;
-font-size:10px;
-font-weight:1000;
-cursor:pointer
+border:0;padding:0 13px;border-radius:9px;
+background:#39ff88;color:#001208;font-size:10px;
+font-weight:1000;cursor:pointer
 }
 
 .form-label{
-display:block;
-margin:16px 0 6px;
-color:#858e99;
-font-size:9px
+display:block;margin:16px 0 6px;color:#858e99;font-size:9px
 }
 
 .utr{
-width:100%;
-padding:13px;
-border-radius:9px;
-border:1px solid #252b32;
-background:#05070a;
-color:#fff;
-outline:none;
-font-size:11px
+width:100%;padding:13px;border-radius:9px;
+border:1px solid #252b32;background:#05070a;color:#fff;
+outline:none;font-size:11px
 }
 
 .verify{
-width:100%;
-margin-top:10px;
-padding:13px;
-border:0;
-border-radius:10px;
-background:var(--green);
-color:#001208;
-font-size:10px;
-font-weight:1000;
-cursor:pointer
+width:100%;margin-top:10px;padding:13px;border:0;border-radius:10px;
+background:#39ff88;color:#001208;font-size:10px;
+font-weight:1000;cursor:pointer
 }
 
 .warning{
-margin-top:14px;
-padding:11px;
-border-radius:9px;
+margin-top:14px;padding:11px;border-radius:9px;
 background:rgba(255,174,0,.05);
 border:1px solid rgba(255,174,0,.13);
-color:#b9ad88;
-font-size:8px;
-line-height:1.5;
-text-align:center
+color:#b9ad88;font-size:8px;line-height:1.5;text-align:center
 }
 
-
-/* TELEGRAM */
+/* TELEGRAM INSTRUCTIONS */
 
 .telegram-instructions{
-margin-top:15px;
-padding:16px;
-border-radius:13px;
-background:
-linear-gradient(
-145deg,
-rgba(57,255,136,.035),
-rgba(139,0,255,.035)
-);
+margin-top:15px;padding:16px;border-radius:13px;
+background:linear-gradient(145deg,rgba(57,255,136,.035),rgba(139,0,255,.035));
 border:1px solid rgba(57,255,136,.12)
 }
 
 .telegram-title{
-text-align:center;
-color:var(--green);
-font-size:10px;
-font-weight:1000;
-letter-spacing:1.4px;
-margin-bottom:12px
+text-align:center;color:#39ff88;font-size:10px;
+font-weight:1000;letter-spacing:1.4px;margin-bottom:12px
 }
 
 .telegram-step{
-display:flex;
-align-items:flex-start;
-gap:10px;
-padding:9px 0;
+display:flex;align-items:flex-start;gap:10px;padding:9px 0;
 border-bottom:1px solid rgba(255,255,255,.05)
 }
 
-.telegram-step:last-of-type{
-border-bottom:0
-}
+.telegram-step:last-of-type{border-bottom:0}
 
 .telegram-step span{
-width:25px;
-height:25px;
-min-width:25px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:var(--green);
-color:#001208;
-font-size:7px;
-font-weight:1000
+width:25px;height:25px;min-width:25px;display:grid;
+place-items:center;border-radius:50%;background:#39ff88;
+color:#001208;font-size:7px;font-weight:1000
 }
 
 .telegram-step p{
-color:#737c87;
-font-size:8px;
-line-height:1.5
+color:#737c87;font-size:8px;line-height:1.5
 }
 
-.telegram-step strong{
-color:#fff
-}
+.telegram-step strong{color:#fff}
 
 .telegram-btn{
-display:block;
-width:100%;
-margin-top:12px;
-padding:11px;
-border-radius:9px;
-background:var(--green);
-color:#001208;
-text-align:center;
-text-decoration:none;
-font-size:9px;
-font-weight:1000
+display:block;width:100%;margin-top:12px;padding:11px;
+border-radius:9px;background:#39ff88;color:#001208;
+text-align:center;text-decoration:none;font-size:9px;font-weight:1000
 }
 
 .telegram-warning{
-margin-top:10px;
-padding:9px;
-border-radius:8px;
+margin-top:10px;padding:9px;border-radius:8px;
 background:rgba(255,174,0,.04);
 border:1px solid rgba(255,174,0,.10);
-color:#a99e7d;
-text-align:center;
-font-size:7px;
-line-height:1.5
+color:#a99e7d;text-align:center;font-size:7px;line-height:1.5
 }
 
-.telegram-warning strong{
-color:#c5b887
-}
-
+.telegram-warning strong{color:#c5b887}
 
 /* HOW IT WORKS */
 
 .steps{
-max-width:800px;
-margin:auto;
-display:grid;
-gap:10px
+max-width:800px;margin:auto;display:grid;gap:10px
 }
 
 .step{
-display:flex;
-align-items:center;
-gap:13px;
-padding:14px;
-border-radius:13px;
-background:rgba(255,255,255,.025);
+display:flex;align-items:center;gap:13px;padding:14px;
+border-radius:13px;background:rgba(255,255,255,.025);
 border:1px solid rgba(255,255,255,.06)
 }
 
 .step-num{
-width:32px;
-height:32px;
-min-width:32px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:var(--green);
-color:#001108;
-font-size:10px;
-font-weight:1000
+width:32px;height:32px;min-width:32px;display:grid;
+place-items:center;border-radius:50%;background:#39ff88;
+color:#001108;font-size:10px;font-weight:1000
 }
 
-.step strong{
-font-size:11px
-}
+.step strong{font-size:11px}
 
 .step p{
-margin-top:3px;
-color:#737c87;
-font-size:9px
+margin-top:3px;color:#737c87;font-size:9px
 }
 
+/* ACTIVITY */
+
+.activity-feed{
+width:calc(100% - 36px);
+max-width:900px;
+margin:12px auto 28px;
+padding:14px;
+border-radius:15px;
+background:rgba(7,11,13,.94);
+border:1px solid rgba(57,255,136,.10);
+box-shadow:0 10px 30px rgba(0,0,0,.25)
+}
+
+.activity-title{
+color:#39ff88;font-size:8px;font-weight:1000;
+letter-spacing:1.2px;margin-bottom:8px
+}
+
+.activity-item{
+padding:7px 0;border-top:1px solid rgba(255,255,255,.05);
+color:#858e99;font-size:8px
+}
+
+.activity-item span{color:#39ff88;margin-right:5px}
+
+/* LIVE INFO */
+
+.live-info{
+max-width:700px;margin:0 auto 35px;padding:0 18px;
+display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+
+.live-box{
+padding:13px;text-align:center;border-radius:13px;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(255,255,255,.06)
+}
+
+.live-box strong{display:block;font-size:17px}
+.live-box span{
+display:block;margin-top:4px;color:#737c88;
+font-size:7px;letter-spacing:1px
+}
 
 /* FOOTER */
 
 footer{
-padding:35px 18px;
-text-align:center;
-color:#59616d;
-font-size:8px;
-line-height:1.8
+padding:35px 18px;text-align:center;color:#59616d;
+font-size:8px;line-height:1.8
 }
 
-footer strong{
-color:var(--green)
-}
-
+footer strong{color:#39ff88}
 
 /* MOBILE */
 
 @media(max-width:850px){
-
 .products{
-grid-template-columns:1fr;
-max-width:390px;
-margin:auto;
-gap:15px
+grid-template-columns:1fr;max-width:390px;margin:auto;gap:15px
 }
-
-.benefits{
-grid-template-columns:repeat(2,1fr)
-}
-
+.benefits{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:650px){
-
-.store-status{
-margin-top:0;
-margin-bottom:0;
-padding:0 14px
-}
-
-.status-grid{
-grid-template-columns:repeat(2,1fr);
-gap:8px
-}
-
-.status-card{
-min-height:88px;
-padding:12px 8px
-}
-
-.status-value{
-font-size:20px
-}
-
-.countdown-card .status-value{
-font-size:17px
-}
-
-.live-info{
-width:calc(100% - 28px)
-}
-
+.store-status{margin-top:0;margin-bottom:24px;padding:0 14px}
+.status-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+.status-card{min-height:88px;padding:12px 8px}
+.status-value{font-size:20px}
+.countdown-card .status-value{font-size:17px}
 }
 
 @media(max-width:500px){
-
-.nav{
-padding:13px 14px
-}
-
-.logo{
-font-size:16px
-}
-
-.online{
-font-size:8px
-}
-
-.hero{
-padding:48px 14px 22px
-}
-
-.hero h1{
-font-size:43px;
-letter-spacing:-2.5px
-}
-
-.hero p{
-font-size:12px
-}
-
-.stats{
-gap:7px;
-margin-bottom:28px
-}
-
-.stat{
-padding:12px 5px
-}
-
-.stat strong{
-font-size:16px
-}
-
-.stat span{
-font-size:7px
-}
-
-.section{
-padding:42px 14px
-}
-
-.section-title{
-margin-bottom:27px
-}
-
-.section-title h2{
-font-size:29px
-}
-
-.products{
-max-width:100%
-}
-
-.product{
-aspect-ratio:1.586 / 1;
-border-radius:18px
-}
-
-.product-inner{
-padding:16px;
-border-radius:16px
-}
-
-.fake-chip{
-width:36px;
-height:25px;
-margin-top:18px
-}
-
-.card-number{
-margin-top:10px;
-font-size:12px
-}
-
-.card-bottom{
-margin-top:10px
-}
-
-.price{
-margin-top:9px;
-font-size:23px
-}
-
-.buy{
-margin-top:7px;
-padding:8px
-}
-
-.payment-box{
-padding:18px
-}
-
-.qr{
-width:165px;
-height:165px
-}
-
-.benefits{
-gap:8px
-}
-
-.benefit{
-padding:17px 9px
-}
+.nav{padding:13px 14px}
+.logo{font-size:16px}
+.online{font-size:8px}
+.hero{padding:48px 14px 22px}
+.hero h1{font-size:43px;letter-spacing:-2.5px}
+.hero p{font-size:12px}
+.stats{gap:7px;margin-bottom:28px}
+.stat{padding:12px 5px}
+.stat strong{font-size:16px}
+.stat span{font-size:7px}
+.section{padding:42px 14px}
+.section-title{margin-bottom:27px}
+.section-title h2{font-size:29px}
+.products{max-width:100%}
+.product{aspect-ratio:1.586 / 1;border-radius:18px}
+.product-inner{padding:16px;border-radius:16px}
+.fake-chip{width:36px;height:25px;margin-top:18px}
+.card-number{margin-top:10px;font-size:12px}
+.card-bottom{margin-top:10px}
+.price{margin-top:9px;font-size:23px}
+.buy{margin-top:7px;padding:8px}
+.payment-box{padding:18px}
+.qr{width:165px;height:165px}
+.benefits{gap:8px}
+.benefit{padding:17px 9px}
+.live-info{padding:0 14px}
 
 .activity-feed{
 width:calc(100% - 28px);
 margin:10px auto 24px
 }
-
-.live-info{
-width:calc(100% - 28px);
-grid-template-columns:1fr 1fr
-}
-
 }
 </style>
 </head>
@@ -1191,11 +608,8 @@ grid-template-columns:1fr 1fr
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
 
-
 <!-- HEADER -->
-
 <header>
-
 <div class="nav">
 
 <div class="logo">
@@ -1208,12 +622,9 @@ ONLINE
 </div>
 
 </div>
-
 </header>
 
-
 <!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-content">
@@ -1247,245 +658,113 @@ PAYMENT
 </div>
 
 </div>
-
 </section>
 
-
 <!-- LIVE STORE STATUS -->
-
 <section class="store-status">
 
 <div class="status-header">
-
 <span class="status-live-dot"></span>
-
 LIVE STORE STATUS
-
 </div>
-
 
 <div class="status-grid">
 
+<div class="status-card">
+<div class="status-icon">📦</div>
+<div class="status-value" id="stockCount">489</div>
+<div class="status-label">STOCK LEFT</div>
+</div>
 
 <div class="status-card">
-
-<div class="status-icon">
-📦
+<div class="status-icon">🔥</div>
+<div class="status-value" id="soldCount">1489</div>
+<div class="status-label">SOLD TODAY</div>
 </div>
-
-<div
-class="status-value"
-id="stockCount">
-489
-</div>
-
-<div class="status-label">
-STOCK LEFT
-</div>
-
-</div>
-
 
 <div class="status-card">
-
-<div class="status-icon">
-🔥
+<div class="status-icon">⚡</div>
+<div class="status-value" id="liveOrders">27</div>
+<div class="status-label">LIVE ORDERS</div>
 </div>
-
-<div
-class="status-value"
-id="soldCount">
-1489
-</div>
-
-<div class="status-label">
-SOLD TODAY
-</div>
-
-</div>
-
-
-<div class="status-card">
-
-<div class="status-icon">
-⚡
-</div>
-
-<div
-class="status-value"
-id="liveOrders">
-27
-</div>
-
-<div class="status-label">
-LIVE ORDERS
-</div>
-
-</div>
-
 
 <div class="status-card countdown-card">
-
-<div class="status-icon">
-⏳
-</div>
-
-<div
-class="status-value"
-id="hourCountdown">
-01:00:00
-</div>
-
-<div class="status-label">
-NEXT STOCK UPDATE
+<div class="status-icon">⏳</div>
+<div class="status-value" id="hourCountdown">01:00:00</div>
+<div class="status-label">NEXT STOCK UPDATE</div>
 </div>
 
 </div>
-
-</div>
-
 
 <div class="updated">
-
 ● SYSTEM ONLINE &nbsp; • &nbsp;
-
-LAST UPDATED
-<span id="updatedTime">
-NOW
-</span>
-
+LAST UPDATED <span id="updatedTime">NOW</span>
 </div>
 
 </section>
 
-
 <!-- RECENT ACTIVITY -->
-
-<div
-class="activity-feed"
-id="activityFeed">
+<div class="activity-feed">
 
 <div class="activity-title">
-⚡ RECENT ACTIVITY
+● RECENT ACTIVITY
 </div>
 
-<div id="activityList">
-
-<div class="activity-item">
-<span>●</span>
-GOLD PLAN • Recently viewed
-</div>
+<div id="activityList"></div>
 
 </div>
 
-</div>
-
-
-<!-- RATING + VIEWER -->
-
+<!-- LIVE INFO -->
 <div class="live-info">
 
-<div class="info-card">
-
-<strong id="ratingValue">
-—
-</strong>
-
-<span id="ratingText">
-Verified Rating
-</span>
-
+<div class="live-box">
+<strong id="viewerCount">—</strong>
+<span>CURRENT VISITORS</span>
 </div>
 
-
-<div class="info-card">
-
-<strong id="viewerCount">
-0
-</strong>
-
-<span>
-PEOPLE VIEWING THIS
-</span>
-
+<div class="live-box">
+<strong>4.9/5</strong>
+<span>STORE RATING</span>
 </div>
 
 </div>
-
 
 <!-- STATS -->
-
 <div class="stats">
 
 <div class="stat">
-
-<strong>
-03
-</strong>
-
-<span>
-Premium Plans
-</span>
-
+<strong>03</strong>
+<span>Premium Plans</span>
 </div>
-
 
 <div class="stat">
-
-<strong>
-24/7
-</strong>
-
-<span>
-Access
-</span>
-
+<strong>24/7</strong>
+<span>Access</span>
 </div>
-
 
 <div class="stat">
-
-<strong>
-100%
-</strong>
-
-<span>
-Virtual
-</span>
-
+<strong>100%</strong>
+<span>Virtual</span>
 </div>
 
 </div>
-
 
 <!-- CARDS -->
-
-<section
-class="section"
-id="cards">
+<section class="section" id="cards">
 
 <div class="section-title">
 
-<small>
-CHOOSE YOUR POWER
-</small>
+<small>CHOOSE YOUR POWER</small>
 
-<h2>
-Premium Gaming Cards
-</h2>
+<h2>Premium Gaming Cards</h2>
 
-<p>
-Select a plan and continue to payment.
-</p>
+<p>Select a plan and continue to payment.</p>
 
 </div>
 
-
 <div class="products">
 
-
 <!-- GOLD -->
-
 <div class="product-wrap">
 
 <div class="topup-line gold-line">
@@ -1498,82 +777,47 @@ Select a plan and continue to payment.
 
 <div class="product-top">
 
-<div class="product-name">
-GOLD
-</div>
+<div class="product-name">GOLD</div>
 
-<div class="product-tag">
-PREMIUM
-</div>
+<div class="product-tag">PREMIUM</div>
 
 </div>
-
 
 <div class="fake-chip"></div>
-
 
 <div class="card-number">
 GOLD •••• 999
 </div>
 
-
 <div class="card-bottom">
 
 <div>
-
-<label>
-CARD HOLDER
-</label>
-
-<strong>
-SUNNY 999 BOT
-</strong>
-
+<label>CARD HOLDER</label>
+<strong>SUNNY 999 BOT</strong>
 </div>
-
 
 <div>
-
-<label>
-EXPIRY
-</label>
-
-<strong>
-12/30
-</strong>
-
+<label>EXPIRY</label>
+<strong>12/30</strong>
 </div>
 
 </div>
 
-
-<div class="price">
-₹499
-</div>
-
+<div class="price">₹499</div>
 
 <div class="virtual">
 VIRTUAL GAMING CARD
 </div>
 
-
-<button
-class="buy"
-onclick="selectPlan('499')">
-
+<button class="buy" onclick="selectPlan('499')">
 BUY NOW
-
 </button>
 
 </div>
-
 </div>
-
 </div>
-
 
 <!-- DIAMOND -->
-
 <div class="product-wrap">
 
 <div class="topup-line diamond-line">
@@ -1586,82 +830,47 @@ BUY NOW
 
 <div class="product-top">
 
-<div class="product-name">
-DIAMOND
-</div>
+<div class="product-name">DIAMOND</div>
 
-<div class="product-tag">
-POPULAR
-</div>
+<div class="product-tag">PREMIUM</div>
 
 </div>
-
 
 <div class="fake-chip"></div>
-
 
 <div class="card-number">
 DIAMOND •••• 999
 </div>
 
-
 <div class="card-bottom">
 
 <div>
-
-<label>
-CARD HOLDER
-</label>
-
-<strong>
-SUNNY 999 BOT
-</strong>
-
+<label>CARD HOLDER</label>
+<strong>SUNNY 999 BOT</strong>
 </div>
-
 
 <div>
-
-<label>
-EXPIRY
-</label>
-
-<strong>
-12/30
-</strong>
-
+<label>EXPIRY</label>
+<strong>12/30</strong>
 </div>
 
 </div>
 
-
-<div class="price">
-₹999
-</div>
-
+<div class="price">₹999</div>
 
 <div class="virtual">
 VIRTUAL GAMING CARD
 </div>
 
-
-<button
-class="buy"
-onclick="selectPlan('999')">
-
+<button class="buy" onclick="selectPlan('999')">
 BUY NOW
-
 </button>
 
 </div>
-
 </div>
-
 </div>
-
 
 <!-- 8 PRIME -->
-
 <div class="product-wrap">
 
 <div class="topup-line prime-line">
@@ -1674,18 +883,83 @@ BUY NOW
 
 <div class="product-top">
 
-<div class="product-name">
-8 PRIME
-</div>
+<div class="product-name">8 PRIME</div>
 
-<div class="product-tag">
-ULTIMATE
-</div>
+<div class="product-tag">PREMIUM</div>
 
 </div>
-
 
 <div class="fake-chip"></div>
 
+<div class="card-number">
+8 PRIME •••• 999
+</div>
 
-<div class="car
+<div class="card-bottom">
+
+<div>
+<label>CARD HOLDER</label>
+<strong>SUNNY 999 BOT</strong>
+</div>
+
+<div>
+<label>EXPIRY</label>
+<strong>12/30</strong>
+</div>
+
+</div>
+
+<div class="price">₹4,999</div>
+
+<div class="virtual">
+VIRTUAL GAMING CARD
+</div>
+
+<button class="buy" onclick="selectPlan('4999')">
+BUY NOW
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+
+<div class="section-title">
+
+<small>STORE BENEFITS</small>
+
+<h2>Why Choose Us</h2>
+
+<p>Simple verification and premium virtual gaming access.</p>
+
+</div>
+
+<div class="benefits">
+
+<div class="benefit">
+<div class="benefit-icon">⚡</div>
+<strong>Fast Processing</strong>
+<p>Verification request directly admin ko bheji jaati hai.</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🔐</div>
+<strong>Secure Verification</strong>
+<p>UTR based verification process with duplicate checking.</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">🎮</div>
+<strong>Gaming Plans</strong>
+<p>Multiple virtual gaming card plans available.</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-icon">💬</div>
+<strong>Telegram Support</strong>
+<p>Pa
