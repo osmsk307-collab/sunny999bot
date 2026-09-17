@@ -118,268 +118,100 @@ font-size:13px;
 line-height:1.7
 }
 
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap
+.hero-actions{
+display:flex;gap:10px;
+justify-content:center;flex-wrap:wrap;
+margin-top:25px
 }
 
-.hero-btn{
-padding:12px 20px;
-border-radius:11px;
-text-decoration:none;
-font-size:11px;
-font-weight:900;
+.btn{
+border:0;cursor:pointer;
+padding:13px 20px;
+border-radius:12px;
+font-size:11px;font-weight:900;
+letter-spacing:.6px;
 transition:.25s
 }
 
-.primary{
-color:#001408;
+.btn-primary{
 background:#39ff88;
+color:#021108;
 box-shadow:0 0 25px rgba(57,255,136,.2)
 }
 
-.secondary{
-color:#fff;
-background:#0a0d12;
-border:1px solid #252a32
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 0 35px rgba(57,255,136,.4)
 }
 
-.hero-btn:hover{
-transform:translateY(-3px)
+.btn-secondary{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.1);
+color:#fff
 }
 
-/* STORE STATUS */
-
-.store-status{
-max-width:900px;
-margin:5px auto 28px;
-padding:0 18px;
-text-align:center
-}
-
-.status-header{
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:8px 14px;
-border-radius:30px;
-background:rgba(57,255,136,.045);
-border:1px solid rgba(57,255,136,.16);
-color:#65ff9f;
-font-size:9px;
-font-weight:1000;
-letter-spacing:1.7px
-}
-
-.status-live-dot{
-width:7px;height:7px;
-border-radius:50%;
-background:#39ff88;
-box-shadow:
-0 0 8px #39ff88,
-0 0 18px rgba(57,255,136,.6);
-animation:statusPulse 1.4s infinite
-}
-
-@keyframes statusPulse{
-50%{opacity:.35;transform:scale(.75)}
-}
-
-.status-grid{
-margin-top:12px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:9px
-}
-
-.status-card{
-min-height:94px;
-padding:13px 9px;
-border-radius:15px;
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,.045),
-rgba(255,255,255,.015)
-);
-border:1px solid rgba(255,255,255,.075);
-box-shadow:
-inset 0 1px 0 rgba(255,255,255,.035),
-0 10px 30px rgba(0,0,0,.15);
-transition:.25s
-}
-
-.status-card:hover{
-transform:translateY(-3px);
-border-color:rgba(57,255,136,.2)
-}
-
-.status-icon{
-font-size:17px;
-margin-bottom:5px
-}
-
-.status-value{
-font-size:22px;
-line-height:1;
-font-weight:1000
-}
-
-.status-label{
-margin-top:7px;
-color:#737c88;
-font-size:7px;
-font-weight:900;
-letter-spacing:1.2px
-}
-
-.countdown-card{
-border-color:rgba(57,255,136,.12)
-}
-
-.countdown-card .status-value{
-color:#39ff88;
-font-size:18px;
-text-shadow:0 0 18px rgba(57,255,136,.25)
-}
-
-.updated{
-margin-top:10px;
-color:#5f6874;
-font-size:7px;
-letter-spacing:1px
-}
-
-/* ACTIVITY */
-
-.activity-feed{
-width:calc(100% - 36px);
-max-width:900px;
-margin:12px auto 28px;
-padding:14px;
-border-radius:15px;
-background:rgba(7,11,13,.94);
-border:1px solid rgba(57,255,136,.10);
-box-shadow:0 10px 30px rgba(0,0,0,.25)
-}
-
-.activity-title{
-color:#39ff88;
-font-size:8px;
-font-weight:1000;
-letter-spacing:1.2px;
-margin-bottom:8px
-}
-
-.activity-item{
-padding:7px 0;
-border-top:1px solid rgba(255,255,255,.05);
-color:#858e99;
-font-size:8px
-}
-
-.activity-item span{
-color:#39ff88;
-margin-right:5px
-}
-
-/* LIVE INFO */
-
-.live-info{
-max-width:700px;
-margin:0 auto 35px;
-padding:0 18px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-
-.live-box{
-padding:13px;
-text-align:center;
-border-radius:13px;
-background:rgba(255,255,255,.025);
-border:1px solid rgba(255,255,255,.06)
-}
-
-.live-box strong{
-display:block;
-font-size:17px
-}
-
-.live-box span{
-display:block;
-margin-top:4px;
-color:#737c88;
-font-size:7px;
-letter-spacing:1px
+.btn-secondary:hover{
+background:rgba(255,255,255,.08);
+transform:translateY(-2px)
 }
 
 /* STATS */
 
 .stats{
-max-width:700px;
-margin:0 auto 40px;
+max-width:1000px;margin:10px auto 35px;
 padding:0 18px;
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:10px
 }
 
 .stat{
-padding:13px 8px;
+padding:17px 12px;
 text-align:center;
-border-radius:13px;
+border:1px solid rgba(255,255,255,.07);
 background:rgba(255,255,255,.025);
-border:1px solid rgba(255,255,255,.06)
+border-radius:14px
 }
 
 .stat strong{
-display:block;
-font-size:18px
+display:block;font-size:20px;font-weight:1000;
+margin-bottom:5px
 }
 
 .stat span{
-display:block;
-margin-top:4px;
-color:#737c88;
-font-size:8px;
-text-transform:uppercase;
-letter-spacing:1px
+font-size:8px;color:#777f89;
+font-weight:800;letter-spacing:1px
 }
 
 /* SECTION */
 
-.section{
-max-width:1100px;
-margin:auto;
-padding:48px 18px
+section{
+max-width:1100px;margin:auto;
+padding:55px 18px
 }
 
-.section-title{
+.section-head{
 text-align:center;
-margin-bottom:30px
+margin-bottom:32px
 }
 
-.section-title small{
+.section-head small{
 color:#39ff88;
 font-size:9px;
-font-weight:900;
+font-weight:1000;
 letter-spacing:2px
 }
 
-.section-title h2{
+.section-head h2{
+font-size:clamp(28px,5vw,44px);
 margin-top:8px;
-font-size:clamp(28px,5vw,43px);
 font-weight:1000
 }
 
-.section-title p{
-margin-top:8px;
-color:#7c8591;
-font-size:11px
+.section-head p{
+color:#7d858e;
+font-size:12px;
+margin-top:10px
 }
 
 /* PRODUCTS */
@@ -390,234 +222,170 @@ grid-template-columns:repeat(3,1fr);
 gap:18px
 }
 
-.product-wrap{
-display:flex;
-flex-direction:column;
-gap:8px
-}
-
-.topup-line{
-text-align:center;
-font-size:9px;
-font-weight:1000;
-letter-spacing:1.1px;
-text-transform:uppercase
-}
-
-.gold-line{
-color:#ffd447;
-text-shadow:0 0 14px rgba(255,190,0,.45)
-}
-
-.diamond-line{
-color:#51eaff;
-text-shadow:0 0 14px rgba(0,210,255,.4)
-}
-
-.prime-line{
-color:#cf8cff;
-text-shadow:0 0 14px rgba(160,0,255,.4)
-}
-
 .product{
-width:100%;
-aspect-ratio:1.586 / 1;
-padding:2px;
-border-radius:19px;
 position:relative;
-overflow:hidden;
+padding:14px;
+border-radius:20px;
+background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+border:1px solid rgba(255,255,255,.09);
+box-shadow:0 20px 50px rgba(0,0,0,.25);
 transition:.3s
 }
 
 .product:hover{
-transform:translateY(-6px)
+transform:translateY(-5px);
+border-color:rgba(57,255,136,.28)
 }
 
-.product::before{
+.product-label{
+font-size:8px;
+letter-spacing:1.5px;
+color:#858d97;
+font-weight:900;
+margin:3px 2px 10px
+}
+
+.card{
+position:relative;
+width:100%;
+aspect-ratio:1.586 / 1;
+border-radius:16px;
+overflow:hidden;
+padding:20px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+box-shadow:inset 0 1px rgba(255,255,255,.4),0 18px 40px rgba(0,0,0,.35)
+}
+
+.card:before{
 content:"";
 position:absolute;
-width:170%;
-height:55px;
-left:-160%;
-top:45%;
-transform:rotate(-30deg);
-background:rgba(255,255,255,.12);
-filter:blur(18px);
-animation:shine 6s linear infinite
+width:180px;height:180px;
+border-radius:50%;
+right:-70px;top:-70px;
+background:rgba(255,255,255,.14);
+filter:blur(5px)
 }
 
-@keyframes shine{
-0%{left:-170%}
-100%{left:170%}
+.card:after{
+content:"";
+position:absolute;
+width:140px;height:140px;
+border-radius:50%;
+left:-60px;bottom:-70px;
+background:rgba(255,255,255,.09);
+filter:blur(4px)
 }
 
-/* CARD COLORS */
-
-.gold{
+.gold-card{
 background:
-linear-gradient(
-135deg,
-#fff4a2 0%,
-#ffc928 18%,
-#9b5c00 43%,
-#ffe879 67%,
-#b87500 100%
-);
-box-shadow:0 0 28px rgba(255,184,0,.20)
+linear-gradient(135deg,#18120a 0%,#a87918 35%,#f1ce67 52%,#70500e 75%,#15100a 100%)
 }
 
-.gold .product-inner{
+.diamond-card{
 background:
-linear-gradient(
-145deg,
-#171208,
-#513508 52%,
-#171007
-)
+linear-gradient(135deg,#071b26 0%,#087fba 34%,#8beaff 51%,#126a9c 74%,#06121b 100%)
 }
 
-.diamond{
+.prime-card{
 background:
-linear-gradient(
-135deg,
-#d8fbff 0%,
-#27ddff 18%,
-#006c9b 45%,
-#8df5ff 70%,
-#008ebc 100%
-);
-box-shadow:0 0 28px rgba(0,210,255,.20)
+linear-gradient(135deg,#10071b 0%,#63209c 34%,#d18cff 52%,#5b1a91 74%,#0d0615 100%)
 }
 
-.diamond .product-inner{
-background:
-linear-gradient(
-145deg,
-#07151a,
-#06394d 52%,
-#061116
-)
-}
-
-.prime{
-background:
-linear-gradient(
-135deg,
-#efc7ff 0%,
-#a83cff 18%,
-#4c087d 46%,
-#d994ff 70%,
-#7110ae 100%
-);
-box-shadow:0 0 28px rgba(168,60,255,.23)
-}
-
-.prime .product-inner{
-background:
-linear-gradient(
-145deg,
-#11081a,
-#3f1061 52%,
-#100618
-)
-}
-
-/* CARD INNER */
-
-.product-inner{
-width:100%;
-height:100%;
-padding:18px;
-border-radius:17px;
+.card-top,
+.card-bottom,
+.card-number,
+.card-exp,
+.card-name{
 position:relative;
-z-index:2;
-overflow:hidden
+z-index:2
 }
 
-.product-top{
+.card-top{
 display:flex;
-align-items:center;
-justify-content:space-between
+justify-content:space-between;
+align-items:center
 }
 
-.product-name{
-font-size:11px;
+.card-brand{
+font-size:12px;
 font-weight:1000;
-letter-spacing:2px
+letter-spacing:1px
 }
 
-.product-tag{
+.card-type{
+font-size:8px;
+font-weight:900;
 padding:5px 8px;
 border-radius:20px;
-background:rgba(255,255,255,.09);
-border:1px solid rgba(255,255,255,.13);
-font-size:8px;
-font-weight:900
-}
-
-.fake-chip{
-width:36px;
-height:25px;
-margin-top:18px;
-border-radius:7px;
-background:
-linear-gradient(
-135deg,
-rgba(255,255,255,.82),
-rgba(255,255,255,.13)
-);
-border:1px solid rgba(255,255,255,.45);
-box-shadow:inset 0 0 9px rgba(0,0,0,.28)
+background:rgba(0,0,0,.25);
+border:1px solid rgba(255,255,255,.18)
 }
 
 .card-number{
-margin-top:10px;
-font-size:12px;
-font-weight:800;
-letter-spacing:2.5px;
-color:rgba(255,255,255,.87)
+font-size:clamp(17px,2.5vw,25px);
+letter-spacing:2px;
+font-weight:900;
+text-shadow:0 2px 5px rgba(0,0,0,.4)
 }
 
 .card-bottom{
 display:flex;
 justify-content:space-between;
-margin-top:10px
+align-items:flex-end
 }
 
-.card-bottom label{
-display:block;
-color:#858d97;
-font-size:6px;
+.card-exp{
+font-size:7px;
+line-height:1.4;
+text-transform:uppercase;
+font-weight:900
+}
+
+.card-exp b{
+font-size:11px
+}
+
+.card-name{
+font-size:9px;
+font-weight:900;
 letter-spacing:1px
 }
 
-.card-bottom strong{
-display:block;
-margin-top:3px;
-font-size:8px
+.product-info{
+padding:15px 3px 3px
 }
 
-.price{
-margin-top:9px;
-font-size:23px;
+.product-info h3{
+font-size:17px;
 font-weight:1000
 }
 
-.virtual{
-margin-top:2px;
-color:#9da5b0;
-font-size:6.5px;
-font-weight:800;
-letter-spacing:1.5px
+.product-info p{
+color:#7e8791;
+font-size:10px;
+margin-top:5px
+}
+
+.price-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:14px
+}
+
+.price{
+font-size:24px;
+font-weight:1000
 }
 
 .buy{
-width:100%;
-margin-top:7px;
-padding:8px;
+padding:10px 14px;
 border:0;
-border-radius:9px;
-color:#070707;
+border-radius:10px;
+background:#39ff88;
+color:#021108;
 font-size:9px;
 font-weight:1000;
 cursor:pointer;
@@ -625,507 +393,311 @@ transition:.2s
 }
 
 .buy:hover{
-transform:scale(1.02)
+transform:scale(1.04)
 }
 
-.gold .buy{
-background:
-linear-gradient(
-90deg,
-#ffe36b,
-#ffb000
-);
-box-shadow:0 0 18px rgba(255,190,0,.2)
+.virtual{
+font-size:7px;
+color:#626a73;
+font-weight:900;
+letter-spacing:1px;
+margin-top:8px
 }
 
-.diamond .buy{
-background:
-linear-gradient(
-90deg,
-#8ff6ff,
-#20cfff
-);
-box-shadow:0 0 18px rgba(0,220,255,.2)
+/* PRIME PAYMENT NOTE */
+
+.prime-payment-note{
+margin-top:14px;
+padding:14px;
+border-radius:13px;
+background:rgba(139,50,255,.08);
+border:1px solid rgba(139,50,255,.25);
+text-align:center
 }
 
-.prime .buy{
-background:
-linear-gradient(
-90deg,
-#edb5ff,
-#a53aff
-);
-box-shadow:0 0 18px rgba(170,50,255,.2)
-}
-
-/* BENEFITS */
-
-.benefits{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
-}
-
-.benefit{
-padding:20px 14px;
-text-align:center;
-border-radius:15px;
-background:rgba(255,255,255,.025);
-border:1px solid rgba(255,255,255,.06)
-}
-
-.benefit-icon{
-font-size:23px;
-margin-bottom:9px
-}
-
-.benefit strong{
+.prime-payment-note strong{
 display:block;
-font-size:11px
+font-size:11px;
+font-weight:1000;
+color:#d8b3ff;
+margin-bottom:7px
 }
 
-.benefit p{
-margin-top:6px;
-color:#747d89;
-font-size:9px;
-line-height:1.5
+.prime-payment-note p{
+font-size:10px;
+line-height:1.6;
+color:#aeb4bd;
+margin:0
+}
+
+.prime-payment-note .prime-upi{
+display:block;
+margin-top:7px;
+font-size:11px;
+font-weight:1000;
+color:#fff
 }
 
 /* PAYMENT */
 
+.payment-wrap{
+max-width:720px;
+margin:0 auto
+}
+
 .payment-box{
-max-width:560px;
-margin:auto;
-padding:23px;
-border-radius:20px;
-background:
-linear-gradient(
-145deg,
-#0b1010,
-#080b0f
-);
-border:1px solid rgba(57,255,136,.13);
-box-shadow:0 0 40px rgba(57,255,136,.04)
+padding:25px;
+border-radius:22px;
+background:rgba(255,255,255,.035);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 25px 70px rgba(0,0,0,.3)
 }
 
 .selected{
-padding:12px;
 text-align:center;
-border-radius:11px;
-background:rgba(57,255,136,.05);
-border:1px solid rgba(57,255,136,.13)
+margin-bottom:20px
 }
 
 .selected small{
 display:block;
-color:#737c87;
-font-size:8px
+font-size:8px;
+color:#777f89;
+font-weight:900;
+letter-spacing:1.5px;
+margin-bottom:5px
 }
 
 .selected strong{
-display:block;
-margin-top:3px;
-color:#39ff88;
-font-size:20px
+font-size:30px;
+font-weight:1000;
+color:#39ff88
 }
 
 .qr-box{
-text-align:center;
-padding:15px
-}
-
-.qr{
-width:165px;
-height:165px;
-object-fit:contain;
-padding:7px;
-background:#fff;
-border-radius:13px
-}
-
-.upi{
 display:flex;
-gap:7px;
-margin-top:12px
+justify-content:center;
+margin:20px 0
 }
 
-.upi input{
-flex:1;
-min-width:0;
-padding:12px;
-border-radius:9px;
-border:1px solid #252b32;
-background:#05070a;
+.qr-box img{
+width:210px;
+height:210px;
+object-fit:contain;
+border-radius:14px;
+background:#fff;
+padding:8px
+}
+
+.payment-note{
+text-align:center;
+font-size:10px;
+line-height:1.6;
+color:#8c949e;
+margin:12px auto 20px;
+max-width:500px
+}
+
+.field{
+margin-top:13px
+}
+
+.field label{
+display:block;
+font-size:9px;
+font-weight:900;
+color:#8c949e;
+letter-spacing:.7px;
+margin-bottom:6px
+}
+
+.input-row{
+display:flex;
+gap:8px
+}
+
+.input{
+width:100%;
+padding:13px 14px;
+border-radius:11px;
+border:1px solid rgba(255,255,255,.09);
+background:rgba(0,0,0,.3);
 color:#fff;
-font-size:11px;
-outline:none
+outline:none;
+font-size:12px
+}
+
+.input:focus{
+border-color:rgba(57,255,136,.5);
+box-shadow:0 0 0 3px rgba(57,255,136,.06)
 }
 
 .copy{
-border:0;
-padding:0 13px;
-border-radius:9px;
-background:#39ff88;
-color:#001208;
-font-size:10px;
+padding:0 14px;
+border:1px solid rgba(57,255,136,.25);
+border-radius:11px;
+background:rgba(57,255,136,.07);
+color:#39ff88;
+font-size:9px;
 font-weight:1000;
 cursor:pointer
-}
-
-.form-label{
-display:block;
-margin:16px 0 6px;
-color:#858e99;
-font-size:9px
-}
-
-.utr{
-width:100%;
-padding:13px;
-border-radius:9px;
-border:1px solid #252b32;
-background:#05070a;
-color:#fff;
-outline:none;
-font-size:11px
 }
 
 .verify{
 width:100%;
-margin-top:10px;
-padding:13px;
+margin-top:16px;
+padding:14px;
 border:0;
-border-radius:10px;
+border-radius:12px;
 background:#39ff88;
-color:#001208;
-font-size:10px;
+color:#021108;
 font-weight:1000;
+font-size:10px;
+letter-spacing:.7px;
 cursor:pointer
 }
 
-.warning{
-margin-top:14px;
-padding:11px;
-border-radius:9px;
-background:rgba(255,174,0,.05);
-border:1px solid rgba(255,174,0,.13);
-color:#b9ad88;
-font-size:8px;
-line-height:1.5;
-text-align:center
+/* CARD HOW TO */
+
+.card-how-to{
+margin-top:18px;
+padding:18px;
+border-radius:15px;
+background:rgba(57,255,136,.035);
+border:1px solid rgba(57,255,136,.15)
 }
 
-/* TELEGRAM INSTRUCTIONS */
-
-.telegram-instructions{
-margin-top:15px;
-padding:16px;
-border-radius:13px;
-background:
-linear-gradient(
-145deg,
-rgba(57,255,136,.035),
-rgba(139,0,255,.035)
-);
-border:1px solid rgba(57,255,136,.12)
-}
-
-.telegram-title{
-text-align:center;
-color:#39ff88;
-font-size:10px;
+.card-how-title{
+font-size:12px;
 font-weight:1000;
-letter-spacing:1.4px;
-margin-bottom:12px
+color:#39ff88;
+margin-bottom:12px;
+letter-spacing:.5px
 }
 
-.telegram-step{
-display:flex;
-align-items:flex-start;
-gap:10px;
-padding:9px 0;
-border-bottom:1px solid rgba(255,255,255,.05)
+.card-how-step{
+font-size:10px;
+line-height:1.65;
+color:#aeb5be;
+padding:5px 0;
+border-bottom:1px solid rgba(255,255,255,.045)
 }
 
-.telegram-step:last-of-type{
+.card-how-step:last-child{
 border-bottom:0
 }
 
-.telegram-step span{
-width:25px;
-height:25px;
-min-width:25px;
+/* SECURITY */
+
+.security{
 display:grid;
-place-items:center;
-border-radius:50%;
-background:#39ff88;
-color:#001208;
-font-size:7px;
-font-weight:1000
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-top:25px
 }
 
-.telegram-step p{
-color:#737c87;
-font-size:8px;
-line-height:1.5
-}
-
-.telegram-step strong{
-color:#fff
-}
-
-.telegram-btn{
-display:block;
-width:100%;
-margin-top:12px;
-padding:11px;
-border-radius:9px;
-background:#39ff88;
-color:#001208;
-text-align:center;
-text-decoration:none;
-font-size:9px;
-font-weight:1000
-}
-
-.telegram-warning{
-margin-top:10px;
-padding:9px;
-border-radius:8px;
-background:rgba(255,174,0,.04);
-border:1px solid rgba(255,174,0,.10);
-color:#a99e7d;
-text-align:center;
-font-size:7px;
-line-height:1.5
-}
-
-.telegram-warning strong{
-color:#c5b887
-}
-
-/* HOW IT WORKS */
-
-.steps{
-max-width:800px;
-margin:auto;
-display:grid;
-gap:10px
-}
-
-.step{
-display:flex;
-align-items:center;
-gap:13px;
-padding:14px;
-border-radius:13px;
+.security-item{
+padding:18px;
+border-radius:16px;
 background:rgba(255,255,255,.025);
-border:1px solid rgba(255,255,255,.06)
+border:1px solid rgba(255,255,255,.07)
 }
 
-.step-num{
-width:32px;
-height:32px;
-min-width:32px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:#39ff88;
-color:#001108;
-font-size:10px;
-font-weight:1000
+.security-item b{
+display:block;
+font-size:11px;
+margin-bottom:7px
 }
 
-.step strong{
-font-size:11px
-}
-
-.step p{
-margin-top:3px;
-color:#737c87;
-font-size:9px
+.security-item span{
+display:block;
+font-size:9px;
+line-height:1.6;
+color:#747d87
 }
 
 /* FOOTER */
 
 footer{
-padding:35px 18px;
-text-align:center;
-color:#59616d;
-font-size:8px;
-line-height:1.8
+border-top:1px solid rgba(255,255,255,.07);
+margin-top:30px
 }
 
-footer strong{
+.footer-inner{
+max-width:1100px;
+margin:auto;
+padding:30px 18px;
+display:flex;
+justify-content:space-between;
+gap:20px;
+align-items:center
+}
+
+.footer-inner p{
+font-size:9px;
+color:#666e77;
+line-height:1.6
+}
+
+.footer-brand{
+font-size:14px;
+font-weight:1000
+}
+
+.footer-brand span{
 color:#39ff88
 }
 
-/* MOBILE */
-
-@media(max-width:850px){
-
+@media(max-width:800px){
 .products{
 grid-template-columns:1fr;
-max-width:390px;
-margin:auto;
-gap:15px
-}
-
-.benefits{
-grid-template-columns:repeat(2,1fr)
-}
-
-}
-
-@media(max-width:650px){
-
-.store-status{
-margin-top:0;
-margin-bottom:24px;
-padding:0 14px
-}
-
-.status-grid{
-grid-template-columns:repeat(2,1fr);
-gap:8px
-}
-
-.status-card{
-min-height:88px;
-padding:12px 8px
-}
-
-.status-value{
-font-size:20px
-}
-
-.countdown-card .status-value{
-font-size:17px
-}
-
-.activity-feed{
-width:calc(100% - 28px);
-margin:10px auto 24px
-}
-
-}
-
-@media(max-width:500px){
-
-.nav{
-padding:13px 14px
-}
-
-.logo{
-font-size:16px
-}
-
-.online{
-font-size:8px
-}
-
-.hero{
-padding:48px 14px 22px
-}
-
-.hero h1{
-font-size:43px;
-letter-spacing:-2.5px
-}
-
-.hero p{
-font-size:12px
+max-width:500px;
+margin:auto
 }
 
 .stats{
-gap:7px;
-margin-bottom:28px
+grid-template-columns:repeat(2,1fr)
 }
 
-.stat{
-padding:12px 5px
+.security{
+grid-template-columns:1fr
 }
 
-.stat strong{
-font-size:16px
+.hero h1{
+letter-spacing:-2px
+}
 }
 
-.stat span{
-font-size:7px
+@media(max-width:500px){
+.nav{
+padding:12px 14px
 }
 
-.section{
+.logo{
+font-size:15px
+}
+
+.hero{
+min-height:350px;
+padding-top:40px
+}
+
+section{
 padding:42px 14px
-}
-
-.section-title{
-margin-bottom:27px
-}
-
-.section-title h2{
-font-size:29px
-}
-
-.products{
-max-width:100%
-}
-
-.product{
-aspect-ratio:1.586 / 1;
-border-radius:18px
-}
-
-.product-inner{
-padding:16px;
-border-radius:16px
-}
-
-.fake-chip{
-width:36px;
-height:25px;
-margin-top:18px
-}
-
-.card-number{
-margin-top:10px;
-font-size:12px
-}
-
-.card-bottom{
-margin-top:10px
-}
-
-.price{
-margin-top:9px;
-font-size:23px
-}
-
-.buy{
-margin-top:7px;
-padding:8px
 }
 
 .payment-box{
 padding:18px
 }
 
-.qr{
-width:165px;
-height:165px
+.qr-box img{
+width:190px;
+height:190px
 }
 
-.benefits{
-gap:8px
+.footer-inner{
+flex-direction:column;
+text-align:center
 }
-
-.benefit{
-padding:17px 9px
-}
-
-.live-info{
-padding:0 14px
-}
-
 }
 </style>
 </head>
@@ -1135,390 +707,839 @@ padding:0 14px
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
 
-<!-- HEADER -->
-
 <header>
-
 <div class="nav">
-
-<div class="logo">
-SUNNY <span>999 BOT</span>
-</div>
-
+<div class="logo">SUNNY <span>999 BOT</span></div>
 <div class="online">
 <span class="dot"></span>
-ONLINE
+SERVER ONLINE
 </div>
-
 </div>
-
 </header>
 
-<!-- HERO -->
+<main>
 
 <section class="hero">
-
 <div class="hero-content">
 
-<div class="badge">
-⚡ PREMIUM GAMING STORE
-</div>
+<div class="badge">PREMIUM VIRTUAL GAMING CARDS</div>
 
 <h1>
-LEVEL UP YOUR<br>
-<span class="green">FREE FIRE</span>
-<span class="purple"> EXPERIENCE</span>
+SUNNY <span class="green">999</span><br>
+<span class="purple">BOT</span>
 </h1>
 
 <p>
-Choose your premium virtual gaming card,
-select your top-up plan and continue to
-payment verification.
+Premium virtual gaming cards for your gaming experience.
+Select your plan, complete the payment and verify your order securely.
 </p>
 
-<div class="hero-buttons">
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
+VIEW PLANS
+</button>
 
-<a href="#cards" class="hero-btn primary">
-EXPLORE CARDS
-</a>
-
-<a href="#payment" class="hero-btn secondary">
+<button class="btn btn-secondary" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
 PAYMENT
-</a>
-
+</button>
 </div>
 
 </div>
-
 </section>
-
-<!-- LIVE STORE STATUS -->
-
-<section class="store-status">
-
-<div class="status-header">
-<span class="status-live-dot"></span>
-LIVE STORE STATUS
-</div>
-
-<div class="status-grid">
-
-<div class="status-card">
-<div class="status-icon">📦</div>
-<div class="status-value" id="stockCount">489</div>
-<div class="status-label">STOCK LEFT</div>
-</div>
-
-<div class="status-card">
-<div class="status-icon">🔥</div>
-<div class="status-value" id="soldCount">1489</div>
-<div class="status-label">SOLD TODAY</div>
-</div>
-
-<div class="status-card">
-<div class="status-icon">⚡</div>
-<div class="status-value" id="liveOrders">27</div>
-<div class="status-label">LIVE ORDERS</div>
-</div>
-
-<div class="status-card countdown-card">
-<div class="status-icon">⏳</div>
-<div class="status-value" id="hourCountdown">01:00:00</div>
-<div class="status-label">NEXT STOCK UPDATE</div>
-</div>
-
-</div>
-
-<div class="updated">
-● SYSTEM ONLINE &nbsp; • &nbsp;
-LAST UPDATED <span id="updatedTime">NOW</span>
-</div>
-
-</section>
-
-<!-- RECENT ACTIVITY -->
-
-<div class="activity-feed">
-
-<div class="activity-title">
-⚡ RECENT ACTIVITY
-</div>
-
-<div id="activityList"></div>
-
-</div>
-
-<!-- LIVE INFO -->
-
-<div class="live-info">
-
-<div class="live-box">
-<strong>—</strong>
-<span>VERIFIED RATING</span>
-</div>
-
-<div class="live-box">
-<strong id="viewerCount">0</strong>
-<span>PEOPLE VIEWING THIS</span>
-</div>
-
-</div>
-
-<!-- STATS -->
 
 <div class="stats">
 
 <div class="stat">
-<strong>03</strong>
-<span>Premium Plans</span>
+<strong id="stock">489</strong>
+<span>STOCK LEFT</span>
 </div>
 
 <div class="stat">
-<strong>24/7</strong>
-<span>Access</span>
+<strong id="sold">1489</strong>
+<span>SOLD TODAY</span>
 </div>
 
 <div class="stat">
-<strong>100%</strong>
-<span>Virtual</span>
+<strong id="liveOrders">27</strong>
+<span>LIVE ORDERS</span>
+</div>
+
+<div class="stat">
+<strong id="viewers">—</strong>
+<span>VIEWERS</span>
 </div>
 
 </div>
 
-<!-- CARDS -->
+<section id="plans">
 
-<section class="section" id="cards">
-
-<div class="section-title">
-
-<small>CHOOSE YOUR POWER</small>
-
-<h2>Premium Gaming Cards</h2>
-
-<p>Select a plan and continue to payment.</p>
-
+<div class="section-head">
+<small>SELECT YOUR PLAN</small>
+<h2>Gaming Cards</h2>
+<p>Choose your virtual gaming card and continue to payment.</p>
 </div>
 
 <div class="products">
 
-<!-- GOLD -->
+<div class="product">
 
-<div class="product-wrap">
+<div class="product-label">FREE FIRE TOP-UP</div>
 
-<div class="topup-line gold-line">
-30,000 CC FREE FIRE TOP-UP
+<div class="card gold-card">
+
+<div class="card-top">
+<div class="card-brand">SUNNY 999 BOT</div>
+<div class="card-type">GOLD</div>
 </div>
 
-<div class="product gold">
-
-<div class="product-inner">
-
-<div class="product-top">
-
-<div class="product-name">
-GOLD
-</div>
-
-<div class="product-tag">
-PREMIUM
-</div>
-
-</div>
-
-<div class="fake-chip"></div>
-
-<div class="card-number">
-GOLD •••• 999
-</div>
+<div class="card-number">GOLD •••• 999</div>
 
 <div class="card-bottom">
 
+<div class="card-exp">
+EXP<br>
+<b>12/30</b>
+</div>
+
+<div class="card-name">FREE FIRE</div>
+
+</div>
+
+</div>
+
+<div class="product-info">
+<h3>GOLD CARD</h3>
+<p>30,000 CC FREE FIRE TOP-UP</p>
+
+<div class="price-row">
+<div class="price">₹499</div>
+<button class="buy" onclick="selectPlan('499')">BUY NOW</button>
+</div>
+
+<div class="virtual">VIRTUAL GAMING CARD</div>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-label">FREE FIRE TOP-UP</div>
+
+<div class="card diamond-card">
+
+<div class="card-top">
+<div class="card-brand">SUNNY 999 BOT</div>
+<div class="card-type">DIAMOND</div>
+</div>
+
+<div class="card-number">DIAMOND •••• 999</div>
+
+<div class="card-bottom">
+
+<div class="card-exp">
+EXP<br>
+<b>12/30</b>
+</div>
+
+<div class="card-name">FREE FIRE</div>
+
+</div>
+
+</div>
+
+<div class="product-info">
+<h3>DIAMOND CARD</h3>
+<p>1 LAKH CC FREE FIRE TOP-UP</p>
+
+<div class="price-row">
+<div class="price">₹999</div>
+<button class="buy" onclick="selectPlan('999')">BUY NOW</button>
+</div>
+
+<div class="virtual">VIRTUAL GAMING CARD</div>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-label">FREE FIRE TOP-UP</div>
+
+<div class="card prime-card">
+
+<div class="card-top">
+<div class="card-brand">SUNNY 999 BOT</div>
+<div class="card-type">8 PRIME</div>
+</div>
+
+<div class="card-number">PRIME •••• 999</div>
+
+<div class="card-bottom">
+
+<div class="card-exp">
+EXP<br>
+<b>12/30</b>
+</div>
+
+<div class="card-name">FREE FIRE</div>
+
+</div>
+
+</div>
+
+<div class="product-info">
+<h3>8 PRIME</h3>
+<p>1.80 LAKH CC FREE FIRE TOP-UP</p>
+
+<div class="price-row">
+<div class="price">₹4,999</div>
+<button class="buy" onclick="selectPlan('4999')">BUY NOW</button>
+</div>
+
+<div class="virtual">VIRTUAL GAMING CARD</div>
+
+<div class="prime-payment-note">
+<strong>8 PRIME ₹4,999 PAYMENT</strong>
+<p>QR scan karke payment karein. QR scan na ho to UPI ID COPY karke payment karein.</p>
+<span class="prime-upi">UPI ID: sunny999bot@nyes</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="payment">
+
+<div class="section-head">
+<small>SECURE CHECKOUT</small>
+<h2>Complete Payment</h2>
+<p>Make payment for your selected virtual gaming card.</p>
+</div>
+
+<div class="payment-wrap">
+
+<div class="payment-box">
+
+<div class="selected">
+<small>SELECTED PLAN</small>
+<strong id="selectedPlan">₹499</strong>
+</div>
+
+<div class="qr-box">
+<img src="IMG_20260911_222905.png" alt="Payment QR Code">
+</div>
+
+<div class="card-how-to">
+
+<div class="card-how-title">📲 CARD KAISE MILEGA?</div>
+
+<div class="card-how-step">
+STEP 1: QR scan karke payment karo.
+</div>
+
+<div class="card-how-step">
+STEP 2: Payment ke baad VERIFY ON TELEGRAM par click karo.
+</div>
+
+<div class="card-how-step">
+STEP 3: Telegram bot mein UTR + genuine payment screenshot bhejo.
+</div>
+
+<div class="card-how-step">
+STEP 4: Payment verify hone ke baad Activation Code milega.
+</div>
+
+<div class="card-how-step">
+STEP 5: Website par Activation Code enter karke Virtual Gaming Card activate karo.
+</div>
+
+</div>
+
+<div class="payment-note">
+QR scan karke payment karein. Payment ke baad neeche UTR enter karke Telegram verification complete karein.
+</div>
+
+<div class="field">
+
+<label>UPI ID</label>
+
+<div class="input-row">
+
+<input
+class="input"
+id="upiId"
+value="sunny999bot@nyes"
+readonly
+>
+
+<button class="copy" onclick="copyUPI()">COPY</button>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<label>PAYMENT UTR / TRANSACTION ID</label>
+
+<input
+class="input"
+id="utr"
+inputmode="numeric"
+maxlength="12"
+placeholder="Enter 8–12 digit UTR"
+>
+
+</div>
+
+<button class="verify" onclick="startVerification()">
+VERIFY ON TELEGRAM
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="section-head">
+<small>STORE INFORMATION</small>
+<h2>Secure Process</h2>
+<p>Follow the payment and verification steps carefully.</p>
+</div>
+
+<div class="security">
+
+<div class="security-item">
+<b>PAYMENT</b>
+<span>
+Use the displayed UPI ID or QR code to complete your payment.
+</span>
+</div>
+
+<div class="security-item">
+<b>VERIFICATION</b>
+<span>
+Enter the correct UTR and complete verification through the Telegram bot.
+</span>
+</div>
+
+<div class="security-item">
+<b>ACTIVATION</b>
+<span>
+After successful payment verification, follow the activation instructions provided for your order.
+</span>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<div class="footer-inner">
+
 <div>
+<div class="footer-brand">SUNNY <span>999 BOT</span></div>
+<p>Premium Virtual Gaming Cards</p>
+</div>
 
-<label>CARD HOLDER</label>
+<p>© 2026 SUNNY 999 BOT. All rights reserved.</p>
 
-<strong>
-SUNNY 999 BOT
-</strong>
+</div>
+</footer>
+
+<script>
+const PLANS = {
+"499":{name:"FREE FIRE GOLD CARD",amount:"499"},
+"999":{name:"FREE FIRE DIAMOND CARD",amount:"999"},
+"4999":{name:"FREE FIRE 8 PRIME CARD",amount:"4999"}
+};
+
+let selectedPlan = "499";
+
+function selectPlan(amount){
+
+if(!PLANS[amount]) return;
+
+selectedPlan = amount;
+
+const selected = document.getElementById("selectedPlan");
+
+if(selected){
+selected.textContent = "₹" + Number(amount).toLocaleString("en-IN");
+}
+
+document.getElementById("payment").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function copyUPI(){
+
+const upi = document.getElementById("upiId");
+
+if(!upi)return;
+
+const text=upi.value;
+
+if(navigator.clipboard && navigator.clipboard.writeText){
+
+navigator.clipboard.writeText(text).then(()=>{
+
+const button=document.querySelector(".copy");
+
+if(button){
+
+const old=button.textContent;
+
+button.textContent="COPIED";
+
+setTimeout(()=>{
+button.textContent=old;
+},1500);
+
+}
+
+});
+
+}else{
+
+upi.select();
+document.execCommand("copy");
+
+}
+
+}
+
+function startVerification(){
+
+const utrInput=document.getElementById("utr");
+
+if(!utrInput)return;
+
+const utr=utrInput.value.trim();
+
+if(!PLANS[selectedPlan]){
+
+alert("Please select a plan first.");
+
+return;
+
+}
+
+if(!/^\d{8,12}$/.test(utr)){
+
+alert("Please enter a valid 8–12 digit UTR.");
+
+utrInput.focus();
+
+return;
+
+}
+
+const payload="SUNNY999BOT_"+selectedPlan+"_"+utr;
+
+const telegramURL=
+"https://t.me/Sunny999VerifyBot?start="+
+encodeURIComponent(payload);
+
+window.open(
+telegramURL,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+/* LOCAL STORE STATUS */
+
+(function(){
+
+const STOCK_KEY="sunny999_stock";
+const SOLD_KEY="sunny999_sold";
+const ORDERS_KEY="sunny999_orders";
+const TIME_KEY="sunny999_hour";
+
+const now=new Date();
+
+const currentHour=
+now.getFullYear()+"-"+ 
+(now.getMonth()+1)+"-"+ 
+now.getDate()+"-"+ 
+now.getHours();
+
+let stock=
+Number(localStorage.getItem(STOCK_KEY));
+
+let sold=
+Number(localStorage.getItem(SOLD_KEY));
+
+let orders=
+Number(localStorage.getItem(ORDERS_KEY));
+
+let lastHour=
+localStorage.getItem(TIME_KEY);
+
+if(!Number.isFinite(stock) || !Number.isFinite(sold) || !Number.isFinite(orders)){
+
+stock=489;
+sold=1489;
+orders=27;
+
+}
+
+if(lastHour !== currentHour){
+
+stock=Math.max(0,stock-1);
+sold=sold+1;
+orders=orders+1;
+
+localStorage.setItem(STOCK_KEY,stock);
+localStorage.setItem(SOLD_KEY,sold);
+localStorage.setItem(ORDERS_KEY,orders);
+localStorage.setItem(TIME_KEY,currentHour);
+
+}
+
+const stockEl=document.getElementById("stock");
+const soldEl=document.getElementById("sold");
+const ordersEl=document.getElementById("liveOrders");
+
+if(stockEl)stockEl.textContent=stock.toLocaleString("en-IN");
+if(soldEl)soldEl.textContent=sold.toLocaleString("en-IN");
+if(ordersEl)ordersEl.textContent=orders.toLocaleString("en-IN");
+
+})();
+
+
+/* VIEWER COUNT */
+
+(function(){
+
+let viewers=
+Number(sessionStorage.getItem("sunny999_viewers"));
+
+if(!Number.isFinite(viewers) || viewers<1){
+
+viewers=
+Math.floor(Math.random()*18)+12;
+
+sessionStorage.setItem(
+"sunny999_viewers",
+viewers
+);
+
+}
+
+const viewerEl=
+document.getElementById("viewers");
+
+if(viewerEl){
+viewerEl.textContent=
+viewers.toLocaleString("en-IN");
+}
+
+})();
+
+
+/* ACTIVITY */
+
+const activities=[
+"GOLD PLAN • Recently viewed",
+"DIAMOND PLAN • Recently viewed",
+"8 PRIME PLAN • Recently viewed",
+"GOLD PLAN • Plan selected",
+"DIAMOND PLAN • Plan selected",
+"8 PRIME 
+   <section class="section">
+
+<div class="section-title">
+<small>WHY SUNNY 999 BOT</small>
+
+<h2>Built For Gamers</h2>
+
+<p>
+Premium virtual gaming card experience with a simple and clean checkout flow.
+</p>
 
 </div>
 
-<div>
+<div class="benefits">
 
-<label>EXPIRY</label>
+<div class="benefit">
+<div class="benefit-icon">🚀</div>
 
-<strong>
-12/30
-</strong>
+<strong>Quick Checkout</strong>
 
+<p>
+Select your preferred plan and continue directly to the payment section.
+</p>
+</div>
+
+
+<div class="benefit">
+<div class="benefit-icon">🛡️</div>
+
+<strong>Verified Process</strong>
+
+<p>
+Submit your payment details through the available verification process.
+</p>
+</div>
+
+
+<div class="benefit">
+<div class="benefit-icon">🎯</div>
+
+<strong>Premium Plans</strong>
+
+<p>
+Choose between Gold, Diamond and 8 Prime virtual gaming card plans.
+</p>
 </div>
 
 </div>
 
-<div class="price">
+</section>
+
+
+<!-- PAYMENT -->
+
+<section class="section" id="payment">
+
+<div class="section-title">
+
+<small>SECURE CHECKOUT</small>
+
+<h2>Complete Your Payment</h2>
+
+<p>
+Select your plan, make the payment and submit your UTR for verification.
+</p>
+
+</div>
+
+
+<div class="payment-box">
+
+<div class="selected-plan">
+
+<span>SELECTED PLAN</span>
+
+<strong id="selectedPlan">
 ₹499
+</strong>
+
 </div>
 
-<div class="virtual">
-VIRTUAL GAMING CARD
+
+<div class="payment-method">
+
+<div class="payment-title">
+SCAN & PAY
 </div>
+
+<div class="qr-wrap">
+
+<img
+class="qr"
+src="IMG_20260911_222905.png"
+alt="Payment QR Code"
+>
+
+</div>
+
+
+<div class="card-how-to">
+
+<div class="card-how-title">
+📲 CARD KAISE MILEGA?
+</div>
+
+<div class="card-how-step">
+<strong>STEP 1:</strong>
+QR scan karke payment karo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 2:</strong>
+Payment ke baad VERIFY ON TELEGRAM par click karo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 3:</strong>
+Telegram bot mein UTR + genuine payment screenshot bhejo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 4:</strong>
+Payment verify hone ke baad Activation Code milega.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 5:</strong>
+Website par Activation Code enter karke Virtual Gaming Card activate karo.
+</div>
+
+</div>
+
+
+<div class="payment-note">
+
+QR scan karke payment karein.
+QR scan na ho to UPI ID COPY karke payment karein.
+
+</div>
+
+
+<div class="field">
+
+<label>UPI ID</label>
+
+<div class="input-row">
+
+<input
+class="input"
+id="upiId"
+value="sunny999bot@nyes"
+readonly
+>
 
 <button
-class="buy"
-onclick="selectPlan('499')"
+class="copy"
+onclick="copyUPI()"
 >
-BUY NOW
+COPY
 </button>
 
 </div>
 
 </div>
 
-</div>
 
-<!-- DIAMOND -->
+<div class="field">
 
-<div class="product-wrap">
+<label>PAYMENT UTR / TRANSACTION ID</label>
 
-<div class="topup-line diamond-line">
-1 LAKH CC FREE FIRE TOP-UP
-</div>
-
-<div class="product diamond">
-
-<div class="product-inner">
-
-<div class="product-top">
-
-<div class="product-name">
-DIAMOND
-</div>
-
-<div class="product-tag">
-PREMIUM
-</div>
+<input
+class="input"
+id="utr"
+type="text"
+inputmode="numeric"
+maxlength="12"
+placeholder="Enter 8–12 digit UTR"
+>
 
 </div>
 
-<div class="fake-chip"></div>
-
-<div class="card-number">
-DIAMOND •••• 999
-</div>
-
-<div class="card-bottom">
-
-<div>
-
-<label>CARD HOLDER</label>
-
-<strong>
-SUNNY 999 BOT
-</strong>
-
-</div>
-
-<div>
-
-<label>EXPIRY</label>
-
-<strong>
-12/30
-</strong>
-
-</div>
-
-</div>
-
-<div class="price">
-₹999
-</div>
-
-<div class="virtual">
-VIRTUAL GAMING CARD
-</div>
 
 <button
-class="buy"
-onclick="selectPlan('999')"
+class="verify"
+onclick="startVerification()"
 >
-BUY NOW
+VERIFY ON TELEGRAM
 </button>
 
-</div>
+
+<div class="warning">
+
+<strong>IMPORTANT:</strong>
+Only submit a genuine payment UTR and genuine payment screenshot.
+Fake payment details will not be accepted.
 
 </div>
 
+
+<div class="telegram-instructions">
+
+<div class="telegram-title">
+TELEGRAM VERIFICATION
 </div>
 
-<!-- 8 PRIME -->
+<div class="telegram-step">
 
-<div class="product-wrap">
+<span>01</span>
 
-<div class="topup-line prime-line">
-1.80 LAKH CC FREE FIRE TOP-UP
-</div>
-
-<div class="product prime">
-
-<div class="product-inner">
-
-<div class="product-top">
-
-<div class="product-name">
-8 PRIME
-</div>
-
-<div class="product-tag">
-PREMIUM
-</div>
+<p>
+<strong>Select your plan</strong><br>
+Choose the gaming card plan you want.
+</p>
 
 </div>
 
-<div class="fake-chip"></div>
 
-<div class="card-number">
-8 PRIME •••• 999
-</div>
+<div class="telegram-step">
 
-<div class="card-bottom">
+<span>02</span>
 
-<div>
-
-<label>CARD HOLDER</label>
-
-<strong>
-SUNNY 999 BOT
-</strong>
+<p>
+<strong>Complete payment</strong><br>
+Pay using the displayed QR code or UPI ID.
+</p>
 
 </div>
 
-<div>
 
-<label>EXPIRY</label>
+<div class="telegram-step">
 
-<strong>
-12/30
-</strong>
+<span>03</span>
+
+<p>
+<strong>Submit UTR</strong><br>
+Enter your correct payment UTR above.
+</p>
 
 </div>
 
+
+<div class="telegram-step">
+
+<span>04</span>
+
+<p>
+<strong>Verify on Telegram</strong><br>
+Open the Telegram verification bot and submit the requested genuine payment proof.
+</p>
+
 </div>
 
-<div class="price">
-₹4,999
+
+<div class="telegram-step">
+
+<span>05</span>
+
+<p>
+<strong>Activation</strong><br>
+After successful verification, follow the activation instructions provided for your order.
+</p>
+
 </div>
 
-<div class="virtual">
-VIRTUAL GAMING CARD
-</div>
 
-<button
-class="buy"
-onclick="selectPlan('4999')"
+<a
+class="telegram-btn"
+href="https://t.me/Sunny999VerifyBot"
+target="_blank"
+rel="noopener noreferrer"
 >
-BUY NOW
-</button>
+OPEN TELEGRAM BOT
+</a>
+
+
+<div class="telegram-warning">
+
+<strong>Note:</strong>
+Never share your Telegram password, OTP or other private account credentials.
 
 </div>
 
@@ -1530,7 +1551,675 @@ BUY NOW
 
 </section>
 
-<!-- BENEFITS -->
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<small>SIMPLE PROCESS</small>
+
+<h2>How It Works</h2>
+
+<p>
+Follow these steps to complete your virtual gaming card order.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-num">01</div>
+
+<div>
+
+<strong>Choose Your Card</strong>
+
+<p>
+Select Gold, Diamond or 8 Prime.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">02</div>
+
+<div>
+
+<strong>Make Payment</strong>
+
+<p>
+Use the displayed QR code or UPI ID.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">03</div>
+
+<div>
+
+<strong>Submit UTR</strong>
+
+<p>
+Enter your genuine payment UTR.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">04</div>
+
+<div>
+
+<strong>Telegram Verification</strong>
+
+<p>
+Send the required payment information through the verification bot.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-num">05</div>
+
+<div>
+
+<strong>Activate Card</strong>
+
+<p>
+Use the Activation Code after successful verification.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<strong>SUNNY 999 BOT</strong>
+
+<br>
+
+Premium Virtual Gaming Cards
+
+<br>
+
+© 2026 SUNNY 999 BOT. All rights reserved.
+
+</footer>
+
+
+<script>
+
+const PLANS = {
+
+"499":{
+name:"FREE FIRE GOLD CARD",
+amount:"499"
+},
+
+"999":{
+name:"FREE FIRE DIAMOND CARD",
+amount:"999"
+},
+
+"4999":{
+name:"FREE FIRE 8 PRIME CARD",
+amount:"4999"
+}
+
+};
+
+
+let selectedPlan = "499";
+
+
+function selectPlan(amount){
+
+if(!PLANS[amount]) return;
+
+selectedPlan = amount;
+
+const selected =
+document.getElementById("selectedPlan");
+
+if(selected){
+
+selected.textContent =
+"₹" + Number(amount).toLocaleString("en-IN");
+
+}
+
+const payment =
+document.getElementById("payment");
+
+if(payment){
+
+payment.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+function copyUPI(){
+
+const upi =
+document.getElementById("upiId");
+
+if(!upi) return;
+
+const text =
+upi.value;
+
+
+if(
+navigator.clipboard &&
+navigator.clipboard.writeText
+){
+
+navigator.clipboard
+.writeText(text)
+.then(()=>{
+
+const button =
+document.querySelector(".copy");
+
+if(button){
+
+const old =
+button.textContent;
+
+button.textContent =
+"COPIED";
+
+setTimeout(()=>{
+
+button.textContent =
+old;
+
+},1500);
+
+}
+
+});
+
+}else{
+
+upi.select();
+
+document.execCommand("copy");
+
+}
+
+}
+
+
+function startVerification(){
+
+const utrInput =
+document.getElementById("utr");
+
+if(!utrInput) return;
+
+const utr =
+utrInput.value.trim();
+
+
+if(!PLANS[selectedPlan]){
+
+alert("Please select a plan first.");
+
+return;
+
+}
+
+
+if(!/^\d{8,12}$/.test(utr)){
+
+alert(
+"Please enter a valid 8–12 digit UTR."
+);
+
+utrInput.focus();
+
+return;
+
+}
+
+
+const payload =
+"SUNNY999BOT_" +
+selectedPlan +
+"_" +
+utr;
+
+
+const telegramURL =
+"https://t.me/Sunny999VerifyBot?start=" +
+encodeURIComponent(payload);
+
+
+window.open(
+telegramURL,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+
+/* LIVE STORE STATUS */
+
+(function(){
+
+const STOCK_KEY =
+"sunny999_stock";
+
+const SOLD_KEY =
+"sunny999_sold";
+
+const ORDERS_KEY =
+"sunny999_orders";
+
+const TIME_KEY =
+"sunny999_hour";
+
+
+const now =
+new Date();
+
+
+const currentHour =
+now.getFullYear() +
+"-" +
+(now.getMonth()+1) +
+"-" +
+now.getDate() +
+"-" +
+now.getHours();
+
+
+let stock =
+Number(
+localStorage.getItem(STOCK_KEY)
+);
+
+
+let sold =
+Number(
+localStorage.getItem(SOLD_KEY)
+);
+
+
+let orders =
+Number(
+localStorage.getItem(ORDERS_KEY)
+);
+
+
+let lastHour =
+localStorage.getItem(TIME_KEY);
+
+
+if(
+!Number.isFinite(stock) ||
+!Number.isFinite(sold) ||
+!Number.isFinite(orders)
+){
+
+stock = 489;
+sold = 1489;
+orders = 27;
+
+}
+
+
+if(lastHour !== currentHour){
+
+stock =
+Math.max(0,stock - 1);
+
+sold =
+sold + 1;
+
+orders =
+orders + 1;
+
+
+localStorage.setItem(
+STOCK_KEY,
+stock
+);
+
+localStorage.setItem(
+SOLD_KEY,
+sold
+);
+
+localStorage.setItem(
+ORDERS_KEY,
+orders
+);
+
+localStorage.setItem(
+TIME_KEY,
+currentHour
+);
+
+}
+
+
+const stockEl =
+document.getElementById("stockCount");
+
+const soldEl =
+document.getElementById("soldCount");
+
+const ordersEl =
+document.getElementById("liveOrders");
+
+
+if(stockEl){
+
+stockEl.textContent =
+stock.toLocaleString("en-IN");
+
+}
+
+
+if(soldEl){
+
+soldEl.textContent =
+sold.toLocaleString("en-IN");
+
+}
+
+
+if(ordersEl){
+
+ordersEl.textContent =
+orders.toLocaleString("en-IN");
+
+}
+
+})();
+
+
+/* HOURLY COUNTDOWN */
+
+(function(){
+
+const countdown =
+document.getElementById("hourCountdown");
+
+if(!countdown) return;
+
+
+function updateCountdown(){
+
+const now =
+new Date();
+
+const next =
+new Date(now);
+
+next.setMinutes(60,0,0);
+
+
+const diff =
+Math.max(
+0,
+next.getTime() -
+now.getTime()
+);
+
+
+const hours =
+Math.floor(
+diff / 3600000
+);
+
+const minutes =
+Math.floor(
+(diff % 3600000) / 60000
+);
+
+const seconds =
+Math.floor(
+(diff % 60000) / 1000
+);
+
+
+countdown.textContent =
+String(hours).padStart(2,"0") +
+":" +
+String(minutes).padStart(2,"0") +
+":" +
+String(seconds).padStart(2,"0");
+
+
+if(diff <= 0){
+
+location.reload();
+
+}
+
+}
+
+
+updateCountdown();
+
+setInterval(
+updateCountdown,
+1000
+);
+
+})();
+
+
+/* VIEWER COUNT */
+
+(function(){
+
+const viewer =
+document.getElementById("viewerCount");
+
+if(!viewer) return;
+
+
+let count =
+Number(
+sessionStorage.getItem(
+"sunny999_viewers"
+)
+);
+
+
+if(
+!Number.isFinite(count) ||
+count < 1
+){
+
+count =
+Math.floor(
+Math.random()*18
+) + 12;
+
+
+sessionStorage.setItem(
+"sunny999_viewers",
+count
+);
+
+}
+
+
+viewer.textContent =
+count.toLocaleString("en-IN");
+
+})();
+
+
+/* RECENT ACTIVITY */
+
+(function(){
+
+const list =
+document.getElementById(
+"activityList"
+);
+
+if(!list) return;
+
+
+const activities = [
+
+"GOLD PLAN • Recently viewed",
+
+"DIAMOND PLAN • Recently viewed",
+
+"8 PRIME PLAN • Recently viewed",
+
+"GOLD PLAN • Plan selected",
+
+"DIAMOND PLAN • Plan selected",
+
+"8 PRIME PLAN • Checkout opened"
+
+];
+
+
+function renderActivity(){
+
+const shuffled =
+[...activities]
+.sort(
+()=>Math.random()-.5
+)
+.slice(0,3);
+
+
+list.innerHTML = "";
+
+
+shuffled.forEach(
+(text,index)=>{
+
+const item =
+document.createElement("div");
+
+item.className =
+"activity-item";
+
+
+item.innerHTML = `
+
+<span class="activity-dot"></span>
+
+<div>
+
+<strong>${text}</strong>
+
+<small>
+${index === 0 ? "Just now" : "Recently"}
+</small>
+
+</div>
+
+`;
+
+
+list.appendChild(item);
+
+});
+
+}
+
+
+renderActivity();
+
+setInterval(
+renderActivity,
+7000
+);
+
+})();
+
+
+/* UPDATED TIME */
+
+(function(){
+
+const el =
+document.getElementById(
+"updatedTime"
+);
+
+if(!el) return;
+
+function update(){
+
+const now =
+new Date();
+
+el.textContent =
+now.toLocaleTimeString(
+"en-IN",
+{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit"
+}
+);
+
+}
+
+update();
+
+setInterval(
+update,
+1000
+);
+
+})();
+
+</script>
+
+</body>
+   </div>
+
+</section>
 
 <section class="section">
 
@@ -1562,6 +2251,7 @@ Verification request is sent after the required information is submitted.
 
 </div>
 
+
 <div class="benefit">
 
 <div class="benefit-icon">
@@ -1578,6 +2268,7 @@ Each verification request is checked before approval.
 
 </div>
 
+
 <div class="benefit">
 
 <div class="benefit-icon">
@@ -1593,6 +2284,7 @@ Choose from the available virtual gaming card plans.
 </p>
 
 </div>
+
 
 <div class="benefit">
 
@@ -1614,6 +2306,7 @@ Payment verification is handled through the Telegram bot.
 
 </section>
 
+
 <!-- PAYMENT -->
 
 <section class="section" id="payment">
@@ -1630,6 +2323,7 @@ Select a plan, complete your genuine payment and verify it.
 
 </div>
 
+
 <div class="payment-box">
 
 <div class="selected">
@@ -1644,6 +2338,7 @@ SELECTED PLAN
 
 </div>
 
+
 <div class="qr-box">
 
 <img
@@ -1653,6 +2348,7 @@ alt="Payment QR"
 >
 
 </div>
+
 
 <div class="upi">
 
@@ -1671,6 +2367,7 @@ COPY
 
 </div>
 
+
 <label class="form-label">
 PAYMENT UTR / TRANSACTION ID
 </label>
@@ -1686,12 +2383,48 @@ placeholder="Enter 8–12 digit UTR"
 oninput="this.value=this.value.replace(/\D/g,'').slice(0,12)"
 >
 
+
 <button
 class="verify"
 onclick="startVerification()"
 >
 VERIFY ON TELEGRAM
 </button>
+
+
+<div class="card-how-to">
+
+<div class="card-how-title">
+📲 CARD KAISE MILEGA?
+</div>
+
+<div class="card-how-step">
+<strong>STEP 1:</strong>
+QR scan karke payment karo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 2:</strong>
+Payment ke baad VERIFY ON TELEGRAM par click karo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 3:</strong>
+Telegram bot mein UTR + genuine payment screenshot bhejo.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 4:</strong>
+Payment verify hone ke baad Activation Code milega.
+</div>
+
+<div class="card-how-step">
+<strong>STEP 5:</strong>
+Website par Activation Code enter karke Virtual Gaming Card activate karo.
+</div>
+
+</div>
+
 
 <div class="warning">
 
@@ -1700,11 +2433,13 @@ Fake, edited or reused payment details will not be accepted.
 
 </div>
 
+
 <div class="telegram-instructions">
 
 <div class="telegram-title">
 TELEGRAM VERIFICATION PROCESS
 </div>
+
 
 <div class="telegram-step">
 
@@ -1713,14 +2448,19 @@ TELEGRAM VERIFICATION PROCESS
 </span>
 
 <p>
+
 <strong>
 Select your plan
 </strong>
+
 <br>
+
 Choose GOLD, DIAMOND or 8 PRIME.
+
 </p>
 
 </div>
+
 
 <div class="telegram-step">
 
@@ -1729,14 +2469,19 @@ Choose GOLD, DIAMOND or 8 PRIME.
 </span>
 
 <p>
+
 <strong>
 Complete payment
 </strong>
+
 <br>
+
 Complete the payment using the displayed payment method.
+
 </p>
 
 </div>
+
 
 <div class="telegram-step">
 
@@ -1745,14 +2490,19 @@ Complete the payment using the displayed payment method.
 </span>
 
 <p>
+
 <strong>
 Enter your UTR
 </strong>
+
 <br>
+
 Enter the genuine 8–12 digit transaction UTR.
+
 </p>
 
 </div>
+
 
 <div class="telegram-step">
 
@@ -1761,14 +2511,19 @@ Enter the genuine 8–12 digit transaction UTR.
 </span>
 
 <p>
+
 <strong>
 Confirm UTR
 </strong>
+
 <br>
+
 Telegram bot mein apna UTR confirm karo.
+
 </p>
 
 </div>
+
 
 <div class="telegram-step">
 
@@ -1777,14 +2532,19 @@ Telegram bot mein apna UTR confirm karo.
 </span>
 
 <p>
+
 <strong>
 Send one screenshot
 </strong>
+
 <br>
+
 Confirmation ke baad one genuine payment screenshot bhejo.
+
 </p>
 
 </div>
+
 
 <a
 href="https://t.me/Sunny999VerifyBot"
@@ -1794,6 +2554,7 @@ class="telegram-btn"
 >
 OPEN TELEGRAM BOT
 </a>
+
 
 <div class="telegram-warning">
 
@@ -1812,6 +2573,7 @@ Duplicate UTR submit nahi kiya ja sakta.
 </div>
 
 </section>
+
 
 <!-- HOW IT WORKS -->
 
@@ -1832,6 +2594,7 @@ Follow the verification process step by step.
 </p>
 
 </div>
+
 
 <div class="steps">
 
@@ -1855,6 +2618,7 @@ Select GOLD, DIAMOND or 8 PRIME.
 
 </div>
 
+
 <div class="step">
 
 <div class="step-num">
@@ -1874,6 +2638,7 @@ Complete the genuine payment for your selected plan.
 </div>
 
 </div>
+
 
 <div class="step">
 
@@ -1895,6 +2660,7 @@ Enter your genuine 8–12 digit transaction UTR.
 
 </div>
 
+
 <div class="step">
 
 <div class="step-num">
@@ -1914,6 +2680,7 @@ Confirm the UTR in the Telegram verification bot.
 </div>
 
 </div>
+
 
 <div class="step">
 
@@ -1939,6 +2706,7 @@ Submit one genuine payment screenshot for admin review.
 
 </section>
 
+
 <!-- FOOTER -->
 
 <footer>
@@ -1960,6 +2728,7 @@ Payment verification is subject to admin review.
 © 2026 SUNNY 999 BOT. All rights reserved.
 
 </footer>
+
 
 <script>
 
@@ -1986,7 +2755,9 @@ amount:"4999"
 
 };
 
+
 let selectedPlan = "499";
+
 
 /* =========================
    SELECT PLAN
@@ -2018,6 +2789,7 @@ behavior:"smooth"
 });
 
 }
+
 
 /* =========================
    COPY UPI
@@ -2067,11 +2839,13 @@ old;
 }else{
 
 upi.select();
+
 document.execCommand("copy");
 
 }
 
 }
+
 
 /* =========================
    TELEGRAM VERIFICATION
@@ -2096,7 +2870,9 @@ alert(
 );
 
 return;
+
 }
+
 
 /*
   Website accepts 8–12 digit UTR.
@@ -2111,7 +2887,9 @@ alert(
 utrInput.focus();
 
 return;
+
 }
+
 
 /*
   IMPORTANT:
@@ -2140,6 +2918,7 @@ telegramURL,
 
 }
 
+
 /* =========================
    STOCK / COUNTDOWN
 ========================= */
@@ -2159,6 +2938,7 @@ Number(
 localStorage.getItem("sunny_next_update")
 );
 
+
 if(
 !Number.isFinite(stock) ||
 stock < 0
@@ -2168,6 +2948,7 @@ stock = 489;
 
 }
 
+
 if(
 !Number.isFinite(sold) ||
 sold < 0
@@ -2176,6 +2957,7 @@ sold < 0
 sold = 1489;
 
 }
+
 
 if(
 !Number.isFinite(nextUpdate) ||
@@ -2187,6 +2969,7 @@ Date.now() +
 60 * 60 * 1000;
 
 }
+
 
 function saveStoreData(){
 
@@ -2206,6 +2989,7 @@ String(nextUpdate)
 );
 
 }
+
 
 function updateStore(){
 
@@ -2232,29 +3016,35 @@ saveStoreData();
 
 }
 
+
 const remaining =
 Math.max(
 0,
 nextUpdate - now
 );
 
+
 const totalSeconds =
 Math.floor(
 remaining / 1000
 );
+
 
 const hours =
 Math.floor(
 totalSeconds / 3600
 );
 
+
 const minutes =
 Math.floor(
 (totalSeconds % 3600) / 60
 );
 
+
 const seconds =
 totalSeconds % 60;
+
 
 const countdown =
 String(hours).padStart(2,"0") +
@@ -2263,25 +3053,30 @@ String(minutes).padStart(2,"0") +
 ":" +
 String(seconds).padStart(2,"0");
 
+
 const countdownElement =
 document.getElementById(
 "hourCountdown"
 );
+
 
 const stockElement =
 document.getElementById(
 "stockCount"
 );
 
+
 const soldElement =
 document.getElementById(
 "soldCount"
 );
 
+
 const updatedElement =
 document.getElementById(
 "updatedTime"
 );
+
 
 if(countdownElement){
 
@@ -2290,6 +3085,7 @@ countdown;
 
 }
 
+
 if(stockElement){
 
 stockElement.textContent =
@@ -2297,12 +3093,14 @@ stock;
 
 }
 
+
 if(soldElement){
 
 soldElement.textContent =
 sold;
 
 }
+
 
 if(updatedElement){
 
@@ -2319,6 +3117,7 @@ minute:"2-digit"
 
 }
 
+
 saveStoreData();
 
 updateStore();
@@ -2327,6 +3126,7 @@ setInterval(
 updateStore,
 1000
 );
+
 
 /* =========================
    RECENT ACTIVITY
@@ -2353,7 +3153,9 @@ const activities = [
 
 ];
 
+
 let activityIndex = 0;
+
 
 function generateActivity(){
 
@@ -2366,13 +3168,16 @@ if(!list){
 return;
 }
 
+
 list.innerHTML = "";
+
 
 const item =
 document.createElement("div");
 
 item.className =
 "activity-item";
+
 
 const dot =
 document.createElement("span");
@@ -2382,15 +3187,19 @@ dot.textContent =
 
 item.appendChild(dot);
 
+
 item.appendChild(
 document.createTextNode(
 activities[activityIndex]
 )
 );
 
+
 list.appendChild(item);
 
+
 activityIndex++;
+
 
 if(
 activityIndex >= activities.length
@@ -2402,12 +3211,14 @@ activityIndex = 0;
 
 }
 
+
 generateActivity();
 
 setInterval(
 generateActivity,
 20000
 );
+
 
 /* =========================
    LOCAL VIEW DISPLAY
@@ -2424,6 +3235,7 @@ if(!viewer){
 return;
 }
 
+
 /*
   Local browser count only.
   It is not presented as a server-wide
@@ -2437,6 +3249,7 @@ sessionStorage.getItem(
 )
 );
 
+
 if(
 !Number.isFinite(current) ||
 current < 1
@@ -2447,6 +3260,7 @@ Math.floor(
 Math.random() * 5
 ) + 1;
 
+
 sessionStorage.setItem(
 "sunny_viewer",
 String(current)
@@ -2454,10 +3268,12 @@ String(current)
 
 }
 
+
 viewer.textContent =
 current;
 
 }
+
 
 updateViewer();
 
